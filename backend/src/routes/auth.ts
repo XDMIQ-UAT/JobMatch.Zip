@@ -114,7 +114,7 @@ router.post('/magic-link', async (req: Request, res: Response) => {
  */
 router.get('/verify-magic-link', async (req: Request, res: Response) => {
   try {
-    const { token } = req.query;
+    const token = req.query.token as string;
 
     if (!token) {
       return res.status(400).json({ 
