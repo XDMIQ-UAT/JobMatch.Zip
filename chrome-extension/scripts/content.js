@@ -128,7 +128,7 @@ class LinkedInJobScraper {
     return jobData.title && jobData.company && jobData.description;
   }
 
-  sendToBackground(jobData) {
+  async sendToBackground(jobData) {
     console.log('📤 [JobMatch] Sending job data to background script:', {
       title: jobData.title,
       company: jobData.company,
@@ -142,12 +142,27 @@ class LinkedInJobScraper {
       }, (response) => {
         if (chrome.runtime.lastError) {
           console.error('❌ [JobMatch] Error sending job data to background:', chrome.runtime.lastError);
+          // Retry after a short delay if context was invalidated
+          if (chrome.runtime.lastError.message.includes('Extension context invalidated')) {
+            console.log('🔄 [JobMatch] Retrying in 2 seconds...');
+            setTimeout(() => {
+              this.sendToBackground(jobData);
+            }, 2000);
+          }
         } else {
           console.log('✅ [JobMatch] Successfully sent job data to background');
         }
       });
     } catch (error) {
       console.error('❌ [JobMatch] Error sending to background:', error);
+      
+      // Retry if context was invalidated
+      if (error.message && error.message.includes('Extension context invalidated')) {
+        console.log('🔄 [JobMatch] Retrying after context invalidation...');
+        setTimeout(() => {
+          this.sendToBackground(jobData);
+        }, 2000);
+      }
     }
   }
 
