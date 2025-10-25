@@ -15,6 +15,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     handleJobDataScraped(message.data, sender.tab.id);
   } else if (message.type === 'OPEN_POPUP') {
     chrome.action.openPopup();
+  } else if (message.type === 'GET_CURRENT_DATA') {
+    sendResponse({
+      jobData: currentJobData,
+      analysis: currentAnalysis
+    });
+  } else if (message.type === 'CLEAR_CACHE') {
+    clearCurrentJobCache();
+    sendResponse({ success: true });
   }
   return true;
 });
@@ -266,19 +274,7 @@ chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) =
   }
 });
 
-// Provide current data to popup
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'GET_CURRENT_DATA') {
-    sendResponse({
-      jobData: currentJobData,
-      analysis: currentAnalysis
-    });
-  } else if (message.type === 'CLEAR_CACHE') {
-    clearCurrentJobCache();
-    sendResponse({ success: true });
-  }
-  return true;
-});
+// Note: Message listener for GET_CURRENT_DATA and CLEAR_CACHE was moved above to consolidate all message handling
 
 // Show notification for high-match jobs
 function showHighMatchNotification(jobData, matchScore) {
