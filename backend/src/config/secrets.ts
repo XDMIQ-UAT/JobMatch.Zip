@@ -67,7 +67,7 @@ async function accessSecret(secretName: string): Promise<string> {
       throw new Error(`Secret ${secretName} is empty`);
     }
 
-    return payload;
+    return payload.trim();
   } catch (error) {
     console.error(`Failed to access secret ${secretName}:`, error);
     throw error;
