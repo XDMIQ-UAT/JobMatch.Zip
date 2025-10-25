@@ -161,6 +161,9 @@ async function analyzeJob(jobData, authToken) {
     console.log('📊 [JobMatch] Match score API response status:', matchResponse.status);
 
     if (!matchResponse.ok) {
+      const errorBody = await matchResponse.json().catch(() => ({ message: 'Unknown error' }));
+      console.error('❌ [JobMatch] Match score error response:', errorBody);
+      
       if (matchResponse.status === 401) {
         throw new Error('Authentication failed. Please log in again.');
       } else if (matchResponse.status === 429) {
@@ -168,7 +171,7 @@ async function analyzeJob(jobData, authToken) {
       } else if (matchResponse.status >= 500) {
         throw new Error('Server error. Please try again later.');
       }
-      throw new Error('Failed to calculate match score');
+      throw new Error(errorBody.message || errorBody.error || 'Failed to calculate match score');
     }
 
     const matchResult = await matchResponse.json();
