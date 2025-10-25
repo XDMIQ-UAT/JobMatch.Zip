@@ -189,7 +189,7 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
 
     logger.info(`🔑 Generated auth token for: ${user.email}`);
 
-    // Return HTML page that can communicate with Chrome extension
+    // Return simple success page - extension will poll to check authentication
     const htmlResponse = `
 <!DOCTYPE html>
 <html>
@@ -230,44 +230,9 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
     <div class="container">
         <div class="success-icon">✅</div>
         <div class="message">Authentication Successful!</div>
-        <div class="instruction">You can now close this tab and return to the JobMatch AI extension.</div>
+        <div class="instruction">You can now close this tab and return to the JobMatch AI extension. The extension will automatically detect your authentication.</div>
         <button class="close-btn" onclick="window.close()">Close Tab</button>
     </div>
-    
-    <script>
-        // Try to communicate with Chrome extension
-        if (typeof chrome !== 'undefined' && chrome.runtime) {
-            try {
-                chrome.runtime.sendMessage({
-                    type: 'AUTH_SUCCESS',
-                    token: '${authToken}',
-                    user: ${JSON.stringify({
-                      id: user.id,
-                      email: user.email,
-                      role: user.role,
-                      firstName: user.firstName,
-                      lastName: user.lastName
-                    })}
-                });
-            } catch (e) {
-                console.log('Could not communicate with extension:', e);
-            }
-        }
-        
-        // Also try to store in localStorage as fallback
-        try {
-            localStorage.setItem('jobmatch_auth_token', '${authToken}');
-            localStorage.setItem('jobmatch_user', '${JSON.stringify({
-              id: user.id,
-              email: user.email,
-              role: user.role,
-              firstName: user.firstName,
-              lastName: user.lastName
-            })}');
-        } catch (e) {
-            console.log('Could not store in localStorage:', e);
-        }
-    </script>
 </body>
 </html>`;
 

@@ -12,36 +12,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     handleJobDataScraped(message.data, sender.tab.id);
   } else if (message.type === 'OPEN_POPUP') {
     chrome.action.openPopup();
-  } else if (message.type === 'AUTH_SUCCESS') {
-    handleAuthSuccess(message.token, message.user);
   }
   return true;
 });
-
-// Handle authentication success
-async function handleAuthSuccess(token, user) {
-  try {
-    // Store auth token and user data
-    await chrome.storage.local.set({ 
-      authToken: token,
-      user: user
-    });
-    
-    console.log('Authentication successful, token stored');
-    
-    // Notify popup if it's open
-    chrome.runtime.sendMessage({
-      type: 'AUTH_SUCCESS',
-      token: token,
-      user: user
-    }).catch(() => {
-      // Popup might not be open, that's okay
-    });
-    
-  } catch (error) {
-    console.error('Failed to store auth token:', error);
-  }
-}
 
 // Handle scraped job data
 async function handleJobDataScraped(jobData, tabId) {

@@ -13,20 +13,7 @@ const noJobState = document.getElementById('no-job-state');
 const jobAnalysisState = document.getElementById('job-analysis-state');
 const viewFullBtn = document.getElementById('view-full-btn');
 
-// Listen for authentication success messages
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'AUTH_SUCCESS') {
-    // Store the token and user data
-    chrome.storage.local.set({
-      authToken: message.token,
-      user: message.user
-    });
-    
-    // Show main view
-    showMainView();
-    loadCurrentJobData();
-  }
-});
+// The popup will detect authentication via polling the check-magic-link endpoint
 
 // Initialize popup
 async function init() {
