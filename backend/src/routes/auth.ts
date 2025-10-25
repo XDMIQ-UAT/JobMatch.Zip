@@ -189,17 +189,89 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
 
     logger.info(`🔑 Generated auth token for: ${user.email}`);
 
-    res.json({
-      message: 'Authentication successful',
-      token: authToken,
-      user: {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-        firstName: user.firstName,
-        lastName: user.lastName
-      }
-    });
+    // Return HTML page that can communicate with Chrome extension
+    const htmlResponse = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JobMatch AI - Authentication Successful</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .success-icon { font-size: 48px; margin-bottom: 20px; }
+        .message { font-size: 24px; margin-bottom: 20px; }
+        .instruction { font-size: 16px; margin-bottom: 30px; }
+        .close-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .close-btn:hover { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <div class="message">Authentication Successful!</div>
+        <div class="instruction">You can now close this tab and return to the JobMatch AI extension.</div>
+        <button class="close-btn" onclick="window.close()">Close Tab</button>
+    </div>
+    
+    <script>
+        // Try to communicate with Chrome extension
+        if (typeof chrome !== 'undefined' && chrome.runtime) {
+            try {
+                chrome.runtime.sendMessage({
+                    type: 'AUTH_SUCCESS',
+                    token: '${authToken}',
+                    user: ${JSON.stringify({
+                      id: user.id,
+                      email: user.email,
+                      role: user.role,
+                      firstName: user.firstName,
+                      lastName: user.lastName
+                    })}
+                });
+            } catch (e) {
+                console.log('Could not communicate with extension:', e);
+            }
+        }
+        
+        // Also try to store in localStorage as fallback
+        try {
+            localStorage.setItem('jobmatch_auth_token', '${authToken}');
+            localStorage.setItem('jobmatch_user', '${JSON.stringify({
+              id: user.id,
+              email: user.email,
+              role: user.role,
+              firstName: user.firstName,
+              lastName: user.lastName
+            })}');
+        } catch (e) {
+            console.log('Could not store in localStorage:', e);
+        }
+    </script>
+</body>
+</html>`;
+
+    res.send(htmlResponse);
 
   } catch (error: any) {
     logger.error('❌ Magic link verification failed:', error);
