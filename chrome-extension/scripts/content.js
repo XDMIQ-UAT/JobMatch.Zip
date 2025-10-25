@@ -129,17 +129,25 @@ class LinkedInJobScraper {
   }
 
   sendToBackground(jobData) {
+    console.log('📤 [JobMatch] Sending job data to background script:', {
+      title: jobData.title,
+      company: jobData.company,
+      descriptionLength: jobData.description?.length
+    });
+    
     try {
       chrome.runtime.sendMessage({
         type: 'JOB_DATA_SCRAPED',
         data: jobData
       }, (response) => {
         if (chrome.runtime.lastError) {
-          console.error('Error sending job data to background:', chrome.runtime.lastError);
+          console.error('❌ [JobMatch] Error sending job data to background:', chrome.runtime.lastError);
+        } else {
+          console.log('✅ [JobMatch] Successfully sent job data to background');
         }
       });
     } catch (error) {
-      console.error('Error sending to background:', error);
+      console.error('❌ [JobMatch] Error sending to background:', error);
     }
   }
 

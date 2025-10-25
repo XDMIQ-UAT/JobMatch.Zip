@@ -71,6 +71,12 @@ async function analyzeJob(jobData, authToken) {
     }
 
     // First, analyze the job posting
+    console.log('🤖 [JobMatch] Calling Gemini API for job analysis:', {
+      title: jobData.title,
+      company: jobData.company,
+      url: `${API_BASE_URL}/api/jobs/analyze`
+    });
+    
     const jobAnalysisResponse = await fetch(`${API_BASE_URL}/api/jobs/analyze`, {
       method: 'POST',
       headers: {
@@ -83,6 +89,8 @@ async function analyzeJob(jobData, authToken) {
         company: jobData.company
       })
     });
+    
+    console.log('📡 [JobMatch] Job analysis API response status:', jobAnalysisResponse.status);
 
     if (!jobAnalysisResponse.ok) {
       if (jobAnalysisResponse.status === 401) {
@@ -97,8 +105,14 @@ async function analyzeJob(jobData, authToken) {
     }
 
     const jobAnalysis = await jobAnalysisResponse.json();
+    console.log('✅ [JobMatch] Gemini job analysis complete:', {
+      hasSkills: !!jobAnalysis.requiredSkills,
+      skillCount: jobAnalysis.requiredSkills?.length || 0,
+      hasExperienceLevel: !!jobAnalysis.experienceLevel
+    });
 
     // Get user's resume/profile
+    console.log('👤 [JobMatch] Fetching user profile from backend...');
     const profileResponse = await fetch(`${API_BASE_URL}/api/users/me`, {
       headers: {
         'Authorization': `Bearer ${authToken}`
@@ -115,6 +129,7 @@ async function analyzeJob(jobData, authToken) {
     const profile = await profileResponse.json();
 
     // Calculate match score
+    console.log('🎯 [JobMatch] Calling Gemini API for match score calculation...');
     const matchResponse = await fetch(`${API_BASE_URL}/api/jobs/match`, {
       method: 'POST',
       headers: {
@@ -126,6 +141,8 @@ async function analyzeJob(jobData, authToken) {
         resumeText: profile.resume || ''
       })
     });
+    
+    console.log('📊 [JobMatch] Match score API response status:', matchResponse.status);
 
     if (!matchResponse.ok) {
       if (matchResponse.status === 401) {
@@ -139,6 +156,11 @@ async function analyzeJob(jobData, authToken) {
     }
 
     const matchResult = await matchResponse.json();
+    console.log('✅ [JobMatch] Match score calculation complete:', {
+      matchScore: matchResult.matchScore,
+      hasInsights: !!matchResult.insights,
+      insightCount: matchResult.insights?.length || 0
+    });
 
     const analysisResult = {
       ...jobAnalysis,
@@ -149,6 +171,8 @@ async function analyzeJob(jobData, authToken) {
 
     // Cache the analysis result
     await cacheAnalysis(cacheKey, analysisResult);
+    
+    console.log('💾 [JobMatch] Analysis cached successfully');
 
     return analysisResult;
   } catch (error) {
