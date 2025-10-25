@@ -64,8 +64,8 @@ router.post('/magic-link', async (req: Request, res: Response) => {
 
     logger.info(`💾 Stored magic link token for: ${email}`);
 
-    // Generate magic link URL
-    const magicLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/auth/magic-link?token=${magicToken}`;
+    // Generate magic link URL - this should point to the backend API endpoint
+    const magicLink = `${process.env.BACKEND_URL || 'http://34.134.208.48:4000'}/api/auth/verify-magic-link?token=${magicToken}`;
     
     logger.info(`🔗 Generated magic link URL for: ${email}`);
 
@@ -109,12 +109,12 @@ router.post('/magic-link', async (req: Request, res: Response) => {
 });
 
 /**
- * POST /api/auth/verify-magic-link
- * Verify magic link token and authenticate user
+ * GET /api/auth/verify-magic-link
+ * Verify magic link token from URL and authenticate user
  */
-router.post('/verify-magic-link', async (req: Request, res: Response) => {
+router.get('/verify-magic-link', async (req: Request, res: Response) => {
   try {
-    const { token } = req.body;
+    const { token } = req.query;
 
     if (!token) {
       return res.status(400).json({ 
