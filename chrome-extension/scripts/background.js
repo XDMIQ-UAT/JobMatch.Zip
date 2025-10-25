@@ -12,9 +12,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   
   if (message.type === 'JOB_DATA_SCRAPED') {
     console.log('📊 [JobMatch] Processing job data scraped from LinkedIn');
-    handleJobDataScraped(message.data, sender.tab.id);
+    // Don't wait for async handler, just process in background
+    handleJobDataScraped(message.data, sender.tab.id).catch(error => {
+      console.error('Error processing job data:', error);
+    });
+    sendResponse({ success: true });
   } else if (message.type === 'OPEN_POPUP') {
     chrome.action.openPopup();
+    sendResponse({ success: true });
   } else if (message.type === 'GET_CURRENT_DATA') {
     sendResponse({
       jobData: currentJobData,
