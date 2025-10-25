@@ -20,22 +20,35 @@ class LinkedInJobScraper {
       const url = location.href;
       if (url !== lastUrl) {
         lastUrl = url;
-        setTimeout(() => this.scrapeJob(), 1000);
+        console.log('🌐 [JobMatch] URL changed, waiting 3 seconds for page to load...');
+        setTimeout(() => {
+          console.log('🔄 [JobMatch] Starting job scrape after URL change');
+          this.scrapeJob();
+        }, 3000);
       }
     }).observe(document, { subtree: true, childList: true });
   }
 
   scrapeJob() {
+    console.log('🔍 [JobMatch] Starting job scrape...');
+    
     if (!this.isJobPage()) {
+      console.log('⚠️ [JobMatch] Not a job page, removing widget');
       this.removeMatchWidget();
       return;
     }
 
     const jobData = this.extractJobData();
     if (jobData && this.hasRequiredFields(jobData)) {
+      console.log('✅ [JobMatch] Job data extracted successfully:', {
+        title: jobData.title,
+        company: jobData.company
+      });
       this.jobData = jobData;
       this.sendToBackground(jobData);
       this.injectMatchWidget();
+    } else {
+      console.log('⚠️ [JobMatch] Job data incomplete or missing required fields');
     }
   }
 
