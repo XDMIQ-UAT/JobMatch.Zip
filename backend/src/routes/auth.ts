@@ -1,102 +1,37 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { authService } from '../services/authService';
-import { emailService } from '../services/emailService';
-import { logger } from '../utils/logger';
 import { generateToken } from '../middleware/auth';
+import { EmailService } from '../services/emailService';
+import { logger } from '../utils/logger';
 
 const router = Router();
 const prisma = new PrismaClient();
+const emailService = new EmailService();
 
-// Login endpoint
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ 
-        error: 'Email and password are required' 
-      });
-    }
-
-    const result = await authService.login(email, password);
-    
-    res.json({
-      message: 'Login successful',
-      token: result.token,
-      user: {
-        id: result.user.id,
-        email: result.user.email,
-        firstName: result.user.firstName,
-        lastName: result.user.lastName,
-        role: result.user.role
-      }
-    });
-  } catch (error) {
-    logger.error('Login error:', error);
-    res.status(401).json({ 
-      error: 'Invalid credentials',
-      message: error instanceof Error ? error.message : 'Login failed'
-    });
-  }
-});
-
-// Register endpoint
-router.post('/register', async (req, res) => {
-  try {
-    const { email, password, firstName, lastName, role } = req.body;
-
-    if (!email || !password || !firstName || !lastName || !role) {
-      return res.status(400).json({ 
-        error: 'All fields are required' 
-      });
-    }
-
-    const result = await authService.register({
-      email,
-      password,
-      firstName,
-      lastName,
-      role
-    });
-    
-    res.status(201).json({
-      message: 'Registration successful',
-      token: result.token,
-      user: {
-        id: result.user.id,
-        email: result.user.email,
-        firstName: result.user.firstName,
-        lastName: result.user.lastName,
-        role: result.user.role
-      }
-    });
-  } catch (error) {
-    logger.error('Registration error:', error);
-    res.status(400).json({ 
-      error: 'Registration failed',
-      message: error instanceof Error ? error.message : 'Registration failed'
-    });
-  }
-});
-
-// Send magic link endpoint
-router.post('/magic-link', async (req, res) => {
+/**
+ * POST /api/auth/magic-link
+ * Send magic link email
+ */
+router.post('/magic-link', async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
-    if (!email) {
+    // Validate email
+    if (!email || typeof email !== 'string') {
       return res.status(400).json({ 
         error: 'Email is required' 
       });
     }
 
-    // Validate email format
-    if (!authService.validateEmail(email)) {
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       return res.status(400).json({ 
         error: 'Invalid email format' 
       });
     }
+
+    logger.info(`🔗 Magic link requested for: ${email}`);
 
     // Generate magic link token
     const magicToken = await generateToken({ 
@@ -105,6 +40,8 @@ router.post('/magic-link', async (req, res) => {
       role: 'JOB_SEEKER' 
     });
 
+    logger.info(`🔗 Generated magic token for: ${email}`);
+
     // Clean up any existing unused magic links for this email
     await prisma.magicLink.deleteMany({
       where: {
@@ -112,6 +49,8 @@ router.post('/magic-link', async (req, res) => {
         used: false
       }
     });
+
+    logger.info(`🧹 Cleaned up existing magic links for: ${email}`);
 
     // Store magic link token with expiration (15 minutes)
     await prisma.magicLink.create({
@@ -123,42 +62,57 @@ router.post('/magic-link', async (req, res) => {
       }
     });
 
+    logger.info(`💾 Stored magic link token for: ${email}`);
+
     // Generate magic link URL
     const magicLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/auth/magic-link?token=${magicToken}`;
     
+    logger.info(`🔗 Generated magic link URL for: ${email}`);
+
     try {
       // Send magic link email via Amazon SES
       await emailService.sendMagicLink(email, magicLink);
       
-      logger.info(`Magic link email sent successfully to ${email}`);
+      logger.info(`✅ Magic link email sent successfully to ${email}`);
       
       res.json({
         message: 'Magic link sent successfully',
         // In development, also return the link for testing
         ...(process.env.NODE_ENV === 'development' && { magicLink })
       });
-    } catch (emailError) {
-      logger.error('Failed to send magic link email:', emailError);
       
-      // Still return success but log the error
-      res.json({
-        message: 'Magic link sent successfully',
-        warning: 'Email delivery may be delayed',
-        // In development, return the link for testing
-        ...(process.env.NODE_ENV === 'development' && { magicLink })
+    } catch (emailError) {
+      logger.error(`❌ Failed to send magic link email to ${email}:`, emailError);
+      
+      // Clean up the stored token since email failed
+      await prisma.magicLink.deleteMany({
+        where: {
+          email,
+          token: magicToken,
+          used: false
+        }
+      });
+      
+      res.status(500).json({
+        error: 'Failed to send magic link email',
+        message: emailError.message
       });
     }
+    
   } catch (error) {
-    logger.error('Magic link error:', error);
-    res.status(500).json({ 
-      error: 'Failed to send magic link',
-      message: error instanceof Error ? error.message : 'Unknown error'
+    logger.error('❌ Magic link request failed:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
     });
   }
 });
 
-// Verify magic link endpoint
-router.post('/verify-magic-link', async (req, res) => {
+/**
+ * POST /api/auth/verify-magic-link
+ * Verify magic link token and authenticate user
+ */
+router.post('/verify-magic-link', async (req: Request, res: Response) => {
   try {
     const { token } = req.body;
 
@@ -168,53 +122,72 @@ router.post('/verify-magic-link', async (req, res) => {
       });
     }
 
-    // Find magic link token
-    const magicLink = await prisma.magicLink.findFirst({
-      where: {
-        token,
-        used: false,
-        expiresAt: {
-          gt: new Date()
-        }
-      }
+    logger.info(`🔍 Verifying magic link token`);
+
+    // Find the magic link token
+    const magicLinkRecord = await prisma.magicLink.findUnique({
+      where: { token }
     });
 
-    if (!magicLink) {
+    if (!magicLinkRecord) {
       return res.status(400).json({ 
         error: 'Invalid or expired magic link' 
       });
     }
 
-    // Mark token as used
+    // Check if already used
+    if (magicLinkRecord.used) {
+      return res.status(400).json({ 
+        error: 'Magic link has already been used' 
+      });
+    }
+
+    // Check if expired
+    if (magicLinkRecord.expiresAt < new Date()) {
+      return res.status(400).json({ 
+        error: 'Magic link has expired' 
+      });
+    }
+
+    logger.info(`✅ Magic link token is valid for: ${magicLinkRecord.email}`);
+
+    // Mark as used
     await prisma.magicLink.update({
-      where: { id: magicLink.id },
+      where: { id: magicLinkRecord.id },
       data: { used: true }
     });
 
     // Find or create user
     let user = await prisma.user.findUnique({
-      where: { email: magicLink.email }
+      where: { email: magicLinkRecord.email }
     });
 
     if (!user) {
       // Create new user
       user = await prisma.user.create({
         data: {
-          email: magicLink.email,
+          email: magicLinkRecord.email,
           passwordHash: '', // No password needed for magic link auth
-          firstName: 'User',
-          lastName: 'Name',
-          role: 'JOB_SEEKER'
+          role: 'JOB_SEEKER',
+          firstName: '',
+          lastName: '',
+          verified: true
         }
       });
+      
+      logger.info(`👤 Created new user: ${user.email}`);
+    } else {
+      logger.info(`👤 Found existing user: ${user.email}`);
     }
 
-    // Generate auth token
+    // Generate JWT token
     const authToken = await generateToken({
       id: user.id,
       email: user.email,
       role: user.role
     });
+
+    logger.info(`🔑 Generated auth token for: ${user.email}`);
 
     res.json({
       message: 'Authentication successful',
@@ -222,22 +195,26 @@ router.post('/verify-magic-link', async (req, res) => {
       user: {
         id: user.id,
         email: user.email,
+        role: user.role,
         firstName: user.firstName,
-        lastName: user.lastName,
-        role: user.role
+        lastName: user.lastName
       }
     });
+
   } catch (error) {
-    logger.error('Magic link verification error:', error);
-    res.status(500).json({ 
-      error: 'Failed to verify magic link',
-      message: error instanceof Error ? error.message : 'Unknown error'
+    logger.error('❌ Magic link verification failed:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
     });
   }
 });
 
-// Check magic link status endpoint
-router.post('/check-magic-link', async (req, res) => {
+/**
+ * POST /api/auth/check-magic-link
+ * Check if magic link has been used (for polling)
+ */
+router.post('/check-magic-link', async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
@@ -247,27 +224,28 @@ router.post('/check-magic-link', async (req, res) => {
       });
     }
 
-    // Check if user has authenticated recently
-    const recentAuth = await prisma.magicLink.findFirst({
-      where: {
-        email,
-        used: true,
-        createdAt: {
-          gte: new Date(Date.now() - 5 * 60 * 1000) // Last 5 minutes
-        }
-      },
-      orderBy: {
-        createdAt: 'desc'
-      }
+    // Check if user has authenticated
+    const user = await prisma.user.findUnique({
+      where: { email }
     });
 
-    if (recentAuth) {
-      // User has authenticated, get their token
-      const user = await prisma.user.findUnique({
-        where: { email }
+    if (user) {
+      // Check if there's a recent magic link that was used
+      const recentMagicLink = await prisma.magicLink.findFirst({
+        where: {
+          email,
+          used: true,
+          expiresAt: {
+            gte: new Date(Date.now() - 15 * 60 * 1000) // Within last 15 minutes
+          }
+        },
+        orderBy: {
+          updatedAt: 'desc'
+        }
       });
 
-      if (user) {
+      if (recentMagicLink) {
+        // Generate new auth token
         const authToken = await generateToken({
           id: user.id,
           email: user.email,
@@ -276,48 +254,53 @@ router.post('/check-magic-link', async (req, res) => {
 
         return res.json({
           authenticated: true,
-          token: authToken
+          token: authToken,
+          user: {
+            id: user.id,
+            email: user.email,
+            role: user.role,
+            firstName: user.firstName,
+            lastName: user.lastName
+          }
         });
       }
     }
 
-    res.json({
-      authenticated: false
-    });
+    res.json({ authenticated: false });
+
   } catch (error) {
-    logger.error('Check magic link error:', error);
-    res.status(500).json({ 
-      error: 'Failed to check magic link status',
-      message: error instanceof Error ? error.message : 'Unknown error'
+    logger.error('❌ Magic link check failed:', error);
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
     });
   }
 });
 
-// Health check for email service
-router.get('/email-health', async (req, res) => {
+/**
+ * GET /api/auth/email-health
+ * Check email service health
+ */
+router.get('/email-health', async (req: Request, res: Response) => {
   try {
-    const configValid = await emailService.testConfiguration();
+    const isHealthy = await emailService.testConfiguration();
     
-    if (configValid) {
-      res.json({
+    if (isHealthy) {
+      res.json({ 
         status: 'healthy',
-        service: 'email',
-        provider: 'amazon-ses',
-        region: process.env.SES_REGION || 'us-west-2',
-        fromEmail: process.env.SES_FROM_EMAIL || 'admin@futurelink.zip'
+        message: 'Email service is working correctly'
       });
     } else {
-      res.status(503).json({
+      res.status(500).json({ 
         status: 'unhealthy',
-        service: 'email',
-        error: 'SES configuration invalid'
+        message: 'Email service configuration is invalid'
       });
     }
   } catch (error) {
-    res.status(503).json({
+    logger.error('❌ Email health check failed:', error);
+    res.status(500).json({
       status: 'unhealthy',
-      service: 'email',
-      error: error instanceof Error ? error.message : 'Unknown error'
+      message: error.message
     });
   }
 });
