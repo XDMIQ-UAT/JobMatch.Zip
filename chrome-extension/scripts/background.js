@@ -8,7 +8,10 @@ let currentAnalysis = null;
 
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log('📥 [JobMatch] Received message:', message.type);
+  
   if (message.type === 'JOB_DATA_SCRAPED') {
+    console.log('📊 [JobMatch] Processing job data scraped from LinkedIn');
     handleJobDataScraped(message.data, sender.tab.id);
   } else if (message.type === 'OPEN_POPUP') {
     chrome.action.openPopup();
@@ -235,8 +238,11 @@ function sendMessageToTab(tabId, message) {
 
 // Listen for extension installation
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('JobMatch AI extension installed');
+  console.log('✅ [JobMatch] Extension installed and background script initialized');
 });
+
+// Log when background script loads
+console.log('✅ [JobMatch] Background service worker loaded and ready');
 
 // Handle notification clicks
 chrome.notifications.onClicked.addListener((notificationId) => {
