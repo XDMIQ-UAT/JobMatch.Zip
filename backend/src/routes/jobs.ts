@@ -19,40 +19,50 @@ router.post('/analyze', authenticateToken, async (req: any, res: Response) => {
     // Use AI service to analyze the job posting
     const analysis = await aiService.analyzeJobPosting(description);
 
-    // Calculate quality score (0-100) based on job posting legitimacy and completeness
-    let qualityScore = 50; // Start with neutral score
+    // Calculate quality score (30-100) based on job posting legitimacy and completeness
+    // Starting at 30 ensures even basic legitimate jobs get a decent score
+    let qualityScore = 30;
     
-    // Factor 1: Legitimacy (30 points)
+    // Factor 1: Legitimacy (40 points for legitimate jobs, -10 for illegitimate)
     if (analysis.isLegitimate) {
-      qualityScore += 30; // Legitimate job is worth 30 points
+      qualityScore += 40; // Legitimate jobs get 70+ base score
     } else {
-      qualityScore -= 20; // Illegitimate jobs lose points
+      qualityScore -= 10; // Illegitimate jobs start lower
     }
     
-    // Factor 2: Red flags (-5 per flag, max -25)
-    const redFlagPenalty = Math.min(analysis.redFlags.length * 5, 25);
+    // Factor 2: Red flags (-3 per flag, max -20)
+    const redFlagPenalty = Math.min(analysis.redFlags.length * 3, 20);
     qualityScore -= redFlagPenalty;
     
-    // Factor 3: Description detail (+10 for medium detail, +20 for high detail)
-    if (description.length > 1000) {
-      qualityScore += 20; // Detailed descriptions score high
+    // Factor 3: Description completeness (required for high scores)
+    let hasDetailedDescription = false;
+    if (description.length > 2000) {
+      qualityScore += 15; // Very detailed descriptions
+      hasDetailedDescription = true;
+    } else if (description.length > 1000) {
+      qualityScore += 10; // Detailed descriptions
+      hasDetailedDescription = true;
     } else if (description.length > 500) {
-      qualityScore += 10; // Medium detail gets some points
+      qualityScore += 5; // Basic descriptions get minimal points
     }
     
-    // Factor 4: Company info (+10 if present)
-    if (company && company !== 'Unknown Company') qualityScore += 10;
+    // Factor 4: Company info (bonus if present)
+    if (company && company !== 'Unknown Company') qualityScore += 5;
     
-    // Factor 5: Title presence (+10 if present)
-    if (title && title !== 'Unknown Title') qualityScore += 10;
+    // Factor 5: Title presence (required for high scores)
+    if (title && title !== 'Unknown Title') qualityScore += 5;
     
-    // Factor 6: Minimum quality boost for legitimate, detailed jobs
-    if (analysis.isLegitimate && description.length > 1000 && company && company !== 'Unknown Company') {
-      qualityScore += 10; // Bonus for high-quality postings
+    // Factor 6: Perfect score bonus - only truly exceptional postings hit 100
+    // Requires: legitimate, detailed description, no red flags, has company name
+    if (analysis.isLegitimate && 
+        hasDetailedDescription && 
+        analysis.redFlags.length === 0 && 
+        company && company !== 'Unknown Company') {
+      qualityScore = 100; // Perfect legitimate posting
     }
     
-    // Ensure score is between 0 and 100
-    qualityScore = Math.max(0, Math.min(100, qualityScore));
+    // Ensure score is between 30 and 100
+    qualityScore = Math.max(30, Math.min(100, qualityScore));
 
     res.json({
       title: title || 'Unknown Title',
