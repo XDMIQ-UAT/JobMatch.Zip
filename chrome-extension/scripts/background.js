@@ -21,10 +21,40 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     chrome.action.openPopup();
     sendResponse({ success: true });
   } else if (message.type === 'GET_CURRENT_DATA') {
-    sendResponse({
-      jobData: currentJobData,
-      analysis: currentAnalysis
+    // Get the active tab first to show the correct job
+    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+      if (tabs && tabs.length > 0) {
+        const activeTab = tabs[0];
+        // Request fresh data from the active tab's content script
+        chrome.tabs.sendMessage(activeTab.id, { type: 'REQUEST_JOB_DATA' }, async (response) => {
+          if (response && response.jobData) {
+            // If we have a new job, analyze it
+            const { authToken } = await chrome.storage.local.get('authToken');
+            if (authToken && (!currentJobData || currentJobData.url !== response.jobData.url)) {
+              currentJobData = response.jobData;
+              currentAnalysis = await analyzeJob(response.jobData, authToken);
+            }
+            sendResponse({
+              jobData: currentJobData || response.jobData,
+              analysis: currentAnalysis
+            });
+          } else {
+            // Fallback to stored data
+            sendResponse({
+              jobData: currentJobData,
+              analysis: currentAnalysis
+            });
+          }
+        });
+      } else {
+        // Fallback if no active tab
+        sendResponse({
+          jobData: currentJobData,
+          analysis: currentAnalysis
+        });
+      }
     });
+    return true; // Async response
   } else if (message.type === 'CLEAR_CACHE') {
     clearCurrentJobCache();
     // Also clear all cached analyses

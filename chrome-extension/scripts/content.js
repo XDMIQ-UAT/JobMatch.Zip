@@ -418,3 +418,16 @@ class LinkedInJobScraper {
 // Initialize scraper
 const scraper = new LinkedInJobScraper();
 
+// Listen for requests from background script
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'REQUEST_JOB_DATA') {
+    // If we have scraped job data, send it
+    if (scraper.jobData) {
+      sendResponse({ jobData: scraper.jobData });
+    } else {
+      sendResponse({ jobData: null });
+    }
+  }
+  return true;
+});
+
