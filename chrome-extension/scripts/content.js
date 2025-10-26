@@ -62,16 +62,28 @@ class LinkedInJobScraper {
     // Check if we're on a LinkedIn job details page (not search/listing pages)
     const url = window.location.href;
     
-    // Must have /jobs/ in the URL and be a specific job view (not the main jobs page)
-    const isJobDetailsPage = url.includes('/jobs/') && 
-                             !url.endsWith('/jobs/') && // Not the main jobs listing page
-                             (url.includes('/view/') || // Individual job view
-                              url.includes('/collections/') || // Collections
-                              document.querySelector('.jobs-details') || // Job details container
-                              document.querySelector('.jobs-unified-top-card') || // Job top card
-                              document.querySelector('[data-job-id]')); // Job ID data attribute
+    // Check for specific job indicators
+    const hasCurrentJobId = url.includes('currentJobId=');
+    const isMainJobsPage = url.match(/^https?:\/\/.*linkedin\.com\/jobs\/?$/); // Exactly /jobs/ or /jobs
     
-    console.log('🔍 [JobMatch] isJobPage check:', { url, isJobDetailsPage });
+    // Try to find job details on the page
+    const jobDetails = document.querySelector('.jobs-details') || 
+                       document.querySelector('.jobs-unified-top-card') ||
+                       document.querySelector('[data-job-id]');
+    
+    // It's a job page if:
+    // 1. Not the main jobs listing page
+    // 2. Has a current job ID parameter OR specific job details elements
+    const isJobDetailsPage = !isMainJobsPage && (hasCurrentJobId || jobDetails);
+    
+    console.log('🔍 [JobMatch] isJobPage check:', { 
+      url, 
+      hasCurrentJobId, 
+      isMainJobsPage, 
+      hasJobElements: !!jobDetails,
+      isJobDetailsPage 
+    });
+    
     return isJobDetailsPage;
   }
 
