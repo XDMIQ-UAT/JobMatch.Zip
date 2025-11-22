@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { PIIVerification } from '@/components';
 
-type Step = 'welcome' | 'skills' | 'portfolio' | 'preferences' | 'complete';
+type Step = 'welcome' | 'skills' | 'portfolio' | 'preferences' | 'pii-check' | 'complete';
 
 export default function AssessPage() {
   const [step, setStep] = useState<Step>('welcome');
@@ -10,8 +11,11 @@ export default function AssessPage() {
   const [skills, setSkills] = useState<string[]>([]);
   const [portfolioUrl, setPortfolioUrl] = useState('');
   const [preference, setPreference] = useState('');
+  const [preferenceReason, setPreferenceReason] = useState('');
   const [isVR, setIsVR] = useState(false);
   const [resumeText, setResumeText] = useState('');
+  const [piiData, setPiiData] = useState<any>(null);
+  const [showPiiVerification, setShowPiiVerification] = useState(false);
 
   useEffect(() => {
     // Generate anonymous ID on start
@@ -36,6 +40,50 @@ export default function AssessPage() {
         ? prev.filter(s => s !== skill)
         : [...prev, skill]
     );
+  };
+
+  const checkPIIAndProceed = async () => {
+    if (resumeText.trim().length > 0) {
+      // Call PII redaction API
+      try {
+        const response = await fetch('http://localhost:3000/api/v1/redact/text', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: resumeText })
+        });
+        const data = await response.json();
+        
+        if (data.removed_items && data.removed_items.length > 0) {
+          setPiiData(data);
+          setShowPiiVerification(true);
+        } else {
+          // No PII found, proceed
+          submitAssessment();
+        }
+      } catch (error) {
+        console.error('PII check failed:', error);
+        // Fallback: proceed anyway
+        submitAssessment();
+      }
+    } else {
+      submitAssessment();
+    }
+  };
+
+  const submitAssessment = async () => {
+    // TODO: Call backend API to submit assessment
+    setStep('complete');
+  };
+
+  const handlePiiAccept = () => {
+    setResumeText(piiData.redacted_text);
+    setShowPiiVerification(false);
+    submitAssessment();
+  };
+
+  const handlePiiCancel = () => {
+    setShowPiiVerification(false);
+    setStep('skills'); // Go back to edit
   };
 
   return (
@@ -269,6 +317,8 @@ export default function AssessPage() {
                     Why does that work better for you?
                   </label>
                   <textarea
+                    value={preferenceReason}
+                    onChange={(e) => setPreferenceReason(e.target.value)}
                     placeholder="Tell us in your own words..."
                     className="w-full px-6 py-4 text-xl border-2 border-gray-300 rounded-xl focus:border-purple-500 focus:outline-none"
                     rows={4}
@@ -285,7 +335,7 @@ export default function AssessPage() {
                 ← Back
               </button>
               <button
-                onClick={() => setStep('complete')}
+                onClick={checkPIIAndProceed}
                 disabled={!preference}
                 className={`flex-1 px-12 py-6 rounded-2xl text-2xl font-bold transition ${
                   preference
@@ -346,6 +396,18 @@ export default function AssessPage() {
           </div>
         )}
       </main>
+
+      {/* PII Verification Modal */}
+      {showPiiVerification && piiData && (
+        <PIIVerification
+          originalText={piiData.original_text}
+          redactedText={piiData.redacted_text}
+          removedItems={piiData.removed_items}
+          redactionSummary={piiData.redaction_summary}
+          onAccept={handlePiiAccept}
+          onCancel={handlePiiCancel}
+        />
+      )}
     </div>
   );
 }
