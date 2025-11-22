@@ -1,73 +1,210 @@
-import Link from 'next/link';
+'use client';
+
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [isVR, setIsVR] = useState(false);
+
+  useEffect(() => {
+    // Detect Quest 3 / VR browser
+    const isQuest = /Quest/i.test(navigator.userAgent);
+    setIsVR(isQuest);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Connect with <span className="text-primary-600">Real</span> Opportunities
-          </h1>
-          <p className="text-xl text-gray-700 mb-8">
-            AI-powered matching that connects job seekers directly with hiring managers.
-            No more black holes. No more scams. Just real connections.
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      {/* VR Mode Indicator */}
+      {isVR && (
+        <div className="fixed top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg z-50">
+          🥽 Quest 3 Optimized
+        </div>
+      )}
+
+      {/* Header - Large touch targets for VR */}
+      <header className="container mx-auto px-8 py-12">
+        <div className="flex items-center justify-between">
+          <h1 className="text-4xl font-bold text-gray-800">jobmatch</h1>
+          <nav className="space-x-8">
+            <a 
+              href="#how-it-works" 
+              className="text-2xl text-gray-600 hover:text-gray-900 px-4 py-2 hover:bg-gray-100 rounded-lg transition"
+            >
+              How it works
+            </a>
+            <a 
+              href="#get-started" 
+              className="text-2xl text-gray-600 hover:text-gray-900 px-4 py-2 hover:bg-gray-100 rounded-lg transition"
+            >
+              Get started
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero - Optimized spacing for VR viewing */}
+      <main className="container mx-auto px-8 py-24">
+        <div className="text-center max-w-5xl mx-auto">
+          <h2 className="text-6xl md:text-8xl font-bold text-gray-900 mb-10 leading-tight">
+            Find opportunities that match{' '}
+            <span className="text-blue-600">what you can do</span>
+          </h2>
+          <p className="text-3xl text-gray-600 mb-16 leading-relaxed">
+            No resume required. No job titles. Just your skills, your way.
+            <br />
+            <span className="text-xl text-gray-500 mt-4 block">
+              Start completely anonymous. Share details only when you're ready.
+            </span>
           </p>
-          <div className="flex gap-4 justify-center">
-            <Link
-              href="/jobs"
-              className="px-8 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition"
+          
+          {/* Large CTA Buttons for VR controllers/hand tracking */}
+          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
+            <a 
+              href="#get-started"
+              className="px-16 py-8 bg-blue-600 text-white rounded-2xl text-3xl font-bold hover:bg-blue-700 active:bg-blue-800 transition-all shadow-2xl hover:shadow-3xl hover:scale-105 transform"
             >
-              Find Jobs
-            </Link>
-            <Link
-              href="/post-job"
-              className="px-8 py-3 bg-white text-primary-600 border-2 border-primary-600 rounded-lg font-semibold hover:bg-primary-50 transition"
+              Get started (it's free)
+            </a>
+            <a 
+              href="#how-it-works"
+              className="px-16 py-8 bg-white text-gray-700 rounded-2xl text-3xl font-bold hover:bg-gray-50 active:bg-gray-100 transition-all border-4 border-gray-200 shadow-lg"
             >
-              Post a Job
-            </Link>
+              See how it works
+            </a>
+          </div>
+
+          {/* Trust Badge - Larger for VR */}
+          <p className="text-2xl text-gray-500 font-medium">
+            🔒 100% anonymous · 🎯 Capability-focused · 💰 Free forever
+          </p>
+        </div>
+
+        {/* Features Grid - Larger cards for VR */}
+        <div className="grid md:grid-cols-3 gap-12 mt-40 max-w-7xl mx-auto" id="how-it-works">
+          <div className="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105 cursor-pointer">
+            <div className="text-7xl mb-6">🎭</div>
+            <h3 className="text-3xl font-bold mb-6 text-gray-900">Stay Anonymous</h3>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Start exploring opportunities without sharing your name, email, or resume. 
+              Your skills speak for themselves.
+            </p>
+          </div>
+
+          <div className="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105 cursor-pointer">
+            <div className="text-7xl mb-6">💪</div>
+            <h3 className="text-3xl font-bold mb-6 text-gray-900">Show What You Can Do</h3>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Share your portfolio, code samples, or projects. We match you based on 
+              capability, not credentials.
+            </p>
+          </div>
+
+          <div className="bg-white p-12 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105 cursor-pointer">
+            <div className="text-7xl mb-6">🎯</div>
+            <h3 className="text-3xl font-bold mb-6 text-gray-900">Find Real Matches</h3>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              AI-powered matching finds opportunities where your skills shine. 
+              Human reviewers ensure quality.
+            </p>
           </div>
         </div>
 
-        {/* Features */}
-        <div className="mt-24 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
+        {/* How It Works - Optimized readability */}
+        <div className="mt-40 max-w-5xl mx-auto">
+          <h3 className="text-5xl font-bold text-center mb-16 text-gray-900">
+            How it works
+          </h3>
+          
+          <div className="space-y-12">
+            <div className="flex gap-10 items-start bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition">
+              <div className="flex-shrink-0 w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-3xl">
+                1
+              </div>
+              <div>
+                <h4 className="font-bold text-3xl mb-4 text-gray-900">Start Anonymous</h4>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  No sign-up required. Just start exploring. We create a private session 
+                  for you—no email, no personal info needed.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold mb-2">AI-Powered Matching</h3>
-            <p className="text-gray-600">
-              Our AI understands your skills and experience, not just keywords, to find the perfect fit.
-            </p>
-          </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+            <div className="flex gap-10 items-start bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition">
+              <div className="flex-shrink-0 w-20 h-20 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-3xl">
+                2
+              </div>
+              <div>
+                <h4 className="font-bold text-3xl mb-4 text-gray-900">Show Your Skills</h4>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Answer a few questions about what you can do. Share a portfolio, 
+                  code samples, or past projects. No resume needed.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold mb-2">Verified Employers</h3>
-            <p className="text-gray-600">
-              Every employer is verified. No scams, no data harvesting, no fake job postings.
-            </p>
-          </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
+            <div className="flex gap-10 items-start bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition">
+              <div className="flex-shrink-0 w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-3xl">
+                3
+              </div>
+              <div>
+                <h4 className="font-bold text-3xl mb-4 text-gray-900">Get Matched</h4>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Our AI finds opportunities that match your capabilities. Browse matches 
+                  anonymously. Connect only when you're ready.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold mb-2">Direct Communication</h3>
-            <p className="text-gray-600">
-              Message hiring managers directly. Get real-time updates. No more waiting in the dark.
+          </div>
+        </div>
+
+        {/* CTA - Extra large for VR */}
+        <div 
+          className="mt-40 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-[3rem] p-20 text-white" 
+          id="get-started"
+        >
+          <h3 className="text-6xl font-bold mb-8">
+            Ready to find your next opportunity?
+          </h3>
+          <p className="text-3xl mb-12 text-blue-100">
+            Join friends and family already exploring opportunities.
+          </p>
+          <button 
+            onClick={() => window.location.href = '/assess'}
+            className="px-20 py-10 bg-white text-blue-600 rounded-2xl text-4xl font-bold hover:bg-blue-50 active:bg-blue-100 transition-all shadow-2xl hover:scale-105 transform cursor-pointer"
+          >
+            Start now (anonymous & free)
+          </button>
+          <p className="mt-8 text-xl text-blue-100">
+            No credit card. No email. No commitment. Just explore.
+          </p>
+        </div>
+
+        {/* Friends & Family Note - Quest 3 optimized */}
+        <div className="mt-24 text-center max-w-4xl mx-auto">
+          <div className="bg-yellow-50 border-4 border-yellow-300 rounded-3xl p-10">
+            <p className="text-2xl text-gray-700 leading-relaxed">
+              <strong className="text-3xl">👋 Note for friends & family:</strong>
+              <br/><br/>
+              This is an early version! Your feedback helps make it better. 
+              Feel free to explore, try things out, and let me know what works 
+              (or doesn't). Optimized for your Quest 3!
+              <br/><br/>
+              <span className="text-xl text-gray-600">—Dash</span>
             </p>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+      {/* Footer - Larger for VR */}
+      <footer className="container mx-auto px-8 py-16 mt-24 border-t-2 border-gray-200">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-xl text-gray-600">
+          <p>© 2025 jobmatch · Built with ❤️ for capability-first matching</p>
+          <div className="flex gap-12">
+            <a href="#" className="hover:text-gray-900 px-4 py-2 hover:bg-gray-100 rounded-lg">Privacy</a>
+            <a href="#" className="hover:text-gray-900 px-4 py-2 hover:bg-gray-100 rounded-lg">How we're different</a>
+            <a href="#" className="hover:text-gray-900 px-4 py-2 hover:bg-gray-100 rounded-lg">Give feedback</a>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }

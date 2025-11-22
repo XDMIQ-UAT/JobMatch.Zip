@@ -39,3 +39,4 @@ echo ""
 echo "To monitor logs in real-time:"
 echo "gcloud compute ssh futurelink-vm --zone=us-central1-a --command 'pm2 logs backend'"
 
+

@@ -96,3 +96,4 @@ This is the correct model name confirmed by the user.
 ✅ **Solution**: Upload resume to JobMatch AI dashboard  
 ✅ **Status**: Extension now handles this gracefully with clear error message  
 
+

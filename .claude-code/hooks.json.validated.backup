@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "project": "AI-Enabled LLC Matching Platform",
+  "description": "Hooks for optimizing Claude Code prompt architecture",
+  "hooks": {
+    "before_generate": {
+      "context_files": [
+        "backend/main.py",
+        "backend/config.py",
+        "README.md",
+        "docs/DEVELOPMENT_WORKFLOW.md",
+        "warp.config.yaml"
+      ],
+      "prompt_prefix": "You are working on an AI-Enabled LLC Matching Platform. Key principles:\n1. Human-in-the-loop always more beneficial\n2. Anonymous identity system\n3. XDMIQ credentialing integration\n4. Capability over credentials\n\nDevelopment Tools: Warp (terminal), Claude Code (AI assistance), Cursor (IDE)\nPieces MCP Integration: Synced with Warp activities for context-aware assistance\n\n",
+      "patterns": [
+        "Use FastAPI for backend endpoints",
+        "Use Next.js 14+ with TypeScript for frontend",
+        "Maintain anonymous identity throughout",
+        "Integrate XDMIQ assessment when relevant",
+        "Follow existing code patterns in the codebase",
+        "Leverage Pieces MCP context from Warp activities"
+      ],
+      "pieces_mcp_context": {
+        "enabled": true,
+        "sync_warp": true,
+        "include_terminal_history": true,
+        "include_file_access": true
+      }
+    },
+    "api_endpoint": {
+      "template": "Create FastAPI endpoint following existing patterns:\n- Use Pydantic models for request/response\n- Include proper error handling\n- Maintain anonymous identity\n- Add to appropriate router\n- Include human-in-the-loop where applicable",
+      "example_files": [
+        "backend/api/auth.py",
+        "backend/api/xdmiq.py",
+        "backend/api/social_auth.py"
+      ]
+    },
+    "database_model": {
+      "template": "Create SQLAlchemy model:\n- Inherit from Base\n- Use proper column types\n- Include relationships\n- Add indexes for performance\n- Support anonymous identity",
+      "example_files": [
+        "backend/database/models.py"
+      ]
+    },
+    "frontend_component": {
+      "template": "Create Next.js component:\n- Use TypeScript\n- Follow capability-first design principles\n- Maintain accessibility (WCAG AAA)\n- Use existing design tokens\n- Support anonymous user flow",
+      "example_files": [
+        "frontend/components/CapabilityDesign.tsx",
+        "frontend/app/xdmiq/page.tsx"
+      ]
+    },
+    "ai_integration": {
+      "template": "When integrating AI features:\n- Always include human-in-the-loop\n- Create state checkpoints\n- Support rollback/recovery\n- Use OpenAI API with fallbacks\n- Log AI decisions for review",
+      "example_files": [
+        "backend/ai/matching_engine.py",
+        "backend/assessment/xdmiq_assessment.py"
+      ]
+    }
+  },
+  "context": {
+    "tech_stack": {
+      "backend": "FastAPI, Python 3.11+, PostgreSQL, Redis, Elasticsearch",
+      "frontend": "Next.js 14+, TypeScript, React Server Components",
+      "ai": "OpenAI API, custom models",
+      "infrastructure": "Kubernetes, Docker, multi-region"
+    },
+    "key_features": [
+      "Anonymous identity system",
+      "XDMIQ credentialing",
+      "AI-powered matching",
+      "Human-in-the-loop architecture",
+      "State recovery system",
+      "Social authentication (Facebook, LinkedIn, Google, Microsoft, Apple, Email, SMS)"
+    ],
+    "principles": [
+      "Human-in-the-loop always more beneficial",
+      "Resilience through human oversight",
+      "State recovery & testing",
+      "Capability over credentials"
+    ]
+  },
+  "optimization": {
+    "prompt_enhancements": [
+      "Always include project context",
+      "Reference existing code patterns",
+      "Maintain consistency with codebase",
+      "Focus on business requirements",
+      "Consider scalability from day one"
+    ],
+    "code_generation": {
+      "style": "Follow existing code style",
+      "documentation": "Include docstrings",
+      "error_handling": "Comprehensive error handling",
+      "testing": "Consider testability"
+    }
+  }
+}
+
+
