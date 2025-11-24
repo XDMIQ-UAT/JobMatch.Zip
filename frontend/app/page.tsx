@@ -128,9 +128,15 @@ export default function Home() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-md)', flexWrap: 'wrap', gap: 'var(--spacing-md)' }}>
         <div style={{ flex: 1 }}>
           <RotatingHero locale={userLocale} anonymousId={anonymousId || undefined} />
-          <p className="text-lg" style={{ marginBottom: 0 }}>
+          <p className="text-lg" style={{ marginBottom: 'var(--spacing-md)' }}>
             The first job matching platform for LLC owners who work with AI. 
             <strong> Find the longest-lasting matches first</strong> - capability-first matching that prioritizes quality over quantity.
+          </p>
+          <p className="text-base" style={{ marginBottom: 0, color: '#666' }}>
+            🌍 Anonymous-First · 🤖 AI-Powered · 🎯 Longevity Focused
+          </p>
+          <p className="text-sm" style={{ marginTop: 'var(--spacing-xs)', color: '#666' }}>
+            Part of the <a href="https://xdmiq.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>XDMIQ ecosystem</a> · Privacy-first principles
           </p>
         </div>
         <div style={{
@@ -386,55 +392,84 @@ export default function Home() {
       <footer style={{ 
         marginTop: 'var(--spacing-xl)', 
         paddingTop: 'var(--spacing-xl)',
-        borderTop: '1px solid #e0e0e0',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap',
-        gap: 'var(--spacing-md)'
+        borderTop: '1px solid #e0e0e0'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <p className="text-sm" style={{ margin: 0, color: '#666' }}>
-            © 2025 jobmatch
-          </p>
-          <p className="text-sm" style={{ margin: 0, color: '#666' }}>
-            Built with ❤️ for capability-first matching
-          </p>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 'var(--spacing-lg)',
+          marginBottom: 'var(--spacing-lg)'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <h3 className="text-base" style={{ margin: 0, fontWeight: 'bold', color: '#333' }}>JobMatch</h3>
+            <p className="text-sm" style={{ margin: 0, color: '#666' }}>
+              Capability-first matching for LLC owners
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <h3 className="text-base" style={{ margin: 0, fontWeight: 'bold', color: '#333' }}>Our Ecosystem</h3>
+            <a 
+              href="https://xdmiq.com" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              XDMIQ - Privacy Infrastructure
+            </a>
+            <a 
+              href="https://yourl.cloud" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              Yourl.Cloud - Tech Support
+            </a>
+            <a 
+              href="https://jobmatch.zip" 
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              JobMatch - AI Job Matching
+            </a>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <h3 className="text-base" style={{ margin: 0, fontWeight: 'bold', color: '#333' }}>Learn More</h3>
+            <a 
+              href="/privacy" 
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              Privacy
+            </a>
+            <a 
+              href="/how-were-different" 
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              How we're different
+            </a>
+            <a 
+              href="/feedback" 
+              className="text-sm hover-link"
+              style={{ color: '#666', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            >
+              Give feedback
+            </a>
+          </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', alignItems: 'flex-end' }}>
-          <a 
-            href="/privacy" 
-            className="text-sm hover-link"
-            style={{ 
-              color: '#666',
-              textDecoration: 'none',
-              transition: 'color 0.2s ease'
-            }}
-          >
-            Privacy
-          </a>
-          <a 
-            href="/how-were-different" 
-            className="text-sm hover-link"
-            style={{ 
-              color: '#666',
-              textDecoration: 'none',
-              transition: 'color 0.2s ease'
-            }}
-          >
-            How we're different
-          </a>
-          <a 
-            href="/feedback" 
-            className="text-sm hover-link"
-            style={{ 
-              color: '#666',
-              textDecoration: 'none',
-              transition: 'color 0.2s ease'
-            }}
-          >
-            Give feedback
-          </a>
+        <div style={{ 
+          paddingTop: 'var(--spacing-md)',
+          borderTop: '1px solid #e0e0e0',
+          textAlign: 'center'
+        }}>
+          <p className="text-sm" style={{ margin: 0, color: '#666' }}>
+            © 2025 JobMatch · Built with ❤️ for capability-first matching
+          </p>
+          <p className="text-sm" style={{ marginTop: '0.5rem', color: '#666' }}>
+            Privacy-first principles · Part of the XDMIQ ecosystem
+          </p>
         </div>
         <div style={{ 
           width: '100%', 
