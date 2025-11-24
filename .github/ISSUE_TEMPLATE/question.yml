@@ -1,0 +1,74 @@
+name: Question / Discussion
+description: Ask a question or start a discussion
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? Want to discuss something about the project? We're here to help!
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What is your question about?
+      options:
+        - General usage
+        - Setup and installation
+        - Architecture and design
+        - API usage
+        - Claude Code hooks
+        - Development workflow
+        - Contributing
+        - Deployment
+        - Best practices
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to know?
+      placeholder: Ask your question...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any relevant context or background information
+      placeholder: |
+        What have you tried so far?
+        What are you trying to accomplish?
+        Any relevant code snippets or configurations?
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if applicable)
+      description: Information about your setup
+      placeholder: |
+        OS: Windows 11
+        Node.js: 20.10.0
+        Python: 3.11.5
+        Docker: 24.0.7
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues and discussions
+          required: true
+        - label: I have checked the relevant documentation
+          required: true
+        - label: I have provided sufficient context for my question
+          required: true
