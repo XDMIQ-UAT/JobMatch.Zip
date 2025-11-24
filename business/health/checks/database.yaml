@@ -1,0 +1,62 @@
+# Database Health Check Configuration
+# PostgreSQL health monitoring
+
+check:
+  name: PostgreSQL Health
+  component: database
+  endpoint: /health/database
+  interval: 30s
+  timeout: 5s
+  alert_threshold: 3 consecutive failures
+  
+  metrics:
+    - name: connection_pool_size
+      type: gauge
+      description: Current database connection pool size
+      unit: connections
+      alert_threshold: min 5, max 100
+    
+    - name: query_latency_p99
+      type: histogram
+      description: 99th percentile query latency
+      unit: milliseconds
+      alert_threshold: > 500ms
+    
+    - name: active_connections
+      type: gauge
+      description: Number of active database connections
+      unit: connections
+      alert_threshold: > 80% of pool
+    
+    - name: query_error_rate
+      type: rate
+      description: Rate of database query errors
+      unit: errors_per_second
+      alert_threshold: > 1% error rate
+    
+    - name: replication_lag
+      type: gauge
+      description: Replication lag for read replicas (if applicable)
+      unit: seconds
+      alert_threshold: > 10s
+  
+  privacy:
+    policy: No individual user data logged
+    constraints:
+      - No logging of anonymous_ids
+      - No user-level query tracking
+      - Aggregate metrics only
+      - No correlation across users
+  
+  health_status:
+    healthy: All metrics within thresholds
+    degraded: 1-2 metrics outside thresholds
+    unhealthy: 3+ metrics outside thresholds or connection failure
+
+# Health Check Implementation
+implementation:
+  code_reference: backend/api/health.py (if exists)
+  check_method: SELECT 1
+  connection_pool_check: Check pool availability
+  query_performance_check: Run sample query, measure latency
+

@@ -1,0 +1,131 @@
+# Key Performance Indicators (KPIs)
+# Platform health and business success metrics
+
+kpis:
+  platform_health:
+    - id: system_uptime
+      name: System Uptime
+      description: Percentage of time platform is available
+      target: 99.9%
+      measurement: (total_time - downtime) / total_time × 100
+      unit: percentage
+      alert_threshold: < 99.5%
+      privacy: Aggregate only, no user data
+
+    - id: api_latency_p99
+      name: API Latency (p99)
+      description: 99th percentile API response time
+      target: < 300ms
+      measurement: p99 latency across all endpoints
+      unit: milliseconds
+      alert_threshold: > 500ms
+      privacy: Aggregate only, no individual request tracking
+
+    - id: error_rate
+      name: Error Rate
+      description: Percentage of requests resulting in errors
+      target: < 0.5%
+      measurement: error_count / total_requests × 100
+      unit: percentage
+      alert_threshold: > 1%
+      privacy: Aggregate only, no user-level tracking
+
+    - id: component_health
+      name: Component Health Status
+      description: Health status of platform components
+      target: All components healthy
+      measurement: Health check status (healthy/degraded/unhealthy)
+      unit: status
+      alert_threshold: Any component unhealthy
+      privacy: System-level only
+
+  business_metrics:
+    - id: anonymous_sessions_active
+      name: Active Anonymous Sessions
+      description: Number of active anonymous user sessions
+      target: Growth target (defined in OKRs)
+      measurement: Count of active sessions
+      unit: count
+      alert_threshold: None (growth metric)
+      privacy: Aggregate count only, no individual IDs
+
+    - id: assessments_completed
+      name: Assessments Completed
+      description: Number of capability assessments completed
+      target: Growth target (defined in OKRs)
+      measurement: Count of completed assessments
+      unit: count
+      alert_threshold: None (growth metric)
+      privacy: Aggregate count only, no individual tracking
+
+    - id: matches_generated
+      name: Matches Generated
+      description: Number of job matches generated
+      target: Growth target (defined in OKRs)
+      measurement: Count of matches created
+      unit: count
+      alert_threshold: None (growth metric)
+      privacy: Aggregate count only, no individual tracking
+
+    - id: checkpoint_success_rate
+      name: Checkpoint Success Rate
+      description: Percentage of successful checkpoint operations
+      target: > 99%
+      measurement: successful_checkpoints / total_checkpoints × 100
+      unit: percentage
+      alert_threshold: < 95%
+      privacy: Aggregate only, no individual checkpoint tracking
+
+    - id: human_review_queue_depth
+      name: Human Review Queue Depth
+      description: Number of items awaiting human review
+      target: < 100 items
+      measurement: Count of items in review queue
+      unit: count
+      alert_threshold: > 500 items
+      privacy: Aggregate count only, no individual item tracking
+
+  user_engagement:
+    - id: assessment_completion_rate
+      name: Assessment Completion Rate
+      description: Percentage of started assessments that are completed
+      target: > 70%
+      measurement: completed_assessments / started_assessments × 100
+      unit: percentage
+      alert_threshold: < 50%
+      privacy: Aggregate only, no individual user tracking
+
+    - id: match_acceptance_rate
+      name: Match Acceptance Rate
+      description: Percentage of matches that users accept/engage with
+      target: > 30%
+      measurement: accepted_matches / total_matches × 100
+      unit: percentage
+      alert_threshold: < 20%
+      privacy: Aggregate only, no individual user tracking
+
+    - id: platform_return_rate
+      name: Platform Return Rate
+      description: Percentage of users who return to platform
+      target: > 40%
+      measurement: returning_users / total_users × 100
+      unit: percentage
+      alert_threshold: < 25%
+      privacy: Aggregate only, anonymous IDs not tracked individually
+
+# KPI Tracking
+tracking:
+  frequency: daily
+  dashboard: business_metrics_dashboard
+  alerts: configured per KPI alert_threshold
+  retention: 90 days (aggregate data only)
+
+# Privacy Guarantees
+privacy:
+  constraints:
+    - No individual anonymous_ids tracked
+    - No user-level metrics
+    - Aggregate counts and percentages only
+    - No correlation across users
+    - No identity information required
+

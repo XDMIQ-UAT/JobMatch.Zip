@@ -1,0 +1,105 @@
+# Identity Proxy Flow Definitions
+# Anonymous session flows and voluntary identification workflows
+
+flows:
+  anonymous_session_creation:
+    name: Create Anonymous Session
+    description: Generate new anonymous user session
+    trigger: User visits platform
+    steps:
+      - step: generate_anonymous_id
+        action: Generate cryptographically secure anonymous ID
+        code: backend/auth/anonymous_identity.py::generate_anonymous_id
+        output: anonymous_id (string)
+      
+      - step: check_uniqueness
+        action: Verify anonymous_id is unique
+        code: backend/auth/anonymous_identity.py::create_anonymous_user
+        condition: If collision, regenerate
+        
+      - step: create_session_record
+        action: Store session in database
+        table: anonymous_sessions
+        fields:
+          - anonymous_id (primary key)
+          - created_at (timestamp)
+          - metadata (JSON, no identity data)
+        
+      - step: return_anonymous_id
+        action: Return anonymous_id to client
+        api_endpoint: /api/auth/anonymous/create
+    
+    identity_required: false
+    creates_checkpoint: false
+    human_review_required: false
+
+  voluntary_identification:
+    name: Link Identity to Anonymous Session
+    description: User-initiated identity linking (opt-in)
+    trigger: User explicitly opts in via consent UI
+    steps:
+      - step: verify_user_consent
+        action: Verify explicit consent provided
+        requirement: Clear consent UI interaction
+        validation: Consent must be explicit (not pre-checked)
+        
+      - step: store_identity_in_separate_table
+        action: Store identity in identity_links table
+        table: identity_links (separate from anonymous_sessions)
+        fields:
+          - anonymous_id (foreign key)
+          - identity_data (encrypted)
+          - consented_at (timestamp)
+          - user_can_delete (boolean, always true)
+        
+      - step: create_mapping_record
+        action: Create user-controlled mapping
+        constraint: Mapping can be deleted by user
+        storage: User-controlled mapping table
+        
+      - step: confirm_identity_link
+        action: Confirm identity link created
+        api_endpoint: /api/auth/identity/link
+    
+    identity_required: true
+    creates_checkpoint: true
+    human_review_required: false
+    user_can_delete: true
+
+  delete_identity_link:
+    name: Delete Identity Link
+    description: User-initiated identity link deletion
+    trigger: User requests identity deletion
+    steps:
+      - step: verify_user_ownership
+        action: Verify user owns the identity link
+        
+      - step: delete_identity_record
+        action: Remove identity from identity_links table
+        constraint: Do not delete anonymous_id or session data
+        
+      - step: confirm_deletion
+        action: Confirm identity link deleted
+        api_endpoint: /api/auth/identity/delete
+    
+    identity_required: true
+    creates_checkpoint: true
+    human_review_required: false
+
+# Flow Constraints
+constraints:
+  anonymous_first:
+    - All platform features must work without identity
+    - Identity cannot be required for any core functionality
+    - Anonymous sessions are the default
+  
+  zero_knowledge:
+    - Platform cannot correlate anonymous_id → identity without user action
+    - Identity stored separately from anonymous session data
+    - No reverse-engineering possible from anonymous_id alone
+  
+  user_control:
+    - User controls identity linking (opt-in)
+    - User can delete identity link at any time
+    - User can create multiple anonymous personas
+
