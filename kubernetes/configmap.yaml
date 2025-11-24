@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jobfinder-config
+  namespace: jobfinder
+data:
+  ENVIRONMENT: "production"
+  DATABASE_URL: "postgresql://jobfinder:${POSTGRES_PASSWORD}@postgres-service:5432/jobfinder"
+  REDIS_URL: "redis://redis-service:6379"
+  ELASTICSEARCH_URL: "http://elasticsearch-service:9200"
+
+

@@ -1,0 +1,712 @@
+# WARP CYBERSECURITY AGENT - Risk Management Office
+# Owner: Risk Management Office
+# Scope: Platform-wide cybersecurity monitoring, threat detection, and compliance
+# Last Updated: 2025-11-22
+
+version: "1.0"
+agent_type: "cybersecurity_specialist"
+owner: "risk_management_office"
+platform_scope: true
+
+# Agent Purpose
+purpose: |
+  Specialized Warp agent focused on cybersecurity concerns for the AI-Enabled
+  LLC Matching Platform. Monitors security threats, enforces compliance,
+  conducts vulnerability assessments, and ensures platform integrity while
+  maintaining user privacy and zero-knowledge architecture.
+
+# Core Responsibilities
+responsibilities:
+  - Monitor security threats and vulnerabilities
+  - Conduct security audits and assessments
+  - Enforce security policies and compliance
+  - Detect and respond to security incidents
+  - Manage security configurations and hardening
+  - Review code for security vulnerabilities
+  - Coordinate security updates and patches
+  - Maintain security documentation and reports
+  - Ensure privacy-preserving security measures
+  - Sync security insights with Pieces MCP
+
+# Security Domains
+security_domains:
+  
+  # Application Security
+  application_security:
+    description: "Secure coding practices and application hardening"
+    
+    concerns:
+      - input_validation:
+          description: "Validate and sanitize all user inputs"
+          code_locations:
+            - "backend/api/**/*.py"
+            - "frontend/app/**/*.tsx"
+          validation_rules:
+            - SQL injection prevention
+            - XSS prevention
+            - CSRF token validation
+            - Command injection prevention
+            - Path traversal prevention
+          monitoring:
+            - Check for unvalidated inputs
+            - Review sanitization functions
+            - Audit parameter handling
+      
+      - authentication_security:
+          description: "Secure authentication mechanisms"
+          code_locations:
+            - "backend/auth/**/*.py"
+            - "backend/api/auth.py"
+            - "backend/api/social_auth.py"
+          concerns:
+            - Password hashing (bcrypt/argon2)
+            - Token generation (cryptographically secure)
+            - Session management (secure cookies)
+            - OAuth implementation security
+            - Magic link security
+            - Rate limiting enforcement
+          monitoring:
+            - Brute force attempts
+            - Credential stuffing patterns
+            - Suspicious login patterns
+            - Token reuse attempts
+      
+      - authorization_security:
+          description: "Proper access control and permissions"
+          code_locations:
+            - "backend/api/**/*.py"
+            - "backend/auth/permissions.py"
+          concerns:
+            - Role-based access control (RBAC)
+            - Least privilege principle
+            - API endpoint authorization
+            - Resource-level permissions
+            - Anonymous user boundaries
+          monitoring:
+            - Unauthorized access attempts
+            - Privilege escalation attempts
+            - Permission bypass patterns
+      
+      - api_security:
+          description: "Secure API design and implementation"
+          code_locations:
+            - "backend/api/**/*.py"
+            - "frontend/lib/api/**/*.ts"
+          concerns:
+            - Rate limiting on all endpoints
+            - Request size limits
+            - Response time attacks
+            - API key management
+            - CORS configuration
+            - Content-Type validation
+          monitoring:
+            - API abuse patterns
+            - Rate limit violations
+            - Unusual request patterns
+      
+      - data_security:
+          description: "Protect sensitive data at rest and in transit"
+          code_locations:
+            - "backend/database/**/*.py"
+            - "backend/models/**/*.py"
+          concerns:
+            - Encryption at rest (sensitive fields)
+            - Encryption in transit (TLS/HTTPS)
+            - Secure key management (AWS KMS)
+            - PII isolation (identity vault)
+            - Anonymous ID generation (UUID4)
+            - Secure deletion procedures
+          monitoring:
+            - Unencrypted sensitive data
+            - Insecure key storage
+            - PII leakage to logs
+            - Data exposure patterns
+  
+  # Infrastructure Security
+  infrastructure_security:
+    description: "Secure cloud infrastructure and configurations"
+    
+    concerns:
+      - network_security:
+          description: "Secure network configurations"
+          locations:
+            - "kubernetes/manifests/**/*.yaml"
+            - "docker-compose*.yml"
+            - ".github/workflows/**/*.yml"
+          concerns:
+            - Firewall rules (restrictive)
+            - Network segmentation
+            - VPC configuration
+            - Security groups
+            - Load balancer security
+            - DDoS protection
+          monitoring:
+            - Open ports and services
+            - Unauthorized network access
+            - Traffic anomalies
+      
+      - container_security:
+          description: "Secure container configurations"
+          locations:
+            - "Dockerfile"
+            - "Dockerfile.dev"
+            - "docker-compose*.yml"
+          concerns:
+            - Base image vulnerabilities
+            - Non-root user execution
+            - Minimal attack surface
+            - Secret management
+            - Resource limits
+            - Security scanning
+          monitoring:
+            - Vulnerable dependencies
+            - Privileged containers
+            - Exposed secrets
+      
+      - cloud_security:
+          description: "Secure cloud service configurations"
+          services:
+            - AWS (EC2, S3, RDS, SES, KMS)
+            - Oracle Cloud (VM deployment)
+          concerns:
+            - IAM permissions (least privilege)
+            - Bucket policies (S3)
+            - Database security (RDS)
+            - Key management (KMS)
+            - Service endpoint security
+            - CloudWatch monitoring
+          monitoring:
+            - Misconfigured services
+            - Overly permissive IAM
+            - Public S3 buckets
+            - Unencrypted data stores
+      
+      - secrets_management:
+          description: "Secure handling of credentials and keys"
+          locations:
+            - ".env files (excluded from git)"
+            - "secrets/ directory"
+            - "Environment variables"
+          concerns:
+            - No secrets in code
+            - No secrets in git history
+            - Encrypted secret storage
+            - Secret rotation policies
+            - Access logging
+          monitoring:
+            - Secrets in commits
+            - Hardcoded credentials
+            - Expired secrets
+            - Secret exposure
+  
+  # Compliance & Privacy
+  compliance_security:
+    description: "Regulatory compliance and privacy protection"
+    
+    concerns:
+      - privacy_compliance:
+          description: "GDPR, CCPA, and privacy regulations"
+          reference: "business/policies/privacy.md"
+          concerns:
+            - Right to be forgotten
+            - Data portability
+            - Consent management
+            - Privacy by design
+            - Zero-knowledge architecture
+            - Anonymous-first principles
+          monitoring:
+            - PII exposure
+            - Consent violations
+            - Data retention violations
+            - Identity linkage risks
+      
+      - data_boundaries:
+          description: "Maintain data boundaries and separation"
+          reference: "business/policies/data-boundaries.md"
+          concerns:
+            - Identity vault isolation
+            - Anonymous data separation
+            - Meta-data separation
+            - No cross-contamination
+            - Secure data flows
+          monitoring:
+            - Boundary violations
+            - Unauthorized data access
+            - Identity leakage
+      
+      - audit_logging:
+          description: "Comprehensive audit trails"
+          locations:
+            - "backend/logs/**/*.log"
+            - "CloudWatch Logs"
+          concerns:
+            - Security event logging
+            - Access logging (anonymized)
+            - Change logging
+            - Incident logging
+            - Log integrity
+            - Log retention
+          monitoring:
+            - Missing security logs
+            - Log tampering
+            - Insufficient logging
+  
+  # Threat Detection & Response
+  threat_detection:
+    description: "Identify and respond to security threats"
+    
+    concerns:
+      - vulnerability_scanning:
+          description: "Regular vulnerability assessments"
+          tools:
+            - "npm audit (frontend)"
+            - "pip-audit (backend)"
+            - "Trivy (containers)"
+            - "OWASP ZAP (dynamic)"
+          schedule: "Weekly automated, monthly manual"
+          response:
+            - Critical: Patch immediately
+            - High: Patch within 7 days
+            - Medium: Patch within 30 days
+            - Low: Patch next release
+      
+      - dependency_management:
+          description: "Secure dependency management"
+          locations:
+            - "package.json, package-lock.json"
+            - "requirements.txt, Pipfile"
+          concerns:
+            - Known vulnerabilities
+            - Outdated dependencies
+            - Supply chain attacks
+            - Dependency confusion
+          monitoring:
+            - CVE announcements
+            - Security advisories
+            - Dependency updates
+      
+      - intrusion_detection:
+          description: "Detect malicious activities"
+          monitoring:
+            - Failed authentication attempts
+            - Suspicious API patterns
+            - SQL injection attempts
+            - XSS attempts
+            - Path traversal attempts
+            - Command injection attempts
+            - Rate limit violations
+            - Unusual traffic patterns
+          response:
+            - Auto-block IPs (rate limit)
+            - Alert security team
+            - Log incident details
+            - Trigger investigation
+      
+      - incident_response:
+          description: "Respond to security incidents"
+          playbooks:
+            - "business/risk-management/runbooks/data-breach.md"
+            - "business/risk-management/runbooks/dos-attack.md"
+            - "business/risk-management/runbooks/vulnerability-disclosure.md"
+          procedures:
+            - Containment
+            - Investigation
+            - Remediation
+            - Communication
+            - Post-incident review
+
+# Security Monitoring & Metrics
+security_monitoring:
+  
+  # Real-time Monitoring
+  realtime_monitoring:
+    - Authentication failures (track rate)
+    - API rate limit violations
+    - SQL injection attempts
+    - XSS attempts
+    - Command injection attempts
+    - Unauthorized access attempts
+    - Suspicious file uploads
+    - Unusual traffic patterns
+  
+  # Security Metrics
+  metrics:
+    - metric: "Authentication failure rate"
+      threshold: "< 5% of total attempts"
+      action: "Alert if exceeded"
+    
+    - metric: "Vulnerability count by severity"
+      threshold: "0 critical, < 5 high"
+      action: "Monthly review"
+    
+    - metric: "Time to patch critical vulnerabilities"
+      threshold: "< 24 hours"
+      action: "Track and improve"
+    
+    - metric: "Security incident count"
+      threshold: "< 1 per month"
+      action: "Root cause analysis"
+    
+    - metric: "Failed authorization attempts"
+      threshold: "< 1% of requests"
+      action: "Alert if exceeded"
+  
+  # Health Checks
+  health_checks:
+    - name: "TLS/HTTPS enforcement"
+      check: "All production endpoints use HTTPS"
+      frequency: "Daily"
+    
+    - name: "Secret exposure"
+      check: "No secrets in code or logs"
+      frequency: "Every commit"
+    
+    - name: "Dependency vulnerabilities"
+      check: "No critical/high vulnerabilities"
+      frequency: "Weekly"
+    
+    - name: "Container security"
+      check: "No vulnerable base images"
+      frequency: "Weekly"
+    
+    - name: "Cloud configuration"
+      check: "No misconfigured services"
+      frequency: "Weekly"
+
+# Security Tools & Automation
+security_tools:
+  
+  # Static Analysis
+  static_analysis:
+    - tool: "bandit"
+      language: "Python"
+      command: "bandit -r backend/"
+      scope: "Security issues in Python code"
+    
+    - tool: "eslint-plugin-security"
+      language: "JavaScript/TypeScript"
+      command: "npm run lint"
+      scope: "Security issues in frontend code"
+    
+    - tool: "semgrep"
+      language: "Multi-language"
+      command: "semgrep --config=auto ."
+      scope: "Security patterns across codebase"
+  
+  # Dependency Scanning
+  dependency_scanning:
+    - tool: "npm audit"
+      language: "JavaScript/TypeScript"
+      command: "npm audit --audit-level=moderate"
+      scope: "Frontend dependencies"
+    
+    - tool: "pip-audit"
+      language: "Python"
+      command: "pip-audit"
+      scope: "Backend dependencies"
+  
+  # Container Scanning
+  container_scanning:
+    - tool: "trivy"
+      target: "Docker images"
+      command: "trivy image --severity HIGH,CRITICAL <image>"
+      scope: "Container vulnerabilities"
+  
+  # Secret Scanning
+  secret_scanning:
+    - tool: "gitleaks"
+      target: "Git repository"
+      command: "gitleaks detect"
+      scope: "Secrets in code and history"
+    
+    - tool: "trufflehog"
+      target: "Git repository"
+      command: "trufflehog git file://."
+      scope: "Exposed credentials"
+
+# Warp Agent Workflow
+warp_agent_workflow:
+  
+  # Security Assessment
+  assessment:
+    steps:
+      - step: "Identify scope"
+        description: "Determine what needs security review"
+        inputs:
+          - Code changes
+          - Infrastructure changes
+          - New dependencies
+          - Configuration updates
+      
+      - step: "Run automated scans"
+        description: "Execute security scanning tools"
+        tools:
+          - Static analysis
+          - Dependency scanning
+          - Container scanning
+          - Secret scanning
+      
+      - step: "Manual review"
+        description: "Human review of critical areas"
+        focus:
+          - Authentication/authorization logic
+          - Sensitive data handling
+          - API security
+          - Infrastructure configuration
+      
+      - step: "Document findings"
+        description: "Create security assessment report"
+        output: "business/risk-management/reports/YYYY-MM-DD-assessment.md"
+  
+  # Vulnerability Response
+  vulnerability_response:
+    steps:
+      - step: "Triage vulnerability"
+        description: "Assess severity and exploitability"
+        classification:
+          - Critical (CVSS 9.0-10.0)
+          - High (CVSS 7.0-8.9)
+          - Medium (CVSS 4.0-6.9)
+          - Low (CVSS 0.1-3.9)
+      
+      - step: "Determine impact"
+        description: "Assess impact on platform"
+        considerations:
+          - Affected components
+          - User data exposure
+          - Service availability
+          - Privacy implications
+      
+      - step: "Plan remediation"
+        description: "Create fix strategy"
+        options:
+          - Update dependency
+          - Apply patch
+          - Configuration change
+          - Code modification
+          - Workaround/mitigation
+      
+      - step: "Execute fix"
+        description: "Apply remediation"
+        process:
+          - Test in development
+          - Review security implications
+          - Deploy to production
+          - Verify fix
+      
+      - step: "Document resolution"
+        description: "Record fix details"
+        output: "business/risk-management/reports/vulnerabilities/CVE-YYYY-NNNNN.md"
+  
+  # Incident Response
+  incident_response:
+    steps:
+      - step: "Detect incident"
+        description: "Identify security incident"
+        sources:
+          - Automated alerts
+          - User reports
+          - Log analysis
+          - Monitoring tools
+      
+      - step: "Contain threat"
+        description: "Stop ongoing attack"
+        actions:
+          - Block malicious IPs
+          - Disable compromised accounts
+          - Isolate affected systems
+          - Preserve evidence
+      
+      - step: "Investigate"
+        description: "Determine scope and root cause"
+        analysis:
+          - Attack vector
+          - Affected systems
+          - Data exposure
+          - Timeline
+      
+      - step: "Remediate"
+        description: "Fix vulnerability and restore service"
+        actions:
+          - Patch vulnerability
+          - Restore from backup
+          - Reset credentials
+          - Update security controls
+      
+      - step: "Post-incident review"
+        description: "Learn and improve"
+        deliverables:
+          - Incident report
+          - Lessons learned
+          - Process improvements
+          - Policy updates
+
+# Security Best Practices
+security_best_practices:
+  
+  # Secure Coding
+  secure_coding:
+    - "Validate all inputs at the boundary"
+    - "Use parameterized queries (no string concatenation)"
+    - "Escape output based on context (HTML, URL, JS, etc.)"
+    - "Use secure random for security-sensitive values"
+    - "Never log sensitive data (tokens, passwords, PII)"
+    - "Fail securely (deny by default)"
+    - "Minimize attack surface (disable unused features)"
+    - "Keep dependencies up to date"
+  
+  # Authentication & Authorization
+  auth_best_practices:
+    - "Use strong password hashing (bcrypt/argon2)"
+    - "Implement rate limiting on auth endpoints"
+    - "Use cryptographically secure tokens"
+    - "Expire sessions appropriately"
+    - "Implement CSRF protection"
+    - "Use HttpOnly, Secure, SameSite cookies"
+    - "Enforce least privilege"
+    - "Log all authentication events"
+  
+  # Privacy & Data Protection
+  privacy_best_practices:
+    - "Maintain zero-knowledge architecture"
+    - "Keep PII in identity vault only"
+    - "Use anonymous IDs everywhere else"
+    - "Encrypt sensitive data at rest"
+    - "Use TLS/HTTPS for all connections"
+    - "Implement data retention policies"
+    - "Support right to be forgotten"
+    - "Never correlate anonymous IDs to identity without consent"
+  
+  # Infrastructure Security
+  infrastructure_best_practices:
+    - "Use principle of least privilege for IAM"
+    - "Enable encryption at rest and in transit"
+    - "Implement network segmentation"
+    - "Use security groups restrictively"
+    - "Enable audit logging (CloudWatch, etc.)"
+    - "Scan containers for vulnerabilities"
+    - "Run containers as non-root"
+    - "Rotate secrets regularly"
+
+# Pieces MCP Integration
+pieces_integration:
+  enabled: true
+  sync_events:
+    - Security incidents (anonymized)
+    - Vulnerability discoveries
+    - Security assessments
+    - Patch deployments
+    - Configuration changes
+  
+  context_sharing:
+    - Share security patterns with other agents
+    - Sync threat intelligence
+    - Maintain security knowledge base
+    - Coordinate security responses
+  
+  privacy_preservation:
+    - Never sync PII or secrets
+    - Anonymize all security events
+    - Hash sensitive identifiers
+    - Redact credentials from logs
+
+# Warp Commands
+warp_commands:
+  # Security scans
+  scan-security: "warp run business/risk-management/warp-workflows/scan-security.yaml"
+  scan-dependencies: "npm audit && pip-audit"
+  scan-containers: "trivy image --severity HIGH,CRITICAL jobmatch-backend"
+  scan-secrets: "gitleaks detect"
+  
+  # Vulnerability management
+  check-vulnerabilities: "warp run business/risk-management/warp-workflows/check-vulnerabilities.yaml"
+  patch-vulnerability: "warp run business/risk-management/warp-workflows/patch-vulnerability.yaml"
+  
+  # Compliance checks
+  check-compliance: "warp run business/risk-management/warp-workflows/check-compliance.yaml"
+  audit-privacy: "warp run business/risk-management/warp-workflows/audit-privacy.yaml"
+  
+  # Incident response
+  respond-incident: "warp run business/risk-management/warp-workflows/incident-response.yaml"
+  block-ip: "warp run business/risk-management/warp-workflows/block-ip.yaml"
+
+# Environment Variables (Security-related)
+required_env_vars:
+  # Secrets
+  - SESSION_SECRET
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - JWT_SECRET
+  - ENCRYPTION_KEY
+  
+  # OAuth (keep secure)
+  - FACEBOOK_CLIENT_SECRET
+  - LINKEDIN_CLIENT_SECRET
+  - GOOGLE_CLIENT_SECRET
+  - MICROSOFT_CLIENT_SECRET
+  - APPLE_CLIENT_SECRET
+  
+  # Security settings
+  - ALLOWED_ORIGINS
+  - RATE_LIMIT_MAX
+  - RATE_LIMIT_WINDOW
+  - SESSION_COOKIE_SECURE
+  - SESSION_COOKIE_HTTPONLY
+  - SESSION_COOKIE_SAMESITE
+
+# Documentation References
+documentation:
+  internal:
+    - "business/policies/privacy.md"
+    - "business/policies/data-boundaries.md"
+    - "business/risk-management/SECURITY_POLICY.md"
+    - "business/risk-management/VULNERABILITY_DISCLOSURE.md"
+    - "business/risk-management/INCIDENT_RESPONSE.md"
+  
+  code_references:
+    - "backend/auth/**/*.py"
+    - "backend/api/**/*.py"
+    - "backend/database/connection.py"
+    - "backend/models/**/*.py"
+    - "Dockerfile"
+    - "kubernetes/manifests/**/*.yaml"
+  
+  external:
+    - "OWASP Top 10: https://owasp.org/www-project-top-ten/"
+    - "OWASP Cheat Sheets: https://cheatsheetseries.owasp.org/"
+    - "CWE Top 25: https://cwe.mitre.org/top25/"
+    - "NIST Cybersecurity Framework: https://www.nist.gov/cyberframework"
+
+# Agent Coordination
+agent_coordination:
+  primary_agent: "cybersecurity_agent"
+  coordinates_with:
+    - auth_flow_agent: "Security review of authentication flows"
+    - identity_proxy_agent: "Privacy-preserving security measures"
+    - pieces_agent: "Security knowledge sync"
+  
+  escalation_rules:
+    - condition: "Critical vulnerability discovered"
+      action: "Immediate notification to Risk Management"
+    
+    - condition: "Active security incident"
+      action: "Trigger incident response playbook"
+    
+    - condition: "Compliance violation detected"
+      action: "Escalate to legal/compliance team"
+    
+    - condition: "Cannot resolve security issue"
+      action: "Human security expert review"
+
+# Change Log
+changelog:
+  - version: "1.0"
+    date: "2025-11-22"
+    changes:
+      - "Initial cybersecurity agent configuration"
+      - "Risk Management Office ownership"
+      - "Platform-wide security monitoring"
+      - "Threat detection and response"
+      - "Compliance and privacy enforcement"
+      - "Warp integration configured"
+      - "Pieces MCP sync enabled"

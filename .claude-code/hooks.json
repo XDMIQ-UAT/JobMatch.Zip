@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "project": "AI-Enabled LLC Matching Platform",
+  "description": "Hooks for optimizing Claude Code prompt architecture",
+  "hooks": {
+    "before_generate": {
+      "context_files": [
+        "backend/main.py",
+        "backend/config.py",
+        "README.md",
+        "docs/DEVELOPMENT_WORKFLOW.md",
+        "warp.config.yaml"
+      ],
+      "prompt_prefix": "You are working on an AI-Enabled LLC Matching Platform. Key principles:\n1. Human-in-the-loop always more beneficial\n2. Anonymous identity system\n3. XDMIQ credentialing integration\n4. Capability over credentials\n\nDevelopment Tools: Warp (terminal), Claude Code (AI assistance), Cursor (IDE)\nPieces MCP Integration: Synced with Warp activities for context-aware assistance\n\n",
+      "patterns": [
+        "Use FastAPI for backend endpoints",
+        "Use Next.js 14+ with TypeScript for frontend",
+        "Maintain anonymous identity throughout",
+        "Integrate XDMIQ assessment when relevant",
+        "Follow existing code patterns in the codebase",
+        "Leverage Pieces MCP context from Warp activities"
+      ],
+      "pieces_mcp_context": {
+        "enabled": true,
+        "sync_warp": true,
+        "include_terminal_history": true,
+        "include_file_access": true
+      }
+    },
+    "api_endpoint": {
+      "template": "Create FastAPI endpoint following existing patterns:\n- Use Pydantic models for request/response\n- Include proper error handling\n- Maintain anonymous identity\n- Add to appropriate router\n- Include human-in-the-loop where applicable",
+      "example_files": [
+        "backend/api/auth.py",
+        "backend/api/xdmiq.py",
+        "backend/api/social_auth.py"
+      ]
+    },
+    "database_model": {
+      "template": "Create SQLAlchemy model:\n- Inherit from Base\n- Use proper column types\n- Include relationships\n- Add indexes for performance\n- Support anonymous identity",
+      "example_files": [
+        "backend/database/models.py"
+      ]
+    },
+    "frontend_component": {
+      "template": "Create Next.js component:\n- Use TypeScript\n- Follow capability-first design principles\n- Maintain accessibility (WCAG AAA)\n- Use existing design tokens\n- Support anonymous user flow",
+      "example_files": [
+        "frontend/components/CapabilityDesign.tsx",
+        "frontend/app/xdmiq/page.tsx"
+      ]
+    },
+    "ai_integration": {
+      "template": "When integrating AI features:\n- Always include human-in-the-loop\n- Create state checkpoints\n- Support rollback/recovery\n- Use Ollama (llama3.2) for local development\n- Log AI decisions for review",
+      "example_files": [
+        "backend/ai/matching_engine.py",
+        "backend/assessment/xdmiq_assessment.py"
+      ]
+    },
+    "generate_capability_flow": {
+      "template": "Create capability-first assessment flow:\n- Focus on what users CAN DO, not credentials\n- Portfolio-based evaluation\n- Practical challenges\n- Human-in-the-loop validation\n- State checkpoints for results",
+      "example_files": [
+        "backend/assessment/capability_assessment.py",
+        "frontend/app/assessment/page.tsx",
+        "business/nouns/capabilities/"
+      ],
+      "prompt_file": ".claude-code/prompts/capability_assessment.md"
+    },
+    "generate_xdmiq_questions": {
+      "template": "Generate XDMIQ preference-based questions:\n- Format: 'Which do you prefer?' + 'Why?'\n- Assess capability preferences, NOT identity\n- Scoring: 0-100 scale\n- Store in business/xdmiq/questions.yaml",
+      "example_files": [
+        "backend/assessment/xdmiq_assessment.py",
+        "business/xdmiq/questions.yaml"
+      ],
+      "prompt_file": ".claude-code/prompts/xdmiq_questions.md"
+    },
+    "generate_identity_proxy": {
+      "template": "Create anonymous identity proxy flow:\n- Zero-knowledge architecture\n- Anonymous-first (all features work without identity)\n- Voluntary identification (opt-in only)\n- Multiple personas supported\n- User-controlled identity linking",
+      "example_files": [
+        "backend/auth/anonymous_identity.py",
+        "business/identity-proxy/flows.yaml"
+      ],
+      "prompt_file": ".claude-code/prompts/identity_proxy.md"
+    },
+    "generate_platform_health": {
+      "template": "Create platform health check or monitoring:\n- Privacy-preserving metrics (aggregate only)\n- System health (DB, Redis, ES, Ollama)\n- Business metrics (counts, percentages)\n- Runbook integration\n- Dashboard at /admin/health",
+      "example_files": [
+        "business/health/checks.yaml",
+        "scripts/health-check.ps1"
+      ],
+      "prompt_file": ".claude-code/prompts/platform_health.md"
+    },
+    "migrate_to_ollama_llama32": {
+      "template": "Migrate OpenAI usage to Ollama (llama3.2):\n- Replace OpenAI client with Ollama client\n- Update config: OLLAMA_BASE_URL, OLLAMA_MODEL\n- Docker Compose integration\n- Offline-first (no external API calls)\n- Maintain same API interface",
+      "example_files": [
+        "backend/llm/ollama_client.py",
+        "docker-compose.yml"
+      ],
+      "prompt_file": ".claude-code/prompts/ollama_migration.md"
+    },
+    "create_checkpoint_workflow": {
+      "template": "Create checkpoint or recovery workflow:\n- Checkpoint: pg_dump + Redis RDB + ES snapshot\n- Recovery: restore all components\n- Last-known-good pattern\n- Scheduled checkpoints (every 30 min)\n- Verify health after restore",
+      "example_files": [
+        "backend/resilience/state_management.py",
+        "scripts/checkpoint.ps1",
+        "scripts/recover.ps1"
+      ],
+      "prompt_file": ".claude-code/prompts/checkpoint_workflows.md"
+    }
+  },
+  "context": {
+    "tech_stack": {
+      "backend": "FastAPI, Python 3.11+, PostgreSQL, Redis, Elasticsearch",
+      "frontend": "Next.js 14+, TypeScript, React Server Components",
+      "ai": "OpenAI API, custom models",
+      "infrastructure": "Kubernetes, Docker, multi-region"
+    },
+    "key_features": [
+      "Anonymous identity system",
+      "XDMIQ credentialing",
+      "AI-powered matching",
+      "Human-in-the-loop architecture",
+      "State recovery system",
+      "Social authentication (Facebook, LinkedIn, Google, Microsoft, Apple, Email, SMS)"
+    ],
+    "principles": [
+      "Human-in-the-loop always more beneficial",
+      "Resilience through human oversight",
+      "State recovery & testing",
+      "Capability over credentials"
+    ]
+  },
+  "optimization": {
+    "prompt_enhancements": [
+      "Always include project context",
+      "Reference existing code patterns",
+      "Maintain consistency with codebase",
+      "Focus on business requirements",
+      "Consider scalability from day one"
+    ],
+    "code_generation": {
+      "style": "Follow existing code style",
+      "documentation": "Include docstrings",
+      "error_handling": "Comprehensive error handling",
+      "testing": "Consider testability"
+    }
+  }
+}
+
+

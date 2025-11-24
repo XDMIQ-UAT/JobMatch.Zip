@@ -1,0 +1,74 @@
+# XDMIQ Questions - Problem Solving Domain
+# Preference-based assessment questions for problem-solving approach
+
+domain: Problem Solving
+description: Assess user's preferred approach to solving complex problems
+scoring_domain: problem_solving_approach
+
+questions:
+  - id: ps-001
+    text: "Which approach do you prefer when facing a complex problem?"
+    options:
+      - Break into sub-problems
+      - Research similar solutions
+      - Prototype and iterate
+      - Diagram first
+    follow_up: "Why does this work better for you?"
+    scoring:
+      weights: [0.8, 0.6, 0.9, 0.7]
+      reasoning_weight: 0.3
+    capability_signals:
+      - systematic_thinking: [high, medium, high, medium]
+      - research_skills: [low, high, medium, low]
+      - iterative_approach: [medium, low, high, low]
+      - visual_thinking: [low, low, low, high]
+
+  - id: ps-002
+    text: "Which do you prefer when debugging a technical issue?"
+    options:
+      - Systematic step-by-step debugging
+      - Try multiple solutions quickly
+      - Search documentation and community
+      - Visualize the problem flow
+    follow_up: "What makes this approach more effective for you?"
+    scoring:
+      weights: [0.85, 0.7, 0.65, 0.75]
+      reasoning_weight: 0.3
+    capability_signals:
+      - debugging_methodology: [high, medium, low, medium]
+      - experimentation: [low, high, medium, low]
+      - research_skills: [low, low, high, low]
+      - visual_analysis: [low, low, low, high]
+
+  - id: ps-003
+    text: "Which do you prefer when learning a new technology?"
+    options:
+      - Hands-on experimentation
+      - Reading documentation first
+      - Following tutorials and examples
+      - Building a small project
+    follow_up: "Why does this learning style work better for you?"
+    scoring:
+      weights: [0.8, 0.7, 0.6, 0.9]
+      reasoning_weight: 0.35
+    capability_signals:
+      - learning_style: [experimental, analytical, tutorial-based, project-based]
+      - independence: [high, high, medium, high]
+      - structured_learning: [low, high, high, medium]
+
+# Domain Scoring
+domain_scoring:
+  overall_weight: 0.25
+  sub_scores:
+    preference_alignment: 0.4
+    reasoning_quality: 0.3
+    adaptability: 0.2
+    consistency: 0.1
+
+# Integration
+integration:
+  used_by:
+    - backend/assessment/xdmiq_assessment.py
+    - backend/ai/matching_engine.py
+  matching_weight: 0.3
+

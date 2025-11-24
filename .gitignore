@@ -1,0 +1,337 @@
+# ============================================================================
+# JobFinder / JobMatch AI - Comprehensive .gitignore
+# ============================================================================
+
+# ============================================================================
+# Dependencies
+# ============================================================================
+node_modules/
+.pnp
+.pnp.js
+jspm_packages/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# ============================================================================
+# Environment Variables & Secrets (NEVER COMMIT)
+# ============================================================================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+.env.test
+.env.test.local
+.env.staging
+.env.prisma
+
+# Secrets and Credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.csr
+**/secrets/
+**/credentials/
+*.credentials
+*.secrets
+jwt.txt
+gemini.txt
+dbpass.txt
+api-keys.txt
+.porkbun-credentials
+.porkbun/
+
+# ============================================================================
+# Build Outputs
+# ============================================================================
+build/
+dist/
+out/
+.output/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.vite/
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# Frontend build artifacts
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+next-env.d.ts
+
+# Backend build artifacts
+backend/dist/
+backend/build/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+
+# ============================================================================
+# Testing & Coverage
+# ============================================================================
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+junit.xml
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Playwright
+playwright-report/
+playwright/.cache/
+.playwright/
+
+# ============================================================================
+# Logs & Debug Files
+# ============================================================================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+log.txt
+error.log
+access.log
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+.venv
+.pyenv
+*.egg-info/
+.eggs/
+*.egg
+
+# ============================================================================
+# Databases
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+data/postgres/
+data/redis/
+data/elasticsearch/
+data/ollama/
+data/checkpoints/
+postgresql/
+
+# ============================================================================
+# Docker & Container Data
+# ============================================================================
+.docker/
+docker-compose.override.yml
+*.tar.gz
+*.zip
+*.tar
+
+# Deployment archives (should be generated, not committed)
+backend-config-patch.zip
+backend-deploy.tar.gz
+backend-deployment.zip
+backend.zip
+jobmatch.zip
+jobfinder_jobmatch.zip*
+frontend-app.zip
+frontend-app-fixed.zip
+frontend-build.zip
+frontend.tar.gz
+
+# ============================================================================
+# Process Managers
+# ============================================================================
+.pm2/
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================================================
+# IDEs & Editors
+# ============================================================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Vim
+*.swp
+*.swo
+*~
+.*.swp
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# Operating Systems
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# Temporary & Cache Files
+# ============================================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+.cache/
+.temp/
+tmp/
+temp/
+
+# ============================================================================
+# Framework & Tool Specific
+# ============================================================================
+# Next.js
+.next/
+out/
+next-env.d.ts
+.vercel
+
+# Turbo
+.turbo
+
+# ESLint
+.eslintcache
+
+# TypeScript
+*.tsbuildinfo
+
+# Prisma
+*.db-journal
+
+# ============================================================================
+# Cloud & Deployment
+# ============================================================================
+# Google Cloud
+.gcloud/
+.gcp/
+gcp-credentials.json
+
+# AWS
+.aws/
+.elasticbeanstalk/
+
+# Kubernetes
+*.kubeconfig
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# ============================================================================
+# Documentation & Local Tracking
+# ============================================================================
+CURRENT_STATUS.md
+LOCAL_NOTES.md
+TODO.local.md
+
+# ============================================================================
+# AI & ML Models (Large Files)
+# ============================================================================
+*.onnx
+*.pb
+*.h5
+*.ckpt
+models/
+checkpoints/
+
+# ============================================================================
+# Monitoring & Analytics
+# ============================================================================
+.sentry/
+.lighthouseci/
+
+# ============================================================================
+# Misc
+# ============================================================================
+*.orig
+*.rej
+.lock-wscript
+
+backend/app.old/
+*.tar.gz
+*.zip
+

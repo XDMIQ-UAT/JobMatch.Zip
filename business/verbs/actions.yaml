@@ -1,0 +1,97 @@
+# Action Definitions
+# Platform verbs: assess, match, notify, articulate, etc.
+
+actions:
+  - id: assess_capability
+    name: Assess User Capability
+    description: Evaluate user capabilities through XDMIQ and portfolio analysis
+    workflow:
+      - start_xdmiq_assessment
+      - collect_portfolio_data
+      - generate_capability_score
+      - create_checkpoint
+      - queue_for_human_review_if_needed
+    anonymous_id_required: true
+    creates_checkpoint: true
+    human_review_trigger: ambiguous_score
+    api_endpoint: /api/assess/capability
+
+  - id: match_opportunities
+    name: Match User with Opportunities
+    description: Find capability-aligned job opportunities
+    workflow:
+      - load_user_capabilities
+      - query_opportunity_index
+      - calculate_alignment_scores
+      - rank_matches
+      - return_top_matches
+    anonymous_id_required: true
+    creates_checkpoint: false
+    human_review_trigger: none
+    api_endpoint: /api/matching/find
+
+  - id: notify_match
+    name: Notify User of Match
+    description: Send notification about new job match
+    workflow:
+      - generate_notification
+      - store_notification
+      - send_via_preferred_channel
+    anonymous_id_required: true
+    creates_checkpoint: true
+    human_review_trigger: none
+    api_endpoint: /api/notifications/send
+
+  - id: articulate_capability
+    name: Articulate User Capability
+    description: Help user express capabilities clearly using AI assistance
+    workflow:
+      - collect_user_input
+      - generate_articulation_suggestions
+      - queue_for_human_review
+      - return_suggestions
+    anonymous_id_required: true
+    creates_checkpoint: true
+    human_review_trigger: always
+    api_endpoint: /api/articulation/assist
+
+  - id: complete_xdmiq_assessment
+    name: Complete XDMIQ Assessment
+    description: Finish preference-based assessment questions
+    workflow:
+      - load_previous_answers
+      - generate_next_question
+      - collect_preference_answer
+      - collect_reasoning_answer
+      - calculate_domain_score
+      - check_completion
+    anonymous_id_required: true
+    creates_checkpoint: true
+    human_review_trigger: none
+    api_endpoint: /api/xdmiq/answer
+
+  - id: create_anonymous_session
+    name: Create Anonymous Session
+    description: Generate new anonymous user session
+    workflow:
+      - generate_anonymous_id
+      - create_session_record
+      - return_anonymous_id
+    anonymous_id_required: false
+    creates_checkpoint: false
+    human_review_trigger: none
+    api_endpoint: /api/auth/anonymous/create
+
+# Action Categories
+categories:
+  assessment:
+    - assess_capability
+    - complete_xdmiq_assessment
+  matching:
+    - match_opportunities
+  communication:
+    - notify_match
+    - articulate_capability
+  identity:
+    - create_anonymous_session
+

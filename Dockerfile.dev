@@ -1,0 +1,39 @@
+# Development Dockerfile with hot reload
+FROM python:3.11-slim
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get update && apt-get install -y \
+    gcc \
+    postgresql-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY backend/requirements.txt ./backend/
+RUN pip install --no-cache-dir -r backend/requirements.txt
+RUN pip install --no-cache-dir supervisor
+
+# Install Node dependencies
+COPY frontend/package.json frontend/package-lock.json* ./frontend/
+WORKDIR /app/frontend
+RUN npm ci
+
+# Copy application code
+WORKDIR /app
+COPY backend/ ./backend/
+COPY frontend/ ./frontend/
+
+# Create supervisord config for development
+RUN mkdir -p /etc/supervisor/conf.d
+COPY supervisord.dev.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Expose ports
+EXPOSE 8000 3000
+
+# Start both services with supervisord
+CMD ["/usr/local/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+

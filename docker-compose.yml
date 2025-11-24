@@ -1,0 +1,197 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: jobmatch-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-jobmatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-jobmatch}
+      POSTGRES_DB: ${POSTGRES_DB:-jobmatch}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-jobmatch}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: jobmatch-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Elasticsearch
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: jobmatch-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # Ollama (Local LLM - llama3.2)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: jobmatch-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    # Post-start: Pull llama3.2 model
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        ollama serve &
+        sleep 5
+        ollama pull llama3.2
+        wait
+
+  # Backend (FastAPI)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jobmatch-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Database
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-jobmatch}:${POSTGRES_PASSWORD:-jobmatch}@postgres:5432/${POSTGRES_DB:-jobmatch}
+      # Redis
+      - REDIS_URL=redis://redis:6379
+      # Elasticsearch
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      # Ollama (instead of OpenAI)
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=llama3.2
+      - USE_OLLAMA=true
+      # Application
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
+      - ENVIRONMENT=development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jobmatch-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev
+    restart: unless-stopped
+
+  # State Checkpointer (Scheduled backups)
+  checkpointer:
+    build:
+      context: ./infra/state-checkpointer
+      dockerfile: Dockerfile
+    container_name: jobmatch-checkpointer
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=${POSTGRES_USER:-jobmatch}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-jobmatch}
+      - POSTGRES_DB=${POSTGRES_DB:-jobmatch}
+      - REDIS_HOST=redis
+      - CHECKPOINT_INTERVAL=1800  # 30 minutes
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - checkpoints_data:/checkpoints
+      - ./scripts:/scripts:ro
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:/Users/dash/projects/jobmatch-ai/data/postgres
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:/Users/dash/projects/jobmatch-ai/data/redis
+  elasticsearch_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:/Users/dash/projects/jobmatch-ai/data/elasticsearch
+  ollama_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:/Users/dash/projects/jobmatch-ai/data/ollama
+  checkpoints_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:/Users/dash/projects/jobmatch-ai/data/checkpoints
+  logs:
+    driver: local
+
+networks:
+  default:
+    name: jobmatch-network
+    driver: bridge

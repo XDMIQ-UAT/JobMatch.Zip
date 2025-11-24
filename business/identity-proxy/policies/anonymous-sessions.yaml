@@ -1,0 +1,76 @@
+# Anonymous Session Management Policy
+# Zero-knowledge architecture for user sessions
+
+policy:
+  name: Anonymous Session Management
+  version: 1.0
+  effective_date: 2024-01-01
+  
+  rules:
+    - rule: Anonymous ID Generation
+      description: Cryptographically secure anonymous ID generation
+      implementation: SHA256 hash of 32 random bytes
+      uniqueness: Checked against existing IDs (collision extremely unlikely)
+      code_reference: backend/auth/anonymous_identity.py::generate_anonymous_id
+    
+    - rule: Session Data Storage
+      description: Session data keyed by anonymous_id only
+      constraint: No identity information stored in session
+      storage: anonymous_sessions table
+      fields:
+        - anonymous_id (primary key)
+        - created_at
+        - metadata (no identity data)
+    
+    - rule: Zero-Knowledge Architecture
+      description: Platform cannot reverse-engineer identity
+      constraint: No correlation between anonymous_id and real identity
+      exception: Voluntary identification (separate flow, user-initiated)
+    
+    - rule: Voluntary Identification
+      description: Identity linking is opt-in only
+      requirement: Explicit consent UI required
+      storage: Separate identity_links table
+      user_control: User can delete identity link at any time
+    
+    - rule: Multiple Personas
+      description: Support for multiple anonymous IDs per user
+      implementation: User can create multiple anonymous profiles
+      constraint: No correlation between personas enforced by platform
+
+# Session Flow Definitions
+flows:
+  anonymous_session_creation:
+    steps:
+      - generate_anonymous_id
+      - check_uniqueness
+      - create_session_record
+      - return_anonymous_id
+    identity_required: false
+    creates_checkpoint: false
+
+  voluntary_identification:
+    steps:
+      - verify_user_consent
+      - store_identity_in_separate_table
+      - create_mapping_record
+      - confirm_identity_link
+    identity_required: true
+    creates_checkpoint: true
+    user_can_delete: true
+
+# Privacy Guarantees
+privacy:
+  platform_cannot:
+    - Reverse-engineer identity from anonymous_id
+    - Correlate anonymous sessions without user action
+    - Require identity for platform features
+    - Link multiple anonymous IDs to same identity (without user action)
+
+  user_can:
+    - Use platform completely anonymously
+    - Create multiple anonymous personas
+    - Voluntarily link identity (opt-in)
+    - Delete identity link at any time
+    - Use platform without ever providing identity
+

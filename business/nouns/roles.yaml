@@ -1,0 +1,62 @@
+# Role Definitions
+# Job roles and positions available in the marketplace
+
+roles:
+  - id: ai-engineer
+    name: AI Engineer
+    description: Build and deploy AI-powered applications
+    required_capabilities:
+      - ai-tool-proficiency: min_score 70
+      - technical-skills: min_score 75
+      - problem-solving-approach: min_score 65
+    preferred_capabilities:
+      - collaboration-style
+      - learning-approach
+    anonymous_friendly: true
+    credential_required: false
+
+  - id: ai-researcher
+    name: AI Researcher
+    description: Research and develop new AI models and techniques
+    required_capabilities:
+      - ai-tool-proficiency: min_score 80
+      - problem-solving-approach: min_score 75
+      - technical-skills: min_score 70
+    preferred_capabilities:
+      - learning-approach
+    anonymous_friendly: true
+    credential_required: false
+
+  - id: ai-product-manager
+    name: AI Product Manager
+    description: Define and manage AI product strategy
+    required_capabilities:
+      - problem-solving-approach: min_score 70
+      - collaboration-style: min_score 70
+    preferred_capabilities:
+      - ai-tool-proficiency
+      - learning-approach
+    anonymous_friendly: true
+    credential_required: false
+
+  - id: ml-engineer
+    name: Machine Learning Engineer
+    description: Design and implement ML systems
+    required_capabilities:
+      - ai-tool-proficiency: min_score 75
+      - technical-skills: min_score 80
+      - problem-solving-approach: min_score 70
+    preferred_capabilities:
+      - collaboration-style
+    anonymous_friendly: true
+    credential_required: false
+
+# Role Matching Criteria
+# Used by matching engine to find capability-aligned opportunities
+matching:
+  algorithm: capability_alignment
+  scoring:
+    required_weight: 0.7
+    preferred_weight: 0.3
+  anonymous_first: true
+

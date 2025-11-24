@@ -1,0 +1,551 @@
+# WARP AUTH FLOW AGENT - Account Level Configuration
+# Account: zsbw@proton.me
+# Scope: Account-level authentication flows (not personal identity flows)
+# Last Updated: 2025-11-22
+
+version: "1.0"
+agent_type: "auth_flow_specialist"
+account_scope: true  # Account-level, not personal-level
+account_email: "zsbw@proton.me"
+
+# Agent Purpose
+purpose: |
+  Specialized Warp agent focused exclusively on authentication flow issues
+  at the account level for zsbw@proton.me. Handles OAuth flows, magic links,
+  session management, and account-level security without touching personal
+  identity information.
+
+# Core Responsibilities
+responsibilities:
+  - Monitor and debug OAuth authentication flows
+  - Manage magic link generation and validation
+  - Handle session creation and verification
+  - Debug account-level authentication failures
+  - Coordinate with identity-proxy for anonymous sessions
+  - Sync authentication state with Pieces MCP
+
+# Authentication Flow Categories
+auth_flows:
+  
+  # OAuth Social Authentication
+  oauth_flows:
+    description: "Social authentication via third-party providers"
+    providers:
+      - facebook
+      - linkedin
+      - google
+      - microsoft
+      - apple
+    
+    flow_steps:
+      - step: oauth_initiation
+        description: "User clicks social login button"
+        endpoint: "/api/social-auth/{provider}/login"
+        warp_monitoring: true
+        pieces_sync: true
+        
+      - step: provider_redirect
+        description: "Redirect to OAuth provider"
+        validation:
+          - Check redirect_uri matches registered callback
+          - Validate state parameter for CSRF protection
+          - Ensure HTTPS for security
+        
+      - step: callback_handling
+        description: "Handle OAuth provider callback"
+        endpoint: "/api/social-auth/{provider}/callback"
+        validation:
+          - Verify state parameter matches
+          - Exchange code for access token
+          - Extract user info from provider
+        issues_to_monitor:
+          - "Invalid state parameter"
+          - "Code exchange failure"
+          - "Token validation failure"
+        
+      - step: account_linking
+        description: "Link provider account to anonymous_id"
+        code_reference: "backend/auth/social_auth.py::link_social_account"
+        maintains_anonymity: true
+        validation:
+          - Ensure no PII stored in main tables
+          - Link via provider_user_id only
+          - Store in meta_data separate from identity
+        
+      - step: session_creation
+        description: "Create authenticated session"
+        code_reference: "backend/auth/social_auth.py::authenticate_with_provider"
+        returns: "anonymous_id"
+        pieces_sync_required: true
+  
+  # Email Magic Link Authentication
+  magic_link_flows:
+    description: "Passwordless email authentication"
+    
+    flow_steps:
+      - step: magic_link_request
+        description: "User requests magic link via email"
+        endpoint: "/api/auth/magic-link/send"
+        input:
+          - email (string, required)
+          - ip_address (optional, for security)
+        validation:
+          - Valid email format
+          - Rate limiting check (5 per hour)
+          - Email domain validation
+        
+      - step: token_generation
+        description: "Generate secure magic link token"
+        code_reference: "backend/auth/social_auth.py::generate_magic_link"
+        security:
+          - Cryptographically secure random token
+          - 30-minute expiration
+          - One-time use only
+          - IP hash for validation (privacy-preserving)
+        storage: "In-memory (Redis in production)"
+        
+      - step: email_delivery
+        description: "Send magic link via SES"
+        code_reference: "backend/auth/email_provider.py"
+        monitoring:
+          - Track delivery status
+          - Monitor bounce/complaint rates
+          - Verify SPF/DKIM/DMARC
+        issues_to_monitor:
+          - "Email delivery failures"
+          - "Spam folder placement"
+          - "SES sandbox limits"
+        
+      - step: link_verification
+        description: "User clicks magic link"
+        endpoint: "/api/auth/magic-link/verify"
+        validation:
+          - Token exists and not expired
+          - Token not already used
+          - IP validation (optional, privacy-aware)
+          - Rate limiting on verification attempts
+        
+      - step: session_creation
+        description: "Create authenticated session"
+        returns: "anonymous_id"
+        maintains_anonymity: true
+        pieces_sync_required: true
+  
+  # SMS/VoIP Authentication
+  sms_voip_flows:
+    description: "Phone-based authentication"
+    
+    flow_steps:
+      - step: phone_verification_request
+        description: "User requests SMS/VoIP code"
+        endpoint: "/api/auth/sms/send"
+        input:
+          - phone_number (string, E.164 format)
+          - method (sms or voice)
+        validation:
+          - Valid phone format
+          - Rate limiting check
+          - Phone number normalization
+        
+      - step: code_generation
+        description: "Generate 6-digit verification code"
+        code_reference: "backend/auth/sms_provider.py"
+        security:
+          - 6-digit random code
+          - 10-minute expiration
+          - Max 3 verification attempts
+        
+      - step: code_delivery
+        description: "Deliver via SMS/VoIP"
+        monitoring:
+          - Track delivery status
+          - Monitor failure rates
+          - Cost tracking
+        
+      - step: code_verification
+        description: "User enters verification code"
+        endpoint: "/api/auth/sms/verify"
+        validation:
+          - Code matches stored code
+          - Not expired
+          - Attempt limit not exceeded
+        
+      - step: session_creation
+        description: "Create authenticated session"
+        returns: "anonymous_id"
+        maintains_anonymity: true
+  
+  # Anonymous Session Management
+  anonymous_session_flows:
+    description: "Zero-knowledge anonymous session creation"
+    reference: "business/identity-proxy/flows.yaml"
+    
+    flow_steps:
+      - step: anonymous_session_creation
+        description: "Generate anonymous session on first visit"
+        code_reference: "backend/auth/anonymous_identity.py::create_anonymous_user"
+        endpoint: "/api/auth/anonymous/create"
+        no_authentication_required: true
+        
+      - step: anonymous_id_generation
+        description: "Generate cryptographically secure ID"
+        security:
+          - UUID4 for uniqueness
+          - No correlation to real identity
+          - No PII in generation process
+        
+      - step: session_storage
+        description: "Store session in database"
+        table: "anonymous_users"
+        fields:
+          - id (anonymous_id, primary key)
+          - created_at (timestamp)
+          - last_active (timestamp)
+          - meta_data (JSON, no PII)
+        
+      - step: return_anonymous_id
+        description: "Return anonymous_id to client"
+        storage: "Client-side cookie/localStorage"
+        security: "HttpOnly, Secure, SameSite=Strict"
+
+# Account-Level Authentication Issues
+auth_issues:
+  
+  # OAuth Issues
+  oauth_issues:
+    - issue: "Invalid redirect_uri"
+      description: "OAuth callback URL mismatch"
+      debug_steps:
+        - "Verify redirect_uri in provider console"
+        - "Check environment variable: SOCIAL_AUTH_REDIRECT_URI"
+        - "Ensure HTTPS in production"
+      code_locations:
+        - "backend/auth/oauth_providers.py"
+        - "frontend/app/auth/page.tsx"
+    
+    - issue: "CSRF state validation failure"
+      description: "State parameter mismatch"
+      debug_steps:
+        - "Check state storage (Redis/in-memory)"
+        - "Verify state expiration time"
+        - "Check for race conditions"
+      code_locations:
+        - "backend/api/social_auth.py"
+    
+    - issue: "Token exchange failure"
+      description: "Failed to exchange auth code for token"
+      debug_steps:
+        - "Verify client_id and client_secret"
+        - "Check provider API status"
+        - "Verify token endpoint URL"
+      code_locations:
+        - "backend/auth/oauth_providers.py"
+  
+  # Magic Link Issues
+  magic_link_issues:
+    - issue: "Email not delivered"
+      description: "Magic link email not reaching inbox"
+      debug_steps:
+        - "Check SES sending limits (sandbox vs production)"
+        - "Verify SPF/DKIM/DMARC records"
+        - "Check bounce/complaint lists"
+        - "Test with verified email in sandbox mode"
+      code_locations:
+        - "backend/auth/email_provider.py"
+      documentation:
+        - "docs/SES_PRODUCTION_ACCESS.md"
+        - "docs/EMAIL_SPAM_FIX.md"
+    
+    - issue: "Token expired"
+      description: "Magic link expired before use"
+      debug_steps:
+        - "Check token expiration time (default 30 min)"
+        - "Verify server time synchronization"
+        - "Check for clock skew"
+      code_locations:
+        - "backend/auth/social_auth.py::generate_magic_link"
+    
+    - issue: "Token already used"
+      description: "Magic link clicked multiple times"
+      debug_steps:
+        - "Verify one-time use enforcement"
+        - "Check token cleanup after use"
+        - "User experience: show 'already used' message"
+      code_locations:
+        - "backend/auth/social_auth.py::verify_magic_link"
+  
+  # Session Issues
+  session_issues:
+    - issue: "Session not persisting"
+      description: "User logged out unexpectedly"
+      debug_steps:
+        - "Check cookie settings (HttpOnly, Secure, SameSite)"
+        - "Verify session storage (Redis/database)"
+        - "Check session timeout configuration"
+      code_locations:
+        - "backend/api/auth.py"
+        - "frontend/middleware.ts"
+    
+    - issue: "Anonymous ID collision"
+      description: "Duplicate anonymous_id generated"
+      debug_steps:
+        - "Check UUID generation uniqueness"
+        - "Verify database uniqueness constraint"
+        - "Check retry logic on collision"
+      code_locations:
+        - "backend/auth/anonymous_identity.py::create_anonymous_user"
+
+# Warp Agent Workflow
+warp_agent_workflow:
+  
+  # Authentication Issue Detection
+  detection:
+    monitoring:
+      - Monitor authentication endpoint errors
+      - Track failed login attempts
+      - Alert on rate limit violations
+      - Watch for CSRF attacks
+    
+    logging:
+      location: "backend/logs/auth.log"
+      log_level: "INFO"
+      includes:
+        - Authentication attempts (success/failure)
+        - OAuth flow steps
+        - Magic link generation/verification
+        - Session creation events
+  
+  # Issue Diagnosis
+  diagnosis:
+    steps:
+      - step: identify_auth_flow
+        description: "Determine which auth flow is failing"
+        tools:
+          - "Check endpoint logs"
+          - "Review error messages"
+          - "Inspect network requests"
+      
+      - step: isolate_failure_point
+        description: "Find exact step where flow fails"
+        tools:
+          - "Trace through flow_steps in this config"
+          - "Check code_reference locations"
+          - "Review validation rules"
+      
+      - step: gather_context
+        description: "Collect relevant debugging info"
+        data_to_collect:
+          - Error messages
+          - Request/response payloads
+          - Environment variables
+          - Provider status (if OAuth)
+  
+  # Issue Resolution
+  resolution:
+    workflow:
+      - step: apply_fix
+        description: "Implement fix based on diagnosis"
+        guidance:
+          - Reference code_locations in auth_issues
+          - Follow security best practices
+          - Maintain anonymity guarantees
+      
+      - step: test_fix
+        description: "Verify fix resolves issue"
+        test_scripts:
+          - "scripts/test-magic-link.ps1"
+          - "scripts/test-email-auth-endpoint.ps1"
+      
+      - step: document_resolution
+        description: "Document fix for future reference"
+        output:
+          - Update this config if workflow changed
+          - Add to docs if new pattern discovered
+          - Sync to Pieces MCP for knowledge sharing
+
+# Pieces MCP Integration
+pieces_integration:
+  enabled: true
+  sync_events:
+    - Authentication failures (anonymized)
+    - OAuth flow completions
+    - Magic link sends
+    - Session creation events
+  
+  context_sharing:
+    - Share auth flow patterns with other agents
+    - Sync debugging insights across sessions
+    - Maintain auth knowledge base
+  
+  privacy_preservation:
+    - Never sync PII or tokens
+    - Anonymize all user identifiers
+    - Hash sensitive data before sync
+
+# Warp-Specific Commands
+warp_commands:
+  # Test authentication flows
+  test-oauth: "warp run business/identity-proxy/warp-workflows/test-oauth.yaml"
+  test-magic-link: "pwsh scripts/test-magic-link.ps1"
+  test-sms: "warp run business/identity-proxy/warp-workflows/test-sms.yaml"
+  
+  # Debug authentication issues
+  debug-auth: "warp run business/identity-proxy/warp-workflows/debug-auth.yaml"
+  check-oauth-config: "warp run business/identity-proxy/warp-workflows/check-oauth-config.yaml"
+  check-ses-config: "pwsh scripts/check-ses-config.ps1"
+  
+  # Monitor authentication
+  monitor-auth: "tail -f backend/logs/auth.log"
+  monitor-ses: "warp run business/identity-proxy/warp-workflows/monitor-ses.yaml"
+
+# Environment Variables Required
+required_env_vars:
+  # OAuth Providers
+  oauth:
+    - FACEBOOK_CLIENT_ID
+    - FACEBOOK_CLIENT_SECRET
+    - LINKEDIN_CLIENT_ID
+    - LINKEDIN_CLIENT_SECRET
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+    - MICROSOFT_CLIENT_ID
+    - MICROSOFT_CLIENT_SECRET
+    - APPLE_CLIENT_ID
+    - APPLE_CLIENT_SECRET
+    - SOCIAL_AUTH_REDIRECT_URI
+  
+  # Email (SES)
+  email:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_REGION
+    - SES_FROM_EMAIL
+    - SES_VERIFIED_EMAILS  # For sandbox mode
+  
+  # SMS/VoIP (future)
+  sms:
+    - TWILIO_ACCOUNT_SID
+    - TWILIO_AUTH_TOKEN
+    - TWILIO_PHONE_NUMBER
+  
+  # Session Management
+  session:
+    - SESSION_SECRET
+    - SESSION_COOKIE_DOMAIN
+    - SESSION_COOKIE_SECURE
+    - REDIS_URL  # For production session storage
+
+# Testing & Validation
+testing:
+  test_scripts:
+    - name: "Test Magic Link Flow"
+      script: "scripts/test-magic-link.ps1"
+      tests:
+        - Magic link generation
+        - Email delivery
+        - Link verification
+    
+    - name: "Test OAuth Flow"
+      script: "scripts/test-oauth-flow.ps1"
+      tests:
+        - OAuth initiation
+        - Callback handling
+        - Account linking
+    
+    - name: "Test Anonymous Session"
+      script: "scripts/test-anonymous-session.ps1"
+      tests:
+        - Anonymous ID generation
+        - Session creation
+        - Session persistence
+  
+  validation_checklist:
+    security:
+      - [ ] HTTPS enforced in production
+      - [ ] CSRF protection enabled
+      - [ ] Rate limiting configured
+      - [ ] Tokens expire appropriately
+      - [ ] One-time use tokens enforced
+    
+    anonymity:
+      - [ ] No PII in anonymous_id
+      - [ ] Identity stored separately
+      - [ ] Zero-knowledge maintained
+      - [ ] User can delete identity link
+    
+    functionality:
+      - [ ] OAuth flows complete successfully
+      - [ ] Magic links delivered and verified
+      - [ ] Sessions persist correctly
+      - [ ] Anonymous sessions work without auth
+
+# Agent Status & Health
+health_monitoring:
+  endpoints:
+    - name: "Auth Health"
+      url: "/api/auth/health"
+      checks:
+        - Database connection
+        - Redis connection (if used)
+        - SES availability
+        - OAuth provider connectivity
+  
+  alerts:
+    - condition: "Auth failure rate > 10%"
+      action: "Alert Warp agent"
+    
+    - condition: "Magic link delivery rate < 90%"
+      action: "Check SES configuration"
+    
+    - condition: "Session creation failures"
+      action: "Check database/Redis"
+
+# Documentation References
+documentation:
+  internal:
+    - "docs/MAGIC_LINK_AUTHENTICATION.md"
+    - "docs/MAGIC_LINK_SECURITY.md"
+    - "docs/SES_PRODUCTION_ACCESS.md"
+    - "docs/EMAIL_SPAM_FIX.md"
+    - "business/identity-proxy/README.md"
+    - "business/identity-proxy/flows.yaml"
+  
+  code_references:
+    - "backend/api/auth.py"
+    - "backend/api/social_auth.py"
+    - "backend/auth/social_auth.py"
+    - "backend/auth/anonymous_identity.py"
+    - "backend/auth/email_provider.py"
+    - "backend/auth/oauth_providers.py"
+    - "frontend/app/auth/page.tsx"
+    - "frontend/app/auth/magic-link/page.tsx"
+
+# Agent Coordination
+agent_coordination:
+  primary_agent: "auth_flow_agent"
+  coordinates_with:
+    - identity_proxy_agent: "For anonymous session management"
+    - security_agent: "For security validation"
+    - pieces_agent: "For knowledge sync"
+  
+  escalation_rules:
+    - condition: "Cannot resolve auth issue after 3 attempts"
+      action: "Escalate to human review"
+    
+    - condition: "Potential security breach detected"
+      action: "Immediate escalation + log"
+    
+    - condition: "Breaking change needed"
+      action: "Human approval required"
+
+# Change Log
+changelog:
+  - version: "1.0"
+    date: "2025-11-22"
+    changes:
+      - "Initial auth flow agent configuration"
+      - "Account-level scope for zsbw@proton.me"
+      - "OAuth, magic link, SMS/VoIP flows defined"
+      - "Issue catalog created"
+      - "Warp integration configured"
+      - "Pieces MCP sync enabled"

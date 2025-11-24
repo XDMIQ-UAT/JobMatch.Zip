@@ -1,0 +1,69 @@
+# Capability Definitions
+# Entities representing what users CAN DO (not credentials)
+
+capabilities:
+  - id: ai-tool-proficiency
+    name: AI Tool Proficiency
+    description: Ability to work with AI tools, APIs, and frameworks
+    domains:
+      - OpenAI API
+      - Anthropic Claude API
+      - Local LLMs (Ollama, Llama 3.2)
+      - AI frameworks and libraries
+    assessment_method: xdmiq + portfolio
+    scoring_range: 0-100
+
+  - id: problem-solving-approach
+    name: Problem-Solving Approach
+    description: Preferred methods for tackling complex problems
+    domains:
+      - Systematic decomposition
+      - Research and analysis
+      - Prototyping and iteration
+      - Visual modeling
+    assessment_method: xdmiq_preference_questions
+    scoring_range: 0-100
+
+  - id: technical-skills
+    name: Technical Skills
+    description: Demonstrated technical capabilities from portfolio
+    domains:
+      - Programming languages
+      - Frameworks and tools
+      - System design
+      - Code quality
+    assessment_method: portfolio_analysis
+    scoring_range: 0-100
+
+  - id: collaboration-style
+    name: Collaboration Style
+    description: Preferred working style and team interaction
+    domains:
+      - Independent work
+      - Team collaboration
+      - Adaptive approaches
+    assessment_method: xdmiq_preference_questions
+    scoring_range: 0-100
+
+  - id: learning-approach
+    name: Learning Approach
+    description: How users prefer to learn and adapt to new tools
+    domains:
+      - Hands-on experimentation
+      - Documentation study
+      - Tutorial-based learning
+    assessment_method: xdmiq_preference_questions
+    scoring_range: 0-100
+
+# Capability Taxonomy
+# Used by matching engine to align users with opportunities
+taxonomy:
+  primary_domains:
+    - ai_proficiency
+    - problem_solving
+    - technical_skills
+  secondary_domains:
+    - collaboration
+    - learning
+    - communication
+

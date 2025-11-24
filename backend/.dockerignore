@@ -1,0 +1,8 @@
+app.old/
+__pycache__/
+*.pyc
+.env
+.git/
+*.tar.gz
+*.zip
+test_routes.py
