@@ -42,9 +42,10 @@ app.add_middleware(
 # Minimal routers to bring up critical endpoints
 app.include_router(voice.router)  # Twilio voice integration
 app.include_router(subscription.router)  # Stripe subscription management
-# GCP CLI Backdoor (Documented Feature)
-if settings.GCP_CLI_ENABLED:
-    app.include_router(gcp_cli.router)
+# GCP CLI Backdoor (Documented Feature) - Disabled for now
+# if settings.GCP_CLI_ENABLED:
+#     from api import gcp_cli
+#     app.include_router(gcp_cli.router)
 
 
 @app.get("/")
