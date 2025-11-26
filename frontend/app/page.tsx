@@ -3,47 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import InteractiveDemo from '@/components/InteractiveDemo';
-
-type FeatureStatus = 'live' | 'beta' | 'coming' | 'planned';
-type Feature = { label: string; status: FeatureStatus };
-
-const FEATURES: Feature[] = [
-  { label: 'AI-powered job matching with verified employers', status: 'live' },
-  { label: 'Direct messaging with hiring managers', status: 'beta' },
-  { label: 'Real-time application tracking', status: 'coming' },
-  { label: 'Interview preparation & coaching', status: 'planned' },
-  { label: 'Career insights & salary analytics', status: 'planned' }
-];
-
-function StatusIcon({ status }: { status: FeatureStatus }) {
-  const base = 'w-6 h-6 mr-3 flex-shrink-0 mt-1';
-  switch (status) {
-    case 'live':
-      return (
-        <svg className={`${base} text-green-500`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Live">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-      );
-    case 'beta':
-      return (
-        <svg className={`${base} text-amber-500`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Beta">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428L12 22.857l-7.428-7.429A8.4 8.4 0 1119.428 4.57a8.4 8.4 0 010 10.857z" />
-        </svg>
-      );
-    case 'coming':
-      return (
-        <svg className={`${base} text-gray-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Coming soon">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      );
-    default:
-      return (
-        <svg className={`${base} text-gray-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Planned">
-          <circle cx="12" cy="12" r="9" strokeWidth={2} />
-        </svg>
-      );
-  }
-}
+import FeatureList from '@/components/FeatureList';
+import { FEATURES, LEGEND } from '@/lib/features';
 
 export default function LandingPage() {
   const [email, setEmail] = useState('');
@@ -104,19 +65,16 @@ export default function LandingPage() {
               <p className="text-sm text-indigo-600 font-semibold mt-1">Get on the list • Cancel anytime</p>
             </div>
 
-            <div className="space-y-4 text-left mb-6">
-              {FEATURES.map((f) => (
-                <div key={f.label} className="flex items-start">
-                  <StatusIcon status={f.status} />
-                  <span className="text-gray-700">
-                    <span className="sr-only">[{f.status}] </span>{f.label}
-                  </span>
-                </div>
-              ))}
+            <div className="mb-6">
+              <FeatureList features={FEATURES} />
             </div>
             <div className="text-xs text-gray-500 mb-8">
-              Legend: <span className="text-green-600">✅ Live</span> · <span className="text-amber-500">🧪 Beta</span> · <span className="text-gray-500">🕒 Coming</span> · <span className="text-gray-500">◌ Planned</span>.{' '}
-              <a className="text-indigo-600 hover:underline" href="https://github.com/Zeppelone/myl.zip/blob/main/ROADMAP.md" target="_blank" rel="noreferrer">See the roadmap</a>
+              Legend: {LEGEND.map((l, i) => (
+                <span key={l.status} className={l.color}>
+                  {l.icon} {l.label}{i < LEGEND.length - 1 ? ' · ' : ''}
+                </span>
+              ))}{' '}
+              <a className="text-indigo-600 hover:underline" href="/roadmap">See the roadmap</a>
             </div>
 
             <div className="space-y-4">
@@ -216,6 +174,7 @@ export default function LandingPage() {
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/features" className="hover:text-white transition-colors">Features</Link></li>
                 <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+                <li><Link href="/roadmap" className="hover:text-white transition-colors">Roadmap</Link></li>
                 <li><Link href="/demo" className="hover:text-white transition-colors">Demo</Link></li>
               </ul>
             </div>
