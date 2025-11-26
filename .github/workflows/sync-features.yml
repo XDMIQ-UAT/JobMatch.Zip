@@ -1,0 +1,35 @@
+name: Sync features from issues
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, reopened]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate features.ts from issues
+        run: node scripts/build-features-from-issues.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit changes if any
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add frontend/lib/features.ts
+            git commit -m "chore(ci): sync features from issues"
+            git push
+          else
+            echo "No changes to commit"
+          fi

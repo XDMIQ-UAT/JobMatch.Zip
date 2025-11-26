@@ -1,0 +1,31 @@
+name: Feature status
+description: Propose or update a feature's public status (agencies use this)
+labels: [feature]
+body:
+  - type: input
+    id: feature
+    attributes:
+      label: Feature name
+      description: Short public-facing label
+      placeholder: e.g., Direct messaging with hiring managers
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - live
+        - beta
+        - coming
+        - planned
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes (internal)
+      description: Optional context (kept in the issue; not shown on site)
+      placeholder: Rollout plan, dependencies, etc.
+    validations:
+      required: false
