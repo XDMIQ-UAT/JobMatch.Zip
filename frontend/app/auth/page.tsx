@@ -183,10 +183,23 @@ export default function AuthPage() {
 
   const handleSocialAuth = async (provider: string) => {
     setLoading(true)
+    setAuthMethod('authenticating')
+    
     try {
-      // In production, would redirect to OAuth provider
-      // For now, simulate authentication
-      const response = await fetch(`${getApiUrl()}/auth/social/authenticate`, {
+      const apiUrl = getApiUrl()
+      
+      // Google OAuth uses redirect flow - redirect to backend OAuth endpoint
+      if (provider === 'google') {
+        // Get backend URL (remove /api if present, or use default)
+        const backendUrl = apiUrl.replace('/api', '') || 'http://localhost:8000'
+        // Redirect to backend Google OAuth login endpoint
+        // Backend will handle redirect to Google, then callback will redirect back to frontend
+        window.location.href = `${backendUrl}/api/auth/google/login`
+        return
+      }
+      
+      // Other providers use the old social auth endpoint (for now)
+      const response = await fetch(`${apiUrl}/auth/social/authenticate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -194,6 +207,11 @@ export default function AuthPage() {
           provider_token: `mock_token_${provider}_${Date.now()}`
         })
       })
+      
+      if (!response.ok) {
+        throw new Error('Authentication failed')
+      }
+      
       const data = await response.json()
       setAnonymousId(data.anonymous_id)
       

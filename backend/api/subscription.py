@@ -1,19 +1,46 @@
 """
 Stripe subscription management API routes.
 Handles checkout sessions, webhooks, refunds, and subscription management.
+Works with anonymous_id to maintain zero-knowledge architecture.
 """
-from fastapi import APIRouter, HTTPException, Request, Header
+from fastapi import APIRouter, HTTPException, Request, Header, Depends
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 import stripe
 import os
 from datetime import datetime, timedelta
+from sqlalchemy.orm import Session
+
+from database.connection import get_db
+from database.models import AnonymousUser
+from auth.session_manager import get_session_from_request
 
 router = APIRouter(prefix="/api/subscription", tags=["subscription"])
 
-# Initialize Stripe
-stripe.api_key = os.getenv("STRIPE_SECRET_KEY", "sk_test_your-stripe-secret-key")
+# Initialize Stripe - reload from env on each module load
+import sys
+if 'stripe' in sys.modules:
+    import importlib
+    importlib.reload(stripe)
+
+# CRITICAL: Stripe secret key must be set via environment variable
+# No default value - fail fast if not configured
+stripe_secret_key = os.getenv("STRIPE_SECRET_KEY")
+if not stripe_secret_key:
+    import sys
+    print("\n" + "="*80, file=sys.stderr)
+    print("CRITICAL ERROR: STRIPE_SECRET_KEY environment variable not set!", file=sys.stderr)
+    print("="*80, file=sys.stderr)
+    print("\nFor production, set STRIPE_SECRET_KEY=sk_live_...", file=sys.stderr)
+    print("For testing, set STRIPE_SECRET_KEY=sk_test_...", file=sys.stderr)
+    print("="*80 + "\n", file=sys.stderr)
+    # In production, fail hard; in development, allow test key
+    if os.getenv("ENVIRONMENT", "development").lower() not in ["development", "dev", "test"]:
+        sys.exit(1)
+    stripe_secret_key = "sk_test_your-stripe-secret-key"  # Only for dev/test
+
+stripe.api_key = stripe_secret_key
 
 # Pricing configuration - $1/month accessible tier
 MONTHLY_PRICE = 100  # $1.00 in cents
@@ -25,14 +52,15 @@ REFUND_PERIOD_DAYS = 14
 CREDIT_PERIOD_DAYS = 60
 
 # Stripe IDs ($1/month accessible tier)
-PRODUCT_ID = "prod_TTufp6ZDcEoeeC"
-PRICE_ID = "price_1SWwqbBObYs4DzR4HldYKqqe"
+PRODUCT_ID = "prod_TTzej3xRNJiuWR"
+PRICE_ID = "price_1SX1fwPbrn8kzeBd7WDE08us"
 
 
 # Pydantic models
 class CheckoutSessionRequest(BaseModel):
-    email: EmailStr
-    user_id: Optional[str] = None
+    email: Optional[EmailStr] = None  # Optional - can use anonymous_id instead
+    anonymous_id: Optional[str] = None  # Primary identifier for anonymous users
+    user_id: Optional[str] = None  # Legacy support
 
 
 class CancelSubscriptionRequest(BaseModel):
@@ -51,15 +79,46 @@ class CreditRequest(BaseModel):
 
 
 @router.post("/create-checkout-session")
-async def create_checkout_session(request: CheckoutSessionRequest):
+async def create_checkout_session(
+    request: CheckoutSessionRequest,
+    http_request: Request = None,
+    db: Session = Depends(get_db)
+):
     """
-    Create a Stripe Checkout session for weekly subscription.
-    Price: $47.90/week
-    Max resubscriptions: 6
+    Create a Stripe Checkout session for subscription.
+    Works with anonymous_id (preferred) or email (legacy).
+    Price: $1/month accessible tier
     """
     try:
+        # Get anonymous_id from request or session
+        anonymous_id = request.anonymous_id
+        if not anonymous_id and http_request:
+            session = get_session_from_request(http_request)
+            if session:
+                anonymous_id = session.get("anonymous_id")
+        
+        # Determine email - prefer from request, or get from anonymous_id
+        email = request.email
+        if not email and anonymous_id:
+            # Try to get email from anonymous user's linked accounts
+            user = db.query(AnonymousUser).filter(AnonymousUser.id == anonymous_id).first()
+            if user and user.meta_data:
+                # Check for email in social accounts or emails
+                if "emails" in user.meta_data and user.meta_data["emails"]:
+                    email = user.meta_data["emails"][0].get("address")
+                elif "social_accounts" in user.meta_data:
+                    # Try Google account first
+                    if "google" in user.meta_data["social_accounts"]:
+                        email = user.meta_data["social_accounts"]["google"].get("provider_data", {}).get("email")
+        
+        if not email:
+            raise HTTPException(
+                status_code=400,
+                detail="Email required. Please authenticate with Google or provide email."
+            )
+        
         # Get or create customer
-        customer = await get_or_create_customer(request.email, request.user_id)
+        customer = await get_or_create_customer(email, anonymous_id or request.user_id)
         subscription_count = await get_customer_subscription_count(customer.id)
 
         if subscription_count >= MAX_RESUBSCRIPTIONS:
@@ -82,14 +141,16 @@ async def create_checkout_session(request: CheckoutSessionRequest):
                 }
             ],
             mode="subscription",
-            success_url=f"{os.getenv('FRONTEND_URL', 'http://localhost:3000')}/subscription/success?session_id={{CHECKOUT_SESSION_ID}}",
-            cancel_url=f"{os.getenv('FRONTEND_URL', 'http://localhost:3000')}/subscription/cancelled",
+            success_url=f"{os.getenv('FRONTEND_URL', 'https://jobmatch.zip')}/dashboard?subscription=success&session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{os.getenv('FRONTEND_URL', 'https://jobmatch.zip')}/",
             metadata={
+                "anonymous_id": anonymous_id or "",
                 "user_id": request.user_id or "",
                 "subscription_number": str(subscription_count + 1),
             },
             subscription_data={
                 "metadata": {
+                    "anonymous_id": anonymous_id or "",
                     "user_id": request.user_id or "",
                     "subscription_number": str(subscription_count + 1),
                     "start_date": datetime.utcnow().isoformat(),
@@ -135,6 +196,77 @@ async def get_subscription_status(customer_id: str):
         }
     except stripe.error.StripeError as e:
         raise HTTPException(status_code=400, detail={"error": str(e)})
+
+
+@router.get("/status-by-anonymous-id/{anonymous_id}")
+async def get_subscription_status_by_anonymous_id(
+    anonymous_id: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get subscription status by anonymous_id.
+    Maintains zero-knowledge - only returns subscription status, not identity.
+    """
+    try:
+        # Find user by anonymous_id
+        user = db.query(AnonymousUser).filter(AnonymousUser.id == anonymous_id).first()
+        if not user:
+            return {
+                "has_active_subscription": False,
+                "anonymous_id": anonymous_id,
+                "message": "User not found"
+            }
+        
+        # Get email from user's linked accounts
+        email = None
+        if user.meta_data:
+            if "emails" in user.meta_data and user.meta_data["emails"]:
+                email = user.meta_data["emails"][0].get("address")
+            elif "social_accounts" in user.meta_data:
+                if "google" in user.meta_data["social_accounts"]:
+                    email = user.meta_data["social_accounts"]["google"].get("provider_data", {}).get("email")
+        
+        if not email:
+            return {
+                "has_active_subscription": False,
+                "anonymous_id": anonymous_id,
+                "message": "No email linked to anonymous account"
+            }
+        
+        # Find Stripe customer by email
+        customers = stripe.Customer.list(email=email, limit=1)
+        if not customers.data:
+            return {
+                "has_active_subscription": False,
+                "anonymous_id": anonymous_id
+            }
+        
+        customer = customers.data[0]
+        
+        # Get subscription status
+        subscriptions = stripe.Subscription.list(
+            customer=customer.id, status="all", limit=100
+        )
+
+        active_subscription = next(
+            (sub for sub in subscriptions.data if sub.status in ["active", "trialing"]),
+            None
+        )
+
+        return {
+            "has_active_subscription": active_subscription is not None,
+            "subscription": {
+                "id": active_subscription.id if active_subscription else None,
+                "status": active_subscription.status if active_subscription else None,
+                "current_period_end": active_subscription.current_period_end if active_subscription else None,
+            } if active_subscription else None,
+            "anonymous_id": anonymous_id
+        }
+    except stripe.error.StripeError as e:
+        raise HTTPException(status_code=400, detail={"error": str(e)})
+    except Exception as e:
+        logger.error(f"Error getting subscription status: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @router.post("/cancel")
@@ -271,18 +403,39 @@ async def stripe_webhook(
     if event_type == "checkout.session.completed":
         print(f"Checkout completed: {data['id']}")
         # TODO: Update user's subscription status in database
+        
+        # Extract anonymous_id from metadata if available
+        anonymous_id = data.get("metadata", {}).get("anonymous_id")
+        if anonymous_id:
+            # TODO: Update user's subscription status by anonymous_id
+            pass
 
     elif event_type == "customer.subscription.created":
         print(f"Subscription created: {data['id']}")
         # TODO: Activate user's subscription features
+        
+        anonymous_id = data.get("metadata", {}).get("anonymous_id")
+        if anonymous_id:
+            # TODO: Activate features for anonymous_id
+            pass
 
     elif event_type == "customer.subscription.updated":
         print(f"Subscription updated: {data['id']}")
         # TODO: Update user's subscription status
+        
+        anonymous_id = data.get("metadata", {}).get("anonymous_id")
+        if anonymous_id:
+            # TODO: Update status for anonymous_id
+            pass
 
     elif event_type == "customer.subscription.deleted":
         print(f"Subscription deleted: {data['id']}")
         # TODO: Deactivate user's subscription features
+        
+        anonymous_id = data.get("metadata", {}).get("anonymous_id")
+        if anonymous_id:
+            # TODO: Deactivate features for anonymous_id
+            pass
 
     elif event_type == "invoice.payment_succeeded":
         print(f"Payment succeeded: {data['id']}")
@@ -299,16 +452,22 @@ async def stripe_webhook(
 
 
 # Helper functions
-async def get_or_create_customer(email: str, user_id: Optional[str] = None):
+async def get_or_create_customer(email: str, anonymous_id: Optional[str] = None):
     """Get existing customer or create new one."""
     customers = stripe.Customer.list(email=email, limit=1)
     
     if customers.data:
+        # Update metadata if anonymous_id provided
+        if anonymous_id:
+            stripe.Customer.modify(
+                customers.data[0].id,
+                metadata={"anonymous_id": anonymous_id}
+            )
         return customers.data[0]
     
     return stripe.Customer.create(
         email=email,
-        metadata={"user_id": user_id or ""}
+        metadata={"anonymous_id": anonymous_id or ""}
     )
 
 
@@ -318,3 +477,7 @@ async def get_customer_subscription_count(customer_id: str) -> int:
         customer=customer_id, status="all", limit=100
     )
     return len(subscriptions.data)
+
+
+import logging
+logger = logging.getLogger(__name__)

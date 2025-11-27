@@ -60,8 +60,11 @@ class OAuthProviderManager:
         
         provider_config = self.providers[provider]
         
-        # Get client ID from settings (would be configured per provider)
-        client_id = getattr(settings, f"{provider.upper()}_CLIENT_ID", "")
+        # Get client ID from settings (check both naming conventions)
+        if provider == "google":
+            client_id = getattr(settings, "GOOGLE_OAUTH_CLIENT_ID", "") or getattr(settings, "GOOGLE_CLIENT_ID", "")
+        else:
+            client_id = getattr(settings, f"{provider.upper()}_CLIENT_ID", "")
         
         params = {
             "client_id": client_id,
@@ -90,8 +93,12 @@ class OAuthProviderManager:
             raise ValueError(f"Unsupported provider: {provider}")
         
         provider_config = self.providers[provider]
-        client_id = getattr(settings, f"{provider.upper()}_CLIENT_ID", "")
-        client_secret = getattr(settings, f"{provider.upper()}_CLIENT_SECRET", "")
+        if provider == "google":
+            client_id = getattr(settings, "GOOGLE_OAUTH_CLIENT_ID", "") or getattr(settings, "GOOGLE_CLIENT_ID", "")
+            client_secret = getattr(settings, "GOOGLE_OAUTH_CLIENT_SECRET", "") or getattr(settings, "GOOGLE_CLIENT_SECRET", "")
+        else:
+            client_id = getattr(settings, f"{provider.upper()}_CLIENT_ID", "")
+            client_secret = getattr(settings, f"{provider.upper()}_CLIENT_SECRET", "")
         
         async with httpx.AsyncClient() as client:
             response = await client.post(

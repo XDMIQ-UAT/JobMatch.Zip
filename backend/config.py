@@ -6,6 +6,7 @@ from pydantic import field_validator, model_validator
 from typing import List, Union
 import json
 import sys
+import os
 
 
 class Settings(BaseSettings):
@@ -41,8 +42,10 @@ class Settings(BaseSettings):
     OLLAMA_MODEL: str = "llama3.2"
     
     # Application
-    SECRET_KEY: str = "change-me-in-production"
-    ENVIRONMENT: str = "development"
+    # SECRET_KEY must be set via environment variable in production
+    # Generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "change-me-in-production")
+    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     
     @model_validator(mode='after')
     def validate_secret_key(self):
@@ -91,8 +94,10 @@ class Settings(BaseSettings):
     FACEBOOK_CLIENT_SECRET: str = ""
     LINKEDIN_CLIENT_ID: str = ""
     LINKEDIN_CLIENT_SECRET: str = ""
-    GOOGLE_CLIENT_ID: str = ""
-    GOOGLE_CLIENT_SECRET: str = ""
+    GOOGLE_CLIENT_ID: str = ""  # Legacy name - also check GOOGLE_OAUTH_CLIENT_ID
+    GOOGLE_CLIENT_SECRET: str = ""  # Legacy name - also check GOOGLE_OAUTH_CLIENT_SECRET
+    GOOGLE_OAUTH_CLIENT_ID: str = ""  # Preferred name
+    GOOGLE_OAUTH_CLIENT_SECRET: str = ""  # Preferred name
     MICROSOFT_CLIENT_ID: str = ""
     MICROSOFT_CLIENT_SECRET: str = ""
     APPLE_CLIENT_ID: str = ""
