@@ -1,0 +1,93 @@
+{
+  "id": "business-continuity-agent",
+  "name": "Business Continuity Officer Agent",
+  "version": "1.0.0",
+  "description": "Ensures business continuity through runbook maintenance, procedure documentation, and disaster recovery planning",
+  "category": "operations",
+  
+  "capabilities": [
+    "Runbook maintenance and updates",
+    "Business continuity plan documentation",
+    "Disaster recovery procedure management",
+    "Critical system dependency tracking",
+    "Procedure documentation and validation",
+    "Workflow documentation for stateless systems",
+    "Incident response procedure updates",
+    "Recovery procedure validation"
+  ],
+  
+  "commands": {
+    "audit_runbooks": {
+      "description": "Audit all runbooks for completeness and currency",
+      "script": "python E:\\agents\\business-continuity-agent\\continuity_officer.py audit_runbooks"
+    },
+    "document_workflow": {
+      "description": "Document a stateless workflow in runbook format",
+      "script": "python E:\\agents\\business-continuity-agent\\continuity_officer.py document_workflow --workflow_id \"{{ workflow_id }}\""
+    },
+    "create_recovery_procedure": {
+      "description": "Create recovery procedure for a system or workflow",
+      "script": "python E:\\agents\\business-continuity-agent\\continuity_officer.py create_recovery --system \"{{ system_name }}\" --scenario \"{{ scenario }}\""
+    },
+    "validate_procedures": {
+      "description": "Validate that all critical procedures are documented",
+      "script": "python E:\\agents\\business-continuity-agent\\continuity_officer.py validate_procedures"
+    },
+    "generate_report": {
+      "description": "Generate business continuity status report",
+      "script": "python E:\\agents\\business-continuity-agent\\continuity_officer.py generate_report"
+    },
+    "assess_trust": {
+      "description": "Assess trust level based on version control maturity and rollback capability",
+      "script": "python E:\\agents\\business-continuity-agent\\trust_assessment.py"
+    }
+  },
+  
+  "config": {
+    "runbook_paths": {
+      "base_directory": "E:\\zip-jobmatch\\business\\runbooks",
+      "template_file": "E:\\zip-jobmatch\\business\\runbooks\\template.md",
+      "workflow_docs": "E:\\zip-jobmatch\\.cursor\\workflows"
+    },
+    "critical_systems": [
+      "Stateless Workflow Engine",
+      "Agent Runtime System",
+      "Database",
+      "Twilio Integration",
+      "Alert System"
+    ]
+  },
+  
+  "integrations": [
+    {
+      "agent": "historian-agent",
+      "purpose": "Track historical incidents and learnings for runbook updates"
+    },
+    {
+      "agent": "infrastructure-agent",
+      "purpose": "Monitor infrastructure changes that require runbook updates"
+    },
+    {
+      "agent": "change-management-agent",
+      "purpose": "Document change procedures and recovery steps"
+    },
+    {
+      "agent": "alert-agent",
+      "purpose": "Ensure alert procedures are documented in runbooks"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\business-continuity-agent",
+    "python_file": "E:\\agents\\business-continuity-agent\\continuity_officer.py",
+    "yaml_file": "E:\\agents\\business-continuity-agent\\agent.yaml",
+    "runbooks_directory": "E:\\zip-jobmatch\\business\\runbooks"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\business-continuity-agent\\continuity_officer.py",
+    "yaml_file": "E:\\agents\\business-continuity-agent\\agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\business-continuity-agent.json"
+  }
+}
+

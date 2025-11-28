@@ -1,0 +1,78 @@
+{
+  "id": "dash-agent",
+  "name": "Dash Agent",
+  "version": "1.0.0",
+  "description": "Personal Assistant Agent - Handles incoming phone calls and manages call routing",
+  "category": "operations",
+  
+  "capabilities": [
+    "incoming-call-handling",
+    "call-routing",
+    "speech-recognition",
+    "intent-detection",
+    "call-forwarding",
+    "voicemail-management",
+    "call-statistics"
+  ],
+  
+  "triggers": [
+    {
+      "type": "webhook",
+      "endpoint": "/dash/incoming",
+      "method": "POST",
+      "description": "Twilio webhook for incoming calls"
+    }
+  ],
+  
+  "commands": {
+    "handle_call": {
+      "description": "Handle incoming call via webhook",
+      "script": "python E:\\agents\\dash-agent\\dash_agent.py handle_call"
+    },
+    "get_stats": {
+      "description": "Get call statistics",
+      "script": "python E:\\agents\\dash-agent\\dash_agent.py stats"
+    },
+    "start_server": {
+      "description": "Start webhook server",
+      "script": "python E:\\agents\\dash-agent\\webhook_server.py"
+    }
+  },
+  
+  "config": {
+    "phone_numbers": {
+      "public_phone": "+16269959974",
+      "personal_cell": "+12132484250"
+    },
+    "routing_rules": {
+      "forward_keywords": [
+        "urgent", "emergency", "critical", "immediate",
+        "personal", "family", "important"
+      ],
+      "dash_handles": [
+        "business", "work", "appointment", "schedule",
+        "question", "information", "help"
+      ],
+      "business_hours": {
+        "start": 9,
+        "end": 17,
+        "timezone": "America/Los_Angeles"
+      }
+    }
+  },
+  
+  "context": {
+    "workspace": "E:\\agents",
+    "script_location": "E:\\agents\\dash-agent",
+    "calls_directory": "E:\\agents\\dash-agent\\calls"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\dash-agent\\webhook_server.py",
+    "yaml_file": "E:\\agents\\dash-agent\\agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\dash-agent.json"
+  }
+}
+
+
+

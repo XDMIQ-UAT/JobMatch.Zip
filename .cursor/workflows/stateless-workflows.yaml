@@ -1,0 +1,293 @@
+# Stateless Workflow Definitions
+# These workflows can be turned on/off without losing logic or requiring rebuilds
+# Version: 1.0.0
+
+workflows:
+  # Branding Review Workflow
+  branding-review:
+    name: "Branding Review Workflow"
+    description: "Automated branding review for new product names and features"
+    enabled: true
+    version: "1.0.0"
+    
+    triggers:
+      - type: "manual"
+        description: "Triggered manually via @branding-agent"
+      - type: "file_change"
+        pattern: "**/product-names.txt"
+        description: "Triggered when product names file changes"
+    
+    steps:
+      - id: "step-1"
+        agent: "branding-agent"
+        command: "review_name"
+        inputs:
+          name: "{{ input.name }}"
+          item_type: "{{ input.item_type }}"
+          context: "{{ input.context }}"
+          reviewer: "automated-workflow"
+        outputs:
+          review_id: "{{ result.id }}"
+          status: "{{ result.status }}"
+          severity: "{{ result.severity }}"
+      
+      - id: "step-2"
+        agent: "alert-agent"
+        command: "send_alert"
+        condition: "{{ step-1.severity }} in ['critical', 'high']"
+        inputs:
+          severity: "{{ step-1.severity }}"
+          source: "branding-agent"
+          message: "Branding issue detected: {{ step-1.name }}"
+          details: "{{ step-1.concerns | join(', ') }}"
+      
+      - id: "step-3"
+        agent: "i18n-agent"
+        command: "review_content"
+        condition: "{{ step-1.status }} == 'pending'"
+        inputs:
+          content: "{{ input.name }}"
+          content_type: "branding_name"
+          location: "{{ input.context }}"
+          reviewer: "automated-workflow"
+    
+    outputs:
+      - review_id: "{{ step-1.review_id }}"
+      - status: "{{ step-1.status }}"
+      - requires_attention: "{{ step-1.severity }} in ['critical', 'high']"
+
+  # Copy Review Workflow
+  copy-review:
+    name: "Copy Review Workflow"
+    description: "Automated copy review for documentation and UI text"
+    enabled: true
+    version: "1.0.0"
+    
+    triggers:
+      - type: "manual"
+        description: "Triggered manually via @copy-review-agent"
+      - type: "file_change"
+        pattern: "**/*.{md,tsx,ts,jsx,js}"
+        description: "Triggered when documentation or UI files change"
+    
+    steps:
+      - id: "step-1"
+        agent: "copy-review-agent"
+        command: "review_content"
+        inputs:
+          text: "{{ input.text }}"
+          content_type: "{{ input.content_type }}"
+          location: "{{ input.location }}"
+          reviewer: "automated-workflow"
+        outputs:
+          review_id: "{{ result.id }}"
+          issues: "{{ result.issues }}"
+          severity: "{{ result.severity }}"
+      
+      - id: "step-2"
+        agent: "i18n-agent"
+        command: "review_content"
+        condition: "{{ step-1.severity }} != 'critical'"
+        inputs:
+          content: "{{ input.text }}"
+          content_type: "{{ input.content_type }}"
+          location: "{{ input.location }}"
+          reviewer: "automated-workflow"
+      
+      - id: "step-3"
+        agent: "alert-agent"
+        command: "send_alert"
+        condition: "{{ step-1.severity }} == 'critical'"
+        inputs:
+          severity: "critical"
+          source: "copy-review-agent"
+          message: "Critical copy issue in {{ input.location }}"
+          details: "{{ step-1.issues | join('; ') }}"
+    
+    outputs:
+      - review_id: "{{ step-1.review_id }}"
+      - copy_issues: "{{ step-1.issues }}"
+      - i18n_issues: "{{ step-2.concerns }}"
+
+  # Pre-Deployment Check Workflow
+  pre-deployment:
+    name: "Pre-Deployment Check Workflow"
+    description: "Validate system readiness before deployment"
+    enabled: true
+    version: "1.0.0"
+    
+    triggers:
+      - type: "manual"
+        description: "Triggered manually via @precheck-agent"
+      - type: "git_push"
+        branch: "main"
+        description: "Triggered before deployment on main branch push"
+    
+    steps:
+      - id: "step-1"
+        agent: "precheck-agent"
+        command: "run_project_prechecks"
+        inputs: {}
+        outputs:
+          passed: "{{ result }}"
+          failed_checks: "{{ result.failed_checks }}"
+      
+      - id: "step-2"
+        agent: "precheck-agent"
+        command: "run_alert_agent_prechecks"
+        condition: "{{ step-1.passed }} == true"
+        inputs: {}
+        outputs:
+          passed: "{{ result }}"
+      
+      - id: "step-3"
+        agent: "alert-agent"
+        command: "send_alert"
+        condition: "{{ step-1.passed }} == false or {{ step-2.passed }} == false"
+        inputs:
+          severity: "critical"
+          source: "precheck-agent"
+          message: "Pre-deployment checks failed"
+          details: "{{ step-1.failed_checks | join(', ') }}"
+    
+    outputs:
+      - deployment_ready: "{{ step-1.passed }} and {{ step-2.passed }}"
+      - failed_checks: "{{ step-1.failed_checks }}"
+
+  # Security Review Workflow
+  security-review:
+    name: "Security Review Workflow"
+    description: "Comprehensive security review for code changes"
+    enabled: true
+    version: "1.0.0"
+    
+    triggers:
+      - type: "manual"
+        description: "Triggered manually via @crypto-agent or @threat-model-agent"
+      - type: "file_change"
+        pattern: "**/*.{py,ts,tsx,js,jsx}"
+        description: "Triggered when code files change"
+    
+    steps:
+      - id: "step-1"
+        agent: "crypto-agent"
+        command: "review_code"
+        inputs:
+          code: "{{ input.code }}"
+          filepath: "{{ input.filepath }}"
+        outputs:
+          issues: "{{ result }}"
+          critical_count: "{{ result | selectattr('severity', 'equalto', 'CRITICAL') | list | length }}"
+      
+      - id: "step-2"
+        agent: "threat-model-agent"
+        command: "identify_trust_boundaries"
+        inputs:
+          component_name: "{{ input.component_name }}"
+          data_flow: "{{ input.data_flow }}"
+        outputs:
+          threats: "{{ result }}"
+          critical_threats: "{{ result | selectattr('severity', 'equalto', 'CRITICAL') | list | length }}"
+      
+      - id: "step-3"
+        agent: "alert-agent"
+        command: "send_alert"
+        condition: "{{ step-1.critical_count }} > 0 or {{ step-2.critical_threats }} > 0"
+        inputs:
+          severity: "critical"
+          source: "security-review-workflow"
+          message: "Critical security issues detected"
+          details: "Crypto: {{ step-1.critical_count }}, Threats: {{ step-2.critical_threats }}"
+    
+    outputs:
+      - crypto_issues: "{{ step-1.issues }}"
+      - threat_issues: "{{ step-2.threats }}"
+      - requires_attention: "{{ step-1.critical_count }} > 0 or {{ step-2.critical_threats }} > 0"
+
+  # Call Handling Workflow (Dash Agent)
+  call-handling:
+    name: "Call Handling Workflow"
+    description: "Handle incoming phone calls and route appropriately"
+    enabled: true
+    version: "1.0.0"
+    
+    triggers:
+      - type: "webhook"
+        endpoint: "/dash/incoming"
+        method: "POST"
+        description: "Triggered by Twilio webhook for incoming calls"
+    
+    steps:
+      - id: "step-1"
+        agent: "dash-agent"
+        command: "handle_call"
+        inputs:
+          From: "{{ webhook.From }}"
+          To: "{{ webhook.To }}"
+          CallSid: "{{ webhook.CallSid }}"
+          CallStatus: "{{ webhook.CallStatus }}"
+        outputs:
+          call_id: "{{ result.call_id }}"
+          routing_decision: "{{ result.routing_decision }}"
+      
+      - id: "step-2"
+        agent: "alert-agent"
+        command: "send_alert"
+        condition: "{{ step-1.routing_decision }} == 'forward'"
+        inputs:
+          severity: "medium"
+          source: "dash-agent"
+          message: "Call forwarded: {{ webhook.From }}"
+          details: "Call ID: {{ step-1.call_id }}"
+    
+    outputs:
+      - call_id: "{{ step-1.call_id }}"
+      - routing_decision: "{{ step-1.routing_decision }}"
+      - twiml_response: "{{ step-1.twiml }}"
+
+# Workflow Engine Configuration
+engine:
+  name: "Stateless Agent Workflow Engine"
+  version: "1.0.0"
+  type: "stateless"
+  
+  # Execution settings
+  execution:
+    mode: "stateless"  # No state persistence between runs
+    timeout: 300  # 5 minutes max per workflow
+    retry:
+      max_attempts: 3
+      backoff: "exponential"
+      initial_delay: 1  # seconds
+    
+    # No persistent storage
+    storage:
+      type: "none"  # Stateless - no storage
+      temp_variables: true  # Only temporary variables during execution
+  
+  # Agent configuration
+  agents:
+    base_path: "E:\\agents"
+    cursor_config_path: "E:\\zip-jobmatch\\.cursor\\agents"
+    registry_file: "E:\\zip-jobmatch\\.cursor\\agents\\agents-registry.json"
+  
+  # Workflow file locations
+  workflows:
+    base_path: "E:\\zip-jobmatch\\.cursor\\workflows"
+    definitions_file: "stateless-workflows.yaml"
+    version_control: true  # Keep workflows in Git
+  
+  # How to turn off workflows
+  shutdown:
+    method: "disable"  # Set enabled: false in workflow definition
+    alternative: "remove_trigger"  # Remove or disable triggers
+    safe: true  # No data loss - workflows are stateless
+
+# Workflow Status Tracking (Optional - for monitoring only)
+monitoring:
+  enabled: true
+  log_executions: true
+  log_path: "E:\\zip-jobmatch\\workflow-logs"
+  retention_days: 30
+  # Note: Logs are for monitoring only, not required for workflow execution
+

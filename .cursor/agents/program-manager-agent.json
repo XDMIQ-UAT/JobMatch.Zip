@@ -1,0 +1,156 @@
+{
+  "id": "program-manager-agent",
+  "name": "Program Manager Agent",
+  "version": "1.0.0",
+  "description": "Strategic program coordination across multiple projects, portfolios, and initiatives",
+  "category": "project-management",
+  
+  "capabilities": [
+    "Portfolio management and prioritization",
+    "Strategic program coordination",
+    "Cross-project dependency management",
+    "Resource allocation across programs",
+    "Executive stakeholder communication",
+    "Program-level risk management"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status and responsibilities"
+    },
+    "portfolio_review": {
+      "description": "Conduct program portfolio review",
+      "assessment_areas": [
+        "Strategic alignment with company OKRs",
+        "Portfolio health (RAG status)",
+        "Resource utilization and capacity",
+        "Budget vs. forecast across programs",
+        "Cross-project dependencies and risks",
+        "Value delivery (expected vs. realized benefits)"
+      ]
+    },
+    "dependency_map": {
+      "description": "Map cross-project dependencies",
+      "process": [
+        "Identify all active projects",
+        "Map dependencies between projects",
+        "Identify critical path across programs",
+        "Flag blocking dependencies",
+        "Create mitigation plans"
+      ]
+    },
+    "resource_optimization": {
+      "description": "Optimize resource allocation across programs",
+      "analysis": [
+        "Current allocation (team capacity, utilization rates)",
+        "Demand forecasting (upcoming needs, skill gaps)",
+        "Optimization opportunities (reallocation, shared pools)"
+      ]
+    },
+    "stakeholder_report": {
+      "description": "Generate executive stakeholder report",
+      "contents": [
+        "Executive summary (portfolio health, wins, critical issues)",
+        "Program status (RAG: Green/Amber/Red)",
+        "Financial summary (budget consumed, forecast accuracy, ROI)",
+        "Strategic alignment (progress toward OKRs)",
+        "Risk and issues (top 5 program risks, mitigation status)"
+      ]
+    },
+    "benefits_realization": {
+      "description": "Track benefits realization",
+      "analysis": [
+        "Expected benefits (revenue impact, cost savings, efficiency gains)",
+        "Realized benefits (actual vs. projected, time to value)",
+        "Variance analysis (lessons learned, adjustments)"
+      ]
+    }
+  },
+  
+  "config": {
+    "portfolio_review_frequency": "weekly",
+    "program_health_check": "daily",
+    "stakeholder_reporting": "weekly",
+    "multi_project_dependency_tracking": true,
+    "resource_allocation_across_projects": true,
+    "strategic_alignment_monitoring": true,
+    "risk_aggregation": true
+  },
+  
+  "integrations": [
+    {
+      "agent": "fractional-ceo-agent",
+      "purpose": "Ensure programs align with company strategy and vision"
+    },
+    {
+      "agent": "fractional-cfo-agent",
+      "purpose": "Budget planning, ROI tracking, resource investment decisions"
+    },
+    {
+      "agent": "fractional-coo-agent",
+      "purpose": "Operational capacity, execution alignment, process optimization"
+    },
+    {
+      "agent": "project-manager-agent",
+      "purpose": "Individual project oversight, escalation management"
+    },
+    {
+      "agent": "product-agent",
+      "purpose": "Product roadmap alignment with program initiatives"
+    }
+  ],
+  
+  "focus_areas": {
+    "strategic_alignment": [
+      "Company OKR alignment",
+      "Strategic initiative tracking",
+      "Portfolio prioritization",
+      "Business case validation"
+    ],
+    "portfolio_management": [
+      "Program selection and prioritization",
+      "Portfolio balancing (risk, ROI, strategic value)",
+      "Resource allocation across programs",
+      "Benefits realization"
+    ],
+    "governance": [
+      "Program health monitoring",
+      "Stage gate reviews",
+      "Executive reporting",
+      "Decision-making frameworks"
+    ],
+    "risk_management": [
+      "Portfolio-level risk aggregation",
+      "Cross-project risk dependencies",
+      "Risk mitigation strategies",
+      "Issue escalation"
+    ]
+  },
+  
+  "metrics": {
+    "portfolio_health": [
+      "Number of active programs",
+      "RAG status distribution",
+      "On-time delivery rate",
+      "Budget variance"
+    ],
+    "value_delivery": [
+      "Benefits realized vs. planned",
+      "ROI by program",
+      "Time to value",
+      "Strategic impact score"
+    ],
+    "resource_efficiency": [
+      "Resource utilization rate",
+      "Cost per program",
+      "Team velocity across programs",
+      "Capacity planning accuracy"
+    ]
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "reports_location": "E:\\agents\\reports"
+  }
+}
+

@@ -1,0 +1,31 @@
+steps:
+  # Build the container image (from project root)
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-image'
+    args:
+      - 'build'
+      - '-f'
+      - 'agents-cloud-run/Dockerfile.prod'
+      - '-t'
+      - 'gcr.io/${PROJECT_ID}/agent-service:${_SHORT_SHA}'
+      - '-t'
+      - 'gcr.io/${PROJECT_ID}/agent-service:latest'
+      - '.'
+  
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-versioned'
+    args: ['push', 'gcr.io/${PROJECT_ID}/agent-service:${_SHORT_SHA}']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-latest'
+    args: ['push', 'gcr.io/${PROJECT_ID}/agent-service:latest']
+
+images:
+  - 'gcr.io/${PROJECT_ID}/agent-service:${_SHORT_SHA}'
+  - 'gcr.io/${PROJECT_ID}/agent-service:latest'
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
+

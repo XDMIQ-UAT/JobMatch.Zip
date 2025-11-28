@@ -1,0 +1,252 @@
+{
+  "timestamp": "2025-11-26T20:05:17.353476",
+  "scan_path": "E:\\",
+  "projects": [],
+  "codebases": [
+    {
+      "path": "E:\\After-Its-Too-Late",
+      "name": "After-Its-Too-Late",
+      "type": "git"
+    },
+    {
+      "path": "E:\\agents",
+      "name": "agents",
+      "type": "git"
+    },
+    {
+      "path": "E:\\Autowrite",
+      "name": "Autowrite",
+      "type": "git"
+    },
+    {
+      "path": "E:\\clipboard-to-pieces",
+      "name": "clipboard-to-pieces",
+      "type": "python"
+    },
+    {
+      "path": "E:\\cloud-yourl",
+      "name": "cloud-yourl",
+      "type": "python"
+    },
+    {
+      "path": "E:\\cloud-yourl-apps-msft",
+      "name": "cloud-yourl-apps-msft",
+      "type": "git"
+    },
+    {
+      "path": "E:\\cloud-yourl-cb",
+      "name": "cloud-yourl-cb",
+      "type": "node"
+    },
+    {
+      "path": "E:\\cloud-yourl-ext",
+      "name": "cloud-yourl-ext",
+      "type": "node"
+    },
+    {
+      "path": "E:\\freeze-frame",
+      "name": "freeze-frame",
+      "type": "node"
+    },
+    {
+      "path": "E:\\headshot-generator",
+      "name": "headshot-generator",
+      "type": "python"
+    },
+    {
+      "path": "E:\\human-generator-local",
+      "name": "human-generator-local",
+      "type": "python"
+    },
+    {
+      "path": "E:\\ICI",
+      "name": "ICI",
+      "type": "git"
+    },
+    {
+      "path": "E:\\Iggy",
+      "name": "Iggy",
+      "type": "python"
+    },
+    {
+      "path": "E:\\myl",
+      "name": "myl",
+      "type": "node"
+    },
+    {
+      "path": "E:\\myl-cli",
+      "name": "myl-cli",
+      "type": "python"
+    },
+    {
+      "path": "E:\\myl.zip",
+      "name": "myl.zip",
+      "type": "git"
+    },
+    {
+      "path": "E:\\mylzip",
+      "name": "mylzip",
+      "type": "node"
+    },
+    {
+      "path": "E:\\net-herrman-bryant-",
+      "name": "net-herrman-bryant-",
+      "type": "git"
+    },
+    {
+      "path": "E:\\obsSanityCheck",
+      "name": "obsSanityCheck",
+      "type": "node"
+    },
+    {
+      "path": "E:\\org-lizaceves-wp",
+      "name": "org-lizaceves-wp",
+      "type": "node"
+    },
+    {
+      "path": "E:\\Paperless-ngx",
+      "name": "Paperless-ngx",
+      "type": "git"
+    },
+    {
+      "path": "E:\\sharefast-www",
+      "name": "sharefast-www",
+      "type": "node"
+    },
+    {
+      "path": "E:\\Skip-Pause",
+      "name": "Skip-Pause",
+      "type": "python"
+    },
+    {
+      "path": "E:\\Tests",
+      "name": "Tests",
+      "type": "git"
+    },
+    {
+      "path": "E:\\wwi",
+      "name": "wwi",
+      "type": "node"
+    },
+    {
+      "path": "E:\\yourl.cloud",
+      "name": "yourl.cloud",
+      "type": "node"
+    },
+    {
+      "path": "E:\\Zaido",
+      "name": "Zaido",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-jobmatch",
+      "name": "zip-jobmatch",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-myl-dev",
+      "name": "zip-myl-dev",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-myl-experience",
+      "name": "zip-myl-experience",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-myl-google-drive",
+      "name": "zip-myl-google-drive",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-myl-memories",
+      "name": "zip-myl-memories",
+      "type": "python"
+    },
+    {
+      "path": "E:\\zip-myl-microsoft-windows",
+      "name": "zip-myl-microsoft-windows",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-myl-mykeys-api",
+      "name": "zip-myl-mykeys-api",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-myl-obsidian",
+      "name": "zip-myl-obsidian",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-myl-vscode-addin",
+      "name": "zip-myl-vscode-addin",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-myl-www",
+      "name": "zip-myl-www",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-sharefast-api",
+      "name": "zip-sharefast-api",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-sharefast-app",
+      "name": "zip-sharefast-app",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-sharefast-business",
+      "name": "zip-sharefast-business",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-sharefast-mobile",
+      "name": "zip-sharefast-mobile",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-stuff-connector",
+      "name": "zip-stuff-connector",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip-trustedadvisors-www",
+      "name": "zip-trustedadvisors-www",
+      "type": "python"
+    },
+    {
+      "path": "E:\\zip-vexo-api",
+      "name": "zip-vexo-api",
+      "type": "python"
+    },
+    {
+      "path": "E:\\zip-vexo-www",
+      "name": "zip-vexo-www",
+      "type": "git"
+    },
+    {
+      "path": "E:\\zip-yes-design",
+      "name": "zip-yes-design",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip.myl.dev.chat",
+      "name": "zip.myl.dev.chat",
+      "type": "python"
+    },
+    {
+      "path": "E:\\zip.myl.dev.zaido.chromium",
+      "name": "zip.myl.dev.zaido.chromium",
+      "type": "node"
+    },
+    {
+      "path": "E:\\zip.myl.dev.zaido.gchat",
+      "name": "zip.myl.dev.zaido.gchat",
+      "type": "node"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "timestamp": "2025-11-26T20:05:17.440010",
+  "agents_run": [
+    {
+      "agent": "fractional-ceo-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "fractional-cfo-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "fractional-coo-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "principal-dev-agent",
+      "status": "success",
+      "commands_run": [
+        {
+          "command": "review",
+          "success": true
+        },
+        {
+          "command": "analyze",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "git-project-manager-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        },
+        {
+          "command": "scan_repos",
+          "success": false
+        },
+        {
+          "command": "work",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "project-manager-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "program-manager-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "product-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "change-management-agent",
+      "status": "success",
+      "commands_run": [
+        {
+          "command": "healthcheck",
+          "success": true
+        },
+        {
+          "command": "assess",
+          "success": true
+        }
+      ]
+    },
+    {
+      "agent": "historian-agent",
+      "status": "success",
+      "commands_run": [
+        {
+          "command": "record",
+          "success": true
+        }
+      ]
+    },
+    {
+      "agent": "data-governance-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "dev-sync-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "infrastructure-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "review-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "link-validation-agent",
+      "status": "success",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": true
+        },
+        {
+          "command": "validate",
+          "success": false
+        }
+      ]
+    },
+    {
+      "agent": "branding-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "copy-review-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "i18n-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "precheck-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "uat-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "crypto-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "threat-model-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "alert-agent",
+      "status": "not_found",
+      "commands_run": []
+    },
+    {
+      "agent": "dash-agent",
+      "status": "failed",
+      "commands_run": [
+        {
+          "command": "status",
+          "success": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 24,
+    "successful": 4,
+    "failed": 20,
+    "skipped": 0
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "i18n-agent",
+  "name": "Internationalization (i18n) Review Agent",
+  "version": "1.0.0",
+  "description": "Review content for international compatibility and localization concerns",
+  "category": "specialized",
+  
+  "capabilities": [
+    "International compatibility review",
+    "Localization concern detection",
+    "Cultural reference identification",
+    "Idiom detection",
+    "Formatting review",
+    "Character encoding validation",
+    "Text directionality checking",
+    "Concatenation pattern detection"
+  ],
+  
+  "commands": {
+    "review_content": {
+      "description": "Perform comprehensive i18n review",
+      "script": "python E:\\agents\\groups\\c-suite\\i18n-agent.py",
+      "python_method": "review_content(content, content_type, location, reviewer)"
+    },
+    "quick_check": {
+      "description": "Quick pass/fail check",
+      "script": "python E:\\agents\\groups\\c-suite\\i18n-agent.py",
+      "python_method": "quick_check(content, content_type, location)"
+    },
+    "generate_report": {
+      "description": "Generate i18n review report",
+      "script": "python E:\\agents\\groups\\c-suite\\i18n-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "target_locales": [
+      "en-US", "en-GB", "es-ES", "es-MX", "fr-FR", "de-DE", "it-IT",
+      "pt-BR", "pt-PT", "ru-RU", "ja-JP", "ko-KR", "zh-CN", "zh-TW",
+      "ar-SA", "hi-IN"
+    ],
+    "cultural_patterns": {
+      "idioms": {"severity": "high"},
+      "cultural_references": {"severity": "medium"},
+      "date_formats": {"severity": "high"},
+      "measurements": {"severity": "medium"}
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Send alerts for critical i18n issues affecting many locales"
+    },
+    {
+      "agent": "branding-agent",
+      "purpose": "Share internationalization concerns for branding"
+    },
+    {
+      "agent": "copy-review-agent",
+      "purpose": "Review content together for i18n and clarity"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\c-suite",
+    "python_file": "E:\\agents\\groups\\c-suite\\i18n-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\i18n-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\c-suite\\i18n-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\i18n-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\i18n-agent.json"
+  }
+}
+
+
+

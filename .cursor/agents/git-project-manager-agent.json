@@ -1,0 +1,155 @@
+{
+  "id": "git-project-manager-agent",
+  "name": "Git Project Manager Agent",
+  "version": "2.0.0",
+  "description": "Actively manages GitHub/GitLab projects, issues, PRs, roadmaps, and project boards for all repositories",
+  "category": "project-management",
+  
+  "capabilities": [
+    "Repository discovery and scanning",
+    "Issue management from code comments",
+    "Project board maintenance",
+    "Roadmap management",
+    "PR monitoring and tracking",
+    "Repository health checks"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status",
+      "script": "pwsh -File E:\\agents\\git-project-manager-agent\\git-pm-work.ps1"
+    },
+    "work": {
+      "description": "Run agent work cycle",
+      "script": "pwsh -File E:\\agents\\git-project-manager-agent\\git-pm-work.ps1"
+    },
+    "scan_repos": {
+      "description": "Scan E:\\ for git repositories and show status",
+      "action": "List all repositories with their status, branches, and uncommitted changes"
+    },
+    "sync_projects": {
+      "description": "Sync GitHub/GitLab projects",
+      "steps": [
+        "Check each repo for remote URL",
+        "Verify project exists on GitHub/GitLab",
+        "Create project if missing",
+        "Update project description and settings",
+        "Enable Issues, Projects, Wiki as needed"
+      ]
+    },
+    "sync_issues": {
+      "description": "Sync issues from code comments (TODO, FIXME, BUG)",
+      "patterns": [
+        "// TODO: ...",
+        "// FIXME: ...",
+        "// BUG: ...",
+        "# TODO: ...",
+        "/* TODO: ... */"
+      ]
+    },
+    "update_roadmaps": {
+      "description": "Update project roadmaps",
+      "horizon_months": 6
+    },
+    "manage_prs": {
+      "description": "Manage pull requests across repositories",
+      "actions": [
+        "List open PRs",
+        "Check review status",
+        "Flag PRs needing attention",
+        "Update PR dashboard"
+      ]
+    },
+    "health_check": {
+      "description": "Check repository health metrics",
+      "checks": [
+        "Uncommitted changes",
+        "Sync status with remote",
+        "README.md presence",
+        "Branch status"
+      ]
+    }
+  },
+  
+  "config": {
+    "scan_paths": ["E:\\"],
+    "scan_depth": 1,
+    "exclude_paths": ["E:\\node_modules", "E:\\temp", "E:\\cache"],
+    "primary_platform": "github",
+    "auto_create_projects": true,
+    "auto_create_issues": true,
+    "auto_create_prs": false,
+    "maintain_project_boards": true,
+    "maintain_roadmap": true,
+    "roadmap_horizon_months": 6
+  },
+  
+  "integrations": [
+    {
+      "agent": "program-manager-agent",
+      "purpose": "Portfolio-level coordination"
+    },
+    {
+      "agent": "project-manager-agent",
+      "purpose": "Individual project coordination"
+    },
+    {
+      "agent": "product-agent",
+      "purpose": "Feature prioritization"
+    },
+    {
+      "agent": "dev-sync-agent",
+      "purpose": "Development coordination"
+    },
+    {
+      "agent": "change-management-agent",
+      "purpose": "Change tracking"
+    }
+  ],
+  
+  "workflows": {
+    "repository_discovery": {
+      "trigger": "every_10_minutes",
+      "steps": [
+        "Scan E:\\ for git repositories",
+        "Check for remote URLs",
+        "Track new repositories",
+        "Initialize project management"
+      ]
+    },
+    "issue_sync": {
+      "trigger": "every_30_minutes",
+      "steps": [
+        "Scan code for TODO/FIXME/BUG comments",
+        "Compare with existing issues",
+        "Create new issues as needed",
+        "Update existing issues",
+        "Auto-label and categorize"
+      ]
+    },
+    "project_board_maintenance": {
+      "trigger": "hourly",
+      "steps": [
+        "Update project board statuses",
+        "Move issues based on PR status",
+        "Archive completed items",
+        "Flag stale items"
+      ]
+    }
+  },
+  
+  "context": {
+    "workspace": "E:\\",
+    "script_location": "E:\\agents\\git-project-manager-agent",
+    "reports_location": "E:\\agents\\reports"
+  },
+  
+  "outputs": [
+    "E:\\agents\\reports\\git-repo-inventory.md",
+    "E:\\agents\\reports\\project-health-dashboard.md",
+    "E:\\agents\\reports\\roadmap-6month.md",
+    "E:\\agents\\reports\\pr-dashboard.md",
+    "E:\\agents\\reports\\issue-summary.md"
+  ]
+}
+

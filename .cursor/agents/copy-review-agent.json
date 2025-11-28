@@ -1,0 +1,76 @@
+{
+  "id": "copy-review-agent",
+  "name": "Copy Review Agent",
+  "version": "1.0.0",
+  "description": "Review documentation, UI text, and marketing copy for clarity and effectiveness",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Documentation review",
+    "UI text review",
+    "Marketing copy review",
+    "Content clarity assessment",
+    "Readability analysis",
+    "Tone consistency checking",
+    "Grammar validation",
+    "Awkward phrasing detection"
+  ],
+  
+  "commands": {
+    "review_content": {
+      "description": "Perform comprehensive copy review",
+      "script": "python E:\\agents\\groups\\c-suite\\copy-review-agent.py",
+      "python_method": "review_content(text, content_type, location, reviewer)"
+    },
+    "quick_check": {
+      "description": "Quick pass/fail check",
+      "script": "python E:\\agents\\groups\\c-suite\\copy-review-agent.py",
+      "python_method": "quick_check(text, content_type, location)"
+    },
+    "generate_report": {
+      "description": "Generate copy review report",
+      "script": "python E:\\agents\\groups\\c-suite\\copy-review-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "readability_checks": {
+      "sentence_too_long": 25,
+      "paragraph_too_long": 150,
+      "word_too_complex": 15
+    },
+    "awkward_patterns": {
+      "passive_voice": true,
+      "weak_verbs": true,
+      "filler_words": true,
+      "jargon_without_context": true
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Send alerts for critical copy issues"
+    },
+    {
+      "agent": "i18n-agent",
+      "purpose": "Share content for internationalization review"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\c-suite",
+    "python_file": "E:\\agents\\groups\\c-suite\\copy-review-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\copy-review-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\c-suite\\copy-review-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\copy-review-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\copy-review-agent.json"
+  }
+}
+
+
+

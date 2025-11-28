@@ -1,0 +1,89 @@
+{
+  "id": "infrastructure-agent",
+  "name": "Infrastructure Agent",
+  "version": "1.0.0",
+  "description": "Manage environments, services, and deployment pipelines",
+  "category": "operations",
+  
+  "capabilities": [
+    "Environment management (dev, staging, prod)",
+    "Service orchestration (Docker, Kubernetes)",
+    "Health monitoring and verification",
+    "Pre-deployment validation",
+    "State tracking and recovery"
+  ],
+  
+  "responsibilities": [
+    "Environment management (dev, staging, prod)",
+    "Service orchestration (Docker, Kubernetes)",
+    "Health monitoring and verification",
+    "Pre-deployment validation",
+    "State tracking and recovery"
+  ],
+  
+  "commands": {
+    "start": {
+      "description": "Start infrastructure services",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 up"
+    },
+    "stop": {
+      "description": "Stop infrastructure services",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 down"
+    },
+    "verify": {
+      "description": "Verify infrastructure health",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 verify"
+    },
+    "status": {
+      "description": "Check infrastructure status",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 status"
+    },
+    "restart": {
+      "description": "Restart infrastructure services",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 restart"
+    },
+    "logs": {
+      "description": "View infrastructure logs",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 logs"
+    },
+    "clean": {
+      "description": "Clean up infrastructure resources",
+      "script": "cd E:\\zip-jobmatch; .\\scripts\\infra-agent.ps1 clean"
+    }
+  },
+  
+  "config": {
+    "enabled": false,
+    "note": "Disabled: Docker build issues with Node.js 18.x deprecation",
+    "idle_threshold_seconds": 300,
+    "health_check_interval": 30,
+    "verification_required": true,
+    "state_file": ".warp/infra-state.json",
+    "project_path": "E:\\zip-jobmatch"
+  },
+  
+  "verify": {
+    "backend_api": "http://localhost:8000/health",
+    "frontend": "http://localhost:3000",
+    "database": "implicit via backend",
+    "cache": "optional (Redis)"
+  },
+  
+  "capabilities_required": {
+    "docker": true,
+    "kubernetes": "optional",
+    "monitoring": true,
+    "state_management": true
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "scripts_location": "E:\\zip-jobmatch\\scripts",
+    "docker_compose_files": [
+      "E:\\zip-jobmatch\\docker-compose.yml",
+      "E:\\zip-jobmatch\\docker-compose.dev.yml",
+      "E:\\zip-jobmatch\\docker-compose.prod.yml"
+    ]
+  }
+}
+

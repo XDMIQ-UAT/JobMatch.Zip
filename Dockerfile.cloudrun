@@ -1,0 +1,49 @@
+# Cloud Run Optimized Dockerfile for Backend
+# Uses PORT environment variable and gunicorn for production
+
+FROM python:3.11-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    postgresql-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy requirements and install Python dependencies
+COPY backend/requirements.txt ./backend/
+RUN pip install --no-cache-dir -r backend/requirements.txt
+RUN pip install --no-cache-dir gunicorn
+
+# Copy backend code
+COPY backend/ ./backend/
+COPY shared/ ./shared/
+
+# Copy VERSION file if it exists
+COPY VERSION* ./
+
+# Create non-root user for security
+RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
+USER appuser
+
+# Cloud Run sets PORT environment variable
+ENV PORT=8080
+ENV PYTHONPATH=/app
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:${PORT}/health || exit 1
+
+# Run with gunicorn, binding to PORT env var
+CMD exec gunicorn \
+    --bind 0.0.0.0:$PORT \
+    --workers 2 \
+    --threads 4 \
+    --timeout 120 \
+    --access-logfile - \
+    --error-logfile - \
+    --chdir backend \
+    main:app
+

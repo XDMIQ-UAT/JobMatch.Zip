@@ -1,0 +1,101 @@
+{
+  "id": "precheck-agent",
+  "name": "Pre-Deployment Check Agent",
+  "version": "1.0.0",
+  "description": "Validate that all dependencies and backends are ready before deployment",
+  "category": "development",
+  
+  "capabilities": [
+    "Dependency validation",
+    "Backend service verification",
+    "Configuration validation",
+    "Credential verification",
+    "Network connectivity checks",
+    "Pre-deployment readiness assessment"
+  ],
+  
+  "commands": {
+    "run_alert_agent_prechecks": {
+      "description": "Run all pre-checks for alert agent deployment",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "run_alert_agent_prechecks()"
+    },
+    "run_project_prechecks": {
+      "description": "Run general project pre-checks",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "run_project_prechecks()"
+    },
+    "check_twilio_backend": {
+      "description": "Check if Twilio backend is configured and accessible",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "check_twilio_backend()"
+    },
+    "check_python_package": {
+      "description": "Check if a Python package is installed",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "check_python_package(package_name)"
+    },
+    "check_environment_variable": {
+      "description": "Check if an environment variable is set",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "check_environment_variable(var_name)"
+    },
+    "check_file_exists": {
+      "description": "Check if a required file exists",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "check_file_exists(file_path)"
+    },
+    "check_network_endpoint": {
+      "description": "Check if a network endpoint is accessible",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "check_network_endpoint(url, timeout)"
+    },
+    "generate_report": {
+      "description": "Generate detailed pre-check report",
+      "script": "python E:\\agents\\groups\\engineers\\precheck-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "check_types": [
+      "dependency",
+      "backend",
+      "config",
+      "credential",
+      "network"
+    ],
+    "severity_levels": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ]
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Verify alert agent dependencies before deployment"
+    },
+    {
+      "agent": "infrastructure-agent",
+      "purpose": "Verify infrastructure readiness"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\engineers",
+    "python_file": "E:\\agents\\groups\\engineers\\precheck-agent.py",
+    "yaml_file": "E:\\agents\\groups\\engineers\\precheck-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\engineers\\precheck-agent.py",
+    "yaml_file": "E:\\agents\\groups\\engineers\\precheck-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\precheck-agent.json"
+  }
+}
+
+
+

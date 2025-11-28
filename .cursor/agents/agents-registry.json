@@ -1,0 +1,242 @@
+{
+  "version": "1.0.0",
+  "agents": [
+    {
+      "id": "fractional-ceo-agent",
+      "name": "Fractional CEO Agent",
+      "category": "c-suite",
+      "description": "Strategic leadership and executive decision-making for business growth and organizational alignment",
+      "file": "fractional-ceo-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "fractional-cfo-agent",
+      "name": "Fractional CFO Agent",
+      "category": "c-suite",
+      "description": "Financial strategy, planning, and stewardship to ensure sustainable growth and financial health",
+      "file": "fractional-cfo-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "fractional-coo-agent",
+      "name": "Fractional COO Agent",
+      "category": "c-suite",
+      "description": "Operational excellence and execution to scale the business efficiently and deliver results",
+      "file": "fractional-coo-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "principal-dev-agent",
+      "name": "Principal Development Agent",
+      "category": "development",
+      "description": "Senior-level AI application developer for high-level architecture and complex development tasks",
+      "file": "principal-dev-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "git-project-manager-agent",
+      "name": "Git Project Manager Agent",
+      "category": "project-management",
+      "description": "Actively manages GitHub/GitLab projects, issues, PRs, roadmaps, and project boards",
+      "file": "git-project-manager-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "project-manager-agent",
+      "name": "Project Manager Agent",
+      "category": "project-management",
+      "description": "Tactical project execution, sprint planning, task tracking, and team coordination",
+      "file": "project-manager-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "program-manager-agent",
+      "name": "Program Manager Agent",
+      "category": "project-management",
+      "description": "Strategic program coordination across multiple projects, portfolios, and initiatives",
+      "file": "program-manager-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "product-agent",
+      "name": "Product Agent",
+      "category": "product",
+      "description": "Product management, feature coordination, and stakeholder communication",
+      "file": "product-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "change-management-agent",
+      "name": "Change Management Agent",
+      "category": "operations",
+      "description": "Orchestrates and governs change velocity across business, IT, and UX domains",
+      "file": "change-management-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "historian-agent",
+      "name": "Historian Agent",
+      "category": "specialized",
+      "description": "Records and maintains the narrative history of all entities, projects, and their relationships",
+      "file": "historian-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "data-governance-agent",
+      "name": "Data Governance Agent",
+      "category": "specialized",
+      "description": "Steward filtered material with legal/medical review and compliance",
+      "file": "data-governance-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "dev-sync-agent",
+      "name": "Development Sync Agent",
+      "category": "development",
+      "description": "Coordinate parallel development across tools (Warp, Cursor, IDE)",
+      "file": "dev-sync-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "infrastructure-agent",
+      "name": "Infrastructure Agent",
+      "category": "operations",
+      "description": "Infrastructure management and monitoring",
+      "file": "infrastructure-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "review-agent",
+      "name": "Review Agent",
+      "category": "development",
+      "description": "Code and document review agent",
+      "file": "review-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "link-validation-agent",
+      "name": "Link Validation Agent",
+      "category": "specialized",
+      "description": "Validates links and ensures they work correctly",
+      "file": "link-validation-agent.json",
+      "enabled": true
+    },
+    {
+      "id": "branding-agent",
+      "name": "Branding Agent",
+      "category": "specialized",
+      "description": "Review product names, brands, and terminology for international concerns",
+      "file": "branding-agent.json",
+      "enabled": true,
+      "source": "groups/c-suite",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "copy-review-agent",
+      "name": "Copy Review Agent",
+      "category": "specialized",
+      "description": "Review documentation, UI text, and marketing copy for clarity and effectiveness",
+      "file": "copy-review-agent.json",
+      "enabled": true,
+      "source": "groups/c-suite",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "i18n-agent",
+      "name": "Internationalization (i18n) Review Agent",
+      "category": "specialized",
+      "description": "Review content for international compatibility and localization concerns",
+      "file": "i18n-agent.json",
+      "enabled": true,
+      "source": "groups/c-suite",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "precheck-agent",
+      "name": "Pre-Deployment Check Agent",
+      "category": "development",
+      "description": "Validate that all dependencies and backends are ready before deployment",
+      "file": "precheck-agent.json",
+      "enabled": true,
+      "source": "groups/engineers",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "uat-agent",
+      "name": "UAT Testing Agent",
+      "category": "development",
+      "description": "Automate User Acceptance Testing procedures and validation",
+      "file": "uat-agent.json",
+      "enabled": true,
+      "source": "groups/engineers",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "crypto-agent",
+      "name": "Crypto Agent",
+      "category": "specialized",
+      "description": "Validates cryptographic implementations and security practices",
+      "file": "crypto-agent.json",
+      "enabled": true,
+      "source": "groups/security",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "threat-model-agent",
+      "name": "Threat Model Agent",
+      "category": "specialized",
+      "description": "Reviews attack surfaces, trust boundaries, and security architecture",
+      "file": "threat-model-agent.json",
+      "enabled": true,
+      "source": "groups/security",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "alert-agent",
+      "name": "Alert Agent",
+      "category": "operations",
+      "description": "Send voice call alerts via Twilio for critical issues",
+      "file": "alert-agent.json",
+      "enabled": true,
+      "source": "groups/servers",
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "dash-agent",
+      "name": "Dash Agent",
+      "category": "operations",
+      "description": "Personal Assistant Agent - Handles incoming phone calls and manages call routing",
+      "file": "dash-agent.json",
+      "enabled": true,
+      "has_python": true,
+      "has_yaml": true
+    },
+    {
+      "id": "business-continuity-agent",
+      "name": "Business Continuity Officer Agent",
+      "category": "operations",
+      "description": "Ensures business continuity through runbook maintenance, procedure documentation, and disaster recovery planning",
+      "file": "business-continuity-agent.json",
+      "enabled": true,
+      "has_python": true,
+      "has_yaml": true
+    }
+  ],
+  "categories": {
+    "c-suite": "Strategic leadership agents",
+    "development": "Technical development agents",
+    "project-management": "Project and program management agents",
+    "product": "Product management agents",
+    "operations": "Operational and infrastructure agents",
+    "specialized": "Domain-specific specialized agents"
+  }
+}
+

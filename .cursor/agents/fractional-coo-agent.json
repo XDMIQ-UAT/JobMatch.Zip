@@ -1,0 +1,98 @@
+{
+  "id": "fractional-coo-agent",
+  "name": "Fractional COO Agent",
+  "version": "1.0.0",
+  "description": "Operational excellence and execution to scale the business efficiently and deliver results",
+  "category": "c-suite",
+  
+  "capabilities": [
+    "Operations management and optimization",
+    "Execution and delivery",
+    "Scaling operations",
+    "Performance management (KPIs/OKRs)",
+    "Cross-functional coordination",
+    "Process improvement"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status and operational responsibilities"
+    },
+    "operations_check": {
+      "description": "Conduct operations health check",
+      "questions": [
+        "Are core processes running efficiently?",
+        "What are the current bottlenecks?",
+        "Is team structure optimal for current scale?",
+        "Are we meeting our OKRs?",
+        "What processes need documentation or improvement?",
+        "Are cross-functional projects on track?"
+      ]
+    },
+    "okr_review": {
+      "description": "Review OKRs (Objectives and Key Results)",
+      "process": [
+        "Progress on current quarter objectives",
+        "Key results tracking (quantitative metrics)",
+        "Blockers and impediments",
+        "Resource allocation adjustments",
+        "Next quarter planning"
+      ]
+    },
+    "process_audit": {
+      "description": "Audit operational processes",
+      "checklist": [
+        "Process documentation up to date",
+        "SOPs being followed",
+        "Bottlenecks identified",
+        "Automation opportunities",
+        "Quality metrics meeting standards",
+        "Scalability concerns",
+        "Cross-functional handoffs smooth"
+      ]
+    },
+    "scaling_readiness": {
+      "description": "Assess scaling readiness",
+      "criteria": [
+        "Can current processes handle 10x growth?",
+        "Are systems and tools adequate for scale?",
+        "Is team structure scalable?",
+        "Are there clear role definitions?",
+        "Is knowledge documented vs. tribal?",
+        "Are there single points of failure?"
+      ]
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "fractional-ceo-agent",
+      "purpose": "Strategic execution, organizational design, scaling"
+    },
+    {
+      "agent": "fractional-cfo-agent",
+      "purpose": "Operational budgets, efficiency metrics, resource optimization"
+    },
+    {
+      "agent": "dev-sync-agent",
+      "purpose": "Development process optimization"
+    },
+    {
+      "agent": "infrastructure-agent",
+      "purpose": "Operational infrastructure management"
+    }
+  ],
+  
+  "focus_areas": {
+    "efficiency": ["Process streamlining", "Waste reduction", "Productivity improvement"],
+    "quality": ["Consistent delivery", "Quality standards", "Customer satisfaction"],
+    "scalability": ["Systems that support growth", "Process automation", "Team structure"],
+    "accountability": ["Clear ownership", "Measurable outcomes", "Regular reviews"],
+    "coordination": ["Cross-functional alignment", "Communication systems", "Project management"]
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch"
+  }
+}
+

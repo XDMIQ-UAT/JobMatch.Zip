@@ -1,0 +1,4725 @@
+{
+  "timestamp": "2025-11-26T20:05:16.650886",
+  "project_path": "E:\\zip-jobmatch",
+  "files": [
+    {
+      "path": "AUTO_DETECT_INPUT_DEPLOYED.md",
+      "full_path": "E:\\zip-jobmatch\\AUTO_DETECT_INPUT_DEPLOYED.md",
+      "extension": ".md",
+      "size": 9747,
+      "modified": "2025-11-25T11:36:50.659245",
+      "lines": 343
+    },
+    {
+      "path": "BUILD_SESSION_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\BUILD_SESSION_SUMMARY.md",
+      "extension": ".md",
+      "size": 9883,
+      "modified": "2025-11-24T10:40:36.605559",
+      "lines": 305
+    },
+    {
+      "path": "C-LEVEL_GO_LIVE_REVIEW.md",
+      "full_path": "E:\\zip-jobmatch\\C-LEVEL_GO_LIVE_REVIEW.md",
+      "extension": ".md",
+      "size": 19434,
+      "modified": "2025-11-24T12:57:37.268262",
+      "lines": 588
+    },
+    {
+      "path": "CHAT_DEPLOYMENT_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\CHAT_DEPLOYMENT_SUMMARY.md",
+      "extension": ".md",
+      "size": 9715,
+      "modified": "2025-11-24T13:15:46.061540",
+      "lines": 340
+    },
+    {
+      "path": "check_call_status.py",
+      "full_path": "E:\\zip-jobmatch\\check_call_status.py",
+      "extension": ".py",
+      "size": 1346,
+      "modified": "2025-11-26T10:07:01.876285",
+      "lines": 32
+    },
+    {
+      "path": "check_twilio_calls.py",
+      "full_path": "E:\\zip-jobmatch\\check_twilio_calls.py",
+      "extension": ".py",
+      "size": 2500,
+      "modified": "2025-11-26T10:07:01.876285",
+      "lines": 64
+    },
+    {
+      "path": "cleanup-clipboard-repo.ps1",
+      "full_path": "E:\\zip-jobmatch\\cleanup-clipboard-repo.ps1",
+      "extension": ".ps1",
+      "size": 7429,
+      "modified": "2025-11-24T03:25:14.478866",
+      "lines": 191
+    },
+    {
+      "path": "cleanup-secrets.ps1",
+      "full_path": "E:\\zip-jobmatch\\cleanup-secrets.ps1",
+      "extension": ".ps1",
+      "size": 1856,
+      "modified": "2025-11-21T23:16:52.405086",
+      "lines": 57
+    },
+    {
+      "path": "CLI_SETUP_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\CLI_SETUP_COMPLETE.md",
+      "extension": ".md",
+      "size": 6159,
+      "modified": "2025-11-24T00:45:22.146868",
+      "lines": 239
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "full_path": "E:\\zip-jobmatch\\CONTRIBUTING.md",
+      "extension": ".md",
+      "size": 14790,
+      "modified": "2025-11-24T05:44:59.352443",
+      "lines": 588
+    },
+    {
+      "path": "deploy-analysis-fix.sh",
+      "full_path": "E:\\zip-jobmatch\\deploy-analysis-fix.sh",
+      "extension": ".sh",
+      "size": 990,
+      "modified": "2025-10-25T17:04:32.997230",
+      "lines": 42
+    },
+    {
+      "path": "deploy-backend.sh",
+      "full_path": "E:\\zip-jobmatch\\deploy-backend.sh",
+      "extension": ".sh",
+      "size": 623,
+      "modified": "2025-10-25T17:04:33.837820",
+      "lines": 30
+    },
+    {
+      "path": "deploy-governance-agent.ps1",
+      "full_path": "E:\\zip-jobmatch\\deploy-governance-agent.ps1",
+      "extension": ".ps1",
+      "size": 3580,
+      "modified": "2025-11-23T21:50:37.431310",
+      "lines": 103
+    },
+    {
+      "path": "deploy-to-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\deploy-to-vm.ps1",
+      "extension": ".ps1",
+      "size": 11699,
+      "modified": "2025-11-21T21:39:00.403166",
+      "lines": 376
+    },
+    {
+      "path": "deploy-voice-sms-fixed.ps1",
+      "full_path": "E:\\zip-jobmatch\\deploy-voice-sms-fixed.ps1",
+      "extension": ".ps1",
+      "size": 3769,
+      "modified": "2025-11-23T23:29:45.219268",
+      "lines": 116
+    },
+    {
+      "path": "deploy-voice-sms.ps1",
+      "full_path": "E:\\zip-jobmatch\\deploy-voice-sms.ps1",
+      "extension": ".ps1",
+      "size": 5292,
+      "modified": "2025-11-23T23:28:32.331853",
+      "lines": 148
+    },
+    {
+      "path": "DEPLOYMENT.md",
+      "full_path": "E:\\zip-jobmatch\\DEPLOYMENT.md",
+      "extension": ".md",
+      "size": 8601,
+      "modified": "2025-11-24T11:49:35.954893",
+      "lines": 328
+    },
+    {
+      "path": "DEPLOY_FIXES.md",
+      "full_path": "E:\\zip-jobmatch\\DEPLOY_FIXES.md",
+      "extension": ".md",
+      "size": 9454,
+      "modified": "2025-11-24T13:04:04.210658",
+      "lines": 407
+    },
+    {
+      "path": "docker-compose.dev.yml",
+      "full_path": "E:\\zip-jobmatch\\docker-compose.dev.yml",
+      "extension": ".yml",
+      "size": 2325,
+      "modified": "2025-11-21T19:09:15.844391",
+      "lines": 83
+    },
+    {
+      "path": "docker-compose.prod.yml",
+      "full_path": "E:\\zip-jobmatch\\docker-compose.prod.yml",
+      "extension": ".yml",
+      "size": 3594,
+      "modified": "2025-11-26T11:18:28.672291",
+      "lines": 132
+    },
+    {
+      "path": "docker-compose.simple.yml",
+      "full_path": "E:\\zip-jobmatch\\docker-compose.simple.yml",
+      "extension": ".yml",
+      "size": 1651,
+      "modified": "2025-11-24T05:25:06.281330",
+      "lines": 67
+    },
+    {
+      "path": "docker-compose.vm.yml",
+      "full_path": "E:\\zip-jobmatch\\docker-compose.vm.yml",
+      "extension": ".yml",
+      "size": 514,
+      "modified": "2025-11-26T11:18:28.679435",
+      "lines": 25
+    },
+    {
+      "path": "docker-compose.yml",
+      "full_path": "E:\\zip-jobmatch\\docker-compose.yml",
+      "extension": ".yml",
+      "size": 4579,
+      "modified": "2025-11-24T10:48:02.792150",
+      "lines": 168
+    },
+    {
+      "path": "DUAL_INPUT_MODE_DEPLOYED.md",
+      "full_path": "E:\\zip-jobmatch\\DUAL_INPUT_MODE_DEPLOYED.md",
+      "extension": ".md",
+      "size": 12354,
+      "modified": "2025-11-25T11:32:06.849743",
+      "lines": 455
+    },
+    {
+      "path": "LIVE_DEMO_DEPLOYED.md",
+      "full_path": "E:\\zip-jobmatch\\LIVE_DEMO_DEPLOYED.md",
+      "extension": ".md",
+      "size": 12418,
+      "modified": "2025-11-25T11:20:31.152351",
+      "lines": 391
+    },
+    {
+      "path": "mcp-playwright-server.json",
+      "full_path": "E:\\zip-jobmatch\\mcp-playwright-server.json",
+      "extension": ".json",
+      "size": 382,
+      "modified": "2025-11-24T03:50:04.387064",
+      "lines": 17
+    },
+    {
+      "path": "MYKEYS_DIAGNOSIS.md",
+      "full_path": "E:\\zip-jobmatch\\MYKEYS_DIAGNOSIS.md",
+      "extension": ".md",
+      "size": 4172,
+      "modified": "2025-11-26T10:07:01.871425",
+      "lines": 147
+    },
+    {
+      "path": "NEXT_STEPS_COMPLETED.md",
+      "full_path": "E:\\zip-jobmatch\\NEXT_STEPS_COMPLETED.md",
+      "extension": ".md",
+      "size": 9501,
+      "modified": "2025-11-24T10:50:26.351356",
+      "lines": 349
+    },
+    {
+      "path": "OLLAMA_REMOVED_FROM_PRODUCTION.md",
+      "full_path": "E:\\zip-jobmatch\\OLLAMA_REMOVED_FROM_PRODUCTION.md",
+      "extension": ".md",
+      "size": 5602,
+      "modified": "2025-11-26T11:18:28.672291",
+      "lines": 216
+    },
+    {
+      "path": "OVERNIGHT_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\OVERNIGHT_SETUP.md",
+      "extension": ".md",
+      "size": 3358,
+      "modified": "2025-11-24T02:56:21.517765",
+      "lines": 121
+    },
+    {
+      "path": "package-lock.json",
+      "full_path": "E:\\zip-jobmatch\\package-lock.json",
+      "extension": ".json",
+      "size": 612742,
+      "modified": "2025-11-26T10:10:47.704948",
+      "lines": 16539
+    },
+    {
+      "path": "package.json",
+      "full_path": "E:\\zip-jobmatch\\package.json",
+      "extension": ".json",
+      "size": 1052,
+      "modified": "2025-11-24T03:51:28.799049",
+      "lines": 36
+    },
+    {
+      "path": "playwright.config.ts",
+      "full_path": "E:\\zip-jobmatch\\playwright.config.ts",
+      "extension": ".ts",
+      "size": 2188,
+      "modified": "2025-11-24T03:50:04.367033",
+      "lines": 88
+    },
+    {
+      "path": "pyproject.toml",
+      "full_path": "E:\\zip-jobmatch\\pyproject.toml",
+      "extension": ".toml",
+      "size": 1925,
+      "modified": "2025-11-24T00:42:59.332683",
+      "lines": 70
+    },
+    {
+      "path": "QUICKSTART_CLI.md",
+      "full_path": "E:\\zip-jobmatch\\QUICKSTART_CLI.md",
+      "extension": ".md",
+      "size": 2365,
+      "modified": "2025-11-24T08:09:30.932676",
+      "lines": 103
+    },
+    {
+      "path": "README.md",
+      "full_path": "E:\\zip-jobmatch\\README.md",
+      "extension": ".md",
+      "size": 4800,
+      "modified": "2025-11-26T11:16:29.494680",
+      "lines": 157
+    },
+    {
+      "path": "README_PYPI.md",
+      "full_path": "E:\\zip-jobmatch\\README_PYPI.md",
+      "extension": ".md",
+      "size": 5269,
+      "modified": "2025-11-24T00:44:39.875500",
+      "lines": 191
+    },
+    {
+      "path": "REMEDIATION_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\REMEDIATION_COMPLETE.md",
+      "extension": ".md",
+      "size": 7440,
+      "modified": "2025-11-24T13:04:50.228129",
+      "lines": 271
+    },
+    {
+      "path": "REMEDIATION_COMPLETE_2025-11-26.md",
+      "full_path": "E:\\zip-jobmatch\\REMEDIATION_COMPLETE_2025-11-26.md",
+      "extension": ".md",
+      "size": 5838,
+      "modified": "2025-11-26T11:14:50.759231",
+      "lines": 187
+    },
+    {
+      "path": "REMEDIATION_PROGRESS.md",
+      "full_path": "E:\\zip-jobmatch\\REMEDIATION_PROGRESS.md",
+      "extension": ".md",
+      "size": 7077,
+      "modified": "2025-11-24T13:02:56.615018",
+      "lines": 263
+    },
+    {
+      "path": "retry_call.py",
+      "full_path": "E:\\zip-jobmatch\\retry_call.py",
+      "extension": ".py",
+      "size": 1883,
+      "modified": "2025-11-26T10:07:01.876285",
+      "lines": 57
+    },
+    {
+      "path": "ROADMAP.md",
+      "full_path": "E:\\zip-jobmatch\\ROADMAP.md",
+      "extension": ".md",
+      "size": 9010,
+      "modified": "2025-11-26T11:16:29.479741",
+      "lines": 282
+    },
+    {
+      "path": "SECURITY_AUDIT_REPORT.md",
+      "full_path": "E:\\zip-jobmatch\\SECURITY_AUDIT_REPORT.md",
+      "extension": ".md",
+      "size": 7979,
+      "modified": "2025-11-24T03:24:31.724820",
+      "lines": 285
+    },
+    {
+      "path": "setup-nginx.ps1",
+      "full_path": "E:\\zip-jobmatch\\setup-nginx.ps1",
+      "extension": ".ps1",
+      "size": 3655,
+      "modified": "2025-11-21T23:50:20.112014",
+      "lines": 113
+    },
+    {
+      "path": "setup.py",
+      "full_path": "E:\\zip-jobmatch\\setup.py",
+      "extension": ".py",
+      "size": 2229,
+      "modified": "2025-11-24T00:41:39.610531",
+      "lines": 64
+    },
+    {
+      "path": "start-git-agent.ps1",
+      "full_path": "E:\\zip-jobmatch\\start-git-agent.ps1",
+      "extension": ".ps1",
+      "size": 1109,
+      "modified": "2025-11-24T12:49:54.979921",
+      "lines": 36
+    },
+    {
+      "path": "stripe-cli-setup.ps1",
+      "full_path": "E:\\zip-jobmatch\\stripe-cli-setup.ps1",
+      "extension": ".ps1",
+      "size": 6147,
+      "modified": "2025-11-23T19:41:21.582397",
+      "lines": 198
+    },
+    {
+      "path": "stripe-payment-links.ps1",
+      "full_path": "E:\\zip-jobmatch\\stripe-payment-links.ps1",
+      "extension": ".ps1",
+      "size": 5832,
+      "modified": "2025-11-23T19:41:46.873975",
+      "lines": 178
+    },
+    {
+      "path": "STRIPE_443_CONFIG.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_443_CONFIG.md",
+      "extension": ".md",
+      "size": 6119,
+      "modified": "2025-11-24T06:41:51.865670",
+      "lines": 221
+    },
+    {
+      "path": "STRIPE_CHECKOUT_FIX.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_CHECKOUT_FIX.md",
+      "extension": ".md",
+      "size": 4655,
+      "modified": "2025-11-24T05:23:50.141853",
+      "lines": 174
+    },
+    {
+      "path": "STRIPE_CLI_QUICKREF.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_CLI_QUICKREF.md",
+      "extension": ".md",
+      "size": 5046,
+      "modified": "2025-11-24T06:42:34.459455",
+      "lines": 198
+    },
+    {
+      "path": "STRIPE_CURRENT_CONFIG.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_CURRENT_CONFIG.md",
+      "extension": ".md",
+      "size": 4922,
+      "modified": "2025-11-24T01:50:27.371294",
+      "lines": 167
+    },
+    {
+      "path": "STRIPE_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_SETUP.md",
+      "extension": ".md",
+      "size": 7283,
+      "modified": "2025-11-24T01:41:47.552461",
+      "lines": 242
+    },
+    {
+      "path": "STRIPE_SETUP_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\STRIPE_SETUP_COMPLETE.md",
+      "extension": ".md",
+      "size": 5292,
+      "modified": "2025-11-24T06:43:15.676023",
+      "lines": 187
+    },
+    {
+      "path": "sync-code-to-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\sync-code-to-vm.ps1",
+      "extension": ".ps1",
+      "size": 2623,
+      "modified": "2025-11-22T00:23:37.476429",
+      "lines": 77
+    },
+    {
+      "path": "SYSTEM_PROMPTING_CHAIN.yaml",
+      "full_path": "E:\\zip-jobmatch\\SYSTEM_PROMPTING_CHAIN.yaml",
+      "extension": ".yaml",
+      "size": 11801,
+      "modified": "2025-11-21T23:13:08.281105",
+      "lines": 303
+    },
+    {
+      "path": "temp_main.py",
+      "full_path": "E:\\zip-jobmatch\\temp_main.py",
+      "extension": ".py",
+      "size": 1010,
+      "modified": "2025-11-22T06:51:45.634263",
+      "lines": 43
+    },
+    {
+      "path": "test-credentials-encoding.js",
+      "full_path": "E:\\zip-jobmatch\\test-credentials-encoding.js",
+      "extension": ".js",
+      "size": 710,
+      "modified": "2025-10-25T00:39:58.537729",
+      "lines": 13
+    },
+    {
+      "path": "test-secrets-loading.js",
+      "full_path": "E:\\zip-jobmatch\\test-secrets-loading.js",
+      "extension": ".js",
+      "size": 574,
+      "modified": "2025-10-25T00:38:56.780411",
+      "lines": 8
+    },
+    {
+      "path": "test-ses-detailed.js",
+      "full_path": "E:\\zip-jobmatch\\test-ses-detailed.js",
+      "extension": ".js",
+      "size": 1468,
+      "modified": "2025-10-25T00:39:16.706396",
+      "lines": 47
+    },
+    {
+      "path": "TEST-ZK-SYSTEM.md",
+      "full_path": "E:\\zip-jobmatch\\TEST-ZK-SYSTEM.md",
+      "extension": ".md",
+      "size": 8508,
+      "modified": "2025-11-24T15:14:55.245110",
+      "lines": 262
+    },
+    {
+      "path": "test_chat.py",
+      "full_path": "E:\\zip-jobmatch\\test_chat.py",
+      "extension": ".py",
+      "size": 1071,
+      "modified": "2025-11-22T08:38:37.086682",
+      "lines": 36
+    },
+    {
+      "path": "test_chat_jobmatch.py",
+      "full_path": "E:\\zip-jobmatch\\test_chat_jobmatch.py",
+      "extension": ".py",
+      "size": 2809,
+      "modified": "2025-11-22T08:39:07.502492",
+      "lines": 70
+    },
+    {
+      "path": "test_imports.py",
+      "full_path": "E:\\zip-jobmatch\\test_imports.py",
+      "extension": ".py",
+      "size": 1219,
+      "modified": "2025-11-24T05:04:35.827616",
+      "lines": 51
+    },
+    {
+      "path": "test_mykeys_connection.py",
+      "full_path": "E:\\zip-jobmatch\\test_mykeys_connection.py",
+      "extension": ".py",
+      "size": 1189,
+      "modified": "2025-11-26T10:07:01.871425",
+      "lines": 31
+    },
+    {
+      "path": "test_routes.py",
+      "full_path": "E:\\zip-jobmatch\\test_routes.py",
+      "extension": ".py",
+      "size": 221,
+      "modified": "2025-11-24T04:44:20.847766",
+      "lines": 5
+    },
+    {
+      "path": "test_twilio_call.py",
+      "full_path": "E:\\zip-jobmatch\\test_twilio_call.py",
+      "extension": ".py",
+      "size": 8928,
+      "modified": "2025-11-26T10:07:01.876285",
+      "lines": 221
+    },
+    {
+      "path": "test_voice_endpoint.py",
+      "full_path": "E:\\zip-jobmatch\\test_voice_endpoint.py",
+      "extension": ".py",
+      "size": 6183,
+      "modified": "2025-11-23T22:46:36.889099",
+      "lines": 202
+    },
+    {
+      "path": "TWILIO_DEPLOYMENT_CHECKLIST.md",
+      "full_path": "E:\\zip-jobmatch\\TWILIO_DEPLOYMENT_CHECKLIST.md",
+      "extension": ".md",
+      "size": 4035,
+      "modified": "2025-11-23T22:47:24.426639",
+      "lines": 155
+    },
+    {
+      "path": "UAT_MONITOR_QUICKREF.md",
+      "full_path": "E:\\zip-jobmatch\\UAT_MONITOR_QUICKREF.md",
+      "extension": ".md",
+      "size": 3402,
+      "modified": "2025-11-25T10:48:19.415735",
+      "lines": 142
+    },
+    {
+      "path": "update-dns.ps1",
+      "full_path": "E:\\zip-jobmatch\\update-dns.ps1",
+      "extension": ".ps1",
+      "size": 4880,
+      "modified": "2025-11-21T22:06:20.285117",
+      "lines": 144
+    },
+    {
+      "path": "warp.config.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp.config.yaml",
+      "extension": ".yaml",
+      "size": 1835,
+      "modified": "2025-11-26T10:07:01.871425",
+      "lines": 72
+    },
+    {
+      "path": "WARP.md",
+      "full_path": "E:\\zip-jobmatch\\WARP.md",
+      "extension": ".md",
+      "size": 21226,
+      "modified": "2025-11-24T09:47:26.880126",
+      "lines": 723
+    },
+    {
+      "path": "agents\\data-governance-agent.md",
+      "full_path": "E:\\zip-jobmatch\\agents\\data-governance-agent.md",
+      "extension": ".md",
+      "size": 6415,
+      "modified": "2025-11-23T13:23:45.543073",
+      "lines": 202
+    },
+    {
+      "path": "backend\\config.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\config.py",
+      "extension": ".py",
+      "size": 5090,
+      "modified": "2025-11-26T11:14:50.759231",
+      "lines": 135
+    },
+    {
+      "path": "backend\\jest.config.js",
+      "full_path": "E:\\zip-jobmatch\\backend\\jest.config.js",
+      "extension": ".js",
+      "size": 438,
+      "modified": "2025-11-26T14:54:20.951698",
+      "lines": 19
+    },
+    {
+      "path": "backend\\jobmatch_cli.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\jobmatch_cli.py",
+      "extension": ".py",
+      "size": 15073,
+      "modified": "2025-11-24T04:41:52.062262",
+      "lines": 425
+    },
+    {
+      "path": "backend\\main.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\main.py",
+      "extension": ".py",
+      "size": 3074,
+      "modified": "2025-11-24T15:07:01.651896",
+      "lines": 101
+    },
+    {
+      "path": "backend\\package.json",
+      "full_path": "E:\\zip-jobmatch\\backend\\package.json",
+      "extension": ".json",
+      "size": 1686,
+      "modified": "2025-11-26T14:54:22.650512",
+      "lines": 59
+    },
+    {
+      "path": "backend\\QUICK_START.md",
+      "full_path": "E:\\zip-jobmatch\\backend\\QUICK_START.md",
+      "extension": ".md",
+      "size": 1263,
+      "modified": "2025-11-22T02:06:24.490829",
+      "lines": 52
+    },
+    {
+      "path": "backend\\simple_seo_server.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\simple_seo_server.py",
+      "extension": ".py",
+      "size": 1408,
+      "modified": "2025-11-24T04:41:52.066043",
+      "lines": 51
+    },
+    {
+      "path": "backend\\start-server.ps1",
+      "full_path": "E:\\zip-jobmatch\\backend\\start-server.ps1",
+      "extension": ".ps1",
+      "size": 1178,
+      "modified": "2025-11-22T02:06:24.490829",
+      "lines": 36
+    },
+    {
+      "path": "backend\\start.ps1",
+      "full_path": "E:\\zip-jobmatch\\backend\\start.ps1",
+      "extension": ".ps1",
+      "size": 1198,
+      "modified": "2025-11-22T02:06:24.490829",
+      "lines": 36
+    },
+    {
+      "path": "backend\\test_creds.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\test_creds.py",
+      "extension": ".py",
+      "size": 737,
+      "modified": "2025-11-24T04:41:52.068143",
+      "lines": 27
+    },
+    {
+      "path": "backend\\test_seo_server.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\test_seo_server.py",
+      "extension": ".py",
+      "size": 920,
+      "modified": "2025-11-24T04:41:52.069678",
+      "lines": 35
+    },
+    {
+      "path": "backend\\test_ses_email.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\test_ses_email.py",
+      "extension": ".py",
+      "size": 4672,
+      "modified": "2025-11-24T04:41:52.071676",
+      "lines": 114
+    },
+    {
+      "path": "backend\\tsconfig.json",
+      "full_path": "E:\\zip-jobmatch\\backend\\tsconfig.json",
+      "extension": ".json",
+      "size": 540,
+      "modified": "2025-10-24T22:23:41.039721",
+      "lines": 21
+    },
+    {
+      "path": "backend\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\__init__.py",
+      "extension": ".py",
+      "size": 28,
+      "modified": "2025-11-24T04:41:52.046908",
+      "lines": 3
+    },
+    {
+      "path": "backend\\ai\\articulation_assistant.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\articulation_assistant.py",
+      "extension": ".py",
+      "size": 7644,
+      "modified": "2025-11-24T04:41:52.074846",
+      "lines": 203
+    },
+    {
+      "path": "backend\\ai\\bias_detector.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\bias_detector.py",
+      "extension": ".py",
+      "size": 3392,
+      "modified": "2025-11-24T04:41:52.077854",
+      "lines": 101
+    },
+    {
+      "path": "backend\\ai\\feedback_loop.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\feedback_loop.py",
+      "extension": ".py",
+      "size": 1894,
+      "modified": "2025-11-24T04:41:52.080856",
+      "lines": 61
+    },
+    {
+      "path": "backend\\ai\\longevity_predictor.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\longevity_predictor.py",
+      "extension": ".py",
+      "size": 10424,
+      "modified": "2025-11-24T04:41:52.086121",
+      "lines": 292
+    },
+    {
+      "path": "backend\\ai\\matching_engine.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\matching_engine.py",
+      "extension": ".py",
+      "size": 12392,
+      "modified": "2025-11-24T04:41:52.101282",
+      "lines": 317
+    },
+    {
+      "path": "backend\\ai\\moderation.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\moderation.py",
+      "extension": ".py",
+      "size": 3868,
+      "modified": "2025-11-24T04:41:52.102856",
+      "lines": 107
+    },
+    {
+      "path": "backend\\ai\\pii_scanner.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\ai\\pii_scanner.py",
+      "extension": ".py",
+      "size": 8462,
+      "modified": "2025-11-24T04:41:52.104861",
+      "lines": 265
+    },
+    {
+      "path": "backend\\alembic\\versions\\001_initial_schema.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\alembic\\versions\\001_initial_schema.py",
+      "extension": ".py",
+      "size": 4588,
+      "modified": "2025-11-24T04:41:52.108866",
+      "lines": 89
+    },
+    {
+      "path": "backend\\api\\age_verification.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\age_verification.py",
+      "extension": ".py",
+      "size": 4596,
+      "modified": "2025-11-24T13:02:13.113476",
+      "lines": 151
+    },
+    {
+      "path": "backend\\api\\articulation.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\articulation.py",
+      "extension": ".py",
+      "size": 4393,
+      "modified": "2025-11-24T04:41:52.111864",
+      "lines": 141
+    },
+    {
+      "path": "backend\\api\\assessment.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\assessment.py",
+      "extension": ".py",
+      "size": 4196,
+      "modified": "2025-11-24T04:41:52.114973",
+      "lines": 138
+    },
+    {
+      "path": "backend\\api\\auth.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\auth.py",
+      "extension": ".py",
+      "size": 5852,
+      "modified": "2025-11-24T04:41:52.118322",
+      "lines": 163
+    },
+    {
+      "path": "backend\\api\\canvas.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\canvas.py",
+      "extension": ".py",
+      "size": 2726,
+      "modified": "2025-11-24T04:41:52.120384",
+      "lines": 96
+    },
+    {
+      "path": "backend\\api\\chat.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\chat.py",
+      "extension": ".py",
+      "size": 9090,
+      "modified": "2025-11-24T12:54:06.774612",
+      "lines": 295
+    },
+    {
+      "path": "backend\\api\\chat_example.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\chat_example.py",
+      "extension": ".py",
+      "size": 2359,
+      "modified": "2025-11-24T04:41:52.121386",
+      "lines": 92
+    },
+    {
+      "path": "backend\\api\\conversations.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\conversations.py",
+      "extension": ".py",
+      "size": 5376,
+      "modified": "2025-11-24T04:41:52.137514",
+      "lines": 163
+    },
+    {
+      "path": "backend\\api\\forums.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\forums.py",
+      "extension": ".py",
+      "size": 3614,
+      "modified": "2025-11-24T04:41:52.140251",
+      "lines": 135
+    },
+    {
+      "path": "backend\\api\\gcp_cli.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\gcp_cli.py",
+      "extension": ".py",
+      "size": 9606,
+      "modified": "2025-11-24T04:41:52.144513",
+      "lines": 292
+    },
+    {
+      "path": "backend\\api\\marketplace.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\marketplace.py",
+      "extension": ".py",
+      "size": 6464,
+      "modified": "2025-11-24T04:41:52.148118",
+      "lines": 215
+    },
+    {
+      "path": "backend\\api\\matching.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\matching.py",
+      "extension": ".py",
+      "size": 4859,
+      "modified": "2025-11-24T04:41:52.151398",
+      "lines": 155
+    },
+    {
+      "path": "backend\\api\\referrals.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\referrals.py",
+      "extension": ".py",
+      "size": 2093,
+      "modified": "2025-11-24T04:41:52.154328",
+      "lines": 82
+    },
+    {
+      "path": "backend\\api\\security.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\security.py",
+      "extension": ".py",
+      "size": 3536,
+      "modified": "2025-11-24T04:41:52.156334",
+      "lines": 122
+    },
+    {
+      "path": "backend\\api\\seo.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\seo.py",
+      "extension": ".py",
+      "size": 6753,
+      "modified": "2025-11-24T04:41:52.159337",
+      "lines": 246
+    },
+    {
+      "path": "backend\\api\\sms.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\sms.py",
+      "extension": ".py",
+      "size": 4483,
+      "modified": "2025-11-24T04:41:52.170018",
+      "lines": 137
+    },
+    {
+      "path": "backend\\api\\social_auth.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\social_auth.py",
+      "extension": ".py",
+      "size": 18027,
+      "modified": "2025-11-24T04:41:52.177151",
+      "lines": 537
+    },
+    {
+      "path": "backend\\api\\subscription.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\subscription.py",
+      "extension": ".py",
+      "size": 12568,
+      "modified": "2025-11-26T11:14:50.759231",
+      "lines": 341
+    },
+    {
+      "path": "backend\\api\\users.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\users.py",
+      "extension": ".py",
+      "size": 9451,
+      "modified": "2025-11-24T04:41:52.183993",
+      "lines": 253
+    },
+    {
+      "path": "backend\\api\\voice.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\voice.py",
+      "extension": ".py",
+      "size": 6138,
+      "modified": "2025-11-26T02:15:37.236485",
+      "lines": 175
+    },
+    {
+      "path": "backend\\api\\xdmiq.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\xdmiq.py",
+      "extension": ".py",
+      "size": 3785,
+      "modified": "2025-11-24T04:41:52.189433",
+      "lines": 122
+    },
+    {
+      "path": "backend\\api\\zero_knowledge_auth.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\zero_knowledge_auth.py",
+      "extension": ".py",
+      "size": 11725,
+      "modified": "2025-11-24T15:06:01.627001",
+      "lines": 383
+    },
+    {
+      "path": "backend\\api\\zero_knowledge_matching.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\zero_knowledge_matching.py",
+      "extension": ".py",
+      "size": 9243,
+      "modified": "2025-11-24T15:06:51.207821",
+      "lines": 279
+    },
+    {
+      "path": "backend\\api\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\api\\__init__.py",
+      "extension": ".py",
+      "size": 15,
+      "modified": "2025-11-24T04:41:52.109864",
+      "lines": 1
+    },
+    {
+      "path": "backend\\app.old\\main.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\main.py",
+      "extension": ".py",
+      "size": 953,
+      "modified": "2025-11-24T04:41:52.191620",
+      "lines": 41
+    },
+    {
+      "path": "backend\\app.old\\api\\v1\\assess.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\api\\v1\\assess.py",
+      "extension": ".py",
+      "size": 1549,
+      "modified": "2025-11-24T04:41:52.204695",
+      "lines": 49
+    },
+    {
+      "path": "backend\\app.old\\api\\v1\\matches.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\api\\v1\\matches.py",
+      "extension": ".py",
+      "size": 2427,
+      "modified": "2025-11-24T04:41:52.207693",
+      "lines": 78
+    },
+    {
+      "path": "backend\\app.old\\api\\v1\\profile.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\api\\v1\\profile.py",
+      "extension": ".py",
+      "size": 2578,
+      "modified": "2025-11-24T04:41:52.210785",
+      "lines": 83
+    },
+    {
+      "path": "backend\\app.old\\api\\v1\\redact.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\api\\v1\\redact.py",
+      "extension": ".py",
+      "size": 951,
+      "modified": "2025-11-24T04:41:52.213223",
+      "lines": 34
+    },
+    {
+      "path": "backend\\app.old\\api\\v1\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\api\\v1\\__init__.py",
+      "extension": ".py",
+      "size": 541,
+      "modified": "2025-11-24T04:41:52.193954",
+      "lines": 13
+    },
+    {
+      "path": "backend\\app.old\\crud\\assessment.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\crud\\assessment.py",
+      "extension": ".py",
+      "size": 4808,
+      "modified": "2025-11-24T04:41:52.216301",
+      "lines": 142
+    },
+    {
+      "path": "backend\\app.old\\crud\\match.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\crud\\match.py",
+      "extension": ".py",
+      "size": 4008,
+      "modified": "2025-11-24T04:41:52.220303",
+      "lines": 133
+    },
+    {
+      "path": "backend\\app.old\\crud\\profile.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\crud\\profile.py",
+      "extension": ".py",
+      "size": 3836,
+      "modified": "2025-11-24T04:41:52.223304",
+      "lines": 116
+    },
+    {
+      "path": "backend\\app.old\\models\\assessment.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\models\\assessment.py",
+      "extension": ".py",
+      "size": 1716,
+      "modified": "2025-11-24T04:41:52.228827",
+      "lines": 47
+    },
+    {
+      "path": "backend\\app.old\\models\\match.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\models\\match.py",
+      "extension": ".py",
+      "size": 1832,
+      "modified": "2025-11-24T04:41:52.231335",
+      "lines": 43
+    },
+    {
+      "path": "backend\\app.old\\models\\profile.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\models\\profile.py",
+      "extension": ".py",
+      "size": 1306,
+      "modified": "2025-11-24T04:41:52.233940",
+      "lines": 33
+    },
+    {
+      "path": "backend\\app.old\\models\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\models\\__init__.py",
+      "extension": ".py",
+      "size": 642,
+      "modified": "2025-11-24T04:41:52.226822",
+      "lines": 21
+    },
+    {
+      "path": "backend\\app.old\\services\\checkpoint.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\services\\checkpoint.py",
+      "extension": ".py",
+      "size": 3354,
+      "modified": "2025-11-24T04:41:52.238518",
+      "lines": 107
+    },
+    {
+      "path": "backend\\app.old\\services\\ollama_ai.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\services\\ollama_ai.py",
+      "extension": ".py",
+      "size": 7143,
+      "modified": "2025-11-24T04:41:52.245399",
+      "lines": 206
+    },
+    {
+      "path": "backend\\app.old\\services\\pii_redactor.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\app.old\\services\\pii_redactor.py",
+      "extension": ".py",
+      "size": 8976,
+      "modified": "2025-11-24T04:41:52.258737",
+      "lines": 241
+    },
+    {
+      "path": "backend\\assessment\\capability_assessment.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\assessment\\capability_assessment.py",
+      "extension": ".py",
+      "size": 8993,
+      "modified": "2025-11-24T04:41:52.264782",
+      "lines": 231
+    },
+    {
+      "path": "backend\\assessment\\xdmiq_assessment.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\assessment\\xdmiq_assessment.py",
+      "extension": ".py",
+      "size": 13199,
+      "modified": "2025-11-24T04:41:52.269737",
+      "lines": 328
+    },
+    {
+      "path": "backend\\auth\\anonymous_identity.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\anonymous_identity.py",
+      "extension": ".py",
+      "size": 3662,
+      "modified": "2025-11-24T04:41:52.273748",
+      "lines": 112
+    },
+    {
+      "path": "backend\\auth\\email_provider.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\email_provider.py",
+      "extension": ".py",
+      "size": 9256,
+      "modified": "2025-11-24T04:41:52.279405",
+      "lines": 228
+    },
+    {
+      "path": "backend\\auth\\gcp_cli_auth.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\gcp_cli_auth.py",
+      "extension": ".py",
+      "size": 6313,
+      "modified": "2025-11-24T04:41:52.283848",
+      "lines": 179
+    },
+    {
+      "path": "backend\\auth\\oauth_providers.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\oauth_providers.py",
+      "extension": ".py",
+      "size": 5513,
+      "modified": "2025-11-24T04:41:52.287255",
+      "lines": 147
+    },
+    {
+      "path": "backend\\auth\\session_manager.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\session_manager.py",
+      "extension": ".py",
+      "size": 7452,
+      "modified": "2025-11-24T04:41:52.292267",
+      "lines": 228
+    },
+    {
+      "path": "backend\\auth\\sms_provider.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\sms_provider.py",
+      "extension": ".py",
+      "size": 2783,
+      "modified": "2025-11-24T04:41:52.295782",
+      "lines": 82
+    },
+    {
+      "path": "backend\\auth\\social_auth.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\auth\\social_auth.py",
+      "extension": ".py",
+      "size": 26579,
+      "modified": "2025-11-24T04:41:52.313073",
+      "lines": 645
+    },
+    {
+      "path": "backend\\database\\connection.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\database\\connection.py",
+      "extension": ".py",
+      "size": 883,
+      "modified": "2025-11-24T04:41:52.315278",
+      "lines": 42
+    },
+    {
+      "path": "backend\\database\\marketplace_schema.sql",
+      "full_path": "E:\\zip-jobmatch\\backend\\database\\marketplace_schema.sql",
+      "extension": ".sql",
+      "size": 5809,
+      "modified": "2025-11-21T18:30:08.995301",
+      "lines": 130
+    },
+    {
+      "path": "backend\\database\\models.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\database\\models.py",
+      "extension": ".py",
+      "size": 14865,
+      "modified": "2025-11-24T04:41:52.318954",
+      "lines": 297
+    },
+    {
+      "path": "backend\\database\\schema.sql",
+      "full_path": "E:\\zip-jobmatch\\backend\\database\\schema.sql",
+      "extension": ".sql",
+      "size": 8794,
+      "modified": "2025-11-21T22:21:33.995342",
+      "lines": 216
+    },
+    {
+      "path": "backend\\database\\migrations\\add_longevity_fields.sql",
+      "full_path": "E:\\zip-jobmatch\\backend\\database\\migrations\\add_longevity_fields.sql",
+      "extension": ".sql",
+      "size": 1629,
+      "modified": "2025-11-23T14:15:16.943413",
+      "lines": 35
+    },
+    {
+      "path": "backend\\docs\\MAGIC_LINK_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\backend\\docs\\MAGIC_LINK_SETUP.md",
+      "extension": ".md",
+      "size": 4485,
+      "modified": "2025-10-25T00:06:28.494513",
+      "lines": 182
+    },
+    {
+      "path": "backend\\growth\\referrals.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\growth\\referrals.py",
+      "extension": ".py",
+      "size": 2589,
+      "modified": "2025-11-24T04:41:52.322175",
+      "lines": 87
+    },
+    {
+      "path": "backend\\human_review\\queue.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\human_review\\queue.py",
+      "extension": ".py",
+      "size": 4421,
+      "modified": "2025-11-24T04:41:52.325393",
+      "lines": 143
+    },
+    {
+      "path": "backend\\infrastructure\\scaling.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\infrastructure\\scaling.py",
+      "extension": ".py",
+      "size": 3096,
+      "modified": "2025-11-24T04:41:52.327499",
+      "lines": 95
+    },
+    {
+      "path": "backend\\llm\\client.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\llm\\client.py",
+      "extension": ".py",
+      "size": 6041,
+      "modified": "2025-11-24T04:41:52.331723",
+      "lines": 173
+    },
+    {
+      "path": "backend\\llm\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\llm\\__init__.py",
+      "extension": ".py",
+      "size": 132,
+      "modified": "2025-11-24T04:41:52.329073",
+      "lines": 4
+    },
+    {
+      "path": "backend\\marketplace\\payment_pipeline.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\marketplace\\payment_pipeline.py",
+      "extension": ".py",
+      "size": 4929,
+      "modified": "2025-11-24T04:41:52.344663",
+      "lines": 157
+    },
+    {
+      "path": "backend\\marketplace\\product_listing.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\marketplace\\product_listing.py",
+      "extension": ".py",
+      "size": 6427,
+      "modified": "2025-11-24T04:41:52.347307",
+      "lines": 179
+    },
+    {
+      "path": "backend\\marketplace\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\marketplace\\__init__.py",
+      "extension": ".py",
+      "size": 644,
+      "modified": "2025-11-24T04:41:52.333837",
+      "lines": 29
+    },
+    {
+      "path": "backend\\monitoring\\system_monitor.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\monitoring\\system_monitor.py",
+      "extension": ".py",
+      "size": 13918,
+      "modified": "2025-11-24T04:41:52.352092",
+      "lines": 358
+    },
+    {
+      "path": "backend\\prisma\\migrations\\20241225000000_add_magic_link_model\\migration.sql",
+      "full_path": "E:\\zip-jobmatch\\backend\\prisma\\migrations\\20241225000000_add_magic_link_model\\migration.sql",
+      "extension": ".sql",
+      "size": 638,
+      "modified": "2025-10-25T00:02:40.376470",
+      "lines": 21
+    },
+    {
+      "path": "backend\\resilience\\state_management.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\resilience\\state_management.py",
+      "extension": ".py",
+      "size": 5655,
+      "modified": "2025-11-24T04:41:52.355756",
+      "lines": 152
+    },
+    {
+      "path": "backend\\scripts\\setup-aws-secrets.sh",
+      "full_path": "E:\\zip-jobmatch\\backend\\scripts\\setup-aws-secrets.sh",
+      "extension": ".sh",
+      "size": 1118,
+      "modified": "2025-10-25T00:06:30.905396",
+      "lines": 34
+    },
+    {
+      "path": "backend\\scripts\\test-ses.js",
+      "full_path": "E:\\zip-jobmatch\\backend\\scripts\\test-ses.js",
+      "extension": ".js",
+      "size": 1652,
+      "modified": "2025-10-25T00:02:40.385471",
+      "lines": 47
+    },
+    {
+      "path": "backend\\security\\pii_redaction.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\pii_redaction.py",
+      "extension": ".py",
+      "size": 6829,
+      "modified": "2025-11-24T04:41:52.361156",
+      "lines": 241
+    },
+    {
+      "path": "backend\\security\\rate_limiter.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\rate_limiter.py",
+      "extension": ".py",
+      "size": 3645,
+      "modified": "2025-11-24T04:41:52.363822",
+      "lines": 100
+    },
+    {
+      "path": "backend\\security\\risk_monitor.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\risk_monitor.py",
+      "extension": ".py",
+      "size": 9272,
+      "modified": "2025-11-24T04:41:52.368093",
+      "lines": 260
+    },
+    {
+      "path": "backend\\security\\security_headers.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\security_headers.py",
+      "extension": ".py",
+      "size": 1767,
+      "modified": "2025-11-24T04:41:52.370099",
+      "lines": 51
+    },
+    {
+      "path": "backend\\security\\vulnerability_scanner.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\vulnerability_scanner.py",
+      "extension": ".py",
+      "size": 6744,
+      "modified": "2025-11-24T04:41:52.385102",
+      "lines": 171
+    },
+    {
+      "path": "backend\\security\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\security\\__init__.py",
+      "extension": ".py",
+      "size": 115,
+      "modified": "2025-11-24T04:41:52.357456",
+      "lines": 5
+    },
+    {
+      "path": "backend\\seo\\search_console.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\seo\\search_console.py",
+      "extension": ".py",
+      "size": 12919,
+      "modified": "2025-11-24T04:41:52.391103",
+      "lines": 335
+    },
+    {
+      "path": "backend\\seo\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\seo\\__init__.py",
+      "extension": ".py",
+      "size": 62,
+      "modified": "2025-11-24T04:41:52.386105",
+      "lines": 4
+    },
+    {
+      "path": "backend\\src\\index.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\index.ts",
+      "extension": ".ts",
+      "size": 2387,
+      "modified": "2025-10-25T00:26:00.185784",
+      "lines": 89
+    },
+    {
+      "path": "backend\\src\\config\\secrets.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\config\\secrets.ts",
+      "extension": ".ts",
+      "size": 3867,
+      "modified": "2025-10-25T12:25:15.032821",
+      "lines": 117
+    },
+    {
+      "path": "backend\\src\\middleware\\auth.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\middleware\\auth.ts",
+      "extension": ".ts",
+      "size": 2232,
+      "modified": "2025-10-25T00:16:37.543074",
+      "lines": 93
+    },
+    {
+      "path": "backend\\src\\routes\\auth.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\routes\\auth.ts",
+      "extension": ".ts",
+      "size": 9744,
+      "modified": "2025-11-26T11:14:50.762230",
+      "lines": 346
+    },
+    {
+      "path": "backend\\src\\routes\\jobs.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\routes\\jobs.ts",
+      "extension": ".ts",
+      "size": 8168,
+      "modified": "2025-10-25T17:10:31.664382",
+      "lines": 237
+    },
+    {
+      "path": "backend\\src\\routes\\users.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\routes\\users.ts",
+      "extension": ".ts",
+      "size": 3077,
+      "modified": "2025-10-25T00:02:40.388474",
+      "lines": 111
+    },
+    {
+      "path": "backend\\src\\services\\aiService.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\services\\aiService.ts",
+      "extension": ".ts",
+      "size": 6739,
+      "modified": "2025-10-25T17:04:33.596763",
+      "lines": 220
+    },
+    {
+      "path": "backend\\src\\services\\authService.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\services\\authService.ts",
+      "extension": ".ts",
+      "size": 4497,
+      "modified": "2025-10-25T00:16:57.496611",
+      "lines": 182
+    },
+    {
+      "path": "backend\\src\\services\\emailService.test.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\services\\emailService.test.ts",
+      "extension": ".ts",
+      "size": 18047,
+      "modified": "2025-11-26T14:54:20.951698",
+      "lines": 464
+    },
+    {
+      "path": "backend\\src\\services\\emailService.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\services\\emailService.ts",
+      "extension": ".ts",
+      "size": 40913,
+      "modified": "2025-11-26T11:18:41.283832",
+      "lines": 1041
+    },
+    {
+      "path": "backend\\src\\utils\\logger.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\utils\\logger.ts",
+      "extension": ".ts",
+      "size": 477,
+      "modified": "2025-10-24T22:24:01.158031",
+      "lines": 20
+    },
+    {
+      "path": "backend\\src\\utils\\piiRedaction.ts",
+      "full_path": "E:\\zip-jobmatch\\backend\\src\\utils\\piiRedaction.ts",
+      "extension": ".ts",
+      "size": 2478,
+      "modified": "2025-11-26T11:14:50.759231",
+      "lines": 105
+    },
+    {
+      "path": "backend\\testing\\generate_simulated_users.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\testing\\generate_simulated_users.py",
+      "extension": ".py",
+      "size": 11008,
+      "modified": "2025-11-24T15:04:08.699186",
+      "lines": 250
+    },
+    {
+      "path": "backend\\testing\\simulated_seekers.json",
+      "full_path": "E:\\zip-jobmatch\\backend\\testing\\simulated_seekers.json",
+      "extension": ".json",
+      "size": 9067,
+      "modified": "2025-11-24T15:04:16.341252",
+      "lines": 410
+    },
+    {
+      "path": "backend\\testing\\simulated_users.json",
+      "full_path": "E:\\zip-jobmatch\\backend\\testing\\simulated_users.json",
+      "extension": ".json",
+      "size": 85718,
+      "modified": "2025-11-24T15:04:16.339245",
+      "lines": 2921
+    },
+    {
+      "path": "backend\\testing\\simulated_users.sql",
+      "full_path": "E:\\zip-jobmatch\\backend\\testing\\simulated_users.sql",
+      "extension": ".sql",
+      "size": 123800,
+      "modified": "2025-11-24T15:04:16.344250",
+      "lines": 4690
+    },
+    {
+      "path": "backend\\testing\\simulation.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\testing\\simulation.py",
+      "extension": ".py",
+      "size": 4090,
+      "modified": "2025-11-24T04:41:52.394103",
+      "lines": 123
+    },
+    {
+      "path": "backend\\uat\\anonymity.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\uat\\anonymity.py",
+      "extension": ".py",
+      "size": 12940,
+      "modified": "2025-11-24T04:41:52.398622",
+      "lines": 364
+    },
+    {
+      "path": "backend\\uat\\compensation.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\uat\\compensation.py",
+      "extension": ".py",
+      "size": 16082,
+      "modified": "2025-11-24T04:41:52.402619",
+      "lines": 444
+    },
+    {
+      "path": "backend\\uat\\sanitization.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\uat\\sanitization.py",
+      "extension": ".py",
+      "size": 11031,
+      "modified": "2025-11-24T04:41:52.411658",
+      "lines": 289
+    },
+    {
+      "path": "backend\\uat\\scenarios.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\uat\\scenarios.py",
+      "extension": ".py",
+      "size": 13509,
+      "modified": "2025-11-24T04:41:52.416294",
+      "lines": 384
+    },
+    {
+      "path": "backend\\uat\\__init__.py",
+      "full_path": "E:\\zip-jobmatch\\backend\\uat\\__init__.py",
+      "extension": ".py",
+      "size": 638,
+      "modified": "2025-11-24T04:41:52.395103",
+      "lines": 22
+    },
+    {
+      "path": "business\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\README.md",
+      "extension": ".md",
+      "size": 5395,
+      "modified": "2025-11-21T19:06:01.821764",
+      "lines": 193
+    },
+    {
+      "path": "business\\health\\dashboards.md",
+      "full_path": "E:\\zip-jobmatch\\business\\health\\dashboards.md",
+      "extension": ".md",
+      "size": 3519,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 133
+    },
+    {
+      "path": "business\\health\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\health\\README.md",
+      "extension": ".md",
+      "size": 2043,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 65
+    },
+    {
+      "path": "business\\health\\checks\\database.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\health\\checks\\database.yaml",
+      "extension": ".yaml",
+      "size": 1768,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 62
+    },
+    {
+      "path": "business\\identity-proxy\\flows.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\flows.yaml",
+      "extension": ".yaml",
+      "size": 3717,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 105
+    },
+    {
+      "path": "business\\identity-proxy\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\README.md",
+      "extension": ".md",
+      "size": 1889,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 50
+    },
+    {
+      "path": "business\\identity-proxy\\policies\\anonymous-sessions.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\policies\\anonymous-sessions.yaml",
+      "extension": ".yaml",
+      "size": 2622,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 76
+    },
+    {
+      "path": "business\\identity-proxy\\warp-workflows\\auth-flow-agent.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\warp-workflows\\auth-flow-agent.yaml",
+      "extension": ".yaml",
+      "size": 17970,
+      "modified": "2025-11-22T06:09:39.206889",
+      "lines": 551
+    },
+    {
+      "path": "business\\identity-proxy\\warp-workflows\\QUICK_REFERENCE.md",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\warp-workflows\\QUICK_REFERENCE.md",
+      "extension": ".md",
+      "size": 7273,
+      "modified": "2025-11-22T06:12:16.338028",
+      "lines": 275
+    },
+    {
+      "path": "business\\identity-proxy\\warp-workflows\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\identity-proxy\\warp-workflows\\README.md",
+      "extension": ".md",
+      "size": 11209,
+      "modified": "2025-11-22T06:10:28.771671",
+      "lines": 358
+    },
+    {
+      "path": "business\\metrics\\kpis.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\metrics\\kpis.yaml",
+      "extension": ".yaml",
+      "size": 4572,
+      "modified": "2025-11-21T19:45:23.086240",
+      "lines": 131
+    },
+    {
+      "path": "business\\metrics\\okrs.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\metrics\\okrs.yaml",
+      "extension": ".yaml",
+      "size": 4026,
+      "modified": "2025-11-21T19:45:23.086240",
+      "lines": 123
+    },
+    {
+      "path": "business\\metrics\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\metrics\\README.md",
+      "extension": ".md",
+      "size": 1675,
+      "modified": "2025-11-21T19:45:23.060940",
+      "lines": 57
+    },
+    {
+      "path": "business\\nouns\\capabilities.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\nouns\\capabilities.yaml",
+      "extension": ".yaml",
+      "size": 1990,
+      "modified": "2025-11-21T19:45:23.052588",
+      "lines": 69
+    },
+    {
+      "path": "business\\nouns\\change-log.md",
+      "full_path": "E:\\zip-jobmatch\\business\\nouns\\change-log.md",
+      "extension": ".md",
+      "size": 5397,
+      "modified": "2025-11-21T20:59:00.392632",
+      "lines": 137
+    },
+    {
+      "path": "business\\nouns\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\nouns\\README.md",
+      "extension": ".md",
+      "size": 1388,
+      "modified": "2025-11-21T19:45:23.052588",
+      "lines": 44
+    },
+    {
+      "path": "business\\nouns\\roles.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\nouns\\roles.yaml",
+      "extension": ".yaml",
+      "size": 1895,
+      "modified": "2025-11-21T19:45:23.055518",
+      "lines": 62
+    },
+    {
+      "path": "business\\policies\\data-boundaries.md",
+      "full_path": "E:\\zip-jobmatch\\business\\policies\\data-boundaries.md",
+      "extension": ".md",
+      "size": 6201,
+      "modified": "2025-11-22T04:17:30.471182",
+      "lines": 216
+    },
+    {
+      "path": "business\\policies\\privacy.md",
+      "full_path": "E:\\zip-jobmatch\\business\\policies\\privacy.md",
+      "extension": ".md",
+      "size": 6209,
+      "modified": "2025-11-22T04:17:30.471182",
+      "lines": 187
+    },
+    {
+      "path": "business\\policies\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\policies\\README.md",
+      "extension": ".md",
+      "size": 1628,
+      "modified": "2025-11-21T19:45:23.086240",
+      "lines": 51
+    },
+    {
+      "path": "business\\risk-management\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\risk-management\\README.md",
+      "extension": ".md",
+      "size": 7581,
+      "modified": "2025-11-22T07:31:57.517310",
+      "lines": 242
+    },
+    {
+      "path": "business\\risk-management\\reports\\2025-11-22-security-audit-followup.md",
+      "full_path": "E:\\zip-jobmatch\\business\\risk-management\\reports\\2025-11-22-security-audit-followup.md",
+      "extension": ".md",
+      "size": 11305,
+      "modified": "2025-11-22T09:38:12.613148",
+      "lines": 387
+    },
+    {
+      "path": "business\\risk-management\\warp-workflows\\cybersecurity-agent.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\risk-management\\warp-workflows\\cybersecurity-agent.yaml",
+      "extension": ".yaml",
+      "size": 23313,
+      "modified": "2025-11-22T07:29:02.448678",
+      "lines": 712
+    },
+    {
+      "path": "business\\risk-management\\warp-workflows\\QUICK_REFERENCE.md",
+      "full_path": "E:\\zip-jobmatch\\business\\risk-management\\warp-workflows\\QUICK_REFERENCE.md",
+      "extension": ".md",
+      "size": 12433,
+      "modified": "2025-11-22T07:29:59.542127",
+      "lines": 405
+    },
+    {
+      "path": "business\\risk-management\\warp-workflows\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\risk-management\\warp-workflows\\README.md",
+      "extension": ".md",
+      "size": 17268,
+      "modified": "2025-11-22T07:31:17.230432",
+      "lines": 549
+    },
+    {
+      "path": "business\\runbooks\\incident-high-latency.md",
+      "full_path": "E:\\zip-jobmatch\\business\\runbooks\\incident-high-latency.md",
+      "extension": ".md",
+      "size": 4922,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 183
+    },
+    {
+      "path": "business\\runbooks\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\runbooks\\README.md",
+      "extension": ".md",
+      "size": 1534,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 45
+    },
+    {
+      "path": "business\\runbooks\\template.md",
+      "full_path": "E:\\zip-jobmatch\\business\\runbooks\\template.md",
+      "extension": ".md",
+      "size": 1782,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 99
+    },
+    {
+      "path": "business\\verbs\\actions.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\verbs\\actions.yaml",
+      "extension": ".yaml",
+      "size": 2906,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 97
+    },
+    {
+      "path": "business\\verbs\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\verbs\\README.md",
+      "extension": ".md",
+      "size": 1407,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 47
+    },
+    {
+      "path": "business\\xdmiq\\README.md",
+      "full_path": "E:\\zip-jobmatch\\business\\xdmiq\\README.md",
+      "extension": ".md",
+      "size": 2066,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 65
+    },
+    {
+      "path": "business\\xdmiq\\scoring.md",
+      "full_path": "E:\\zip-jobmatch\\business\\xdmiq\\scoring.md",
+      "extension": ".md",
+      "size": 4253,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 148
+    },
+    {
+      "path": "business\\xdmiq\\questions\\problem-solving.yaml",
+      "full_path": "E:\\zip-jobmatch\\business\\xdmiq\\questions\\problem-solving.yaml",
+      "extension": ".yaml",
+      "size": 2451,
+      "modified": "2025-11-21T19:45:23.058003",
+      "lines": 74
+    },
+    {
+      "path": "chrome-extension\\generate-icons.py",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\generate-icons.py",
+      "extension": ".py",
+      "size": 2587,
+      "modified": "2025-10-24T23:50:04.488645",
+      "lines": 86
+    },
+    {
+      "path": "chrome-extension\\manifest.json",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\manifest.json",
+      "extension": ".json",
+      "size": 1018,
+      "modified": "2025-10-25T17:05:19.383256",
+      "lines": 43
+    },
+    {
+      "path": "chrome-extension\\README.md",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\README.md",
+      "extension": ".md",
+      "size": 3706,
+      "modified": "2025-10-24T23:48:20.596451",
+      "lines": 110
+    },
+    {
+      "path": "chrome-extension\\popup\\popup.js",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\popup\\popup.js",
+      "extension": ".js",
+      "size": 9925,
+      "modified": "2025-10-25T13:43:25.769193",
+      "lines": 314
+    },
+    {
+      "path": "chrome-extension\\scripts\\background.js",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\scripts\\background.js",
+      "extension": ".js",
+      "size": 12476,
+      "modified": "2025-10-25T20:11:50.394207",
+      "lines": 367
+    },
+    {
+      "path": "chrome-extension\\scripts\\content.js",
+      "full_path": "E:\\zip-jobmatch\\chrome-extension\\scripts\\content.js",
+      "extension": ".js",
+      "size": 14579,
+      "modified": "2025-10-25T20:11:50.396200",
+      "lines": 433
+    },
+    {
+      "path": "data\\checkpoints\\pre-ollama-removal-20251124-1048\\docker-compose.yml",
+      "full_path": "E:\\zip-jobmatch\\data\\checkpoints\\pre-ollama-removal-20251124-1048\\docker-compose.yml",
+      "extension": ".yml",
+      "size": 4579,
+      "modified": "2025-11-24T10:48:02.792150",
+      "lines": 168
+    },
+    {
+      "path": "data\\checkpoints\\pre-ollama-removal-20251124-1048\\metadata.json",
+      "full_path": "E:\\zip-jobmatch\\data\\checkpoints\\pre-ollama-removal-20251124-1048\\metadata.json",
+      "extension": ".json",
+      "size": 599,
+      "modified": "2025-11-24T10:48:13.201656",
+      "lines": 20
+    },
+    {
+      "path": "data\\checkpoints\\test-full-backup-20251124-1049\\database.sql",
+      "full_path": "E:\\zip-jobmatch\\data\\checkpoints\\test-full-backup-20251124-1049\\database.sql",
+      "extension": ".sql",
+      "size": 643,
+      "modified": "2025-11-24T10:49:03.345052",
+      "lines": 26
+    },
+    {
+      "path": "data\\checkpoints\\test-full-backup-20251124-1049\\docker-compose.yml",
+      "full_path": "E:\\zip-jobmatch\\data\\checkpoints\\test-full-backup-20251124-1049\\docker-compose.yml",
+      "extension": ".yml",
+      "size": 4579,
+      "modified": "2025-11-24T10:48:02.792150",
+      "lines": 168
+    },
+    {
+      "path": "data\\checkpoints\\test-full-backup-20251124-1049\\metadata.json",
+      "full_path": "E:\\zip-jobmatch\\data\\checkpoints\\test-full-backup-20251124-1049\\metadata.json",
+      "extension": ".json",
+      "size": 673,
+      "modified": "2025-11-24T10:49:03.607523",
+      "lines": 23
+    },
+    {
+      "path": "docs\\ANALYSIS_FIX_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\ANALYSIS_FIX_COMPLETE.md",
+      "extension": ".md",
+      "size": 2691,
+      "modified": "2025-10-25T17:04:33.390611",
+      "lines": 87
+    },
+    {
+      "path": "docs\\API.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\API.md",
+      "extension": ".md",
+      "size": 5770,
+      "modified": "2025-10-24T22:27:15.802503",
+      "lines": 310
+    },
+    {
+      "path": "docs\\AUDIT_REPORT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\AUDIT_REPORT.md",
+      "extension": ".md",
+      "size": 5533,
+      "modified": "2025-11-21T18:31:50.106670",
+      "lines": 160
+    },
+    {
+      "path": "docs\\CANVAS_QUICK_START.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CANVAS_QUICK_START.md",
+      "extension": ".md",
+      "size": 6366,
+      "modified": "2025-11-24T11:03:30.724988",
+      "lines": 230
+    },
+    {
+      "path": "docs\\CANVAS_UI_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CANVAS_UI_GUIDE.md",
+      "extension": ".md",
+      "size": 10683,
+      "modified": "2025-11-24T11:02:52.203536",
+      "lines": 358
+    },
+    {
+      "path": "docs\\CASE_STUDY_01_DEVELOPER_IN_AI_ERA.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CASE_STUDY_01_DEVELOPER_IN_AI_ERA.md",
+      "extension": ".md",
+      "size": 11304,
+      "modified": "2025-11-24T13:08:07.998579",
+      "lines": 359
+    },
+    {
+      "path": "docs\\CLAUDE_CODE_INTEGRATION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CLAUDE_CODE_INTEGRATION.md",
+      "extension": ".md",
+      "size": 2433,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 89
+    },
+    {
+      "path": "docs\\CLI_INSTALLATION_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CLI_INSTALLATION_GUIDE.md",
+      "extension": ".md",
+      "size": 7174,
+      "modified": "2025-11-24T00:44:57.056685",
+      "lines": 357
+    },
+    {
+      "path": "docs\\COMPLIANCE_REPORT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\COMPLIANCE_REPORT.md",
+      "extension": ".md",
+      "size": 2022,
+      "modified": "2025-11-22T07:48:52.430188",
+      "lines": 66
+    },
+    {
+      "path": "docs\\COMPLIANCE_TOOLS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\COMPLIANCE_TOOLS.md",
+      "extension": ".md",
+      "size": 10290,
+      "modified": "2025-11-22T07:42:11.664292",
+      "lines": 342
+    },
+    {
+      "path": "docs\\CURRENT_STATUS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CURRENT_STATUS.md",
+      "extension": ".md",
+      "size": 7640,
+      "modified": "2025-10-24T23:03:59.757618",
+      "lines": 330
+    },
+    {
+      "path": "docs\\CURSOR_AGENT_PROMPT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CURSOR_AGENT_PROMPT.md",
+      "extension": ".md",
+      "size": 18218,
+      "modified": "2025-11-26T11:16:29.494680",
+      "lines": 635
+    },
+    {
+      "path": "docs\\CYBERSECURITY_OPS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\CYBERSECURITY_OPS.md",
+      "extension": ".md",
+      "size": 2897,
+      "modified": "2025-11-21T18:37:44.726123",
+      "lines": 112
+    },
+    {
+      "path": "docs\\DEPLOYMENT_REV002.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\DEPLOYMENT_REV002.md",
+      "extension": ".md",
+      "size": 7140,
+      "modified": "2025-11-21T21:14:43.011696",
+      "lines": 229
+    },
+    {
+      "path": "docs\\DEPLOYMENT_STATUS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\DEPLOYMENT_STATUS.md",
+      "extension": ".md",
+      "size": 9835,
+      "modified": "2025-10-24T22:55:17.335789",
+      "lines": 426
+    },
+    {
+      "path": "docs\\DEPLOY_SEO_API.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\DEPLOY_SEO_API.md",
+      "extension": ".md",
+      "size": 2976,
+      "modified": "2025-11-22T02:06:24.497345",
+      "lines": 124
+    },
+    {
+      "path": "docs\\DEVELOPMENT_WORKFLOW.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\DEVELOPMENT_WORKFLOW.md",
+      "extension": ".md",
+      "size": 2002,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 64
+    },
+    {
+      "path": "docs\\EMAIL_INTEGRATION_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\EMAIL_INTEGRATION_GUIDE.md",
+      "extension": ".md",
+      "size": 6264,
+      "modified": "2025-11-26T10:07:01.871425",
+      "lines": 224
+    },
+    {
+      "path": "docs\\EMAIL_SPAM_FIX.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\EMAIL_SPAM_FIX.md",
+      "extension": ".md",
+      "size": 4986,
+      "modified": "2025-11-22T04:15:44.729867",
+      "lines": 180
+    },
+    {
+      "path": "docs\\FEATURE_STATUS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\FEATURE_STATUS.md",
+      "extension": ".md",
+      "size": 665,
+      "modified": "2025-11-25T16:55:25.521879",
+      "lines": 18
+    },
+    {
+      "path": "docs\\FINANCIAL_PROJECTIONS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\FINANCIAL_PROJECTIONS.md",
+      "extension": ".md",
+      "size": 9221,
+      "modified": "2025-11-21T19:09:15.859627",
+      "lines": 309
+    },
+    {
+      "path": "docs\\GCP_CLI_BACKDOOR.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\GCP_CLI_BACKDOOR.md",
+      "extension": ".md",
+      "size": 6341,
+      "modified": "2025-11-21T18:04:58.891445",
+      "lines": 293
+    },
+    {
+      "path": "docs\\GCP_DEPLOYMENT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\GCP_DEPLOYMENT.md",
+      "extension": ".md",
+      "size": 10880,
+      "modified": "2025-10-24T22:47:54.739475",
+      "lines": 429
+    },
+    {
+      "path": "docs\\GROWTH_STRATEGY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\GROWTH_STRATEGY.md",
+      "extension": ".md",
+      "size": 1314,
+      "modified": "2025-11-21T19:07:42.174071",
+      "lines": 47
+    },
+    {
+      "path": "docs\\HUMAN_IN_THE_LOOP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\HUMAN_IN_THE_LOOP.md",
+      "extension": ".md",
+      "size": 983,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 39
+    },
+    {
+      "path": "docs\\INFRA_AGENT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\INFRA_AGENT.md",
+      "extension": ".md",
+      "size": 5787,
+      "modified": "2025-11-22T09:46:36.165464",
+      "lines": 221
+    },
+    {
+      "path": "docs\\INFRA_QUICK_START.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\INFRA_QUICK_START.md",
+      "extension": ".md",
+      "size": 3103,
+      "modified": "2025-11-22T09:48:38.745488",
+      "lines": 141
+    },
+    {
+      "path": "docs\\INTERACTIVE_DEMO.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\INTERACTIVE_DEMO.md",
+      "extension": ".md",
+      "size": 5995,
+      "modified": "2025-11-24T18:17:52.959821",
+      "lines": 180
+    },
+    {
+      "path": "docs\\IP_TRACKING_PRIVACY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\IP_TRACKING_PRIVACY.md",
+      "extension": ".md",
+      "size": 5254,
+      "modified": "2025-11-22T04:17:30.471182",
+      "lines": 123
+    },
+    {
+      "path": "docs\\JOBMATCH_PAID_PILOT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\JOBMATCH_PAID_PILOT.md",
+      "extension": ".md",
+      "size": 12625,
+      "modified": "2025-11-23T18:07:43.087730",
+      "lines": 409
+    },
+    {
+      "path": "docs\\JOB_ANALYSIS_FIX.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\JOB_ANALYSIS_FIX.md",
+      "extension": ".md",
+      "size": 4400,
+      "modified": "2025-10-25T14:34:16.338476",
+      "lines": 164
+    },
+    {
+      "path": "docs\\JOB_ANALYSIS_SOLUTION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\JOB_ANALYSIS_SOLUTION.md",
+      "extension": ".md",
+      "size": 2828,
+      "modified": "2025-10-25T17:04:33.466137",
+      "lines": 99
+    },
+    {
+      "path": "docs\\JOB_MATCH_CHAT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\JOB_MATCH_CHAT.md",
+      "extension": ".md",
+      "size": 9486,
+      "modified": "2025-11-24T12:57:47.931998",
+      "lines": 353
+    },
+    {
+      "path": "docs\\LINEAR_PROJECT_MANAGEMENT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\LINEAR_PROJECT_MANAGEMENT.md",
+      "extension": ".md",
+      "size": 6338,
+      "modified": "2025-11-23T23:11:30.586699",
+      "lines": 226
+    },
+    {
+      "path": "docs\\LLM_PROVIDER_UPDATE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\LLM_PROVIDER_UPDATE.md",
+      "extension": ".md",
+      "size": 3780,
+      "modified": "2025-11-26T11:16:29.458911",
+      "lines": 132
+    },
+    {
+      "path": "docs\\LOCAL_SSL_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\LOCAL_SSL_SETUP.md",
+      "extension": ".md",
+      "size": 3749,
+      "modified": "2025-11-22T03:20:52.821573",
+      "lines": 105
+    },
+    {
+      "path": "docs\\LONGEVITY_PREDICTION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\LONGEVITY_PREDICTION.md",
+      "extension": ".md",
+      "size": 7717,
+      "modified": "2025-11-23T14:15:57.697856",
+      "lines": 251
+    },
+    {
+      "path": "docs\\MAGIC_LINK_AUTHENTICATION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\MAGIC_LINK_AUTHENTICATION.md",
+      "extension": ".md",
+      "size": 3865,
+      "modified": "2025-11-22T04:01:51.504423",
+      "lines": 135
+    },
+    {
+      "path": "docs\\MAGIC_LINK_SECURITY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\MAGIC_LINK_SECURITY.md",
+      "extension": ".md",
+      "size": 4774,
+      "modified": "2025-11-22T04:17:30.471182",
+      "lines": 131
+    },
+    {
+      "path": "docs\\MARKETING_STRATEGY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\MARKETING_STRATEGY.md",
+      "extension": ".md",
+      "size": 8110,
+      "modified": "2025-11-21T19:09:15.859627",
+      "lines": 347
+    },
+    {
+      "path": "docs\\MARKETPLACE_INFRASTRUCTURE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\MARKETPLACE_INFRASTRUCTURE.md",
+      "extension": ".md",
+      "size": 2485,
+      "modified": "2025-11-21T18:30:08.995301",
+      "lines": 83
+    },
+    {
+      "path": "docs\\ONBOARDING_EMAIL_COMMUNICATION_PLAN.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\ONBOARDING_EMAIL_COMMUNICATION_PLAN.md",
+      "extension": ".md",
+      "size": 7780,
+      "modified": "2025-11-26T10:07:01.871425",
+      "lines": 292
+    },
+    {
+      "path": "docs\\OPENROUTER_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\OPENROUTER_SETUP.md",
+      "extension": ".md",
+      "size": 5108,
+      "modified": "2025-11-22T08:26:27.898503",
+      "lines": 225
+    },
+    {
+      "path": "docs\\PERFORMANCE_OPTIMIZATIONS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PERFORMANCE_OPTIMIZATIONS.md",
+      "extension": ".md",
+      "size": 5561,
+      "modified": "2025-11-22T03:20:52.832118",
+      "lines": 229
+    },
+    {
+      "path": "docs\\PIECES_WARP_INTEGRATION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PIECES_WARP_INTEGRATION.md",
+      "extension": ".md",
+      "size": 2880,
+      "modified": "2025-11-21T18:20:58.546868",
+      "lines": 122
+    },
+    {
+      "path": "docs\\PILOT_COST_ANALYSIS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PILOT_COST_ANALYSIS.md",
+      "extension": ".md",
+      "size": 10024,
+      "modified": "2025-11-21T23:13:08.202431",
+      "lines": 400
+    },
+    {
+      "path": "docs\\PLAYWRIGHT_MCP_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PLAYWRIGHT_MCP_SETUP.md",
+      "extension": ".md",
+      "size": 8788,
+      "modified": "2025-11-24T03:51:11.617648",
+      "lines": 315
+    },
+    {
+      "path": "docs\\PLAYWRIGHT_QUICK_REFERENCE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PLAYWRIGHT_QUICK_REFERENCE.md",
+      "extension": ".md",
+      "size": 7550,
+      "modified": "2025-11-24T03:53:10.522093",
+      "lines": 301
+    },
+    {
+      "path": "docs\\PORKBUN_SSL_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PORKBUN_SSL_SETUP.md",
+      "extension": ".md",
+      "size": 6523,
+      "modified": "2025-11-21T23:13:08.198826",
+      "lines": 203
+    },
+    {
+      "path": "docs\\PRIVACY_POLICY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PRIVACY_POLICY.md",
+      "extension": ".md",
+      "size": 10357,
+      "modified": "2025-11-22T07:45:22.352665",
+      "lines": 310
+    },
+    {
+      "path": "docs\\PRODUCTION_COST_ANALYSIS_1B_USERS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PRODUCTION_COST_ANALYSIS_1B_USERS.md",
+      "extension": ".md",
+      "size": 12315,
+      "modified": "2025-11-21T23:13:08.202431",
+      "lines": 379
+    },
+    {
+      "path": "docs\\PRODUCT_AGENT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PRODUCT_AGENT.md",
+      "extension": ".md",
+      "size": 8739,
+      "modified": "2025-11-23T15:14:09.375397",
+      "lines": 231
+    },
+    {
+      "path": "docs\\PROGRAM_MANAGEMENT_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PROGRAM_MANAGEMENT_SETUP.md",
+      "extension": ".md",
+      "size": 10840,
+      "modified": "2025-11-24T05:49:34.555619",
+      "lines": 344
+    },
+    {
+      "path": "docs\\PROJECT_STATUS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PROJECT_STATUS.md",
+      "extension": ".md",
+      "size": 11923,
+      "modified": "2025-11-26T11:16:29.494680",
+      "lines": 404
+    },
+    {
+      "path": "docs\\PROMPT_OPTIMIZATION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PROMPT_OPTIMIZATION.md",
+      "extension": ".md",
+      "size": 12507,
+      "modified": "2025-11-21T18:33:09.963924",
+      "lines": 414
+    },
+    {
+      "path": "docs\\PROTONMAIL_EMAIL_TESTING.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PROTONMAIL_EMAIL_TESTING.md",
+      "extension": ".md",
+      "size": 5046,
+      "modified": "2025-11-22T03:56:11.792536",
+      "lines": 164
+    },
+    {
+      "path": "docs\\PUBLIC_MVP_STRATEGY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PUBLIC_MVP_STRATEGY.md",
+      "extension": ".md",
+      "size": 8207,
+      "modified": "2025-11-23T18:04:18.948309",
+      "lines": 340
+    },
+    {
+      "path": "docs\\PYPI_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\PYPI_SETUP.md",
+      "extension": ".md",
+      "size": 4997,
+      "modified": "2025-11-24T08:09:13.620639",
+      "lines": 203
+    },
+    {
+      "path": "docs\\QUICK_START.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\QUICK_START.md",
+      "extension": ".md",
+      "size": 2649,
+      "modified": "2025-11-21T23:13:08.202431",
+      "lines": 116
+    },
+    {
+      "path": "docs\\QUICK_START_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\QUICK_START_GUIDE.md",
+      "extension": ".md",
+      "size": 18235,
+      "modified": "2025-11-21T19:03:55.582675",
+      "lines": 713
+    },
+    {
+      "path": "docs\\REVISED_GROWTH_STRATEGY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\REVISED_GROWTH_STRATEGY.md",
+      "extension": ".md",
+      "size": 8712,
+      "modified": "2025-11-21T19:09:15.855719",
+      "lines": 324
+    },
+    {
+      "path": "docs\\SCALING.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SCALING.md",
+      "extension": ".md",
+      "size": 1022,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 41
+    },
+    {
+      "path": "docs\\SCORING_SYSTEM.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SCORING_SYSTEM.md",
+      "extension": ".md",
+      "size": 3851,
+      "modified": "2025-10-25T17:04:33.617765",
+      "lines": 125
+    },
+    {
+      "path": "docs\\SEARCH_CONSOLE_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SEARCH_CONSOLE_SETUP.md",
+      "extension": ".md",
+      "size": 6376,
+      "modified": "2025-11-22T00:28:30.414140",
+      "lines": 229
+    },
+    {
+      "path": "docs\\SEARCH_CONSOLE_SETUP_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SEARCH_CONSOLE_SETUP_COMPLETE.md",
+      "extension": ".md",
+      "size": 4480,
+      "modified": "2025-11-22T00:29:57.389278",
+      "lines": 147
+    },
+    {
+      "path": "docs\\SECRET_MANAGEMENT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SECRET_MANAGEMENT.md",
+      "extension": ".md",
+      "size": 9353,
+      "modified": "2025-10-24T23:07:23.172877",
+      "lines": 398
+    },
+    {
+      "path": "docs\\SECURITY-CHECKLIST.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SECURITY-CHECKLIST.md",
+      "extension": ".md",
+      "size": 4600,
+      "modified": "2025-11-21T23:18:06.346937",
+      "lines": 161
+    },
+    {
+      "path": "docs\\SECURITY_RISKS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SECURITY_RISKS.md",
+      "extension": ".md",
+      "size": 3031,
+      "modified": "2025-11-21T18:37:44.714260",
+      "lines": 86
+    },
+    {
+      "path": "docs\\SECURITY_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SECURITY_SUMMARY.md",
+      "extension": ".md",
+      "size": 3937,
+      "modified": "2025-11-21T18:37:44.726123",
+      "lines": 123
+    },
+    {
+      "path": "docs\\SEO_AUTOMATION_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SEO_AUTOMATION_SUMMARY.md",
+      "extension": ".md",
+      "size": 6795,
+      "modified": "2025-11-22T00:28:30.424670",
+      "lines": 254
+    },
+    {
+      "path": "docs\\SEO_QUICK_START.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SEO_QUICK_START.md",
+      "extension": ".md",
+      "size": 4965,
+      "modified": "2025-11-22T00:26:35.535390",
+      "lines": 153
+    },
+    {
+      "path": "docs\\SEO_STRATEGY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SEO_STRATEGY.md",
+      "extension": ".md",
+      "size": 6518,
+      "modified": "2025-11-22T00:26:35.535390",
+      "lines": 212
+    },
+    {
+      "path": "docs\\SES_DNS_MANUAL_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SES_DNS_MANUAL_SETUP.md",
+      "extension": ".md",
+      "size": 4070,
+      "modified": "2025-11-22T04:15:44.728362",
+      "lines": 139
+    },
+    {
+      "path": "docs\\SES_PRODUCTION_ACCESS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SES_PRODUCTION_ACCESS.md",
+      "extension": ".md",
+      "size": 6183,
+      "modified": "2025-11-22T03:56:11.792536",
+      "lines": 197
+    },
+    {
+      "path": "docs\\SES_TROUBLESHOOTING.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SES_TROUBLESHOOTING.md",
+      "extension": ".md",
+      "size": 4694,
+      "modified": "2025-11-22T03:51:41.104311",
+      "lines": 159
+    },
+    {
+      "path": "docs\\SES_VERIFIED_EMAILS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SES_VERIFIED_EMAILS.md",
+      "extension": ".md",
+      "size": 3718,
+      "modified": "2025-11-22T03:56:11.792536",
+      "lines": 119
+    },
+    {
+      "path": "docs\\SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SETUP.md",
+      "extension": ".md",
+      "size": 5011,
+      "modified": "2025-10-24T22:27:40.203830",
+      "lines": 258
+    },
+    {
+      "path": "docs\\SETUP_COMPLETE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\SETUP_COMPLETE.md",
+      "extension": ".md",
+      "size": 2753,
+      "modified": "2025-11-21T19:07:27.725974",
+      "lines": 112
+    },
+    {
+      "path": "docs\\START_BACKEND.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\START_BACKEND.md",
+      "extension": ".md",
+      "size": 2061,
+      "modified": "2025-11-22T04:15:44.723359",
+      "lines": 63
+    },
+    {
+      "path": "docs\\STATE_RECOVERY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\STATE_RECOVERY.md",
+      "extension": ".md",
+      "size": 1011,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 41
+    },
+    {
+      "path": "docs\\TEST_RESULTS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\TEST_RESULTS.md",
+      "extension": ".md",
+      "size": 8292,
+      "modified": "2025-11-21T19:10:06.543109",
+      "lines": 286
+    },
+    {
+      "path": "docs\\TROUBLESHOOTING_HANDOFF.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\TROUBLESHOOTING_HANDOFF.md",
+      "extension": ".md",
+      "size": 4799,
+      "modified": "2025-10-25T12:28:53.515187",
+      "lines": 123
+    },
+    {
+      "path": "docs\\TWILIO_VOICE_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\TWILIO_VOICE_SETUP.md",
+      "extension": ".md",
+      "size": 5873,
+      "modified": "2025-11-23T22:46:10.042830",
+      "lines": 229
+    },
+    {
+      "path": "docs\\UAT_MONITORING.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\UAT_MONITORING.md",
+      "extension": ".md",
+      "size": 7920,
+      "modified": "2025-11-25T10:47:21.194164",
+      "lines": 268
+    },
+    {
+      "path": "docs\\UNIVERSAL_CANVAS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\UNIVERSAL_CANVAS.md",
+      "extension": ".md",
+      "size": 2212,
+      "modified": "2025-11-21T18:32:17.202982",
+      "lines": 80
+    },
+    {
+      "path": "docs\\VM-GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\VM-GUIDE.md",
+      "extension": ".md",
+      "size": 7112,
+      "modified": "2025-11-21T21:39:37.311258",
+      "lines": 326
+    },
+    {
+      "path": "docs\\WARP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\WARP.md",
+      "extension": ".md",
+      "size": 10965,
+      "modified": "2025-10-24T22:47:01.744753",
+      "lines": 383
+    },
+    {
+      "path": "docs\\WARP_PERFORMANCE_FIXES.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\WARP_PERFORMANCE_FIXES.md",
+      "extension": ".md",
+      "size": 7417,
+      "modified": "2025-11-22T02:56:06.848272",
+      "lines": 202
+    },
+    {
+      "path": "docs\\WARP_SES_CREDENTIALS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\WARP_SES_CREDENTIALS.md",
+      "extension": ".md",
+      "size": 3148,
+      "modified": "2025-11-22T04:25:48.301131",
+      "lines": 113
+    },
+    {
+      "path": "docs\\branding\\YOURL_CLOUD_BRAND_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\branding\\YOURL_CLOUD_BRAND_GUIDE.md",
+      "extension": ".md",
+      "size": 9272,
+      "modified": "2025-11-23T23:25:53.593659",
+      "lines": 364
+    },
+    {
+      "path": "docs\\branding\\YOURL_CLOUD_LOGO_PROMPT.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\branding\\YOURL_CLOUD_LOGO_PROMPT.md",
+      "extension": ".md",
+      "size": 8658,
+      "modified": "2025-11-23T23:17:58.023354",
+      "lines": 224
+    },
+    {
+      "path": "docs\\business\\BUSINESS_PLAN_REVIEW.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\business\\BUSINESS_PLAN_REVIEW.md",
+      "extension": ".md",
+      "size": 13024,
+      "modified": "2025-11-21T19:09:15.855719",
+      "lines": 376
+    },
+    {
+      "path": "docs\\business\\EXECUTIVE_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\business\\EXECUTIVE_SUMMARY.md",
+      "extension": ".md",
+      "size": 6533,
+      "modified": "2025-11-21T19:09:15.859627",
+      "lines": 250
+    },
+    {
+      "path": "docs\\business\\LOAN_APPROVAL_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\business\\LOAN_APPROVAL_SUMMARY.md",
+      "extension": ".md",
+      "size": 6227,
+      "modified": "2025-11-21T19:09:15.855719",
+      "lines": 204
+    },
+    {
+      "path": "docs\\business\\PORKBUN_INTEGRATION_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\business\\PORKBUN_INTEGRATION_SUMMARY.md",
+      "extension": ".md",
+      "size": 4294,
+      "modified": "2025-11-21T23:13:08.201457",
+      "lines": 129
+    },
+    {
+      "path": "docs\\business\\STARTUP_COST_BREAKDOWN.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\business\\STARTUP_COST_BREAKDOWN.md",
+      "extension": ".md",
+      "size": 5926,
+      "modified": "2025-11-21T19:09:15.855719",
+      "lines": 182
+    },
+    {
+      "path": "docs\\deployment\\DEPLOYMENT_INSTRUCTIONS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\DEPLOYMENT_INSTRUCTIONS.md",
+      "extension": ".md",
+      "size": 3548,
+      "modified": "2025-11-21T23:13:08.174182",
+      "lines": 152
+    },
+    {
+      "path": "docs\\deployment\\DEPLOY_CHAT_BACKEND.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\DEPLOY_CHAT_BACKEND.md",
+      "extension": ".md",
+      "size": 2783,
+      "modified": "2025-11-21T23:28:42.369736",
+      "lines": 104
+    },
+    {
+      "path": "docs\\deployment\\DEPLOY_TO_JOBMATCH_ZIP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\DEPLOY_TO_JOBMATCH_ZIP.md",
+      "extension": ".md",
+      "size": 3718,
+      "modified": "2025-11-21T23:13:08.198826",
+      "lines": 144
+    },
+    {
+      "path": "docs\\deployment\\GITHUB_ACTIONS_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\GITHUB_ACTIONS_SETUP.md",
+      "extension": ".md",
+      "size": 3902,
+      "modified": "2025-11-22T02:52:22.102255",
+      "lines": 136
+    },
+    {
+      "path": "docs\\deployment\\README_DOCKER.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\README_DOCKER.md",
+      "extension": ".md",
+      "size": 3679,
+      "modified": "2025-11-21T19:09:15.845379",
+      "lines": 189
+    },
+    {
+      "path": "docs\\deployment\\SIMPLE_DEPLOYMENT_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\deployment\\SIMPLE_DEPLOYMENT_SETUP.md",
+      "extension": ".md",
+      "size": 1776,
+      "modified": "2025-11-22T02:52:22.102255",
+      "lines": 59
+    },
+    {
+      "path": "docs\\testing\\OVERNIGHT_DATA_GENERATION.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\testing\\OVERNIGHT_DATA_GENERATION.md",
+      "extension": ".md",
+      "size": 3901,
+      "modified": "2025-11-22T00:20:35.984164",
+      "lines": 138
+    },
+    {
+      "path": "docs\\testing\\SIMPLE_UAT_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\testing\\SIMPLE_UAT_GUIDE.md",
+      "extension": ".md",
+      "size": 1898,
+      "modified": "2025-11-21T23:13:08.202431",
+      "lines": 78
+    },
+    {
+      "path": "docs\\testing\\TASK_STATUS.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\testing\\TASK_STATUS.md",
+      "extension": ".md",
+      "size": 4220,
+      "modified": "2025-11-21T19:09:15.855719",
+      "lines": 125
+    },
+    {
+      "path": "docs\\testing\\TESTING.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\testing\\TESTING.md",
+      "extension": ".md",
+      "size": 2175,
+      "modified": "2025-11-21T18:33:57.819160",
+      "lines": 83
+    },
+    {
+      "path": "docs\\testing\\UAT_GUIDE.md",
+      "full_path": "E:\\zip-jobmatch\\docs\\testing\\UAT_GUIDE.md",
+      "extension": ".md",
+      "size": 3173,
+      "modified": "2025-11-21T23:13:08.201457",
+      "lines": 106
+    },
+    {
+      "path": "frontend\\CONSOLE_CLEANUP.md",
+      "full_path": "E:\\zip-jobmatch\\frontend\\CONSOLE_CLEANUP.md",
+      "extension": ".md",
+      "size": 4014,
+      "modified": "2025-11-25T12:43:10.529009",
+      "lines": 142
+    },
+    {
+      "path": "frontend\\middleware.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\middleware.ts",
+      "extension": ".ts",
+      "size": 5867,
+      "modified": "2025-11-22T11:29:27.964745",
+      "lines": 180
+    },
+    {
+      "path": "frontend\\next.config.js",
+      "full_path": "E:\\zip-jobmatch\\frontend\\next.config.js",
+      "extension": ".js",
+      "size": 511,
+      "modified": "2025-11-25T12:42:00.289157",
+      "lines": 17
+    },
+    {
+      "path": "frontend\\package-lock.json",
+      "full_path": "E:\\zip-jobmatch\\frontend\\package-lock.json",
+      "extension": ".json",
+      "size": 213654,
+      "modified": "2025-11-22T04:27:49.709913",
+      "lines": 5951
+    },
+    {
+      "path": "frontend\\package.json",
+      "full_path": "E:\\zip-jobmatch\\frontend\\package.json",
+      "extension": ".json",
+      "size": 1229,
+      "modified": "2025-11-24T15:12:07.286350",
+      "lines": 46
+    },
+    {
+      "path": "frontend\\postcss.config.js",
+      "full_path": "E:\\zip-jobmatch\\frontend\\postcss.config.js",
+      "extension": ".js",
+      "size": 89,
+      "modified": "2025-10-24T22:24:38.088890",
+      "lines": 6
+    },
+    {
+      "path": "frontend\\server.js",
+      "full_path": "E:\\zip-jobmatch\\frontend\\server.js",
+      "extension": ".js",
+      "size": 1802,
+      "modified": "2025-11-22T02:06:24.564865",
+      "lines": 56
+    },
+    {
+      "path": "frontend\\tailwind.config.js",
+      "full_path": "E:\\zip-jobmatch\\frontend\\tailwind.config.js",
+      "extension": ".js",
+      "size": 600,
+      "modified": "2025-11-24T03:48:36.589650",
+      "lines": 27
+    },
+    {
+      "path": "frontend\\tsconfig.json",
+      "full_path": "E:\\zip-jobmatch\\frontend\\tsconfig.json",
+      "extension": ".json",
+      "size": 629,
+      "modified": "2025-10-24T22:24:25.055202",
+      "lines": 27
+    },
+    {
+      "path": "frontend\\app\\error.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\error.tsx",
+      "extension": ".tsx",
+      "size": 4057,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 145
+    },
+    {
+      "path": "frontend\\app\\global-error.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\global-error.tsx",
+      "extension": ".tsx",
+      "size": 2392,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 88
+    },
+    {
+      "path": "frontend\\app\\layout.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\layout.tsx",
+      "extension": ".tsx",
+      "size": 5212,
+      "modified": "2025-11-22T09:17:54.473781",
+      "lines": 166
+    },
+    {
+      "path": "frontend\\app\\loading.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\loading.tsx",
+      "extension": ".tsx",
+      "size": 72,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 4
+    },
+    {
+      "path": "frontend\\app\\not-found.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\not-found.tsx",
+      "extension": ".tsx",
+      "size": 4015,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 142
+    },
+    {
+      "path": "frontend\\app\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\page.tsx",
+      "extension": ".tsx",
+      "size": 10663,
+      "modified": "2025-11-25T16:22:21.425079",
+      "lines": 216
+    },
+    {
+      "path": "frontend\\app\\robots.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\robots.ts",
+      "extension": ".ts",
+      "size": 310,
+      "modified": "2025-11-22T00:26:35.533437",
+      "lines": 15
+    },
+    {
+      "path": "frontend\\app\\sitemap.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\sitemap.ts",
+      "extension": ".ts",
+      "size": 566,
+      "modified": "2025-11-22T00:26:35.529520",
+      "lines": 27
+    },
+    {
+      "path": "frontend\\app\\api\\auth\\session\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\api\\auth\\session\\route.ts",
+      "extension": ".ts",
+      "size": 816,
+      "modified": "2025-11-22T08:51:38.060823",
+      "lines": 27
+    },
+    {
+      "path": "frontend\\app\\api\\manifest\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\api\\manifest\\route.ts",
+      "extension": ".ts",
+      "size": 1536,
+      "modified": "2025-11-22T04:40:05.259171",
+      "lines": 60
+    },
+    {
+      "path": "frontend\\app\\api\\subscription\\create-checkout-session\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\api\\subscription\\create-checkout-session\\route.ts",
+      "extension": ".ts",
+      "size": 1064,
+      "modified": "2025-11-24T06:39:45.769349",
+      "lines": 33
+    },
+    {
+      "path": "frontend\\app\\api\\sw\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\api\\sw\\route.ts",
+      "extension": ".ts",
+      "size": 2233,
+      "modified": "2025-11-22T06:04:41.458192",
+      "lines": 84
+    },
+    {
+      "path": "frontend\\app\\articulation\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\articulation\\page.tsx",
+      "extension": ".tsx",
+      "size": 2552,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 86
+    },
+    {
+      "path": "frontend\\app\\assessment\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\assessment\\page.tsx",
+      "extension": ".tsx",
+      "size": 43567,
+      "modified": "2025-11-22T04:14:47.187346",
+      "lines": 1201
+    },
+    {
+      "path": "frontend\\app\\auth\\metadata.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\auth\\metadata.ts",
+      "extension": ".ts",
+      "size": 262,
+      "modified": "2025-11-22T06:04:36.270507",
+      "lines": 7
+    },
+    {
+      "path": "frontend\\app\\auth\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\auth\\page.tsx",
+      "extension": ".tsx",
+      "size": 30544,
+      "modified": "2025-11-24T03:28:51.357521",
+      "lines": 830
+    },
+    {
+      "path": "frontend\\app\\auth\\magic-link\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\auth\\magic-link\\page.tsx",
+      "extension": ".tsx",
+      "size": 4891,
+      "modified": "2025-11-22T10:38:17.206220",
+      "lines": 153
+    },
+    {
+      "path": "frontend\\app\\canvas\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\canvas\\page.tsx",
+      "extension": ".tsx",
+      "size": 29194,
+      "modified": "2025-11-25T20:15:37.606425",
+      "lines": 909
+    },
+    {
+      "path": "frontend\\app\\forums\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\forums\\page.tsx",
+      "extension": ".tsx",
+      "size": 2028,
+      "modified": "2025-11-21T17:54:11.520951",
+      "lines": 62
+    },
+    {
+      "path": "frontend\\app\\icon.svg\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\icon.svg\\route.ts",
+      "extension": ".ts",
+      "size": 1792,
+      "modified": "2025-11-22T06:04:36.255983",
+      "lines": 55
+    },
+    {
+      "path": "frontend\\app\\logout\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\logout\\page.tsx",
+      "extension": ".tsx",
+      "size": 3393,
+      "modified": "2025-11-22T11:08:24.731965",
+      "lines": 115
+    },
+    {
+      "path": "frontend\\app\\manifest.json\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\manifest.json\\route.ts",
+      "extension": ".ts",
+      "size": 1917,
+      "modified": "2025-11-22T04:40:05.259171",
+      "lines": 66
+    },
+    {
+      "path": "frontend\\app\\marketplace\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\marketplace\\page.tsx",
+      "extension": ".tsx",
+      "size": 13385,
+      "modified": "2025-11-21T23:13:08.160381",
+      "lines": 346
+    },
+    {
+      "path": "frontend\\app\\matching\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\matching\\page.tsx",
+      "extension": ".tsx",
+      "size": 8171,
+      "modified": "2025-11-23T14:15:04.685649",
+      "lines": 199
+    },
+    {
+      "path": "frontend\\app\\privacy\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\privacy\\page.tsx",
+      "extension": ".tsx",
+      "size": 2092,
+      "modified": "2025-11-22T10:01:02.269013",
+      "lines": 48
+    },
+    {
+      "path": "frontend\\app\\profile\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\profile\\page.tsx",
+      "extension": ".tsx",
+      "size": 11771,
+      "modified": "2025-11-22T04:11:04.722022",
+      "lines": 344
+    },
+    {
+      "path": "frontend\\app\\recover\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\recover\\page.tsx",
+      "extension": ".tsx",
+      "size": 27197,
+      "modified": "2025-11-22T07:31:05.495366",
+      "lines": 766
+    },
+    {
+      "path": "frontend\\app\\redirect\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\redirect\\page.tsx",
+      "extension": ".tsx",
+      "size": 661,
+      "modified": "2025-11-21T18:32:17.203498",
+      "lines": 28
+    },
+    {
+      "path": "frontend\\app\\roadmap\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\roadmap\\page.tsx",
+      "extension": ".tsx",
+      "size": 1613,
+      "modified": "2025-11-25T16:22:21.425079",
+      "lines": 45
+    },
+    {
+      "path": "frontend\\app\\sw.js\\route.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\sw.js\\route.ts",
+      "extension": ".ts",
+      "size": 1487,
+      "modified": "2025-11-22T04:40:05.255644",
+      "lines": 50
+    },
+    {
+      "path": "frontend\\app\\test-zk\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\test-zk\\page.tsx",
+      "extension": ".tsx",
+      "size": 13383,
+      "modified": "2025-11-24T15:12:58.363194",
+      "lines": 362
+    },
+    {
+      "path": "frontend\\app\\uat\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\uat\\page.tsx",
+      "extension": ".tsx",
+      "size": 16693,
+      "modified": "2025-11-21T23:13:08.201457",
+      "lines": 483
+    },
+    {
+      "path": "frontend\\app\\uat\\earnings\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\uat\\earnings\\page.tsx",
+      "extension": ".tsx",
+      "size": 10748,
+      "modified": "2025-11-23T15:24:50.854319",
+      "lines": 264
+    },
+    {
+      "path": "frontend\\app\\uat\\register\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\uat\\register\\page.tsx",
+      "extension": ".tsx",
+      "size": 11221,
+      "modified": "2025-11-23T15:24:05.577601",
+      "lines": 285
+    },
+    {
+      "path": "frontend\\app\\uat\\scenarios\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\uat\\scenarios\\page.tsx",
+      "extension": ".tsx",
+      "size": 8845,
+      "modified": "2025-11-23T15:24:05.597124",
+      "lines": 220
+    },
+    {
+      "path": "frontend\\app\\xdmiq\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\app\\xdmiq\\page.tsx",
+      "extension": ".tsx",
+      "size": 13515,
+      "modified": "2025-11-24T03:28:13.156716",
+      "lines": 349
+    },
+    {
+      "path": "frontend\\components\\AgeVerificationModal.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\AgeVerificationModal.tsx",
+      "extension": ".tsx",
+      "size": 9301,
+      "modified": "2025-11-24T13:01:50.632250",
+      "lines": 296
+    },
+    {
+      "path": "frontend\\components\\AnonymousIdDisplay.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\AnonymousIdDisplay.tsx",
+      "extension": ".tsx",
+      "size": 6304,
+      "modified": "2025-11-21T22:16:11.900881",
+      "lines": 197
+    },
+    {
+      "path": "frontend\\components\\CanvasFormField.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\CanvasFormField.tsx",
+      "extension": ".tsx",
+      "size": 20334,
+      "modified": "2025-11-22T09:55:37.235938",
+      "lines": 637
+    },
+    {
+      "path": "frontend\\components\\CapabilityDesign.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\CapabilityDesign.tsx",
+      "extension": ".tsx",
+      "size": 2899,
+      "modified": "2025-11-21T21:11:42.510577",
+      "lines": 103
+    },
+    {
+      "path": "frontend\\components\\ErrorBoundary.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\ErrorBoundary.tsx",
+      "extension": ".tsx",
+      "size": 2152,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 90
+    },
+    {
+      "path": "frontend\\components\\FeatureList.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\FeatureList.tsx",
+      "extension": ".tsx",
+      "size": 586,
+      "modified": "2025-11-25T16:22:21.425079",
+      "lines": 19
+    },
+    {
+      "path": "frontend\\components\\HomeChat.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\HomeChat.tsx",
+      "extension": ".tsx",
+      "size": 37035,
+      "modified": "2025-11-22T11:10:04.361779",
+      "lines": 996
+    },
+    {
+      "path": "frontend\\components\\Loading.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\Loading.tsx",
+      "extension": ".tsx",
+      "size": 700,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 32
+    },
+    {
+      "path": "frontend\\components\\RotatingHero.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\RotatingHero.tsx",
+      "extension": ".tsx",
+      "size": 5379,
+      "modified": "2025-11-22T02:35:31.761994",
+      "lines": 149
+    },
+    {
+      "path": "frontend\\components\\StatusIcon.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\StatusIcon.tsx",
+      "extension": ".tsx",
+      "size": 1439,
+      "modified": "2025-11-25T16:22:21.424079",
+      "lines": 32
+    },
+    {
+      "path": "frontend\\components\\StructuredData.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\components\\StructuredData.tsx",
+      "extension": ".tsx",
+      "size": 600,
+      "modified": "2025-11-22T00:26:35.533437",
+      "lines": 25
+    },
+    {
+      "path": "frontend\\config\\chat-prompts.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\config\\chat-prompts.ts",
+      "extension": ".ts",
+      "size": 4041,
+      "modified": "2025-11-22T11:09:52.690324",
+      "lines": 116
+    },
+    {
+      "path": "frontend\\lib\\apiCache.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\lib\\apiCache.ts",
+      "extension": ".ts",
+      "size": 3048,
+      "modified": "2025-11-22T06:04:41.458192",
+      "lines": 117
+    },
+    {
+      "path": "frontend\\lib\\features.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\lib\\features.ts",
+      "extension": ".ts",
+      "size": 919,
+      "modified": "2025-11-25T17:18:58.856437",
+      "lines": 17
+    },
+    {
+      "path": "frontend\\lib\\safeStorage.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\lib\\safeStorage.ts",
+      "extension": ".ts",
+      "size": 1845,
+      "modified": "2025-11-25T19:09:02.670739",
+      "lines": 76
+    },
+    {
+      "path": "frontend\\lib\\zkCrypto.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\lib\\zkCrypto.ts",
+      "extension": ".ts",
+      "size": 6542,
+      "modified": "2025-11-24T15:11:49.461835",
+      "lines": 269
+    },
+    {
+      "path": "frontend\\public\\manifest.json",
+      "full_path": "E:\\zip-jobmatch\\frontend\\public\\manifest.json",
+      "extension": ".json",
+      "size": 1229,
+      "modified": "2025-11-22T04:40:05.248621",
+      "lines": 46
+    },
+    {
+      "path": "frontend\\public\\README-ICONS.md",
+      "full_path": "E:\\zip-jobmatch\\frontend\\public\\README-ICONS.md",
+      "extension": ".md",
+      "size": 1531,
+      "modified": "2025-11-22T04:40:05.249624",
+      "lines": 58
+    },
+    {
+      "path": "frontend\\src\\app\\layout.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\layout.tsx",
+      "extension": ".tsx",
+      "size": 1093,
+      "modified": "2025-11-25T12:42:40.248811",
+      "lines": 40
+    },
+    {
+      "path": "frontend\\src\\app\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\page.tsx",
+      "extension": ".tsx",
+      "size": 12134,
+      "modified": "2025-11-25T11:16:20.121481",
+      "lines": 249
+    },
+    {
+      "path": "frontend\\src\\app\\admin\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\admin\\page.tsx",
+      "extension": ".tsx",
+      "size": 12076,
+      "modified": "2025-11-21T21:11:27.154473",
+      "lines": 308
+    },
+    {
+      "path": "frontend\\src\\app\\assess\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\assess\\page.tsx",
+      "extension": ".tsx",
+      "size": 19032,
+      "modified": "2025-11-24T11:01:43.175516",
+      "lines": 449
+    },
+    {
+      "path": "frontend\\src\\app\\dashboard\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\dashboard\\page.tsx",
+      "extension": ".tsx",
+      "size": 3310,
+      "modified": "2025-11-24T12:54:44.392563",
+      "lines": 92
+    },
+    {
+      "path": "frontend\\src\\app\\matches\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\matches\\page.tsx",
+      "extension": ".tsx",
+      "size": 10522,
+      "modified": "2025-11-24T11:01:15.700800",
+      "lines": 289
+    },
+    {
+      "path": "frontend\\src\\app\\profile\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\profile\\page.tsx",
+      "extension": ".tsx",
+      "size": 7852,
+      "modified": "2025-11-21T20:32:45.646366",
+      "lines": 219
+    },
+    {
+      "path": "frontend\\src\\app\\terms\\page.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\app\\terms\\page.tsx",
+      "extension": ".tsx",
+      "size": 6740,
+      "modified": "2025-11-21T20:59:00.332011",
+      "lines": 137
+    },
+    {
+      "path": "frontend\\src\\components\\AnonymousIdDisplay.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\AnonymousIdDisplay.tsx",
+      "extension": ".tsx",
+      "size": 6304,
+      "modified": "2025-11-21T22:16:11.900881",
+      "lines": 197
+    },
+    {
+      "path": "frontend\\src\\components\\Button.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\Button.tsx",
+      "extension": ".tsx",
+      "size": 1515,
+      "modified": "2025-11-21T20:31:26.272803",
+      "lines": 49
+    },
+    {
+      "path": "frontend\\src\\components\\CanvasFormField.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\CanvasFormField.tsx",
+      "extension": ".tsx",
+      "size": 20334,
+      "modified": "2025-11-22T09:55:37.235938",
+      "lines": 637
+    },
+    {
+      "path": "frontend\\src\\components\\CapabilityDesign.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\CapabilityDesign.tsx",
+      "extension": ".tsx",
+      "size": 2899,
+      "modified": "2025-11-21T21:11:42.510577",
+      "lines": 103
+    },
+    {
+      "path": "frontend\\src\\components\\Card.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\Card.tsx",
+      "extension": ".tsx",
+      "size": 788,
+      "modified": "2025-11-21T20:31:26.308217",
+      "lines": 31
+    },
+    {
+      "path": "frontend\\src\\components\\DrawingCanvas.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\DrawingCanvas.tsx",
+      "extension": ".tsx",
+      "size": 8390,
+      "modified": "2025-11-25T11:30:17.251500",
+      "lines": 256
+    },
+    {
+      "path": "frontend\\src\\components\\ErrorBoundary.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\ErrorBoundary.tsx",
+      "extension": ".tsx",
+      "size": 2152,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 90
+    },
+    {
+      "path": "frontend\\src\\components\\FeatureList.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\FeatureList.tsx",
+      "extension": ".tsx",
+      "size": 586,
+      "modified": "2025-11-25T16:22:21.425079",
+      "lines": 19
+    },
+    {
+      "path": "frontend\\src\\components\\Header.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\Header.tsx",
+      "extension": ".tsx",
+      "size": 1616,
+      "modified": "2025-11-21T20:31:26.496332",
+      "lines": 53
+    },
+    {
+      "path": "frontend\\src\\components\\HomeChat.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\HomeChat.tsx",
+      "extension": ".tsx",
+      "size": 37035,
+      "modified": "2025-11-22T11:10:04.361779",
+      "lines": 996
+    },
+    {
+      "path": "frontend\\src\\components\\index.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\index.ts",
+      "extension": ".ts",
+      "size": 525,
+      "modified": "2025-11-24T12:54:24.457951",
+      "lines": 11
+    },
+    {
+      "path": "frontend\\src\\components\\Input.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\Input.tsx",
+      "extension": ".tsx",
+      "size": 1019,
+      "modified": "2025-11-21T20:31:26.369676",
+      "lines": 39
+    },
+    {
+      "path": "frontend\\src\\components\\InteractiveDemo.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\InteractiveDemo.tsx",
+      "extension": ".tsx",
+      "size": 9006,
+      "modified": "2025-11-25T12:43:30.799215",
+      "lines": 200
+    },
+    {
+      "path": "frontend\\src\\components\\JobMatchChat.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\JobMatchChat.tsx",
+      "extension": ".tsx",
+      "size": 10109,
+      "modified": "2025-11-24T12:52:41.547357",
+      "lines": 276
+    },
+    {
+      "path": "frontend\\src\\components\\LiveChatDemo.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\LiveChatDemo.tsx",
+      "extension": ".tsx",
+      "size": 11501,
+      "modified": "2025-11-25T12:31:29.086468",
+      "lines": 293
+    },
+    {
+      "path": "frontend\\src\\components\\Loading.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\Loading.tsx",
+      "extension": ".tsx",
+      "size": 700,
+      "modified": "2025-11-22T03:20:58.430917",
+      "lines": 32
+    },
+    {
+      "path": "frontend\\src\\components\\PIIVerification.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\PIIVerification.tsx",
+      "extension": ".tsx",
+      "size": 5147,
+      "modified": "2025-11-21T20:59:00.271935",
+      "lines": 152
+    },
+    {
+      "path": "frontend\\src\\components\\RadialMenu.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\RadialMenu.tsx",
+      "extension": ".tsx",
+      "size": 7090,
+      "modified": "2025-11-24T11:00:23.103978",
+      "lines": 210
+    },
+    {
+      "path": "frontend\\src\\components\\RotatingHero.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\RotatingHero.tsx",
+      "extension": ".tsx",
+      "size": 5379,
+      "modified": "2025-11-22T02:35:31.761994",
+      "lines": 149
+    },
+    {
+      "path": "frontend\\src\\components\\SkillBubbles.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\SkillBubbles.tsx",
+      "extension": ".tsx",
+      "size": 8620,
+      "modified": "2025-11-24T10:59:39.808266",
+      "lines": 229
+    },
+    {
+      "path": "frontend\\src\\components\\StatusIcon.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\StatusIcon.tsx",
+      "extension": ".tsx",
+      "size": 1439,
+      "modified": "2025-11-25T16:22:21.424079",
+      "lines": 32
+    },
+    {
+      "path": "frontend\\src\\components\\StructuredData.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\StructuredData.tsx",
+      "extension": ".tsx",
+      "size": 600,
+      "modified": "2025-11-22T00:26:35.533437",
+      "lines": 25
+    },
+    {
+      "path": "frontend\\src\\components\\SwipeCards.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\SwipeCards.tsx",
+      "extension": ".tsx",
+      "size": 10100,
+      "modified": "2025-11-24T10:58:58.432431",
+      "lines": 297
+    },
+    {
+      "path": "frontend\\src\\components\\TextArea.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\TextArea.tsx",
+      "extension": ".tsx",
+      "size": 1080,
+      "modified": "2025-11-21T20:31:26.428937",
+      "lines": 41
+    },
+    {
+      "path": "frontend\\src\\components\\layout\\Banner.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\layout\\Banner.tsx",
+      "extension": ".tsx",
+      "size": 3842,
+      "modified": "2025-11-24T03:27:59.504863",
+      "lines": 136
+    },
+    {
+      "path": "frontend\\src\\components\\layout\\Footer.tsx",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\layout\\Footer.tsx",
+      "extension": ".tsx",
+      "size": 2394,
+      "modified": "2025-11-24T03:27:59.526902",
+      "lines": 68
+    },
+    {
+      "path": "frontend\\src\\components\\layout\\index.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\components\\layout\\index.ts",
+      "extension": ".ts",
+      "size": 70,
+      "modified": "2025-11-24T03:27:59.553421",
+      "lines": 2
+    },
+    {
+      "path": "frontend\\src\\config\\chat-prompts.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\config\\chat-prompts.ts",
+      "extension": ".ts",
+      "size": 4041,
+      "modified": "2025-11-22T11:09:52.690324",
+      "lines": 116
+    },
+    {
+      "path": "frontend\\src\\hooks\\useUnifiedInput.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\hooks\\useUnifiedInput.ts",
+      "extension": ".ts",
+      "size": 9323,
+      "modified": "2025-11-24T10:58:06.799074",
+      "lines": 265
+    },
+    {
+      "path": "frontend\\src\\lib\\apiCache.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\lib\\apiCache.ts",
+      "extension": ".ts",
+      "size": 3048,
+      "modified": "2025-11-22T06:04:41.458192",
+      "lines": 117
+    },
+    {
+      "path": "frontend\\src\\lib\\features.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\lib\\features.ts",
+      "extension": ".ts",
+      "size": 919,
+      "modified": "2025-11-25T17:18:58.856437",
+      "lines": 17
+    },
+    {
+      "path": "frontend\\src\\lib\\safeStorage.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\lib\\safeStorage.ts",
+      "extension": ".ts",
+      "size": 1845,
+      "modified": "2025-11-25T19:09:02.670739",
+      "lines": 76
+    },
+    {
+      "path": "frontend\\src\\utils\\api.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\utils\\api.ts",
+      "extension": ".ts",
+      "size": 4481,
+      "modified": "2025-11-22T11:38:50.509516",
+      "lines": 156
+    },
+    {
+      "path": "frontend\\src\\utils\\version.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\src\\utils\\version.ts",
+      "extension": ".ts",
+      "size": 141,
+      "modified": "2025-11-22T06:06:15.439326",
+      "lines": 2
+    },
+    {
+      "path": "frontend\\utils\\api.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\utils\\api.ts",
+      "extension": ".ts",
+      "size": 4481,
+      "modified": "2025-11-22T11:38:50.509516",
+      "lines": 156
+    },
+    {
+      "path": "frontend\\utils\\version.ts",
+      "full_path": "E:\\zip-jobmatch\\frontend\\utils\\version.ts",
+      "extension": ".ts",
+      "size": 141,
+      "modified": "2025-11-22T06:06:15.439326",
+      "lines": 2
+    },
+    {
+      "path": "infra\\docker-daemon.json",
+      "full_path": "E:\\zip-jobmatch\\infra\\docker-daemon.json",
+      "extension": ".json",
+      "size": 39,
+      "modified": "2025-11-22T00:09:04.674581",
+      "lines": 3
+    },
+    {
+      "path": "infra\\init-db.sql",
+      "full_path": "E:\\zip-jobmatch\\infra\\init-db.sql",
+      "extension": ".sql",
+      "size": 4408,
+      "modified": "2025-10-24T23:17:02.309827",
+      "lines": 132
+    },
+    {
+      "path": "infra\\state-checkpointer\\checkpointer.py",
+      "full_path": "E:\\zip-jobmatch\\infra\\state-checkpointer\\checkpointer.py",
+      "extension": ".py",
+      "size": 2212,
+      "modified": "2025-11-21T19:18:26.732574",
+      "lines": 63
+    },
+    {
+      "path": "kubernetes\\backend-deployment.yaml",
+      "full_path": "E:\\zip-jobmatch\\kubernetes\\backend-deployment.yaml",
+      "extension": ".yaml",
+      "size": 2010,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 89
+    },
+    {
+      "path": "kubernetes\\configmap.yaml",
+      "full_path": "E:\\zip-jobmatch\\kubernetes\\configmap.yaml",
+      "extension": ".yaml",
+      "size": 330,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 12
+    },
+    {
+      "path": "kubernetes\\frontend-deployment.yaml",
+      "full_path": "E:\\zip-jobmatch\\kubernetes\\frontend-deployment.yaml",
+      "extension": ".yaml",
+      "size": 1187,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 59
+    },
+    {
+      "path": "kubernetes\\namespace.yaml",
+      "full_path": "E:\\zip-jobmatch\\kubernetes\\namespace.yaml",
+      "extension": ".yaml",
+      "size": 99,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 8
+    },
+    {
+      "path": "kubernetes\\services.yaml",
+      "full_path": "E:\\zip-jobmatch\\kubernetes\\services.yaml",
+      "extension": ".yaml",
+      "size": 449,
+      "modified": "2025-11-21T17:54:11.519973",
+      "lines": 30
+    },
+    {
+      "path": "public\\manifest.json",
+      "full_path": "E:\\zip-jobmatch\\public\\manifest.json",
+      "extension": ".json",
+      "size": 799,
+      "modified": "2025-11-21T18:32:17.202982",
+      "lines": 33
+    },
+    {
+      "path": "public\\sw.js",
+      "full_path": "E:\\zip-jobmatch\\public\\sw.js",
+      "extension": ".js",
+      "size": 1239,
+      "modified": "2025-11-21T18:32:17.202982",
+      "lines": 49
+    },
+    {
+      "path": "scripts\\activate-auth-flow-agent.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\activate-auth-flow-agent.ps1",
+      "extension": ".ps1",
+      "size": 5122,
+      "modified": "2025-11-22T06:11:36.030430",
+      "lines": 108
+    },
+    {
+      "path": "scripts\\add-seo-credentials-to-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\add-seo-credentials-to-vm.ps1",
+      "extension": ".ps1",
+      "size": 3021,
+      "modified": "2025-11-22T02:06:24.497345",
+      "lines": 76
+    },
+    {
+      "path": "scripts\\BILLING_BUDGET_SETUP.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\BILLING_BUDGET_SETUP.md",
+      "extension": ".md",
+      "size": 5872,
+      "modified": "2025-11-21T22:13:36.783186",
+      "lines": 195
+    },
+    {
+      "path": "scripts\\check-billing-status.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\check-billing-status.sh",
+      "extension": ".sh",
+      "size": 1257,
+      "modified": "2025-11-21T22:13:36.778740",
+      "lines": 38
+    },
+    {
+      "path": "scripts\\check-ses-config.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\check-ses-config.ps1",
+      "extension": ".ps1",
+      "size": 2308,
+      "modified": "2025-11-22T03:20:52.823573",
+      "lines": 57
+    },
+    {
+      "path": "scripts\\checkpoint.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\checkpoint.ps1",
+      "extension": ".ps1",
+      "size": 7163,
+      "modified": "2025-11-24T09:46:40.875288",
+      "lines": 209
+    },
+    {
+      "path": "scripts\\compliance-scan.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\compliance-scan.ps1",
+      "extension": ".ps1",
+      "size": 14527,
+      "modified": "2025-11-22T07:41:18.779781",
+      "lines": 409
+    },
+    {
+      "path": "scripts\\create-backend-deployment-package.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\create-backend-deployment-package.ps1",
+      "extension": ".ps1",
+      "size": 4011,
+      "modified": "2025-11-22T06:56:45.526047",
+      "lines": 128
+    },
+    {
+      "path": "scripts\\create-backend-service.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\create-backend-service.sh",
+      "extension": ".sh",
+      "size": 1041,
+      "modified": "2025-11-22T06:04:36.258983",
+      "lines": 34
+    },
+    {
+      "path": "scripts\\create-release.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\create-release.ps1",
+      "extension": ".ps1",
+      "size": 2424,
+      "modified": "2025-11-22T00:20:35.984164",
+      "lines": 79
+    },
+    {
+      "path": "scripts\\create-release.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\create-release.sh",
+      "extension": ".sh",
+      "size": 1631,
+      "modified": "2025-11-26T11:18:28.688318",
+      "lines": 68
+    },
+    {
+      "path": "scripts\\deploy-backend-git.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-backend-git.ps1",
+      "extension": ".ps1",
+      "size": 2480,
+      "modified": "2025-11-22T06:04:36.258983",
+      "lines": 79
+    },
+    {
+      "path": "scripts\\deploy-backend-only.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-backend-only.ps1",
+      "extension": ".ps1",
+      "size": 2763,
+      "modified": "2025-11-22T06:04:36.258983",
+      "lines": 83
+    },
+    {
+      "path": "scripts\\deploy-backend-quick.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-backend-quick.sh",
+      "extension": ".sh",
+      "size": 1187,
+      "modified": "2025-11-24T07:04:33.453991",
+      "lines": 48
+    },
+    {
+      "path": "scripts\\deploy-backend-to-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-backend-to-vm.ps1",
+      "extension": ".ps1",
+      "size": 9595,
+      "modified": "2025-11-22T06:57:30.871067",
+      "lines": 254
+    },
+    {
+      "path": "scripts\\deploy-chat.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-chat.ps1",
+      "extension": ".ps1",
+      "size": 4438,
+      "modified": "2025-11-26T11:18:28.672291",
+      "lines": 132
+    },
+    {
+      "path": "scripts\\deploy-frontend-only.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-frontend-only.ps1",
+      "extension": ".ps1",
+      "size": 5349,
+      "modified": "2025-11-22T06:02:27.063458",
+      "lines": 130
+    },
+    {
+      "path": "scripts\\deploy-frontend-vm.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-frontend-vm.sh",
+      "extension": ".sh",
+      "size": 949,
+      "modified": "2025-11-22T05:59:10.604318",
+      "lines": 24
+    },
+    {
+      "path": "scripts\\deploy-to-vm.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-to-vm.sh",
+      "extension": ".sh",
+      "size": 3091,
+      "modified": "2025-11-26T11:18:28.682402",
+      "lines": 106
+    },
+    {
+      "path": "scripts\\deploy-with-dns.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\deploy-with-dns.sh",
+      "extension": ".sh",
+      "size": 3425,
+      "modified": "2025-11-21T23:13:08.194700",
+      "lines": 122
+    },
+    {
+      "path": "scripts\\find-ses-credentials.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\find-ses-credentials.ps1",
+      "extension": ".ps1",
+      "size": 6475,
+      "modified": "2025-11-22T04:25:48.176062",
+      "lines": 161
+    },
+    {
+      "path": "scripts\\fix-manifest-sw-direct.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\fix-manifest-sw-direct.ps1",
+      "extension": ".ps1",
+      "size": 4390,
+      "modified": "2025-11-22T06:04:41.463205",
+      "lines": 121
+    },
+    {
+      "path": "scripts\\fix-manifest-sw-on-vm-final.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\fix-manifest-sw-on-vm-final.ps1",
+      "extension": ".ps1",
+      "size": 2740,
+      "modified": "2025-11-22T06:04:41.468738",
+      "lines": 71
+    },
+    {
+      "path": "scripts\\fix-manifest-sw-on-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\fix-manifest-sw-on-vm.ps1",
+      "extension": ".ps1",
+      "size": 5262,
+      "modified": "2025-11-22T06:04:41.463205",
+      "lines": 154
+    },
+    {
+      "path": "scripts\\fix-manifest-sw.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\fix-manifest-sw.sh",
+      "extension": ".sh",
+      "size": 1868,
+      "modified": "2025-11-22T06:04:41.468738",
+      "lines": 59
+    },
+    {
+      "path": "scripts\\fix-seo-credentials-on-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\fix-seo-credentials-on-vm.ps1",
+      "extension": ".ps1",
+      "size": 2360,
+      "modified": "2025-11-22T02:06:24.497345",
+      "lines": 64
+    },
+    {
+      "path": "scripts\\gcp-cli-wrapper.py",
+      "full_path": "E:\\zip-jobmatch\\scripts\\gcp-cli-wrapper.py",
+      "extension": ".py",
+      "size": 4345,
+      "modified": "2025-11-21T18:04:58.891445",
+      "lines": 138
+    },
+    {
+      "path": "scripts\\gcp-cli-wrapper.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\gcp-cli-wrapper.sh",
+      "extension": ".sh",
+      "size": 1873,
+      "modified": "2025-11-21T18:04:58.891445",
+      "lines": 64
+    },
+    {
+      "path": "scripts\\gcp-vm-setup.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\gcp-vm-setup.sh",
+      "extension": ".sh",
+      "size": 3319,
+      "modified": "2025-11-21T23:13:08.160381",
+      "lines": 71
+    },
+    {
+      "path": "scripts\\generate-icons-node.js",
+      "full_path": "E:\\zip-jobmatch\\scripts\\generate-icons-node.js",
+      "extension": ".js",
+      "size": 2824,
+      "modified": "2025-11-22T04:40:05.255644",
+      "lines": 79
+    },
+    {
+      "path": "scripts\\generate-icons-simple.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\generate-icons-simple.ps1",
+      "extension": ".ps1",
+      "size": 2965,
+      "modified": "2025-11-22T04:40:05.245622",
+      "lines": 73
+    },
+    {
+      "path": "scripts\\generate-icons.js",
+      "full_path": "E:\\zip-jobmatch\\scripts\\generate-icons.js",
+      "extension": ".js",
+      "size": 2186,
+      "modified": "2025-11-22T04:40:05.245622",
+      "lines": 75
+    },
+    {
+      "path": "scripts\\generate-test-data.py",
+      "full_path": "E:\\zip-jobmatch\\scripts\\generate-test-data.py",
+      "extension": ".py",
+      "size": 12397,
+      "modified": "2025-11-22T02:07:43.061320",
+      "lines": 350
+    },
+    {
+      "path": "scripts\\get-magic-link.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\get-magic-link.ps1",
+      "extension": ".ps1",
+      "size": 1154,
+      "modified": "2025-11-22T04:09:13.261382",
+      "lines": 32
+    },
+    {
+      "path": "scripts\\get-ses-config.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\get-ses-config.ps1",
+      "extension": ".ps1",
+      "size": 5716,
+      "modified": "2025-11-22T04:25:48.176062",
+      "lines": 147
+    },
+    {
+      "path": "scripts\\infra-agent.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\infra-agent.ps1",
+      "extension": ".ps1",
+      "size": 11165,
+      "modified": "2025-11-24T11:32:47.306787",
+      "lines": 354
+    },
+    {
+      "path": "scripts\\infra-aliases.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\infra-aliases.ps1",
+      "extension": ".ps1",
+      "size": 1304,
+      "modified": "2025-11-22T09:47:43.355778",
+      "lines": 24
+    },
+    {
+      "path": "scripts\\list-ses-verified-emails.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\list-ses-verified-emails.ps1",
+      "extension": ".ps1",
+      "size": 5387,
+      "modified": "2025-11-22T03:51:41.104311",
+      "lines": 154
+    },
+    {
+      "path": "scripts\\monitor-uat-content.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\monitor-uat-content.ps1",
+      "extension": ".ps1",
+      "size": 7610,
+      "modified": "2025-11-25T10:46:13.796843",
+      "lines": 249
+    },
+    {
+      "path": "scripts\\porkbun-ssl-setup.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\porkbun-ssl-setup.sh",
+      "extension": ".sh",
+      "size": 7226,
+      "modified": "2025-11-21T23:13:08.198826",
+      "lines": 204
+    },
+    {
+      "path": "scripts\\QUICK_COMMANDS.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\QUICK_COMMANDS.md",
+      "extension": ".md",
+      "size": 1473,
+      "modified": "2025-11-22T00:20:35.984164",
+      "lines": 53
+    },
+    {
+      "path": "scripts\\README.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\README.md",
+      "extension": ".md",
+      "size": 4821,
+      "modified": "2025-11-22T09:48:09.029137",
+      "lines": 181
+    },
+    {
+      "path": "scripts\\README_BILLING.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\README_BILLING.md",
+      "extension": ".md",
+      "size": 1901,
+      "modified": "2025-11-21T22:13:36.783186",
+      "lines": 65
+    },
+    {
+      "path": "scripts\\README_CLOUD_RUN_SSL.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\README_CLOUD_RUN_SSL.md",
+      "extension": ".md",
+      "size": 4006,
+      "modified": "2025-11-21T23:21:12.338407",
+      "lines": 98
+    },
+    {
+      "path": "scripts\\README_SEO.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\README_SEO.md",
+      "extension": ".md",
+      "size": 5402,
+      "modified": "2025-11-22T00:28:30.414707",
+      "lines": 244
+    },
+    {
+      "path": "scripts\\README_VM_SSL_BUNDLE.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\README_VM_SSL_BUNDLE.md",
+      "extension": ".md",
+      "size": 4006,
+      "modified": "2025-11-21T23:21:07.199186",
+      "lines": 98
+    },
+    {
+      "path": "scripts\\recover.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\recover.ps1",
+      "extension": ".ps1",
+      "size": 8399,
+      "modified": "2025-11-24T09:47:14.049109",
+      "lines": 259
+    },
+    {
+      "path": "scripts\\restart-backend-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\restart-backend-vm.ps1",
+      "extension": ".ps1",
+      "size": 1781,
+      "modified": "2025-11-22T06:04:36.255983",
+      "lines": 51
+    },
+    {
+      "path": "scripts\\restart-frontend-on-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\restart-frontend-on-vm.ps1",
+      "extension": ".ps1",
+      "size": 1662,
+      "modified": "2025-11-22T04:40:05.263686",
+      "lines": 47
+    },
+    {
+      "path": "scripts\\restart-frontend-simple.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\restart-frontend-simple.sh",
+      "extension": ".sh",
+      "size": 576,
+      "modified": "2025-11-22T04:40:05.263686",
+      "lines": 23
+    },
+    {
+      "path": "scripts\\restart-frontend.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\restart-frontend.ps1",
+      "extension": ".ps1",
+      "size": 2801,
+      "modified": "2025-11-22T04:40:05.263686",
+      "lines": 67
+    },
+    {
+      "path": "scripts\\restart-frontend.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\restart-frontend.sh",
+      "extension": ".sh",
+      "size": 1242,
+      "modified": "2025-11-22T04:40:05.263686",
+      "lines": 50
+    },
+    {
+      "path": "scripts\\run-all-agents-index.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-all-agents-index.ps1",
+      "extension": ".ps1",
+      "size": 18617,
+      "modified": "2025-11-26T20:04:56.170776",
+      "lines": 540
+    },
+    {
+      "path": "scripts\\run-all-agents-index.py",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-all-agents-index.py",
+      "extension": ".py",
+      "size": 21254,
+      "modified": "2025-11-26T20:05:14.815684",
+      "lines": 567
+    },
+    {
+      "path": "scripts\\run-data-gen-simple.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-data-gen-simple.sh",
+      "extension": ".sh",
+      "size": 966,
+      "modified": "2025-11-22T02:07:43.061320",
+      "lines": 37
+    },
+    {
+      "path": "scripts\\run-overnight-data-generation.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-overnight-data-generation.ps1",
+      "extension": ".ps1",
+      "size": 3068,
+      "modified": "2025-11-22T02:07:43.061320",
+      "lines": 72
+    },
+    {
+      "path": "scripts\\run-overnight-data-generation.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-overnight-data-generation.sh",
+      "extension": ".sh",
+      "size": 2006,
+      "modified": "2025-11-22T00:20:35.984164",
+      "lines": 58
+    },
+    {
+      "path": "scripts\\run-performance-optimizations.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\run-performance-optimizations.ps1",
+      "extension": ".ps1",
+      "size": 4258,
+      "modified": "2025-11-22T03:20:52.832118",
+      "lines": 98
+    },
+    {
+      "path": "scripts\\send-sms.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\send-sms.ps1",
+      "extension": ".ps1",
+      "size": 791,
+      "modified": "2025-11-23T22:22:41.267965",
+      "lines": 24
+    },
+    {
+      "path": "scripts\\seo-monitor.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\seo-monitor.sh",
+      "extension": ".sh",
+      "size": 3056,
+      "modified": "2025-11-22T00:28:30.414140",
+      "lines": 101
+    },
+    {
+      "path": "scripts\\seo-optimize.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\seo-optimize.ps1",
+      "extension": ".ps1",
+      "size": 2955,
+      "modified": "2025-11-22T00:28:30.400973",
+      "lines": 92
+    },
+    {
+      "path": "scripts\\seo-optimize.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\seo-optimize.sh",
+      "extension": ".sh",
+      "size": 2692,
+      "modified": "2025-11-22T00:28:30.400973",
+      "lines": 81
+    },
+    {
+      "path": "scripts\\seo-request-indexing.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\seo-request-indexing.sh",
+      "extension": ".sh",
+      "size": 460,
+      "modified": "2025-11-22T00:28:30.414140",
+      "lines": 22
+    },
+    {
+      "path": "scripts\\seo-submit-sitemap.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\seo-submit-sitemap.sh",
+      "extension": ".sh",
+      "size": 417,
+      "modified": "2025-11-22T00:28:30.414140",
+      "lines": 16
+    },
+    {
+      "path": "scripts\\setup-billing-budget.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-billing-budget.ps1",
+      "extension": ".ps1",
+      "size": 6452,
+      "modified": "2025-11-21T22:13:36.790059",
+      "lines": 160
+    },
+    {
+      "path": "scripts\\setup-billing-budget.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-billing-budget.sh",
+      "extension": ".sh",
+      "size": 6233,
+      "modified": "2025-11-21T22:13:36.783186",
+      "lines": 193
+    },
+    {
+      "path": "scripts\\setup-cloud-run-ssl-domain.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-cloud-run-ssl-domain.ps1",
+      "extension": ".ps1",
+      "size": 6539,
+      "modified": "2025-11-21T23:19:32.079433",
+      "lines": 170
+    },
+    {
+      "path": "scripts\\setup-cloud-run-ssl-domain.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-cloud-run-ssl-domain.sh",
+      "extension": ".sh",
+      "size": 5098,
+      "modified": "2025-11-21T23:19:32.079433",
+      "lines": 162
+    },
+    {
+      "path": "scripts\\setup-https-jobmatch-zip.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-https-jobmatch-zip.sh",
+      "extension": ".sh",
+      "size": 987,
+      "modified": "2025-11-21T23:13:08.174182",
+      "lines": 35
+    },
+    {
+      "path": "scripts\\setup-https-letsencrypt.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-https-letsencrypt.sh",
+      "extension": ".sh",
+      "size": 3547,
+      "modified": "2025-11-22T03:11:03.282199",
+      "lines": 120
+    },
+    {
+      "path": "scripts\\setup-local-https.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-local-https.ps1",
+      "extension": ".ps1",
+      "size": 3571,
+      "modified": "2025-11-22T02:06:24.564865",
+      "lines": 96
+    },
+    {
+      "path": "scripts\\setup-local-ssl.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-local-ssl.ps1",
+      "extension": ".ps1",
+      "size": 3826,
+      "modified": "2025-11-22T03:20:52.822577",
+      "lines": 87
+    },
+    {
+      "path": "scripts\\setup-playwright.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-playwright.ps1",
+      "extension": ".ps1",
+      "size": 4532,
+      "modified": "2025-11-24T03:52:34.809214",
+      "lines": 122
+    },
+    {
+      "path": "scripts\\setup-porkbun-credentials.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-porkbun-credentials.ps1",
+      "extension": ".ps1",
+      "size": 3081,
+      "modified": "2025-11-22T04:15:44.724360",
+      "lines": 84
+    },
+    {
+      "path": "scripts\\setup-porkbun-credentials.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-porkbun-credentials.sh",
+      "extension": ".sh",
+      "size": 1931,
+      "modified": "2025-11-21T23:13:08.281105",
+      "lines": 75
+    },
+    {
+      "path": "scripts\\setup-search-console-credentials.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-search-console-credentials.ps1",
+      "extension": ".ps1",
+      "size": 2206,
+      "modified": "2025-11-22T00:29:50.305664",
+      "lines": 50
+    },
+    {
+      "path": "scripts\\setup-secrets.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-secrets.sh",
+      "extension": ".sh",
+      "size": 3067,
+      "modified": "2025-10-24T23:06:02.581072",
+      "lines": 87
+    },
+    {
+      "path": "scripts\\setup-ses-credentials.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-ses-credentials.ps1",
+      "extension": ".ps1",
+      "size": 5522,
+      "modified": "2025-11-21T22:17:50.018692",
+      "lines": 152
+    },
+    {
+      "path": "scripts\\setup-ses-credentials.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-ses-credentials.sh",
+      "extension": ".sh",
+      "size": 3501,
+      "modified": "2025-11-21T22:17:50.018692",
+      "lines": 124
+    },
+    {
+      "path": "scripts\\setup-ses-dns-records.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-ses-dns-records.ps1",
+      "extension": ".ps1",
+      "size": 11083,
+      "modified": "2025-11-22T04:15:44.725357",
+      "lines": 263
+    },
+    {
+      "path": "scripts\\setup-ses-on-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-ses-on-vm.ps1",
+      "extension": ".ps1",
+      "size": 2395,
+      "modified": "2025-11-22T03:20:52.825597",
+      "lines": 65
+    },
+    {
+      "path": "scripts\\setup-vm-ssl-from-bundle.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-vm-ssl-from-bundle.ps1",
+      "extension": ".ps1",
+      "size": 11369,
+      "modified": "2025-11-22T03:11:21.616115",
+      "lines": 287
+    },
+    {
+      "path": "scripts\\setup-vm-ssl-from-bundle.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\setup-vm-ssl-from-bundle.sh",
+      "extension": ".sh",
+      "size": 8849,
+      "modified": "2025-11-21T23:21:12.325098",
+      "lines": 263
+    },
+    {
+      "path": "scripts\\SETUP_VM_SSL_POWERSHELL.md",
+      "full_path": "E:\\zip-jobmatch\\scripts\\SETUP_VM_SSL_POWERSHELL.md",
+      "extension": ".md",
+      "size": 2238,
+      "modified": "2025-11-21T23:24:39.322297",
+      "lines": 109
+    },
+    {
+      "path": "scripts\\start-backend-dev.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-backend-dev.ps1",
+      "extension": ".ps1",
+      "size": 1572,
+      "modified": "2025-11-22T04:15:44.708351",
+      "lines": 40
+    },
+    {
+      "path": "scripts\\start-backend-only.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-backend-only.ps1",
+      "extension": ".ps1",
+      "size": 1675,
+      "modified": "2025-11-22T04:18:41.192098",
+      "lines": 48
+    },
+    {
+      "path": "scripts\\start-backend-simple.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-backend-simple.sh",
+      "extension": ".sh",
+      "size": 778,
+      "modified": "2025-11-22T06:04:36.258983",
+      "lines": 30
+    },
+    {
+      "path": "scripts\\start-backend-vm.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-backend-vm.ps1",
+      "extension": ".ps1",
+      "size": 1947,
+      "modified": "2025-11-22T06:04:36.255983",
+      "lines": 71
+    },
+    {
+      "path": "scripts\\start-dev.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-dev.ps1",
+      "extension": ".ps1",
+      "size": 1557,
+      "modified": "2025-11-21T18:33:57.819160",
+      "lines": 38
+    },
+    {
+      "path": "scripts\\start-dev.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-dev.sh",
+      "extension": ".sh",
+      "size": 1139,
+      "modified": "2025-11-21T18:33:57.819160",
+      "lines": 50
+    },
+    {
+      "path": "scripts\\start-frontend-https.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\start-frontend-https.ps1",
+      "extension": ".ps1",
+      "size": 1832,
+      "modified": "2025-11-22T02:06:24.564865",
+      "lines": 44
+    },
+    {
+      "path": "scripts\\stop-all-services.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\stop-all-services.sh",
+      "extension": ".sh",
+      "size": 2097,
+      "modified": "2025-11-21T22:13:36.774287",
+      "lines": 60
+    },
+    {
+      "path": "scripts\\test-deployment.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-deployment.sh",
+      "extension": ".sh",
+      "size": 1306,
+      "modified": "2025-11-21T23:13:08.174182",
+      "lines": 59
+    },
+    {
+      "path": "scripts\\test-email-auth-endpoint.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-email-auth-endpoint.ps1",
+      "extension": ".ps1",
+      "size": 1487,
+      "modified": "2025-11-22T03:57:18.844096",
+      "lines": 40
+    },
+    {
+      "path": "scripts\\test-email-simple.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-email-simple.ps1",
+      "extension": ".ps1",
+      "size": 1834,
+      "modified": "2025-11-22T06:04:36.682628",
+      "lines": 57
+    },
+    {
+      "path": "scripts\\test-magic-link-send.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-magic-link-send.ps1",
+      "extension": ".ps1",
+      "size": 4883,
+      "modified": "2025-11-22T06:04:36.258983",
+      "lines": 125
+    },
+    {
+      "path": "scripts\\test-magic-link.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-magic-link.ps1",
+      "extension": ".ps1",
+      "size": 2076,
+      "modified": "2025-11-22T04:09:13.259383",
+      "lines": 51
+    },
+    {
+      "path": "scripts\\test-protonmail-email.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-protonmail-email.ps1",
+      "extension": ".ps1",
+      "size": 6970,
+      "modified": "2025-11-22T03:56:11.792536",
+      "lines": 181
+    },
+    {
+      "path": "scripts\\test-ses-email.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-ses-email.ps1",
+      "extension": ".ps1",
+      "size": 3946,
+      "modified": "2025-11-22T03:55:03.888991",
+      "lines": 107
+    },
+    {
+      "path": "scripts\\test-ses-simple.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\test-ses-simple.ps1",
+      "extension": ".ps1",
+      "size": 4778,
+      "modified": "2025-11-22T04:52:57.066373",
+      "lines": 102
+    },
+    {
+      "path": "scripts\\verify-ses-email.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\verify-ses-email.ps1",
+      "extension": ".ps1",
+      "size": 3882,
+      "modified": "2025-11-22T03:51:01.965282",
+      "lines": 87
+    },
+    {
+      "path": "scripts\\view-uat-alerts.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\view-uat-alerts.ps1",
+      "extension": ".ps1",
+      "size": 4688,
+      "modified": "2025-11-25T10:46:35.545344",
+      "lines": 111
+    },
+    {
+      "path": "scripts\\vm-startup-script.sh",
+      "full_path": "E:\\zip-jobmatch\\scripts\\vm-startup-script.sh",
+      "extension": ".sh",
+      "size": 2984,
+      "modified": "2025-11-26T11:18:28.681882",
+      "lines": 112
+    },
+    {
+      "path": "scripts\\warp-ses-help.ps1",
+      "full_path": "E:\\zip-jobmatch\\scripts\\warp-ses-help.ps1",
+      "extension": ".ps1",
+      "size": 1946,
+      "modified": "2025-11-22T04:25:48.176062",
+      "lines": 37
+    },
+    {
+      "path": "scripts\\billing-budget-function\\main.py",
+      "full_path": "E:\\zip-jobmatch\\scripts\\billing-budget-function\\main.py",
+      "extension": ".py",
+      "size": 7769,
+      "modified": "2025-11-21T22:13:36.778740",
+      "lines": 197
+    },
+    {
+      "path": "secrets\\search-console-credentials.json",
+      "full_path": "E:\\zip-jobmatch\\secrets\\search-console-credentials.json",
+      "extension": ".json",
+      "size": 2418,
+      "modified": "2025-11-22T00:29:45.498049",
+      "lines": 13
+    },
+    {
+      "path": "shared\\package.json",
+      "full_path": "E:\\zip-jobmatch\\shared\\package.json",
+      "extension": ".json",
+      "size": 363,
+      "modified": "2025-10-24T22:26:41.908911",
+      "lines": 17
+    },
+    {
+      "path": "shared\\tsconfig.json",
+      "full_path": "E:\\zip-jobmatch\\shared\\tsconfig.json",
+      "extension": ".json",
+      "size": 407,
+      "modified": "2025-10-24T22:26:46.423513",
+      "lines": 17
+    },
+    {
+      "path": "shared\\types\\index.ts",
+      "full_path": "E:\\zip-jobmatch\\shared\\types\\index.ts",
+      "extension": ".ts",
+      "size": 2504,
+      "modified": "2025-10-24T22:26:36.719340",
+      "lines": 133
+    },
+    {
+      "path": "temp_jobmatch_extract\\BUSINESS_PLAN_REVIEW.md",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\BUSINESS_PLAN_REVIEW.md",
+      "extension": ".md",
+      "size": 13024,
+      "modified": "2025-11-21T19:09:14",
+      "lines": 376
+    },
+    {
+      "path": "temp_jobmatch_extract\\DEPLOYMENT_INSTRUCTIONS.md",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\DEPLOYMENT_INSTRUCTIONS.md",
+      "extension": ".md",
+      "size": 3548,
+      "modified": "2025-11-21T23:13:08",
+      "lines": 152
+    },
+    {
+      "path": "temp_jobmatch_extract\\DEPLOY_CHAT_BACKEND.md",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\DEPLOY_CHAT_BACKEND.md",
+      "extension": ".md",
+      "size": 2783,
+      "modified": "2025-11-21T23:28:42",
+      "lines": 104
+    },
+    {
+      "path": "temp_jobmatch_extract\\DEPLOY_TO_JOBMATCH_ZIP.md",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\DEPLOY_TO_JOBMATCH_ZIP.md",
+      "extension": ".md",
+      "size": 3718,
+      "modified": "2025-11-21T23:13:08",
+      "lines": 144
+    },
+    {
+      "path": "temp_jobmatch_extract\\docker-compose.dev.yml",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\docker-compose.dev.yml",
+      "extension": ".yml",
+      "size": 2325,
+      "modified": "2025-11-21T19:09:14",
+      "lines": 83
+    },
+    {
+      "path": "temp_jobmatch_extract\\docker-compose.yml",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\docker-compose.yml",
+      "extension": ".yml",
+      "size": 2413,
+      "modified": "2025-11-21T18:58:38",
+      "lines": 87
+    },
+    {
+      "path": "temp_jobmatch_extract\\EXECUTIVE_SUMMARY.md",
+      "full_path": "E:\\zip-jobmatch\\temp_jobmatch_extract\\EXECUTIVE_SUMMARY.md",
+      "extension": ".md",
+      "size": 6533,
+      "modified": "2025-11-21T19:09:14",
+      "lines": 250
+    },
+    {
+      "path": "tests\\README.md",
+      "full_path": "E:\\zip-jobmatch\\tests\\README.md",
+      "extension": ".md",
+      "size": 3831,
+      "modified": "2025-11-24T03:52:34.833702",
+      "lines": 139
+    },
+    {
+      "path": "tests\\e2e\\auth.spec.ts",
+      "full_path": "E:\\zip-jobmatch\\tests\\e2e\\auth.spec.ts",
+      "extension": ".ts",
+      "size": 1753,
+      "modified": "2025-11-24T03:50:26.924586",
+      "lines": 52
+    },
+    {
+      "path": "tests\\e2e\\fixtures.ts",
+      "full_path": "E:\\zip-jobmatch\\tests\\e2e\\fixtures.ts",
+      "extension": ".ts",
+      "size": 1530,
+      "modified": "2025-11-24T03:50:26.960374",
+      "lines": 52
+    },
+    {
+      "path": "tests\\e2e\\homepage.spec.ts",
+      "full_path": "E:\\zip-jobmatch\\tests\\e2e\\homepage.spec.ts",
+      "extension": ".ts",
+      "size": 966,
+      "modified": "2025-11-24T03:50:26.902602",
+      "lines": 31
+    },
+    {
+      "path": "warp-workflows\\deploy-with-ollama-chat.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp-workflows\\deploy-with-ollama-chat.yaml",
+      "extension": ".yaml",
+      "size": 5388,
+      "modified": "2025-11-21T23:28:42.369210",
+      "lines": 131
+    },
+    {
+      "path": "warp-workflows\\linear-project-management.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp-workflows\\linear-project-management.yaml",
+      "extension": ".yaml",
+      "size": 9803,
+      "modified": "2025-11-23T23:08:38.805524",
+      "lines": 217
+    },
+    {
+      "path": "warp-workflows\\performance-optimizations.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp-workflows\\performance-optimizations.yaml",
+      "extension": ".yaml",
+      "size": 8142,
+      "modified": "2025-11-22T03:20:52.832118",
+      "lines": 219
+    },
+    {
+      "path": "warp-workflows\\pieces-sync.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp-workflows\\pieces-sync.yaml",
+      "extension": ".yaml",
+      "size": 857,
+      "modified": "2025-11-21T18:20:58.543939",
+      "lines": 28
+    },
+    {
+      "path": "warp-workflows\\porkbun-ssl.yaml",
+      "full_path": "E:\\zip-jobmatch\\warp-workflows\\porkbun-ssl.yaml",
+      "extension": ".yaml",
+      "size": 2645,
+      "modified": "2025-11-21T23:13:08.195240",
+      "lines": 83
+    }
+  ],
+  "structure": {},
+  "languages": {
+    ".md": 181,
+    ".py": 110,
+    ".ps1": 73,
+    ".sh": 35,
+    ".yml": 9,
+    ".json": 19,
+    ".ts": 44,
+    ".toml": 1,
+    ".yaml": 23,
+    ".js": 15,
+    ".sql": 7,
+    ".tsx": 70
+  },
+  "dependencies": {
+    "node": {
+      "dependencies": [],
+      "devDependencies": [
+        "concurrently"
+      ]
+    }
+  }
+}

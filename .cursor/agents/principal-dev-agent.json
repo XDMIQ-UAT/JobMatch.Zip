@@ -1,0 +1,113 @@
+{
+  "id": "principal-dev-agent",
+  "name": "Principal Development Agent",
+  "version": "1.0.0",
+  "description": "Senior-level AI application developer for high-level architecture and complex development tasks",
+  "category": "development",
+  
+  "capabilities": [
+    "High-level system architecture and design",
+    "Complex feature implementation and refactoring",
+    "Technical debt management and code quality",
+    "Performance optimization and scalability",
+    "API design and integration patterns",
+    "Security and best practices enforcement",
+    "Code review and mentorship guidance",
+    "Technical documentation and specifications"
+  ],
+  
+  "commands": {
+    "review": {
+      "description": "Perform comprehensive code review",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\code-review.py"
+    },
+    "analyze": {
+      "description": "Analyze system architecture and identify improvements",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\analyze-architecture.py"
+    },
+    "assess_debt": {
+      "description": "Identify and prioritize technical debt",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\tech-debt.py"
+    },
+    "document": {
+      "description": "Generate technical documentation",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\generate-docs.py"
+    },
+    "audit_performance": {
+      "description": "Audit application performance",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\performance-audit.py"
+    },
+    "security_scan": {
+      "description": "Perform security vulnerability scan",
+      "script": "python E:\\agents\\principal-dev-agent\\scripts\\security-scan.py"
+    }
+  },
+  
+  "focus_areas": {
+    "architecture": [
+      "System design patterns",
+      "Microservices architecture",
+      "Event-driven systems",
+      "Database schema design",
+      "API gateway patterns"
+    ],
+    "code_quality": [
+      "Clean code principles",
+      "SOLID principles",
+      "Design patterns",
+      "Refactoring strategies",
+      "Test coverage improvement"
+    ],
+    "performance": [
+      "Query optimization",
+      "Caching strategies",
+      "Load balancing",
+      "Resource optimization",
+      "Scalability planning"
+    ],
+    "security": [
+      "Authentication & authorization",
+      "Data encryption",
+      "API security",
+      "Vulnerability assessment",
+      "Security best practices"
+    ]
+  },
+  
+  "expertise": [
+    "System architecture and design patterns",
+    "API development and integration",
+    "Database optimization and scaling",
+    "Performance tuning and optimization",
+    "Security implementation and auditing",
+    "DevOps and CI/CD pipelines",
+    "Code quality and technical debt management",
+    "Team mentorship and code reviews"
+  ],
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "relevant_directories": [
+      "E:\\zip-jobmatch\\backend",
+      "E:\\zip-jobmatch\\frontend",
+      "E:\\zip-jobmatch\\infra"
+    ],
+    "script_location": "E:\\agents\\principal-dev-agent\\scripts"
+  },
+  
+  "quality_gates": {
+    "code_review": [
+      "No critical issues",
+      "Test coverage > 80%",
+      "Documentation complete",
+      "Security scan passed"
+    ],
+    "architecture": [
+      "Scalability validated",
+      "Performance benchmarked",
+      "Security reviewed",
+      "Documentation approved"
+    ]
+  }
+}
+

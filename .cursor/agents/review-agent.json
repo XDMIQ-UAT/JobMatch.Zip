@@ -1,0 +1,109 @@
+{
+  "id": "review-agent",
+  "name": "Review Agent",
+  "version": "1.0.0",
+  "description": "Legal/Medical review agent for filtered material compliance",
+  "category": "development",
+  
+  "capabilities": [
+    "Legal document review",
+    "Medical information review (HIPAA)",
+    "Compliance validation",
+    "Risk assessment",
+    "Approval/rejection workflow"
+  ],
+  
+  "responsibilities": [
+    "Legal document review",
+    "Medical information review (HIPAA)",
+    "Compliance validation",
+    "Risk assessment",
+    "Approval/rejection workflow"
+  ],
+  
+  "review_types": {
+    "legal": {
+      "categories": [
+        "attorney_client",
+        "trade_secrets",
+        "contracts",
+        "confidential_business"
+      ],
+      "approval_required": true,
+      "escalation": "senior_counsel"
+    },
+    "medical": {
+      "categories": [
+        "hipaa_phi",
+        "medical_records",
+        "health_information",
+        "treatment_data"
+      ],
+      "approval_required": true,
+      "compliance_standard": "HIPAA",
+      "escalation": "medical_director"
+    }
+  },
+  
+  "workflow": {
+    "intake": [
+      "receive_filtered_material",
+      "categorize_review_type",
+      "assign_reviewer"
+    ],
+    "review": [
+      "assess_compliance",
+      "identify_risks",
+      "document_findings"
+    ],
+    "decision": [
+      "approve",
+      "reject",
+      "request_modifications"
+    ],
+    "tracking": [
+      "update_audit_trail",
+      "notify_stakeholders",
+      "archive_decision"
+    ]
+  },
+  
+  "compliance_standards": {
+    "hipaa": [
+      "phi_protection",
+      "minimum_necessary",
+      "access_controls",
+      "audit_trails"
+    ],
+    "legal": [
+      "privilege_protection",
+      "confidentiality",
+      "conflict_checks",
+      "retention_policies"
+    ]
+  },
+  
+  "config": {
+    "vault_path": "./vault",
+    "review_timeout_hours": 24,
+    "encryption": "AES-256",
+    "audit_trail": "required"
+  },
+  
+  "audit": {
+    "required_fields": [
+      "reviewer_id",
+      "timestamp",
+      "action",
+      "decision",
+      "rationale"
+    ],
+    "retention_years": 7
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "vault_path": "E:\\zip-jobmatch\\secrets\\vault"
+  }
+}
+

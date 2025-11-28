@@ -1,0 +1,82 @@
+{
+  "id": "branding-agent",
+  "name": "Branding Agent",
+  "version": "1.0.0",
+  "description": "Review product names, brands, and terminology for international concerns",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Product name validation",
+    "Branding review for international markets",
+    "Terminology validation",
+    "Domain name review",
+    "Trademark conflict detection",
+    "Pronunciation checking",
+    "Memorability assessment",
+    "Searchability analysis"
+  ],
+  
+  "commands": {
+    "review_name": {
+      "description": "Perform comprehensive branding review of a name",
+      "script": "python E:\\agents\\groups\\c-suite\\branding-agent.py",
+      "python_method": "review_name(name, item_type, context, reviewer)"
+    },
+    "quick_check": {
+      "description": "Quick yes/no check for a name",
+      "script": "python E:\\agents\\groups\\c-suite\\branding-agent.py",
+      "python_method": "quick_check(name, context)"
+    },
+    "check_internationalization": {
+      "description": "Check for potential issues in specific languages",
+      "script": "python E:\\agents\\groups\\c-suite\\branding-agent.py",
+      "python_method": "check_internationalization(name, languages)"
+    },
+    "generate_report": {
+      "description": "Generate branding review report",
+      "script": "python E:\\agents\\groups\\c-suite\\branding-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "target_languages": [
+      "English", "Spanish", "French", "German", "Italian", "Portuguese",
+      "Russian", "Japanese", "Korean", "Mandarin", "Arabic", "Hindi"
+    ],
+    "known_issues": {
+      "profanity": {"severity": "critical"},
+      "hard_to_pronounce": {"severity": "medium"},
+      "negative_connotation": {"severity": "high"},
+      "cultural_insensitivity": {"severity": "critical"},
+      "trademark_conflict": {"severity": "critical"}
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Send alerts for critical branding issues"
+    },
+    {
+      "agent": "i18n-agent",
+      "purpose": "Share internationalization concerns"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\c-suite",
+    "python_file": "E:\\agents\\groups\\c-suite\\branding-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\branding-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\c-suite\\branding-agent.py",
+    "yaml_file": "E:\\agents\\groups\\c-suite\\branding-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\branding-agent.json",
+    "note": "Keep Python, YAML, and JSON configs in sync when making changes"
+  }
+}
+
+
+

@@ -1,0 +1,81 @@
+{
+  "id": "dev-sync-agent",
+  "name": "Development Sync Agent",
+  "version": "1.0.0",
+  "description": "Coordinate parallel development across tools (Warp, Cursor, IDE)",
+  "category": "development",
+  
+  "capabilities": [
+    "Session tracking across tools",
+    "Mission status synchronization",
+    "Progress tracking (hourly/daily)",
+    "Cross-tool coordination",
+    "Emergency communication protocols"
+  ],
+  
+  "responsibilities": [
+    "Session tracking across tools",
+    "Mission status synchronization",
+    "Progress tracking (hourly/daily)",
+    "Cross-tool coordination",
+    "Emergency communication protocols"
+  ],
+  
+  "sync_points": {
+    "session_start": [
+      "Check mission status",
+      "Review active sessions",
+      "Load coordination state"
+    ],
+    "during_work": [
+      "Update session progress real-time",
+      "Document decisions immediately",
+      "Coordinate with parallel dev"
+    ],
+    "continuous": [
+      "Sync completed work",
+      "Update progress tracking",
+      "Maintain mission alignment"
+    ],
+    "daily": [
+      "Aggregate progress updates",
+      "Verify alignment across tools"
+    ]
+  },
+  
+  "config": {
+    "sync_directory": ".dev-sync",
+    "commit_cadence_hours": 1,
+    "session_file": "active-sessions/warp-session.md",
+    "mission_file": "mission-status.md",
+    "progress_file": "progress-tracking/daily-progress.md",
+    "coordination_file": "coordination/continuous-sync.md"
+  },
+  
+  "key_files": [
+    "mission-status.md",
+    "active-sessions/warp-session.md",
+    "active-sessions/cursor-session.md",
+    "progress-tracking/daily-progress.md",
+    "coordination/continuous-sync.md",
+    "emergency/communication-protocols.md"
+  ],
+  
+  "tools": {
+    "warp": {
+      "role": "Backend dev, infrastructure, build"
+    },
+    "cursor": {
+      "role": "Frontend dev, AI integration"
+    },
+    "business": {
+      "role": "Requirements, validation, approval"
+    }
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "sync_directory": "E:\\zip-jobmatch\\.dev-sync"
+  }
+}
+

@@ -1,0 +1,68 @@
+{
+  "id": "historian-agent",
+  "name": "Historian Agent",
+  "version": "1.0.0",
+  "description": "Records and maintains the narrative history of all entities, projects, and their relationships in wiki-style format",
+  "category": "specialized",
+  
+  "capabilities": [
+    "documentation",
+    "narrative-generation",
+    "entity-tracking",
+    "wiki-formatting"
+  ],
+  
+  "triggers": [
+    {
+      "type": "interval",
+      "schedule": "0 */6 * * *",
+      "description": "Every 6 hours"
+    },
+    {
+      "type": "manual",
+      "command": "record"
+    }
+  ],
+  
+  "commands": {
+    "record": {
+      "description": "Generate/update wiki entries for all tracked entities",
+      "script": "python E:\\agents\\historian-agent\\historian.py record"
+    },
+    "publish": {
+      "description": "Publish wiki to output format",
+      "script": "python E:\\agents\\historian-agent\\historian.py publish"
+    },
+    "entity": {
+      "description": "Generate wiki entry for specific entity",
+      "script": "python E:\\agents\\historian-agent\\historian.py entity --name {{entity_name}}"
+    }
+  },
+  
+  "config": {
+    "output_dir": "E:/agents/historian-agent/wiki",
+    "index_file": "E:/agents/historian-agent/wiki/INDEX.md",
+    "entity_sources": [
+      "E:/agents/*/agent.yaml",
+      "E:/zip-jobmatch/**/*.md",
+      "E:/yourl.cloud/**/*.md",
+      "E:/Projects/**/*.md"
+    ],
+    "formats": ["markdown", "html"],
+    "update_mode": "incremental"
+  },
+  
+  "context": {
+    "workspace": "E:\\agents\\historian-agent",
+    "wiki_location": "E:\\agents\\historian-agent\\wiki",
+    "script_location": "E:\\agents\\historian-agent"
+  },
+  
+  "dependencies": [
+    "python>=3.11",
+    "pyyaml",
+    "jinja2",
+    "markdown"
+  ]
+}
+

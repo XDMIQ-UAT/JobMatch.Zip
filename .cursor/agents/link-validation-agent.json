@@ -1,0 +1,122 @@
+{
+  "id": "link-validation-agent",
+  "name": "Link Validation Agent",
+  "version": "1.0.0",
+  "description": "Validates URLs before sharing them with users. Tests links in real-time using browser automation to ensure they work correctly, preventing context switching frustration and broken link experiences.",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Browser automation (Playwright via MCP)",
+    "URL accessibility testing",
+    "Content verification",
+    "Screenshot capture for debugging",
+    "Link type detection (GitHub, docs, local files)",
+    "Cache management for performance"
+  ],
+  
+  "triggers": [
+    {
+      "type": "on-demand",
+      "description": "Called by Warp AI before providing any URL to user"
+    },
+    {
+      "type": "scheduled",
+      "interval": "continuous",
+      "description": "Always ready to validate links in real-time"
+    }
+  ],
+  
+  "commands": {
+    "validate": {
+      "description": "Validate a single URL",
+      "script": "python E:\\agents\\link-validation-agent\\scripts\\validate_link.py --url \"$env:URL\""
+    },
+    "validate-batch": {
+      "description": "Validate multiple URLs",
+      "script": "python E:\\agents\\link-validation-agent\\scripts\\validate_batch.py --urls \"$env:URLS\""
+    },
+    "clear-cache": {
+      "description": "Clear validation cache",
+      "script": "Remove-Item E:\\agents\\link-validation-agent\\cache\\*.json -Force"
+    },
+    "status": {
+      "description": "Check agent status and cache stats",
+      "script": "python E:\\agents\\link-validation-agent\\scripts\\status.py"
+    }
+  },
+  
+  "config": {
+    "enabled": true,
+    "check_interval_seconds": 5,
+    "validation_timeout": 15,
+    "cache_ttl_seconds": 300
+  },
+  
+  "validation_rules": [
+    "Check HTTP status code",
+    "Verify page loads without errors",
+    "Detect 404/403/500 errors",
+    "Validate redirects are intentional",
+    "Check for JavaScript errors",
+    "Verify expected content exists"
+  ],
+  
+  "outputs": [
+    "Validation status (pass/fail)",
+    "Error details if failed",
+    "Screenshot URL for debugging",
+    "Suggested fixes for common issues",
+    "Alternative working URLs when available"
+  ],
+  
+  "integration": {
+    "warp_ai": {
+      "description": "Warp AI calls this agent before providing URLs",
+      "workflow": [
+        "Warp AI generates response with URL",
+        "Before sending to user, call validate-link-agent",
+        "Agent validates URL using browser",
+        "If validation fails: find correct URL if possible, warn user about broken link, suggest alternatives",
+        "If validation succeeds: cache result, provide URL to user with confidence"
+      ]
+    }
+  },
+  
+  "examples": [
+    {
+      "name": "Validate GitHub file link",
+      "command": "validate",
+      "params": {
+        "url": "https://github.com/user/repo/blob/main/src/file.py"
+      },
+      "expected": "Verifies file exists in repo"
+    },
+    {
+      "name": "Validate docs page",
+      "command": "validate",
+      "params": {
+        "url": "https://docs.example.com/guide/setup"
+      },
+      "expected": "Checks page loads and contains expected content"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\link-validation-agent",
+    "scripts_location": "E:\\agents\\link-validation-agent\\scripts",
+    "cache_location": "E:\\agents\\link-validation-agent\\cache",
+    "logs_location": "E:\\agents\\link-validation-agent\\logs"
+  },
+  
+  "logs": {
+    "location": "E:\\agents\\link-validation-agent\\logs",
+    "retention_days": 7,
+    "include": [
+      "Validation requests",
+      "Success/failure results",
+      "Error details",
+      "Cache hits/misses"
+    ]
+  }
+}
+

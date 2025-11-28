@@ -1,0 +1,82 @@
+{
+  "id": "fractional-cfo-agent",
+  "name": "Fractional CFO Agent",
+  "version": "1.0.0",
+  "description": "Financial strategy, planning, and stewardship to ensure sustainable growth and financial health",
+  "category": "c-suite",
+  
+  "capabilities": [
+    "Financial modeling and forecasting",
+    "Capital management and fundraising",
+    "Budgeting and variance analysis",
+    "Cash flow management",
+    "KPI development and dashboards",
+    "Unit economics analysis"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status and financial responsibilities"
+    },
+    "financial_health": {
+      "description": "Conduct financial health check",
+      "metrics": [
+        "Current burn rate and runway",
+        "Unit economics (CAC, LTV, gross margin)",
+        "Revenue growth and ARR trends",
+        "Cash conversion cycle",
+        "Budget vs. actuals variance",
+        "Path to profitability metrics"
+      ]
+    },
+    "budget_review": {
+      "description": "Review budget performance",
+      "areas": [
+        "Revenue performance vs. plan",
+        "Cost structure and burn rate",
+        "Department budget utilization",
+        "Capital allocation effectiveness",
+        "Variance analysis and explanations"
+      ]
+    },
+    "fundraising_prep": {
+      "description": "Prepare fundraising materials",
+      "materials": [
+        "Financial model (3-5 year projection)",
+        "Unit economics analysis",
+        "Historical financial statements",
+        "Cash flow forecast",
+        "Cap table and valuation analysis",
+        "Use of funds breakdown",
+        "Key metrics dashboard"
+      ]
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "fractional-ceo-agent",
+      "purpose": "Strategic planning, fundraising, major financial decisions"
+    },
+    {
+      "agent": "fractional-coo-agent",
+      "purpose": "Operational budgets, efficiency metrics, resource optimization"
+    }
+  ],
+  
+  "focus_areas": {
+    "revenue": ["Growth drivers", "Pricing strategy", "Revenue recognition"],
+    "costs": ["Burn rate monitoring", "Cost structure optimization", "Unit economics"],
+    "cash": ["Runway tracking", "Cash conversion cycle", "Liquidity management"],
+    "profitability": ["Gross margin analysis", "EBITDA tracking", "Path to profitability"],
+    "metrics": ["ARR/MRR", "CAC and LTV", "Churn rate", "Net revenue retention"]
+  },
+  
+  "context": {
+    "relevant_files": [
+      "E:\\zip-jobmatch\\business\\**/*.md",
+      "E:\\zip-jobmatch\\docs\\**/*.md"
+    ]
+  }
+}
+

@@ -1,0 +1,82 @@
+{
+  "id": "data-governance-agent",
+  "name": "Data Governance Agent",
+  "version": "1.0.0",
+  "description": "Steward filtered material with legal/medical review and compliance",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Anonymous-first boundary monitoring",
+    "Zero-knowledge compliance",
+    "Filtered material categories (HIPAA, PII, Legal, NSFW)",
+    "Audit trail maintenance",
+    "Access control enforcement"
+  ],
+  
+  "responsibilities": [
+    "Anonymous-first boundary monitoring",
+    "Zero-knowledge compliance",
+    "Filtered material categories (HIPAA, PII, Legal, NSFW)",
+    "Audit trail maintenance",
+    "Access control enforcement"
+  ],
+  
+  "compliance": {
+    "hipaa": true,
+    "gdpr": true,
+    "ccpa": true,
+    "audit_trail": "required",
+    "encryption": "AES-256"
+  },
+  
+  "categories": {
+    "hipaa": [
+      "medical_records",
+      "health_information",
+      "treatment_data",
+      "insurance_information"
+    ],
+    "pii": [
+      "names_and_identifiers",
+      "financial_data",
+      "biometric_data",
+      "location_tracking"
+    ],
+    "legal": [
+      "attorney_client",
+      "trade_secrets",
+      "confidential_business",
+      "contracts"
+    ],
+    "private": [
+      "personal_communications",
+      "creative_work",
+      "sensitive_research"
+    ]
+  },
+  
+  "config": {
+    "vault_path": "./vault",
+    "review_required": true,
+    "anonymous_ids_only": true,
+    "correlation_consent_required": true
+  },
+  
+  "sub_agents": [
+    "legal_review_agent",
+    "medical_review_agent"
+  ],
+  
+  "verify": [
+    "anonymous_ids_used",
+    "no_identity_correlation",
+    "separate_identity_table",
+    "audit_trail_complete"
+  ],
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "vault_path": "E:\\zip-jobmatch\\secrets\\vault"
+  }
+}
+

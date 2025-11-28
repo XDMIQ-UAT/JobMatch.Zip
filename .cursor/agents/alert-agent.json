@@ -1,0 +1,84 @@
+{
+  "id": "alert-agent",
+  "name": "Alert Agent",
+  "version": "1.0.0",
+  "description": "Send voice call alerts via Twilio for critical issues",
+  "category": "operations",
+  
+  "capabilities": [
+    "Voice alert notifications via Twilio",
+    "Alert severity management",
+    "Rate limiting and alert fatigue prevention",
+    "Alert history tracking",
+    "Integration with other agents"
+  ],
+  
+  "commands": {
+    "send_alert": {
+      "description": "Send an alert (voice call for high/critical severity)",
+      "script": "python E:\\agents\\groups\\servers\\alert-agent.py",
+      "python_method": "send_alert(severity, source, message, details, recipient)"
+    },
+    "test_connection": {
+      "description": "Test Twilio connection without making a call",
+      "script": "python E:\\agents\\groups\\servers\\alert-agent.py",
+      "python_method": "test_connection()"
+    },
+    "alert_if_critical": {
+      "description": "Helper: Send alert if review result is critical/high",
+      "script": "python E:\\agents\\groups\\servers\\alert-agent.py",
+      "python_method": "alert_if_critical(review_result)"
+    },
+    "generate_report": {
+      "description": "Generate alert history report",
+      "script": "python E:\\agents\\groups\\servers\\alert-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "twilio_phone": "626-995-9974",
+    "voice_call_severities": ["critical", "high"],
+    "max_calls_per_hour": 5,
+    "min_minutes_between_calls": 10,
+    "credential_source": "Windows Credential Manager (keyring) or environment variables"
+  },
+  
+  "integrations": [
+    {
+      "type": "alert_target",
+      "agents": [
+        "branding-agent",
+        "copy-review-agent",
+        "i18n-agent",
+        "crypto-agent",
+        "threat-model-agent"
+      ],
+      "trigger": "critical or high severity issues"
+    },
+    {
+      "agent": "precheck-agent",
+      "purpose": "Verify Twilio connectivity before deployment"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\servers",
+    "python_file": "E:\\agents\\groups\\servers\\alert-agent.py",
+    "yaml_file": "E:\\agents\\groups\\servers\\alert-agent.yaml"
+  },
+  
+  "dependencies": {
+    "required": ["twilio"],
+    "optional": ["keyring"]
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\servers\\alert-agent.py",
+    "yaml_file": "E:\\agents\\groups\\servers\\alert-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\alert-agent.json"
+  }
+}
+
+
+

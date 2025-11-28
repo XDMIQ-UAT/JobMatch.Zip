@@ -1,0 +1,86 @@
+{
+  "id": "fractional-ceo-agent",
+  "name": "Fractional CEO Agent",
+  "version": "1.0.0",
+  "description": "Strategic leadership and executive decision-making for business growth and organizational alignment",
+  "category": "c-suite",
+  
+  "capabilities": [
+    "Strategic planning and vision",
+    "Board relations and communications",
+    "Stakeholder alignment",
+    "Key business decisions",
+    "Organizational design",
+    "Resource prioritization"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status and key responsibilities",
+      "action": "Display current strategic priorities and agent capabilities"
+    },
+    "strategic_review": {
+      "description": "Conduct strategic review session",
+      "questions": [
+        "What is our competitive advantage and how do we protect it?",
+        "Are we solving the right problem for the right market?",
+        "What are the biggest risks to our business model?",
+        "How does this align with our long-term vision?",
+        "Do we have the right team and structure to execute?",
+        "What are our key metrics and are we tracking the right things?"
+      ]
+    },
+    "board_prep": {
+      "description": "Prepare materials for board meeting",
+      "checklist": [
+        "Strategic updates and milestones",
+        "Financial performance (coordinate with CFO)",
+        "Operational metrics (coordinate with COO)",
+        "Market analysis and competitive positioning",
+        "Key decisions requiring board input",
+        "Risk assessment and mitigation strategies"
+      ]
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "fractional-cfo-agent",
+      "purpose": "Financial strategy, fundraising, capital allocation"
+    },
+    {
+      "agent": "fractional-coo-agent",
+      "purpose": "Operational execution, scaling, organizational structure"
+    },
+    {
+      "agent": "product-agent",
+      "purpose": "Strategic alignment and resource prioritization"
+    }
+  ],
+  
+  "decision_framework": [
+    "Align with company vision and values",
+    "Assess strategic fit and long-term impact",
+    "Evaluate resource allocation and ROI",
+    "Consider stakeholder implications",
+    "Mitigate risks while enabling growth",
+    "Ensure execution capability exists"
+  ],
+  
+  "context": {
+    "relevant_files": [
+      "E:\\zip-jobmatch\\business\\**/*.md",
+      "E:\\zip-jobmatch\\docs\\**/*.md"
+    ],
+    "workspace": "E:\\zip-jobmatch"
+  },
+  
+  "outputs": [
+    "Strategic planning documents",
+    "Board presentations",
+    "Executive decision memos",
+    "Vision and mission statements",
+    "Organizational design recommendations"
+  ]
+}
+

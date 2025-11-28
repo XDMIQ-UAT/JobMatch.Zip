@@ -1,0 +1,235 @@
+{
+  "id": "change-management-agent",
+  "name": "Change Management Agent",
+  "version": "1.0.0",
+  "description": "Orchestrates and governs change velocity across business, IT, and UX domains to optimize efficiency while ensuring human and agent wellbeing",
+  "category": "operations",
+  
+  "capabilities": [
+    "change-velocity-monitoring",
+    "capacity-assessment",
+    "risk-evaluation",
+    "approval-workflow",
+    "rollback-coordination",
+    "stakeholder-communication",
+    "impact-analysis",
+    "burnout-prevention",
+    "holiday-period-detection",
+    "no-rollback-enforcement",
+    "forward-compatibility-validation"
+  ],
+  
+  "triggers": [
+    {
+      "type": "interval",
+      "schedule": "*/15 * * * *",
+      "description": "Every 15 minutes - monitor change velocity"
+    },
+    {
+      "type": "event",
+      "event": "change_proposed"
+    },
+    {
+      "type": "manual",
+      "command": "assess"
+    }
+  ],
+  
+  "commands": {
+    "assess": {
+      "description": "Assess current change velocity and system capacity",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py assess"
+    },
+    "propose": {
+      "description": "Propose a new change for review",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py propose --title {{title}} --impact {{impact}} --description {{description}}"
+    },
+    "approve": {
+      "description": "Approve a pending change",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py approve --change-id {{change_id}} --approver {{approver}}"
+    },
+    "reject": {
+      "description": "Reject a pending change",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py reject --change-id {{change_id}} --reason {{reason}}"
+    },
+    "pause": {
+      "description": "Pause all non-critical changes",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py pause --duration {{duration}}"
+    },
+    "report": {
+      "description": "Generate change management report",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py report --period {{period}}"
+    },
+    "healthcheck": {
+      "description": "Check system and team health metrics",
+      "script": "python E:\\agents\\change-management-agent\\change_manager.py healthcheck"
+    }
+  },
+  
+  "config": {
+    "thresholds": {
+      "max_concurrent_changes": 5,
+      "max_daily_changes": 20,
+      "max_weekly_changes": 50,
+      "critical_change_cooldown_hours": 4,
+      "high_impact_spacing_hours": 2,
+      "human_review_required_risk_level": "high"
+    },
+    "impact_weights": {
+      "business_critical": 10,
+      "high_impact": 7,
+      "medium_impact": 4,
+      "low_impact": 2,
+      "cosmetic": 1
+    },
+    "velocity_limits": {
+      "human_team": {
+        "max_changes_per_day": 8,
+        "min_cooldown_hours": 1,
+        "max_context_switches": 4
+      },
+      "agent_system": {
+        "max_changes_per_hour": 10,
+        "rollback_time_minutes": 30,
+        "health_check_interval_minutes": 5
+      }
+    },
+    "holiday_periods": {
+      "no_rollback_enforced": true,
+      "periods": [
+        {
+          "name": "Holiday Season",
+          "start": "2025-12-20",
+          "end": "2026-01-05",
+          "description": "Year-end holidays - no rollback phase"
+        },
+        {
+          "name": "Thanksgiving Week",
+          "start": "2025-11-24",
+          "end": "2025-12-01",
+          "description": "Thanksgiving week - no rollback phase"
+        },
+        {
+          "name": "New Year Period",
+          "start": "2026-12-20",
+          "end": "2027-01-05",
+          "description": "Year-end holidays - no rollback phase"
+        }
+      ],
+      "recurring_holidays": [
+        {
+          "name": "Christmas to New Year",
+          "month": 12,
+          "start_day": 20,
+          "end_month": 1,
+          "end_day": 5,
+          "description": "Annual year-end holiday period"
+        }
+      ]
+    },
+    "no_rollback_requirements": {
+      "enabled": true,
+      "enforcement_mode": "strict",
+      "required_validations": [
+        "forward_compatible",
+        "backward_compatible",
+        "feature_flags_enabled",
+        "gradual_rollout_capable",
+        "health_checks_required",
+        "monitoring_enabled"
+      ],
+      "emergency_change_allowed": true,
+      "emergency_approval_required": ["ceo", "coo"],
+      "escalation_contact": {
+        "executive_phone": "+1 (626) 995-9974",
+        "availability": "24x7",
+        "method": "voice_call",
+        "sop_document": "E:\\agents\\EXECUTIVE_ESCALATION_SOP.md",
+        "use_case": "For situations requiring higher authority than CEO/COO approval, or when CEO/COO are unavailable during critical emergencies"
+      }
+    },
+    "repositories": [
+      {
+        "path": "E:/zip-jobmatch",
+        "impact_level": "critical"
+      },
+      {
+        "path": "E:/yourl.cloud",
+        "impact_level": "high"
+      },
+      {
+        "path": "E:/agents",
+        "impact_level": "medium"
+      }
+    ]
+  },
+  
+  "approval_matrix": {
+    "critical": {
+      "required_approvers": ["ceo", "cfo", "coo"],
+      "auto_approve": false,
+      "notification_channels": ["email", "slack", "sms"]
+    },
+    "high": {
+      "required_approvers": ["lead-developer", "product-manager"],
+      "auto_approve": false,
+      "notification_channels": ["email", "slack"]
+    },
+    "medium": {
+      "required_approvers": ["tech-lead"],
+      "auto_approve": true,
+      "auto_approve_conditions": [
+        "has_tests",
+        "has_rollback_plan",
+        "off_peak_hours",
+        "not_holiday_period"
+      ],
+      "holiday_conditions": [
+        "has_tests",
+        "forward_compatible_only",
+        "no_rollback_required",
+        "feature_flags_enabled"
+      ],
+      "notification_channels": ["slack"]
+    },
+    "low": {
+      "required_approvers": [],
+      "auto_approve": true,
+      "notification_channels": ["slack"]
+    }
+  },
+  
+  "monitoring": {
+    "metrics_tracked": [
+      "change_frequency",
+      "deployment_success_rate",
+      "rollback_frequency",
+      "mean_time_to_recovery",
+      "agent_error_rate",
+      "human_workload_score",
+      "context_switch_frequency",
+      "burnout_risk_score"
+    ],
+    "alert_conditions": [
+      {
+        "condition": "burnout_risk_score > 70",
+        "action": "pause_non_critical_changes"
+      },
+      {
+        "condition": "deployment_success_rate < 90",
+        "action": "require_manual_review"
+      },
+      {
+        "condition": "agent_error_rate > 5",
+        "action": "slow_down_changes"
+      }
+    ]
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "script_location": "E:\\agents\\change-management-agent",
+    "state_file": "E:\\agents\\change-management-agent\\change_state.json"
+  }
+}
+

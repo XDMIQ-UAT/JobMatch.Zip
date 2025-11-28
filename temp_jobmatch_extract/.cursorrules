@@ -1,0 +1,52 @@
+# Cursor Rules for AI-Enabled LLC Matching Platform
+
+## Project Context
+- AI-Enabled LLC Matching Platform for job matching
+- Anonymous identity system (zero-knowledge)
+- XDMIQ credentialing integration
+- Human-in-the-loop architecture
+- Built with FastAPI (backend) and Next.js 14+ (frontend)
+
+## Development Tools
+- **Warp**: Terminal operations
+- **Claude Code**: AI-assisted coding with hooks
+- **Cursor**: Interactive IDE for business logic
+
+## Key Principles
+1. Human-in-the-loop always more beneficial
+2. Anonymous identity preserved throughout
+3. Capability over credentials
+4. State recovery and testing support
+
+## Code Style
+- Backend: FastAPI with Pydantic models, SQLAlchemy ORM
+- Frontend: Next.js 14+ with TypeScript, React Server Components
+- Always include proper error handling
+- Maintain anonymous identity in all operations
+- Create state checkpoints for AI decisions
+
+## When Creating Code
+- Reference existing patterns in the codebase
+- Use hooks from `.claude-code/hooks.json` for context
+- Maintain consistency with existing code
+- Focus on business requirements
+- Consider scalability (1B+ users target)
+
+## AI Integration Guidelines
+- Always include human review queue
+- Create checkpoints for state recovery
+- Use OpenAI API with fallbacks
+- Log AI decisions for human review
+- Support rollback capabilities
+
+## Authentication
+- Support: Facebook, LinkedIn, Google, Microsoft, Apple, Email, SMS/VoIP
+- All providers link to anonymous identity
+- Never reveal real identity
+
+## XDMIQ Integration
+- Use preference-based questions ("Which do you prefer?" + "Why?")
+- Calculate XDMIQ scores (0-100)
+- Integrate scores into matching algorithm
+
+

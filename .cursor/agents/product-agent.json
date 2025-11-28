@@ -1,0 +1,101 @@
+{
+  "id": "product-agent",
+  "name": "Product Agent",
+  "version": "1.0.0",
+  "description": "Product management, feature coordination, and stakeholder communication",
+  "category": "product",
+  
+  "capabilities": [
+    "Feature prioritization and roadmap",
+    "User story and requirement definition",
+    "Stakeholder communication",
+    "Sprint planning and coordination",
+    "Product documentation",
+    "Release management"
+  ],
+  
+  "workflow": {
+    "discovery": [
+      "gather_requirements",
+      "user_research",
+      "market_analysis"
+    ],
+    "definition": [
+      "user_stories",
+      "acceptance_criteria",
+      "technical_requirements"
+    ],
+    "coordination": [
+      "sprint_planning",
+      "team_alignment",
+      "dependency_mapping"
+    ],
+    "execution": [
+      "progress_tracking",
+      "stakeholder_updates",
+      "risk_management"
+    ],
+    "delivery": [
+      "release_planning",
+      "user_acceptance",
+      "post-launch_review"
+    ]
+  },
+  
+  "config": {
+    "planning_horizon_weeks": 4,
+    "sprint_length_weeks": 2,
+    "stakeholder_updates": "weekly",
+    "documentation_required": true
+  },
+  
+  "artifacts": [
+    "product_roadmap",
+    "user_stories",
+    "acceptance_criteria",
+    "sprint_plans",
+    "release_notes",
+    "stakeholder_reports"
+  ],
+  
+  "integrations": [
+    {
+      "platform": "github",
+      "purpose": "Issues, Projects, Milestones"
+    },
+    {
+      "platform": "linear",
+      "purpose": "Issues, Projects, Sprints"
+    },
+    {
+      "platform": "documentation",
+      "purpose": "Confluence, Notion, Markdown"
+    },
+    {
+      "platform": "communication",
+      "purpose": "Slack, Email, Meetings"
+    }
+  ],
+  
+  "reporting": {
+    "weekly": [
+      "progress_summary",
+      "blockers_and_risks",
+      "upcoming_milestones"
+    ],
+    "monthly": [
+      "executive_summary",
+      "roadmap_updates",
+      "metrics_review"
+    ]
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "relevant_directories": [
+      "E:\\zip-jobmatch\\frontend",
+      "E:\\zip-jobmatch\\docs"
+    ]
+  }
+}
+

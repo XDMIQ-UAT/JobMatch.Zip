@@ -1,0 +1,96 @@
+{
+  "id": "crypto-agent",
+  "name": "Crypto Agent",
+  "version": "1.0.0",
+  "description": "Validates cryptographic implementations and security practices",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Encryption algorithm validation",
+    "Key generation review",
+    "Key storage security review",
+    "Zero-knowledge architecture validation",
+    "Cryptographic code review",
+    "Security antipattern detection"
+  ],
+  
+  "commands": {
+    "review_algorithm_choice": {
+      "description": "Review if an algorithm choice is secure",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "review_algorithm_choice(algorithm, context)"
+    },
+    "review_key_generation": {
+      "description": "Review key generation practices",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "review_key_generation(method, key_size, context)"
+    },
+    "review_key_storage": {
+      "description": "Review how keys are stored",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "review_key_storage(storage_method, context)"
+    },
+    "review_zero_knowledge_claim": {
+      "description": "Review if zero-knowledge architecture claims are valid",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "review_zero_knowledge_claim(description, data_flow)"
+    },
+    "review_code": {
+      "description": "Review code for cryptographic security issues",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "review_code(code, filepath)"
+    },
+    "quick_check": {
+      "description": "Quick pass/fail check for algorithm choice",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "quick_check(algorithm, context)"
+    },
+    "generate_report": {
+      "description": "Generate a formatted report of crypto issues",
+      "script": "python E:\\agents\\groups\\security\\crypto-agent.py",
+      "python_method": "generate_report(issues)"
+    }
+  },
+  
+  "config": {
+    "weak_algorithms": [
+      "md5", "sha1", "des", "3des", "rc4", "blowfish"
+    ],
+    "recommended_algorithms": {
+      "symmetric": ["AES-256-GCM", "ChaCha20-Poly1305", "XSalsa20-Poly1305"],
+      "asymmetric": ["Ed25519", "X25519", "RSA-4096", "ECDSA P-256"],
+      "hash": ["SHA-256", "SHA-512", "SHA-3", "BLAKE2b"]
+    },
+    "min_key_sizes": {
+      "rsa": 3072,
+      "aes": 256,
+      "dh": 3072
+    }
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Send alerts for CRITICAL or HIGH severity crypto issues"
+    },
+    {
+      "agent": "threat-model-agent",
+      "purpose": "Share cryptographic security concerns"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\security",
+    "python_file": "E:\\agents\\groups\\security\\crypto-agent.py",
+    "yaml_file": "E:\\agents\\groups\\security\\crypto-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\security\\crypto-agent.py",
+    "yaml_file": "E:\\agents\\groups\\security\\crypto-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\crypto-agent.json"
+  }
+}
+
+
+

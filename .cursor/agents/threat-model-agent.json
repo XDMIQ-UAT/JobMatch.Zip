@@ -1,0 +1,107 @@
+{
+  "id": "threat-model-agent",
+  "name": "Threat Model Agent",
+  "version": "1.0.0",
+  "description": "Reviews attack surfaces, trust boundaries, and security architecture",
+  "category": "specialized",
+  
+  "capabilities": [
+    "Attack surface analysis",
+    "Trust boundary identification",
+    "Authentication and authorization flow review",
+    "Data flow security review",
+    "STRIDE threat analysis",
+    "P2P architecture security review",
+    "DoS resilience review"
+  ],
+  
+  "commands": {
+    "identify_trust_boundaries": {
+      "description": "Identify and validate trust boundaries",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "identify_trust_boundaries(component_name, data_flow)"
+    },
+    "review_authentication_flow": {
+      "description": "Review authentication mechanisms",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "review_authentication_flow(flow_description, component)"
+    },
+    "review_data_flow": {
+      "description": "Review data flow security",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "review_data_flow(source, destination, data_type, encryption)"
+    },
+    "review_p2p_architecture": {
+      "description": "Review P2P-specific security concerns",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "review_p2p_architecture(architecture_desc)"
+    },
+    "review_revocation_mechanism": {
+      "description": "Review device/key revocation mechanisms",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "review_revocation_mechanism(revocation_desc)"
+    },
+    "review_dos_resilience": {
+      "description": "Review denial-of-service resilience",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "review_dos_resilience(component, description)"
+    },
+    "generate_stride_analysis": {
+      "description": "Generate STRIDE threat analysis for a component",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "generate_stride_analysis(component, description)"
+    },
+    "generate_report": {
+      "description": "Generate a formatted threat model report",
+      "script": "python E:\\agents\\groups\\security\\threat-model-agent.py",
+      "python_method": "generate_report(issues)"
+    }
+  },
+  
+  "config": {
+    "stride_categories": [
+      "SPOOFING",
+      "TAMPERING",
+      "REPUDIATION",
+      "INFORMATION_DISCLOSURE",
+      "DENIAL_OF_SERVICE",
+      "ELEVATION_OF_PRIVILEGE"
+    ],
+    "severity_levels": [
+      "LOW",
+      "MEDIUM",
+      "HIGH",
+      "CRITICAL"
+    ]
+  },
+  
+  "integrations": [
+    {
+      "agent": "alert-agent",
+      "purpose": "Send alerts for CRITICAL or HIGH severity threats"
+    },
+    {
+      "agent": "crypto-agent",
+      "purpose": "Share cryptographic security concerns"
+    },
+    {
+      "agent": "principal-dev-agent",
+      "purpose": "Architecture security review"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\security",
+    "python_file": "E:\\agents\\groups\\security\\threat-model-agent.py",
+    "yaml_file": "E:\\agents\\groups\\security\\threat-model-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\security\\threat-model-agent.py",
+    "yaml_file": "E:\\agents\\groups\\security\\threat-model-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\threat-model-agent.json"
+  }
+}
+
+
+

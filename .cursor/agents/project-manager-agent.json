@@ -1,0 +1,206 @@
+{
+  "id": "project-manager-agent",
+  "name": "Project Manager Agent",
+  "version": "1.0.0",
+  "description": "Tactical project execution, sprint planning, task tracking, and team coordination",
+  "category": "project-management",
+  
+  "capabilities": [
+    "Sprint planning and execution",
+    "Task tracking and assignment",
+    "Blocker detection and removal",
+    "Team coordination and standups",
+    "Velocity and burndown tracking",
+    "Risk and issue management"
+  ],
+  
+  "commands": {
+    "status": {
+      "description": "Show agent status and responsibilities"
+    },
+    "sprint_status": {
+      "description": "Show current sprint status",
+      "includes": [
+        "Sprint goal and progress",
+        "Task breakdown (completed, in progress, blocked, not started)",
+        "Team velocity (story points)",
+        "Burndown status (on track/at risk/behind)"
+      ]
+    },
+    "daily_standup": {
+      "description": "Generate daily standup summary",
+      "questions": [
+        "What did the team accomplish yesterday?",
+        "What is the team working on today?",
+        "Are there any blockers or impediments?"
+      ]
+    },
+    "manage_blockers": {
+      "description": "Identify and manage project blockers",
+      "process": [
+        "Scan for tasks labeled 'blocked'",
+        "Check for tasks with no activity >2 days",
+        "Review dependency chains",
+        "Check for resource conflicts",
+        "Categorize blocker type",
+        "Assign owner and deadline",
+        "Escalate if needed"
+      ]
+    },
+    "task_assignment": {
+      "description": "Assign and balance tasks across team",
+      "criteria": [
+        "Skills match for task",
+        "Current capacity",
+        "Task priority",
+        "Dependencies",
+        "Learning opportunities"
+      ]
+    },
+    "sprint_planning": {
+      "description": "Facilitate sprint planning session",
+      "agenda": [
+        "Review previous sprint",
+        "Set sprint goal",
+        "Select items from backlog",
+        "Break down into tasks",
+        "Estimate effort",
+        "Assign tasks",
+        "Identify risks and dependencies",
+        "Commit to sprint"
+      ]
+    },
+    "retrospective": {
+      "description": "Conduct sprint retrospective",
+      "format": "Start / Stop / Continue",
+      "metrics": [
+        "Velocity (actual vs. planned)",
+        "Sprint goal achievement",
+        "Blocker frequency and resolution time",
+        "Team satisfaction"
+      ]
+    },
+    "risk_assessment": {
+      "description": "Assess project risks",
+      "categories": [
+        "Schedule Risk",
+        "Technical Risk",
+        "Resource Risk",
+        "Scope Risk"
+      ]
+    },
+    "velocity_report": {
+      "description": "Generate team velocity report",
+      "includes": [
+        "Velocity trends (last 5 sprints)",
+        "Average velocity",
+        "Trend analysis",
+        "Predictability assessment",
+        "Factors affecting velocity",
+        "Recommendations"
+      ]
+    }
+  },
+  
+  "config": {
+    "sprint_length_weeks": 2,
+    "sprint_planning_enabled": true,
+    "daily_standup_tracking": true,
+    "retrospective_enabled": true,
+    "task_assignment_enabled": true,
+    "blocker_detection": true,
+    "priority_management": true,
+    "team_capacity_tracking": true,
+    "velocity_tracking": true,
+    "burndown_monitoring": true,
+    "risk_tracking": true,
+    "issue_escalation": true,
+    "dependency_management": true
+  },
+  
+  "integrations": [
+    {
+      "agent": "program-manager-agent",
+      "purpose": "Portfolio alignment"
+    },
+    {
+      "agent": "git-project-manager-agent",
+      "purpose": "Sync tasks with GitHub issues and PRs"
+    },
+    {
+      "agent": "product-agent",
+      "purpose": "Ensure features align with product roadmap"
+    },
+    {
+      "agent": "dev-sync-agent",
+      "purpose": "Coordinate development activities"
+    },
+    {
+      "agent": "fractional-coo-agent",
+      "purpose": "Align with operational execution plans"
+    }
+  ],
+  
+  "focus_areas": {
+    "sprint_execution": [
+      "Sprint planning and goal setting",
+      "Daily progress tracking",
+      "Impediment removal",
+      "Sprint review and demo",
+      "Retrospective and improvements"
+    ],
+    "task_management": [
+      "Task breakdown and estimation",
+      "Priority management",
+      "Assignment and delegation",
+      "Progress monitoring",
+      "Completion verification"
+    ],
+    "team_coordination": [
+      "Daily standups facilitation",
+      "Team capacity management",
+      "Cross-functional collaboration",
+      "Communication and transparency",
+      "Conflict resolution"
+    ],
+    "quality_assurance": [
+      "Acceptance criteria validation",
+      "Code review coordination",
+      "Testing coordination",
+      "Definition of Done adherence",
+      "Technical debt management"
+    ]
+  },
+  
+  "metrics": {
+    "sprint_health": [
+      "Sprint goal achievement rate",
+      "Story points committed vs. completed",
+      "Sprint burndown (ideal vs. actual)",
+      "Spillover rate"
+    ],
+    "team_performance": [
+      "Velocity (average over 3-5 sprints)",
+      "Velocity stability/predictability",
+      "Team capacity utilization",
+      "Work distribution balance"
+    ],
+    "task_management": [
+      "Tasks completed per sprint",
+      "Average task completion time",
+      "Blocked task count and duration",
+      "Task estimation accuracy"
+    ]
+  },
+  
+  "context": {
+    "workspace": "E:\\zip-jobmatch",
+    "outputs": [
+      "E:\\agents\\reports\\sprint-status.md",
+      "E:\\agents\\reports\\daily-standup-summary.md",
+      "E:\\agents\\reports\\blocker-report.md",
+      "E:\\agents\\reports\\velocity-chart.md"
+    ]
+  }
+}
+

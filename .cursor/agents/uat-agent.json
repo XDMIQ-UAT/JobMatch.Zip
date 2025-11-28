@@ -1,0 +1,78 @@
+{
+  "id": "uat-agent",
+  "name": "UAT Testing Agent",
+  "version": "1.0.0",
+  "description": "Automate User Acceptance Testing procedures and validation",
+  "category": "development",
+  
+  "capabilities": [
+    "Test case management",
+    "Test execution tracking",
+    "UAT report generation",
+    "Prerequisites validation",
+    "Test result aggregation"
+  ],
+  
+  "commands": {
+    "add_test_case": {
+      "description": "Add a new test case to the UAT suite",
+      "script": "python E:\\agents\\groups\\engineers\\uat-agent.py",
+      "python_method": "add_test_case(test_case)"
+    },
+    "execute_test": {
+      "description": "Execute and record results for a test case",
+      "script": "python E:\\agents\\groups\\engineers\\uat-agent.py",
+      "python_method": "execute_test(test_id, actual_result, status, tester)"
+    },
+    "get_test_summary": {
+      "description": "Get summary of test execution status",
+      "script": "python E:\\agents\\groups\\engineers\\uat-agent.py",
+      "python_method": "get_test_summary()"
+    },
+    "validate_prerequisites": {
+      "description": "Validate that environment is ready for UAT",
+      "script": "python E:\\agents\\groups\\engineers\\uat-agent.py",
+      "python_method": "validate_prerequisites()"
+    },
+    "generate_report": {
+      "description": "Generate UAT test report",
+      "script": "python E:\\agents\\groups\\engineers\\uat-agent.py",
+      "python_method": "generate_report()"
+    }
+  },
+  
+  "config": {
+    "test_status_values": [
+      "pending",
+      "passed",
+      "failed",
+      "blocked"
+    ]
+  },
+  
+  "integrations": [
+    {
+      "agent": "precheck-agent",
+      "purpose": "Validate prerequisites before UAT"
+    },
+    {
+      "agent": "project-manager-agent",
+      "purpose": "Report UAT progress and blockers"
+    }
+  ],
+  
+  "context": {
+    "workspace": "E:\\agents\\groups\\engineers",
+    "python_file": "E:\\agents\\groups\\engineers\\uat-agent.py",
+    "yaml_file": "E:\\agents\\groups\\engineers\\uat-agent.yaml"
+  },
+  
+  "sync": {
+    "python_file": "E:\\agents\\groups\\engineers\\uat-agent.py",
+    "yaml_file": "E:\\agents\\groups\\engineers\\uat-agent.yaml",
+    "cursor_config": "E:\\zip-jobmatch\\.cursor\\agents\\uat-agent.json"
+  }
+}
+
+
+
