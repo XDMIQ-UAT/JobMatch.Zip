@@ -83,8 +83,64 @@ export default function AssessPage() {
   };
 
   const submitAssessment = async () => {
-    // TODO: Call backend API to submit assessment
-    setStep('complete');
+    try {
+      // Prepare portfolio data
+      const portfolioData = {
+        skills: skills,
+        projects: portfolioUrl ? [{ url: portfolioUrl, type: 'portfolio' }] : []
+      };
+
+      // Prepare assessment request
+      const assessmentRequest = {
+        user_id: anonymousId,
+        portfolio_data: portfolioData,
+        challenge_responses: preference ? [{
+          question: 'work_preference',
+          response: preference,
+          reason: preferenceReason
+        }] : null
+      };
+
+      // Call backend API to submit assessment
+      const response = await fetch('/api/assessment/assess', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(assessmentRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit assessment');
+      }
+
+      const result = await response.json();
+      console.log('Assessment submitted:', result);
+      
+      // Also update profile with the same data
+      try {
+        await fetch(`/api/users/${anonymousId}/profile`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            skills,
+            portfolio_url: portfolioUrl,
+            work_preference: preference,
+            bio: preferenceReason,
+          }),
+        });
+      } catch (profileError) {
+        console.error('Failed to update profile:', profileError);
+        // Don't fail the assessment submission if profile update fails
+      }
+      
+      setStep('complete');
+    } catch (error) {
+      console.error('Error submitting assessment:', error);
+      alert('Failed to submit assessment. Please try again.');
+    }
   };
 
   const handlePiiAccept = () => {

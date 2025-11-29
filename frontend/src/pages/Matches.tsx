@@ -26,6 +26,38 @@ export default function MatchesPage() {
     searchTerm: ''
   })
   const [isDemoMode, setIsDemoMode] = useState(false)
+  const [savedMatches, setSavedMatches] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    // Load saved matches from localStorage
+    const saved = localStorage.getItem('savedMatches')
+    if (saved) {
+      try {
+        const savedArray = JSON.parse(saved)
+        setSavedMatches(new Set(savedArray))
+      } catch (e) {
+        console.error('Error loading saved matches:', e)
+      }
+    }
+  }, [])
+
+  const handleSaveMatch = (matchId: string) => {
+    const newSaved = new Set(savedMatches)
+    if (newSaved.has(matchId)) {
+      newSaved.delete(matchId)
+    } else {
+      newSaved.add(matchId)
+    }
+    setSavedMatches(newSaved)
+    localStorage.setItem('savedMatches', JSON.stringify(Array.from(newSaved)))
+    
+    // TODO: Also save to backend API when endpoint is available
+    // For now, using localStorage for persistence
+  }
+
+  const isMatchSaved = (matchId: string) => {
+    return savedMatches.has(matchId)
+  }
 
   useEffect(() => {
     // Check if this is a demo visit (no assessment completed)
@@ -321,12 +353,11 @@ export default function MatchesPage() {
                   <button
                     type="button"
                     onClick={() => {
-                      // TODO: Implement save functionality
-                      console.log('Save job:', match.id)
+                      handleSaveMatch(match.id)
                     }}
                     className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition"
                   >
-                    Save
+                    {isMatchSaved(match.id) ? 'Saved ✓' : 'Save'}
                   </button>
                 </div>
               </div>
