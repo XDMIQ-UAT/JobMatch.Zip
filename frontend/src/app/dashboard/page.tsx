@@ -26,7 +26,12 @@ export default function DashboardPage() {
         const response = await fetch(`/api/subscription/status/${id}`);
         if (response.ok) {
           const data = await response.json();
-          setIsSubscribed(data.status === 'active' || data.status === 'trialing');
+          // API returns has_active_subscription boolean or subscription.status
+          setIsSubscribed(
+            data.has_active_subscription === true || 
+            data.subscription?.status === 'active' || 
+            data.subscription?.status === 'trialing'
+          );
         } else {
           // No subscription found or error
           setIsSubscribed(false);
