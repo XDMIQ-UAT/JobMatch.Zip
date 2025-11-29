@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from database.connection import get_db
 from database.models import AnonymousUser
-from auth.session_manager import get_session_from_request
+from auth.session_manager import create_session_manager
 
 router = APIRouter(prefix="/api/subscription", tags=["subscription"])
 

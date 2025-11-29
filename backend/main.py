@@ -8,6 +8,10 @@ from fastapi.responses import JSONResponse
 from config import settings
 # Temporarily slim imports to avoid cascading import failures
 from api import voice, subscription, age_verification, zero_knowledge_auth, zero_knowledge_matching, google_oauth, social_auth
+try:
+    from api import agent_ui
+except ImportError:
+    agent_ui = None  # Agent UI module optional
 from security.security_headers import SecurityHeadersMiddleware
 from security.rate_limiter import RateLimiterMiddleware
 
@@ -57,6 +61,10 @@ app.include_router(zero_knowledge_auth.router)  # Zero-knowledge authentication
 app.include_router(zero_knowledge_matching.router)  # Zero-knowledge matching
 app.include_router(google_oauth.router)  # Google OAuth
 app.include_router(social_auth.router)  # Social authentication (email, SMS, etc.)
+
+# Agent UI API (if available)
+if agent_ui:
+    app.include_router(agent_ui.router)  # Agent-driven UI schemas
 # GCP CLI Backdoor (Documented Feature) - Disabled for now
 # if settings.GCP_CLI_ENABLED:
 #     from api import gcp_cli

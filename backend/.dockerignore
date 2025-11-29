@@ -6,3 +6,9 @@ __pycache__/
 *.tar.gz
 *.zip
 test_routes.py
+# Exclude Ollama models and data
+**/.ollama/
+**/ollama/
+*.gguf
+*.ggml
+**/models/

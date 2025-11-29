@@ -16,7 +16,7 @@ def generate_twiml_response(message: str, gather: bool = False,
                             gather_action: str = None, 
                             gather_num_digits: int = 1) -> str:
     """
-    Generate TwiML response for Twilio.
+    Generate TwiML response for Twilio with natural-sounding neural voice.
     
     Args:
         message: Text to speak to the caller
@@ -25,18 +25,22 @@ def generate_twiml_response(message: str, gather: bool = False,
         gather_num_digits: Number of digits to gather
     
     Returns:
-        TwiML XML string
+        TwiML XML string with neural voice for natural speech
     """
+    # Use neural voice for more natural sound (Joanna-Neural sounds more natural than Matthew)
+    # Neural voices have better intonation and natural pauses
+    voice_attrs = 'language="en-US" voice="Polly.Joanna-Neural"'
+    
     twiml = '<?xml version="1.0" encoding="UTF-8"?>\n<Response>\n'
     
     if gather:
         twiml += f'  <Gather action="{gather_action}" numDigits="{gather_num_digits}" timeout="10">\n'
-        twiml += f'    <Say voice="Polly.Joanna">{message}</Say>\n'
+        twiml += f'    <Say {voice_attrs}>{message}</Say>\n'
         twiml += '  </Gather>\n'
         # Fallback if no input
-        twiml += '  <Say voice="Polly.Joanna">We didn\'t receive any input. Goodbye!</Say>\n'
+        twiml += f'  <Say {voice_attrs}>We didn\'t receive any input. Goodbye!</Say>\n'
     else:
-        twiml += f'  <Say voice="Polly.Joanna">{message}</Say>\n'
+        twiml += f'  <Say {voice_attrs}>{message}</Say>\n'
     
     twiml += '</Response>'
     return twiml
@@ -64,11 +68,13 @@ async def handle_incoming_call(
     # Log the incoming call
     logger.info(f"Incoming call - From: {From}, To: {To}, CallSid: {CallSid}, Status: {CallStatus}")
     
-    # Generate welcome message
+    # Generate welcome message with natural pronunciation
+    # Fixed: "L L C" -> "LLC", "A I" -> "AI"
+    # Improved phrasing for natural flow
     message = (
-        "Welcome to Job Match dot zip, the AI-powered job matching platform for L L C owners. "
+        "Welcome to Job Match dot zip, the AI powered job matching platform for LLC owners. "
         "Press 1 to learn about our services. "
-        "Press 2 to speak with our A I assistant. "
+        "Press 2 to speak with our AI assistant. "
         "Press 3 to schedule a callback. "
         "Press 9 to end this call."
     )
@@ -104,23 +110,23 @@ async def handle_menu_selection(
         twiml = generate_twiml_response(message)
         return Response(content=twiml, media_type="application/xml")
     
-    # Handle different menu options
+    # Handle different menu options with natural pronunciation
     if Digits == "1":
         message = (
-            "Job Match helps L L C owners find perfect job matches using A I. "
+            "Job Match helps LLC owners find perfect job matches using AI. "
             "We analyze your skills, experience, and goals to match you with opportunities. "
             "Visit jobmatch dot zip to get started. Goodbye!"
         )
     elif Digits == "2":
         message = (
-            "Our A I assistant is available on our website at jobmatch dot zip. "
-            "You can chat with our intelligent matching system 24 7. "
+            "Our AI assistant is available on our website at jobmatch dot zip. "
+            "You can chat with our intelligent matching system twenty four seven. "
             "Visit us online to get started. Goodbye!"
         )
     elif Digits == "3":
         message = (
             "To schedule a callback, please visit jobmatch dot zip and fill out our contact form. "
-            "Our team will reach out within 24 hours. Goodbye!"
+            "Our team will reach out within twenty four hours. Goodbye!"
         )
     elif Digits == "9":
         message = "Thank you for calling Job Match. Goodbye!"

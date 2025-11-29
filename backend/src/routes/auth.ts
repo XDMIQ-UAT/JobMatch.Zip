@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { generateToken } from '../middleware/auth';
 import { EmailService } from '../services/emailService';
 import { logger } from '../utils/logger';
+import { redactEmail } from '../utils/piiRedaction';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -31,7 +32,7 @@ router.post('/magic-link', async (req: Request, res: Response) => {
       });
     }
 
-    logger.info(`🔗 Magic link requested for: ${email}`);
+    logger.info(`🔗 Magic link requested for: ${redactEmail(email)}`);
 
     // Generate magic link token
     const magicToken = await generateToken({ 
@@ -40,7 +41,7 @@ router.post('/magic-link', async (req: Request, res: Response) => {
       role: 'JOB_SEEKER' 
     });
 
-    logger.info(`🔗 Generated magic token for: ${email}`);
+    logger.info(`🔗 Generated magic token for: ${redactEmail(email)}`);
 
     // Clean up any existing unused magic links for this email
     await prisma.magicLink.deleteMany({
@@ -50,7 +51,7 @@ router.post('/magic-link', async (req: Request, res: Response) => {
       }
     });
 
-    logger.info(`🧹 Cleaned up existing magic links for: ${email}`);
+    logger.info(`🧹 Cleaned up existing magic links for: ${redactEmail(email)}`);
 
     // Store magic link token with expiration (15 minutes)
     await prisma.magicLink.create({
@@ -62,18 +63,18 @@ router.post('/magic-link', async (req: Request, res: Response) => {
       }
     });
 
-    logger.info(`💾 Stored magic link token for: ${email}`);
+    logger.info(`💾 Stored magic link token for: ${redactEmail(email)}`);
 
     // Generate magic link URL - this should point to the backend API endpoint
     const magicLink = `${process.env.BACKEND_URL || 'http://34.134.208.48:4000'}/api/auth/verify-magic-link?token=${magicToken}`;
     
-    logger.info(`🔗 Generated magic link URL for: ${email}`);
+    logger.info(`🔗 Generated magic link URL for: ${redactEmail(email)}`);
 
     try {
       // Send magic link email via Amazon SES
       await emailService.sendMagicLink(email, magicLink);
       
-      logger.info(`✅ Magic link email sent successfully to ${email}`);
+      logger.info(`✅ Magic link email sent successfully to ${redactEmail(email)}`);
       
       res.json({
         message: 'Magic link sent successfully',
@@ -82,7 +83,7 @@ router.post('/magic-link', async (req: Request, res: Response) => {
       });
       
     } catch (emailError: any) {
-      logger.error(`❌ Failed to send magic link email to ${email}:`, emailError);
+      logger.error(`❌ Failed to send magic link email to ${redactEmail(email)}:`, emailError);
       
       // Clean up the stored token since email failed
       await prisma.magicLink.deleteMany({
@@ -149,7 +150,7 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
       });
     }
 
-    logger.info(`✅ Magic link token is valid for: ${magicLinkRecord.email}`);
+    logger.info(`✅ Magic link token is valid for: ${redactEmail(magicLinkRecord.email)}`);
 
     // Mark as used
     await prisma.magicLink.update({
@@ -175,9 +176,9 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
         }
       });
       
-      logger.info(`👤 Created new user: ${user.email}`);
+      logger.info(`👤 Created new user: ${redactEmail(user.email)}`);
     } else {
-      logger.info(`👤 Found existing user: ${user.email}`);
+      logger.info(`👤 Found existing user: ${redactEmail(user.email)}`);
     }
 
     // Generate JWT token
@@ -187,7 +188,7 @@ router.get('/verify-magic-link', async (req: Request, res: Response) => {
       role: user.role
     });
 
-    logger.info(`🔑 Generated auth token for: ${user.email}`);
+    logger.info(`🔑 Generated auth token for: ${redactEmail(user.email)}`);
 
     // Return simple success page - extension will poll to check authentication
     const htmlResponse = `
