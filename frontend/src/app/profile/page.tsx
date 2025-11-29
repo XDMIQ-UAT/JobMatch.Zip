@@ -6,10 +6,18 @@ import { Header, Card, Button, Input, TextArea } from '@/components';
 export default function ProfilePage() {
   const [anonymousId, setAnonymousId] = useState<string>('');
   const [isEditing, setIsEditing] = useState(false);
-  const [skills, setSkills] = useState<string[]>(['Python', 'FastAPI', 'React']);
-  const [portfolioUrl, setPortfolioUrl] = useState('https://github.com/example');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [skills, setSkills] = useState<string[]>([]);
+  const [portfolioUrl, setPortfolioUrl] = useState('');
   const [workPreference, setWorkPreference] = useState('Break it into smaller sub-problems');
   const [bio, setBio] = useState('');
+  
+  // Store original values for revert
+  const [originalSkills, setOriginalSkills] = useState<string[]>([]);
+  const [originalPortfolioUrl, setOriginalPortfolioUrl] = useState('');
+  const [originalWorkPreference, setOriginalWorkPreference] = useState('');
+  const [originalBio, setOriginalBio] = useState('');
 
   const skillOptions = [
     'Python', 'JavaScript', 'TypeScript', 'FastAPI', 'Next.js', 'React',
@@ -23,7 +31,34 @@ export default function ProfilePage() {
       .map(b => b.toString(16).padStart(2, '0'))
       .join('');
     setAnonymousId(id);
+    
+    // Load profile from backend
+    loadProfile(id);
   }, []);
+
+  const loadProfile = async (id: string) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(`/api/users/${id}/profile`);
+      if (response.ok) {
+        const data = await response.json();
+        setSkills(data.skills || []);
+        setPortfolioUrl(data.portfolio_url || '');
+        setWorkPreference(data.work_preference || 'Break it into smaller sub-problems');
+        setBio(data.bio || '');
+        
+        // Store original values
+        setOriginalSkills(data.skills || []);
+        setOriginalPortfolioUrl(data.portfolio_url || '');
+        setOriginalWorkPreference(data.work_preference || 'Break it into smaller sub-problems');
+        setOriginalBio(data.bio || '');
+      }
+    } catch (error) {
+      console.error('Error loading profile:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const toggleSkill = (skill: string) => {
     setSkills(prev => 
@@ -33,15 +68,62 @@ export default function ProfilePage() {
     );
   };
 
-  const handleSave = () => {
-    // TODO: Save to backend API
-    setIsEditing(false);
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+      const response = await fetch(`/api/users/${anonymousId}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          skills,
+          portfolio_url: portfolioUrl,
+          work_preference: workPreference,
+          bio: bio,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save profile');
+      }
+
+      const data = await response.json();
+      
+      // Update original values to current values
+      setOriginalSkills(skills);
+      setOriginalPortfolioUrl(portfolioUrl);
+      setOriginalWorkPreference(workPreference);
+      setOriginalBio(bio);
+      
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      alert('Failed to save profile. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleCancel = () => {
-    // TODO: Revert changes
+    // Revert to original values
+    setSkills(originalSkills);
+    setPortfolioUrl(originalPortfolioUrl);
+    setWorkPreference(originalWorkPreference);
+    setBio(originalBio);
     setIsEditing(false);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">⏳</div>
+          <p className="text-xl text-gray-600">Loading profile...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -192,11 +274,21 @@ export default function ProfilePage() {
         {/* Action Buttons (when editing) */}
         {isEditing && (
           <div className="flex gap-6">
-            <Button variant="secondary" onClick={handleCancel} fullWidth>
+            <Button 
+              variant="secondary" 
+              onClick={handleCancel} 
+              fullWidth
+              disabled={isSaving}
+            >
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleSave} fullWidth>
-              Save changes
+            <Button 
+              variant="primary" 
+              onClick={handleSave} 
+              fullWidth
+              disabled={isSaving}
+            >
+              {isSaving ? 'Saving...' : 'Save changes'}
             </Button>
           </div>
         )}
