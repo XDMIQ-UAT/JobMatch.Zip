@@ -2,11 +2,11 @@ export type FeatureStatus = 'live' | 'beta' | 'coming' | 'planned';
 export type Feature = { label: string; status: FeatureStatus };
 
 export const FEATURES: Feature[] = [
-  { label: 'AI-powered job matching with verified employers', status: 'live' },
-  { label: 'Direct messaging with hiring managers', status: 'beta' },
-  { label: 'Real-time application tracking', status: 'coming' },
-  { label: 'Interview preparation & coaching', status: 'planned' },
-  { label: 'Career insights & salary analytics', status: 'planned' },
+  { label: 'Anonymous skill-based browsing', status: 'live' },
+  { label: 'AI chat assistant for job search', status: 'live' },
+  { label: 'Canvas drawing input (accessibility)', status: 'beta' },
+  { label: 'Job matching algorithm', status: 'coming' },
+  { label: 'Employer verification & connections', status: 'planned' },
 ];
 
 export const LEGEND = [
