@@ -87,7 +87,8 @@ Build an AI-powered, anonymous-first job matching platform that creates **direct
 - [ ] A/B testing framework for matching algorithms
 
 **AI Stack**:
-- Ollama llama3.2 for local inference
+- OpenRouter API (primary) - Access to Claude 3.5 Sonnet and other models
+- Ollama (fallback) - Local inference option for development
 - LangChain for orchestration
 - Vector embeddings for semantic search (Elasticsearch)
 
@@ -145,6 +146,11 @@ Build an AI-powered, anonymous-first job matching platform that creates **direct
 - ✅ Security audit completed
 - ✅ Performance testing passed
 - ✅ User acceptance testing completed
+- ⚠️ **CRITICAL: Switch Stripe to production keys** (currently test mode)
+  - Replace `sk_test_*` with `sk_live_*` in VM environment
+  - Create live webhook endpoint
+  - Update price IDs to production pricing
+  - Verify live payments before public launch
 
 **Success Metrics**:
 - 1,000+ registered candidates (anonymous sessions)
@@ -219,10 +225,11 @@ Build an AI-powered, anonymous-first job matching platform that creates **direct
 - Voluntary identification requires explicit consent
 - Zero-knowledge design principles
 
-### Cost-Free AI Infrastructure
-- Ollama llama3.2 for local inference (no API costs)
+### AI Infrastructure
+- OpenRouter API (primary) - Access to best-in-class models (Claude 3.5 Sonnet)
+- Ollama (fallback) - Local inference option for development/testing
 - Self-hosted services (PostgreSQL, Redis, Elasticsearch)
-- Scalable to cloud when revenue justifies
+- Cost-effective scaling with pay-per-use API model
 
 ### Human-in-the-Loop
 - AI augments, doesn't replace human judgment

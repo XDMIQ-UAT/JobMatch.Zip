@@ -52,9 +52,57 @@ jobmatch-ai/
 ├── frontend/          # Next.js + React + TypeScript
 ├── backend/           # Node.js + Express + TypeScript
 ├── shared/            # Shared types, utilities, and validation
+├── src/               # Agentic AI System (NEW)
+│   ├── agents/        # AI agents for job matching
+│   ├── tools/        # Agent-callable tools
+│   ├── workflows/    # Matching workflows
+│   └── models/        # LLM providers
 ├── docs/              # API documentation and guides
 └── package.json       # Monorepo workspace configuration
 ```
+
+## 🤖 Agentic AI System (NEW)
+
+JobMatch AI now includes a comprehensive **agentic AI system** for unbiased job matching with built-in bias detection and mitigation.
+
+### Key Capabilities
+
+- **Intelligent Analysis**: AI agents extract structured data from job descriptions and candidate profiles
+- **Bias Detection**: Automatically identifies and flags potential biases (gender, age, disability, cultural)
+- **Fair Matching**: Match scores account for bias detection and mitigation strategies
+- **Multi-Source Ingestion**: Supports URLs, files (PDF/DOCX), and direct content
+- **Explainable Results**: Detailed reasoning for every match recommendation
+
+### Quick Start
+
+```bash
+# Install agentic AI dependencies
+pip install -r requirements-agentic-ai.txt
+
+# Set API key
+export OPENAI_API_KEY="your-key-here"
+
+# Run demo
+python examples/quick_start_demo.py
+```
+
+### Documentation
+
+- **[Unbiased Job Matching Guide](UNBIASED_JOB_MATCHING_GUIDE.md)** - Complete usage guide
+- **[Data Sources & Vector DB](DATA_SOURCES_AND_VECTOR_DB.md)** - Setup and configuration
+- **[Agentic AI Setup](AGENTIC_AI_SETUP.md)** - Architecture overview
+- **[Examples](examples/README.md)** - Example scripts and demos
+
+### Agents
+
+1. **Job Description Analyzer** - Extracts skills, experience, responsibilities
+2. **Candidate Profile Analyzer** - Extracts skills, experience, education
+3. **Bias Detection Agent** - Identifies potential biases (CRITICAL)
+4. **Matching Agent** - Produces bias-aware match scores
+5. **Data Ingestion Agent** - Handles multi-source data ingestion
+6. **Workflow Orchestrator** - Coordinates the complete matching process
+
+See **[AGENTIC_AI_IMPLEMENTATION_COMPLETE.md](AGENTIC_AI_IMPLEMENTATION_COMPLETE.md)** for full implementation details.
 
 ## Tech Stack
 
@@ -69,7 +117,7 @@ jobmatch-ai/
 - **Framework**: Express.js
 - **Database**: PostgreSQL + Prisma ORM
 - **Authentication**: JWT + Passport.js
-- **AI Integration**: OpenAI API, LangChain
+- **AI Integration**: OpenRouter API (Claude 3.5 Sonnet), LangChain
 - **Real-time**: Socket.io
 
 ### Shared

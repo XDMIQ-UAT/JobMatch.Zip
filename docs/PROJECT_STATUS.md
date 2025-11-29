@@ -6,6 +6,26 @@
 
 ---
 
+## ⚠️ Critical Pre-Launch Task
+
+### 🔑 STRIPE PRODUCTION KEYS - GO-LIVE BLOCKER
+**Status**: ⚠️ REQUIRED BEFORE PUBLIC LAUNCH  
+**Current**: Test mode (`sk_test_*`)  
+**Location**: `jobmatch-vm` systemd service `/etc/systemd/system/jobmatch-backend.service`
+
+**Required Actions**:
+1. Get production Stripe keys from https://dashboard.stripe.com/apikeys
+2. Update VM environment variables:
+   - Replace `STRIPE_SECRET_KEY=sk_test_*` with `sk_live_*`
+   - Update `STRIPE_WEBHOOK_SECRET` with live webhook secret
+3. Create live webhook endpoint via Stripe CLI
+4. Update product/price IDs to production pricing
+5. Test with real payment method before launch
+
+**Documentation**: See `STRIPE_443_CONFIG.md` and `STRIPE_SETUP_COMPLETE.md`
+
+---
+
 ## 🎉 Completed Tasks (5 of 7)
 
 ### ✅ Task 1: Review & Verify jobfinder
@@ -32,18 +52,17 @@
 - Copied documentation
 - **ALL TESTS PASSED** (10/10)
 
-### ✅ Task 5: Docker Compose + Ollama
-- Created `docker-compose.yml` with 7 services:
+### ✅ Task 5: Docker Compose Setup
+- Created `docker-compose.yml` with services:
   - PostgreSQL 16
   - Redis 7
   - Elasticsearch 8.11
-  - **Ollama (llama3.2)** for cost-free AI
-  - Backend (FastAPI)
+  - Backend (FastAPI) - Configured for OpenRouter API (primary)
   - Frontend (Next.js)
   - State checkpointer
 - Created `.env.example` and `.env`
 - Created data directories for volumes
-- Configured for **100% local, cost-free operation**
+- **LLM Provider**: OpenRouter (Claude 3.5 Sonnet) - Ollama available as fallback for local dev
 
 ---
 
@@ -80,7 +99,7 @@
 - ✅ **Cursor rules** (anonymous-first patterns)
 - ✅ **Warp config** (terminal aliases)
 - ✅ **Business folder** (14 subdirectories with purpose)
-- ✅ **Docker Compose** (7 services, cost-free)
+- ✅ **Docker Compose** (services configured for OpenRouter API)
 - ✅ **Comprehensive docs** (3 major guides)
 
 ### Key Files Created
@@ -263,7 +282,7 @@ flake8 .
 1. **11 specialized hooks** - Context-aware code generation
 2. **Capability-first patterns** - Built into every hook
 3. **Anonymous-first architecture** - Privacy by default
-4. **Cost-free AI** - Ollama llama3.2 (no API costs)
+4. **AI Integration** - OpenRouter API (Claude 3.5 Sonnet) with Ollama fallback
 5. **State recovery** - Last-known-good pattern
 6. **Human-in-the-loop** - AI augments, doesn't replace
 7. **Business folder** - Operational assets separate from code
@@ -276,7 +295,7 @@ flake8 .
 3. **Follow proven patterns** (11 hooks with examples)
 4. **Maintain invariants** (anonymous, checkpoint, human-review)
 5. **Reference business assets** (taxonomy, questions, policies)
-6. **Deploy locally** (100% cost-free with Docker + Ollama)
+6. **Deploy locally** (Docker Compose with OpenRouter API integration)
 
 ---
 
@@ -352,7 +371,7 @@ flake8 .
 - ✅ Cursor integration (agent prompt + rules)
 - ✅ Warp terminal (configured)
 - ✅ Business folder (structured)
-- ✅ Docker Compose (cost-free AI)
+- ✅ Docker Compose (OpenRouter API configured)
 - ✅ Documentation (comprehensive)
 - ✅ All tests passed (10/10)
 

@@ -14,7 +14,7 @@ You are working on **jobmatch-ai**, an anonymous capability-based job matching p
 **Tech Stack**:
 - Backend: FastAPI (Python 3.11+), PostgreSQL, Redis, Elasticsearch
 - Frontend: Next.js 14+ with TypeScript, React Server Components
-- AI: Ollama (llama3.2) for local, cost-free LLM
+- AI: OpenRouter API (Claude 3.5 Sonnet) - Ollama available as fallback
 - Infrastructure: Docker Compose (local development)
 
 **Location**: `C:\Users\dash\projects\jobmatch-ai`
