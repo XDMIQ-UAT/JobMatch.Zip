@@ -177,166 +177,27 @@ jobs:
         working-directory: ./backend
         run: npm run build
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel@latest
-
-      - name: Verify Vercel Configuration
+      - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          echo "Checking Vercel secrets..."
-          echo ""
-          
-          # Check VERCEL_TOKEN
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "⚠️  VERCEL_TOKEN is not set - deployment will be skipped"
-            echo "   → To enable deployment, go to: Settings → Secrets and variables → Actions"
-            echo "   → Add secret named exactly: VERCEL_TOKEN"
-            echo ""
-            echo "✅ Code quality checks passed - deployment skipped (no token)"
-            exit 0  # Exit successfully, just skip deployment
+          # Set production flag based on branch
+          prodRun=""
+          if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
+            prodRun="--prod"
+            echo "🚀 Deploying to production..."
           else
-            TOKEN_LENGTH=${#VERCEL_TOKEN}
-            echo "✅ VERCEL_TOKEN is set (length: $TOKEN_LENGTH)"
+            echo "🔍 Deploying preview..."
           fi
           
-          # Check VERCEL_ORG_ID
-          if [ -z "$VERCEL_ORG_ID" ]; then
-            echo "⚠️  VERCEL_ORG_ID is not set - deployment will be skipped"
-            echo "   → To enable deployment, go to: Settings → Secrets and variables → Actions"
-            echo "   → Add secret named exactly: VERCEL_ORG_ID"
-            echo ""
-            echo "✅ Code quality checks passed - deployment skipped (no org ID)"
-            exit 0  # Exit successfully, just skip deployment
-          else
-            echo "✅ VERCEL_ORG_ID is set: $VERCEL_ORG_ID"
-          fi
-          
-          # Check VERCEL_PROJECT_ID
-          if [ -z "$VERCEL_PROJECT_ID" ]; then
-            echo "⚠️  VERCEL_PROJECT_ID is not set - deployment will be skipped"
-            echo ""
-            echo "Troubleshooting steps:"
-            echo "1. Go to: Settings → Secrets and variables → Actions"
-            echo "2. Verify secret exists with exact name: VERCEL_PROJECT_ID"
-            echo "3. Check for typos or extra spaces in the secret name"
-            echo "4. Ensure secret value is not empty (should be a project ID string)"
-            echo "5. Delete and recreate the secret if needed"
-            echo ""
-            echo "To find your Project ID:"
-            echo "  - Vercel Dashboard → Your Project → Settings → General → Project ID"
-            echo "  - Or run locally: vercel link && cat .vercel/project.json"
-            echo ""
-            echo "✅ Code quality checks passed - deployment skipped (no project ID)"
-            exit 0  # Exit successfully, just skip deployment
-          else
-            echo "✅ VERCEL_PROJECT_ID is set: $VERCEL_PROJECT_ID"
-          fi
-          
-          echo ""
-          echo "All Vercel secrets are configured ✅"
-
-      - name: Deploy to Vercel Production
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          set +e  # Disable exit on error for the entire step to capture all output
-          
-          echo "Verifying Vercel authentication..."
-          TOKEN_LENGTH=${#VERCEL_TOKEN}
-          echo "Token length: $TOKEN_LENGTH"
-          
-          # Check token length first (Vercel tokens are typically 24+ characters)
-          if [ "$TOKEN_LENGTH" -lt 20 ]; then
-            echo "❌ Token appears to be truncated (length: $TOKEN_LENGTH)"
-            echo "Vercel tokens are typically 24+ characters"
-            exit 1
-          fi
-          
-          # Set project context (required for vercel CLI)
-          if [ -n "$VERCEL_PROJECT_ID" ] && [ -n "$VERCEL_ORG_ID" ]; then
-            echo "Setting Vercel project context..."
-            # Create .vercel directory and project.json
-            mkdir -p .vercel
-            echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json
-            echo "✅ Project context set"
-            cat .vercel/project.json
-          fi
-          
-          # Test token validity with full debugging (including full token to detect truncation)
-          echo "Testing Vercel authentication..."
-          echo "Token length: $TOKEN_LENGTH"
-          echo "Token first 10 chars: ${VERCEL_TOKEN:0:10}"
-          echo "Token last 10 chars: ${VERCEL_TOKEN: -10}"
-          echo "Full token value: $VERCEL_TOKEN"
-          echo "ORG_ID: $VERCEL_ORG_ID"
-          echo "PROJECT_ID: $VERCEL_PROJECT_ID"
-          
-          # Check if token matches expected length (24 chars for the token you provided)
-          if [ "$TOKEN_LENGTH" -ne 24 ]; then
-            echo "⚠️  WARNING: Token length is $TOKEN_LENGTH, expected 24"
-            echo "Token may have been truncated in GitHub Secrets!"
-            echo "Expected token: gqP7wQnmO04NiPTJ3I35nqfj (24 chars)"
-            echo "Actual token: $VERCEL_TOKEN"
-          fi
-          
-          # Test token validity (non-blocking - actual deployment will validate)
-          echo "Testing Vercel authentication..."
-          WHOAMI_OUTPUT=$(vercel whoami 2>&1)
-          WHOAMI_EXIT=$?
-          
-          if [ $WHOAMI_EXIT -eq 0 ]; then
-            echo "✅ Vercel token is valid"
-            echo "$WHOAMI_OUTPUT"
-          else
-            echo "⚠️  Vercel token authentication check failed (non-blocking)"
-            echo "Full error output:"
-            echo "$WHOAMI_OUTPUT"
-            echo ""
-            echo "Token verification:"
-            echo "- Length: $TOKEN_LENGTH characters"
-            echo "- First 10: ${VERCEL_TOKEN:0:10}"
-            echo "- Last 10: ${VERCEL_TOKEN: -10}"
-            echo ""
-            echo "⚠️  Continuing with deployment - vercel --prod will validate token"
-            echo "If deployment fails, check:"
-            echo "1. GitHub Secrets → VERCEL_TOKEN → Verify full token copied"
-            echo "2. No character limits in GitHub Secrets (should support 24+ chars)"
-            echo "3. No spaces or quotes around token in GitHub Secrets"
-            echo "4. Token scope: Full Account (not project-scoped)"
-          fi
-          
-          echo ""
-          echo "Deploying to Vercel production..."
-          # Run vercel deployment and capture output
-          vercel --prod --yes 2>&1 | tee /tmp/vercel-deploy.log
-          DEPLOY_EXIT=${PIPESTATUS[0]}
-          
-          if [ $DEPLOY_EXIT -eq 0 ]; then
-            echo "✅ Deployment successful!"
-            cat /tmp/vercel-deploy.log
-            exit 0
-          else
-            echo "❌ Deployment failed with exit code $DEPLOY_EXIT"
-            echo ""
-            echo "Full deployment output:"
-            cat /tmp/vercel-deploy.log
-            echo ""
-            echo "Troubleshooting:"
-            echo "1. Check Vercel token is valid and has Full Account scope"
-            echo "2. Verify VERCEL_PROJECT_ID and VERCEL_ORG_ID are correct"
-            echo "3. Check Vercel dashboard for project status"
-            echo "4. Ensure project exists and is accessible with this token"
-            exit $DEPLOY_EXIT
-          fi
+          # Deploy using npx vercel (simpler approach)
+          npx vercel --token ${VERCEL_TOKEN} $prodRun --yes
 
       - name: Deployment Summary
         run: |
-          echo "✅ Application deployed to Vercel (jobmatch.zip)"
+          echo "✅ Application deployed to Vercel"
           echo "🌐 Production URL: https://jobmatch.zip"
           echo "🔗 API available at: https://jobmatch.zip/api"
 
