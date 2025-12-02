@@ -19,7 +19,12 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "../node_modules/@types"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "react": ["./node_modules/react", "../node_modules/react"],
+      "react-dom": ["./node_modules/react-dom", "../node_modules/react-dom"],
+      "react-dom/client": ["./node_modules/react-dom/client", "../node_modules/react-dom/client"],
+      "react-router-dom": ["./node_modules/react-router-dom", "../node_modules/react-router-dom"],
+      "react/jsx-runtime": ["./node_modules/react/jsx-runtime", "../node_modules/react/jsx-runtime"]
     }
   },
   "include": ["src", "src/**/*.ts", "src/**/*.tsx", "src/vite-env.d.ts"],
