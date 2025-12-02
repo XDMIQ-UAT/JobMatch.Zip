@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
 import HomePage from './pages/Home'
@@ -12,6 +12,13 @@ import PrivacyPage from './pages/Privacy'
 import TermsPage from './pages/Terms'
 
 export default function App() {
+  const location = useLocation()
+  
+  // Don't render React Router for API routes - let them go to backend/Vercel
+  if (location.pathname.startsWith('/api') || location.pathname.startsWith('/health')) {
+    return null
+  }
+
   return (
     <Layout>
       <Routes>
