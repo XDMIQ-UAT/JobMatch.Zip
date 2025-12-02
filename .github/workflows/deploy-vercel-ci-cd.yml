@@ -262,9 +262,28 @@ jobs:
           find . -name "api" -type d
           find . -name "api" -type d -exec ls -la {} \;
           
-          # Use vercel deploy instead of npx vercel --yes
-          # This might handle the project context better
-          npx vercel deploy --token ${VERCEL_TOKEN} --yes $prodRun 2>&1 | tee vercel-deploy.log
+          # List all files that will be included in deployment
+          echo "=== Files that will be deployed ==="
+          echo "Root files:"
+          ls -la | grep -E "^d|^-" | head -30
+          echo ""
+          echo "api/ folder contents:"
+          find api -type f 2>/dev/null | head -20 || echo "api/ folder not found!"
+          echo ""
+          echo "frontend/dist contents:"
+          find frontend/dist -type f 2>/dev/null | head -20 || echo "frontend/dist not found!"
+          echo ""
+          echo "backend/dist contents:"
+          find backend/dist -type f 2>/dev/null | head -20 || echo "backend/dist not found!"
+          echo "=== End file listing ==="
+          
+          # Use vercel deploy with explicit project context
+          echo "Deploying with Vercel CLI..."
+          echo "Project ID: ${VERCEL_PROJECT_ID}"
+          echo "Org ID: ${VERCEL_ORG_ID}"
+          
+          # Deploy using vercel deploy with project context
+          npx vercel deploy --token ${VERCEL_TOKEN} --yes $prodRun --scope=${VERCEL_ORG_ID} 2>&1 | tee vercel-deploy.log
           
           # Check deployment output for function detection
           echo "Checking deployment log for API functions..."
