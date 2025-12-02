@@ -213,8 +213,30 @@ jobs:
             exit 1
           fi
           
-          # Deploy using npx vercel (simpler approach)
-          npx vercel --token ${VERCEL_TOKEN} $prodRun --yes
+          # Verify backend/dist exists (required by api/index.js)
+          if [ ! -d "backend/dist" ]; then
+            echo "❌ ERROR: backend/dist not found! API function requires it."
+            exit 1
+          fi
+          
+          # Create .vercel directory and project.json for explicit project linking
+          mkdir -p .vercel
+          echo "{\"projectId\":\"${VERCEL_PROJECT_ID}\",\"orgId\":\"${VERCEL_ORG_ID}\"}" > .vercel/project.json
+          
+          # List files to verify api/ folder is present
+          echo "Files in api/ directory:"
+          ls -la api/ || echo "api/ directory not found!"
+          
+          # Deploy using npx vercel with explicit project settings
+          echo "Deploying with Vercel CLI..."
+          npx vercel --token ${VERCEL_TOKEN} --yes $prodRun 2>&1 | tee vercel-deploy.log
+          
+          # Check deployment output for function detection
+          if grep -q "api/index.js" vercel-deploy.log; then
+            echo "✅ api/index.js detected in deployment"
+          else
+            echo "⚠️ api/index.js not mentioned in deployment log"
+          fi
 
       - name: Deployment Summary
         run: |
