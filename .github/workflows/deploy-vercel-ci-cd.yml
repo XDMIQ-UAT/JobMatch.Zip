@@ -282,7 +282,8 @@ jobs:
             echo "Actual token: $VERCEL_TOKEN"
           fi
           
-          # Capture both stdout and stderr
+          # Test token validity (non-blocking - actual deployment will validate)
+          echo "Testing Vercel authentication..."
           WHOAMI_OUTPUT=$(vercel whoami 2>&1)
           WHOAMI_EXIT=$?
           
@@ -290,24 +291,21 @@ jobs:
             echo "✅ Vercel token is valid"
             echo "$WHOAMI_OUTPUT"
           else
-            echo "❌ Vercel token authentication failed"
-            echo ""
+            echo "⚠️  Vercel token authentication check failed (non-blocking)"
             echo "Full error output:"
             echo "$WHOAMI_OUTPUT"
             echo ""
             echo "Token verification:"
-            echo "- Length: $TOKEN_LENGTH characters (expected: 24)"
+            echo "- Length: $TOKEN_LENGTH characters"
             echo "- First 10: ${VERCEL_TOKEN:0:10}"
             echo "- Last 10: ${VERCEL_TOKEN: -10}"
-            echo "- Full token: $VERCEL_TOKEN"
-            echo "- Expected: gqP7wQnmO04NiPTJ3I35nqfj"
             echo ""
-            echo "If token doesn't match expected value, check:"
+            echo "⚠️  Continuing with deployment - vercel --prod will validate token"
+            echo "If deployment fails, check:"
             echo "1. GitHub Secrets → VERCEL_TOKEN → Verify full token copied"
             echo "2. No character limits in GitHub Secrets (should support 24+ chars)"
             echo "3. No spaces or quotes around token in GitHub Secrets"
             echo "4. Token scope: Full Account (not project-scoped)"
-            exit 1
           fi
           
           echo ""
