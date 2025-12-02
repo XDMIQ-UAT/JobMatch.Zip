@@ -245,31 +245,29 @@ jobs:
           if [ "$TOKEN_LENGTH" -lt 20 ]; then
             echo "❌ Token appears to be truncated (length: $TOKEN_LENGTH)"
             echo "Vercel tokens are typically 24+ characters"
-            echo ""
-            echo "Please check GitHub Secrets:"
-            echo "1. Go to: Settings → Secrets and variables → Actions"
-            echo "2. Find VERCEL_TOKEN"
-            echo "3. Verify the entire token was copied (no truncation)"
-            echo "4. Delete and recreate if needed"
             exit 1
           fi
           
-          # Test token validity by checking whoami (without exposing token)
+          # Set project context (required for vercel CLI)
+          if [ -n "$VERCEL_PROJECT_ID" ] && [ -n "$VERCEL_ORG_ID" ]; then
+            echo "Setting Vercel project context..."
+            # Create .vercel directory and project.json if it doesn't exist
+            mkdir -p .vercel
+            echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json
+            echo "✅ Project context set"
+          fi
+          
+          # Test token validity (non-blocking - deployment will fail if token is invalid)
+          echo "Testing Vercel authentication..."
           if vercel whoami > /dev/null 2>&1; then
             echo "✅ Vercel token is valid"
             vercel whoami
           else
-            echo "❌ Vercel token authentication failed"
-            echo "Token length: $TOKEN_LENGTH"
-            echo "Token starts with: ${VERCEL_TOKEN:0:10}..."
-            echo ""
-            echo "Troubleshooting:"
-            echo "1. Verify token was copied completely (should be 24+ characters)"
-            echo "2. Check for leading/trailing spaces or quotes"
-            echo "3. Ensure token has 'Full Account' scope"
-            echo "4. Try regenerating the token"
-            exit 1
+            echo "⚠️  Warning: vercel whoami failed, but continuing deployment..."
+            echo "   (Deployment will fail if token is actually invalid)"
+            echo "   Token length: $TOKEN_LENGTH"
           fi
+          
           echo ""
           echo "Deploying to Vercel production..."
           vercel --prod --yes
