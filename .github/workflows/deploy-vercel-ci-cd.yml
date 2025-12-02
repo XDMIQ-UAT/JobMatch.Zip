@@ -227,8 +227,25 @@ jobs:
           echo "Files in api/ directory:"
           ls -la api/ || echo "api/ directory not found!"
           
+          # List root directory to see what Vercel will deploy
+          echo "Root directory contents:"
+          ls -la | head -20
+          
+          # Verify api/index.js is readable
+          echo "Checking api/index.js:"
+          cat api/index.js | head -10
+          
+          # Verify backend/dist exists
+          echo "Checking backend/dist:"
+          ls -la backend/dist/ | head -10
+          
           # Deploy using npx vercel with explicit project settings
           echo "Deploying with Vercel CLI..."
+          echo "Current directory: $(pwd)"
+          echo "Files that will be deployed (api/ and frontend/dist):"
+          find . -name "api" -type d
+          find . -name "api" -type d -exec ls -la {} \;
+          
           npx vercel --token ${VERCEL_TOKEN} --yes $prodRun 2>&1 | tee vercel-deploy.log
           
           # Check deployment output for function detection
