@@ -163,6 +163,30 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
+      - name: Verify Vercel Configuration
+        run: |
+          echo "Checking Vercel secrets..."
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "❌ VERCEL_TOKEN is not set"
+            exit 1
+          else
+            echo "✅ VERCEL_TOKEN is set (length: ${#VERCEL_TOKEN})"
+          fi
+          if [ -z "${{ secrets.VERCEL_TEAM_ID }}" ]; then
+            echo "❌ VERCEL_TEAM_ID is not set"
+            exit 1
+          else
+            echo "✅ VERCEL_TEAM_ID is set"
+          fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
+            echo "❌ VERCEL_PROJECT_ID is not set"
+            exit 1
+          else
+            echo "✅ VERCEL_PROJECT_ID is set"
+          fi
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy to Vercel Production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
