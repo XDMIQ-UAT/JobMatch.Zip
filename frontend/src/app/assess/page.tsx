@@ -1,6 +1,4 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PIIVerification, SkillBubbles } from '@/components';
 
 type Step = 'welcome' | 'skills' | 'portfolio' | 'preferences' | 'pii-check' | 'complete';
@@ -270,7 +268,7 @@ export default function AssessPage() {
               </label>
               <textarea
                 value={resumeText}
-                onChange={(e) => setResumeText(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setResumeText(e.target.value)}
                 placeholder="Paste your resume, LinkedIn profile, or describe your experience...&#10;&#10;We'll extract your capabilities automatically. No personal info needed!&#10;&#10;Focus on what you've DONE, not job titles or company names."
                 className="w-full px-8 py-6 text-xl border-4 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none font-mono"
                 rows={12}
