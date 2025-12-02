@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import path from 'path';
 import { logger } from './utils/logger';
 
 // Import routes
@@ -47,7 +48,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Mount API routes
+// Mount API routes (before static files)
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/jobs', jobsRoutes);
@@ -67,6 +68,19 @@ app.get('/api/v1', (req: Request, res: Response) => {
       messages: '/api/v1/messages',
     }
   });
+});
+
+// Serve static files from frontend/dist
+const frontendDistPath = path.join(__dirname, '../../frontend/dist');
+app.use(express.static(frontendDistPath));
+
+// SPA fallback: serve index.html for all non-API routes
+app.get('*', (req: Request, res: Response) => {
+  // Don't serve index.html for API routes
+  if (req.path.startsWith('/api') || req.path.startsWith('/health')) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+  res.sendFile(path.join(frontendDistPath, 'index.html'));
 });
 
 // Socket.io for real-time features
@@ -94,3 +108,6 @@ httpServer.listen(PORT, () => {
 });
 
 export { app, io };
+
+// Export default for Vercel serverless functions
+export default app;
