@@ -166,7 +166,7 @@ jobs:
       - name: Verify Vercel Configuration
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Checking Vercel secrets..."
@@ -183,14 +183,14 @@ jobs:
             echo "✅ VERCEL_TOKEN is set (length: $TOKEN_LENGTH)"
           fi
           
-          # Check VERCEL_TEAM_ID (mapped to VERCEL_ORG_ID for Vercel CLI)
+          # Check VERCEL_ORG_ID
           if [ -z "$VERCEL_ORG_ID" ]; then
-            echo "❌ VERCEL_TEAM_ID is not set (maps to VERCEL_ORG_ID)"
+            echo "❌ VERCEL_ORG_ID is not set"
             echo "   → Go to: Settings → Secrets and variables → Actions"
-            echo "   → Add secret named exactly: VERCEL_TEAM_ID"
+            echo "   → Add secret named exactly: VERCEL_ORG_ID"
             exit 1
           else
-            echo "✅ VERCEL_TEAM_ID is set (mapped to VERCEL_ORG_ID): $VERCEL_ORG_ID"
+            echo "✅ VERCEL_ORG_ID is set: $VERCEL_ORG_ID"
           fi
           
           # Check VERCEL_PROJECT_ID
@@ -218,7 +218,7 @@ jobs:
       - name: Deploy to Vercel Production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel --prod --yes
 
