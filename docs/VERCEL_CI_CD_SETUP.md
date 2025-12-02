@@ -41,7 +41,7 @@ Add these secrets:
   - Name: `github-actions`
   - Scope: Full Account
 
-- **`VERCEL_ORG_ID`**: Your Vercel Organization ID
+- **`VERCEL_TEAM_ID`**: Your Vercel Team ID
   - Find it in: Vercel Dashboard → Settings → General
   - Or run: `vercel whoami` and check your account settings
 
@@ -168,7 +168,7 @@ cd backend && npm run build
 - Check token has correct permissions
 
 **Project Configuration:**
-- Verify `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` are correct
+- Verify `VERCEL_TEAM_ID` and `VERCEL_PROJECT_ID` are correct
 - Check project exists in Vercel dashboard
 - Ensure root `vercel.json` is configured correctly
 
