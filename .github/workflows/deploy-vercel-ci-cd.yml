@@ -251,21 +251,28 @@ jobs:
           # Set project context (required for vercel CLI)
           if [ -n "$VERCEL_PROJECT_ID" ] && [ -n "$VERCEL_ORG_ID" ]; then
             echo "Setting Vercel project context..."
-            # Create .vercel directory and project.json if it doesn't exist
+            # Create .vercel directory and project.json
             mkdir -p .vercel
             echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json
             echo "✅ Project context set"
+            cat .vercel/project.json
           fi
           
-          # Test token validity (non-blocking - deployment will fail if token is invalid)
+          # Test token validity
           echo "Testing Vercel authentication..."
           if vercel whoami > /dev/null 2>&1; then
             echo "✅ Vercel token is valid"
             vercel whoami
           else
-            echo "⚠️  Warning: vercel whoami failed, but continuing deployment..."
-            echo "   (Deployment will fail if token is actually invalid)"
-            echo "   Token length: $TOKEN_LENGTH"
+            echo "❌ Vercel token authentication failed"
+            echo "Token length: $TOKEN_LENGTH"
+            echo ""
+            echo "The token may have expired or been revoked."
+            echo "Please regenerate the token:"
+            echo "1. Go to: https://vercel.com/account/tokens"
+            echo "2. Create a new token with 'Full Account' scope"
+            echo "3. Update the VERCEL_TOKEN secret in GitHub"
+            exit 1
           fi
           
           echo ""
