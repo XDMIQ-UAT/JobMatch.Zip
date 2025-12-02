@@ -241,10 +241,10 @@ jobs:
           TOKEN_LENGTH=${#VERCEL_TOKEN}
           echo "Token length: $TOKEN_LENGTH"
           
-          # Check token length first
-          if [ "$TOKEN_LENGTH" -lt 30 ]; then
+          # Check token length first (Vercel tokens are typically 24+ characters)
+          if [ "$TOKEN_LENGTH" -lt 20 ]; then
             echo "❌ Token appears to be truncated (length: $TOKEN_LENGTH)"
-            echo "Vercel tokens are typically 40+ characters"
+            echo "Vercel tokens are typically 24+ characters"
             echo ""
             echo "Please check GitHub Secrets:"
             echo "1. Go to: Settings → Secrets and variables → Actions"
@@ -264,7 +264,7 @@ jobs:
             echo "Token starts with: ${VERCEL_TOKEN:0:10}..."
             echo ""
             echo "Troubleshooting:"
-            echo "1. Verify token was copied completely (should be 40+ characters)"
+            echo "1. Verify token was copied completely (should be 24+ characters)"
             echo "2. Check for leading/trailing spaces or quotes"
             echo "3. Ensure token has 'Full Account' scope"
             echo "4. Try regenerating the token"
