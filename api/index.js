@@ -1,18 +1,14 @@
 // Vercel serverless function handler
 // This wraps the Express app for Vercel's serverless function runtime
-const path = require('path');
 
 // Import the Express app from the built backend
-// Note: The backend exports both app and default, so we can use either
-let app;
-try {
-  // Try default export first (for Vercel compatibility)
-  app = require('../backend/dist/index.js').default || require('../backend/dist/index.js').app;
-} catch (error) {
-  // Fallback to named export
-  app = require('../backend/dist/index.js').app;
-}
+// The compiled JS uses CommonJS exports, so we use .app
+const backendApp = require('../backend/dist/index.js');
 
-// Export for Vercel serverless function
+// Get the Express app (it's exported as .app in CommonJS)
+const app = backendApp.app || backendApp.default || backendApp;
+
+// Vercel serverless function handler
+// Express app can be exported directly
 module.exports = app;
 
