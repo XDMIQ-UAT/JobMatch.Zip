@@ -38,38 +38,54 @@ jobs:
           if grep -q "playwright" install.log; then
             echo "⚠️ Playwright installation skipped (not required for deployment)"
           fi
-          # Ensure frontend has its own node_modules for TypeScript resolution
-          # Copy React and related packages from root to frontend to ensure TypeScript can find them
-          cd frontend
+          
+          # Ensure frontend has React installed for TypeScript resolution
           echo "Setting up frontend node_modules for TypeScript..."
-          # Create node_modules directory if it doesn't exist
-          mkdir -p node_modules
-          # Copy React packages from root if they exist and aren't already in frontend
-          if [ -d "../node_modules/react" ] && [ ! -d "node_modules/react" ]; then
-            echo "Copying React from root to frontend..."
-            cp -r ../node_modules/react node_modules/ 2>/dev/null || true
-            cp -r ../node_modules/react-dom node_modules/ 2>/dev/null || true
-            cp -r ../node_modules/react-router-dom node_modules/ 2>/dev/null || true
+          cd frontend
+          
+          # Install React dependencies directly in frontend if not present
+          if [ ! -d "node_modules/react" ] || [ ! -d "node_modules/react-dom" ] || [ ! -d "node_modules/react-router-dom" ]; then
+            echo "Installing React dependencies in frontend..."
+            npm install --ignore-scripts --legacy-peer-deps --no-save react@^18.2.0 react-dom@^18.2.0 react-router-dom@^7.9.6 @types/react@^18.2.46 @types/react-dom@^18.2.18 2>&1 || {
+              echo "⚠️ Direct install failed, trying with workspace flag..."
+              npm install --workspace=frontend --ignore-scripts --legacy-peer-deps react react-dom react-router-dom @types/react @types/react-dom 2>&1 || true
+            }
           fi
-          # Copy React types
-          if [ -d "../node_modules/@types/react" ] && [ ! -d "node_modules/@types/react" ]; then
-            echo "Copying React types from root to frontend..."
-            mkdir -p node_modules/@types
-            cp -r ../node_modules/@types/react node_modules/@types/ 2>/dev/null || true
-            cp -r ../node_modules/@types/react-dom node_modules/@types/ 2>/dev/null || true
+          
+          # Verify React installation
+          echo "Verifying React installation..."
+          if [ -d "node_modules/react" ]; then
+            echo "✅ React found in frontend/node_modules"
+          else
+            echo "❌ React NOT found in frontend/node_modules"
+            echo "Attempting to copy from root..."
+            if [ -d "../node_modules/react" ]; then
+              mkdir -p node_modules
+              cp -r ../node_modules/react node_modules/ 2>/dev/null || true
+              cp -r ../node_modules/react-dom node_modules/ 2>/dev/null || true
+              cp -r ../node_modules/react-router-dom node_modules/ 2>/dev/null || true
+            fi
           fi
-          # If copying didn't work, try installing directly
-          if [ ! -d "node_modules/react" ]; then
-            echo "Installing React directly in frontend..."
-            npm install --ignore-scripts --legacy-peer-deps --no-save --prefix . react react-dom react-router-dom @types/react @types/react-dom 2>&1 || true
+          
+          # Verify React types
+          if [ -d "node_modules/@types/react" ]; then
+            echo "✅ React types found in frontend/node_modules/@types"
+          else
+            echo "⚠️ React types NOT found, copying from root..."
+            if [ -d "../node_modules/@types/react" ]; then
+              mkdir -p node_modules/@types
+              cp -r ../node_modules/@types/react node_modules/@types/ 2>/dev/null || true
+              cp -r ../node_modules/@types/react-dom node_modules/@types/ 2>/dev/null || true
+            fi
           fi
+          
           cd ..
-          # Verify React and types are installed
-          echo "Checking React installation..."
-          ls -la node_modules/react 2>/dev/null && echo "✅ React found in root" || echo "⚠️ React not in root"
-          ls -la frontend/node_modules/react 2>/dev/null && echo "✅ React found in frontend" || echo "⚠️ React not in frontend"
-          ls -la node_modules/@types/react 2>/dev/null && echo "✅ React types found in root" || echo "⚠️ React types not in root"
-          ls -la frontend/node_modules/@types/react 2>/dev/null && echo "✅ React types found in frontend" || echo "⚠️ React types not in frontend"
+          
+          # Final verification
+          echo "Final React installation check..."
+          ls -la frontend/node_modules/react/package.json 2>/dev/null && echo "✅ React package.json found" || echo "❌ React package.json NOT found"
+          ls -la frontend/node_modules/react/jsx-runtime.js 2>/dev/null && echo "✅ React jsx-runtime found" || echo "❌ React jsx-runtime NOT found"
+          ls -la frontend/node_modules/@types/react/index.d.ts 2>/dev/null && echo "✅ React types found" || echo "❌ React types NOT found"
 
       - name: Lint frontend
         working-directory: ./frontend
