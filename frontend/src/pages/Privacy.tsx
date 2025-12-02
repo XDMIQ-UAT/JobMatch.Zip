@@ -120,8 +120,8 @@ export default function PrivacyPage() {
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed">
               Questions about privacy? Contact us at{' '}
-              <a href="mailto:privacy@jobmatch.ai" className="text-blue-600 hover:underline">
-                privacy@jobmatch.ai
+              <a href="mailto:privacy@jobmatch.zip" className="text-blue-600 hover:underline">
+                privacy@jobmatch.zip
               </a>
             </p>
           </section>
