@@ -37,10 +37,20 @@ jobs:
           if grep -q "playwright" install.log; then
             echo "⚠️ Playwright installation skipped (not required for deployment)"
           fi
+          # Ensure frontend has its own node_modules for TypeScript resolution
+          # This is needed because TypeScript can't always resolve hoisted dependencies
+          cd frontend
+          if [ ! -d "node_modules/react" ]; then
+            echo "Installing frontend dependencies locally for TypeScript..."
+            npm install --ignore-scripts --legacy-peer-deps --no-save react react-dom react-router-dom @types/react @types/react-dom || true
+          fi
+          cd ..
           # Verify React and types are installed
           echo "Checking React installation..."
-          ls -la node_modules/react 2>/dev/null || ls -la frontend/node_modules/react 2>/dev/null || echo "⚠️ React not found in expected locations"
-          ls -la node_modules/@types/react 2>/dev/null || ls -la frontend/node_modules/@types/react 2>/dev/null || echo "⚠️ React types not found"
+          ls -la node_modules/react 2>/dev/null && echo "✅ React found in root" || echo "⚠️ React not in root"
+          ls -la frontend/node_modules/react 2>/dev/null && echo "✅ React found in frontend" || echo "⚠️ React not in frontend"
+          ls -la node_modules/@types/react 2>/dev/null && echo "✅ React types found in root" || echo "⚠️ React types not in root"
+          ls -la frontend/node_modules/@types/react 2>/dev/null && echo "✅ React types found in frontend" || echo "⚠️ React types not in frontend"
 
       - name: Lint frontend
         working-directory: ./frontend
