@@ -38,20 +38,29 @@ jobs:
             echo "⚠️ Playwright installation skipped (not required for deployment)"
           fi
           # Ensure frontend has its own node_modules for TypeScript resolution
-          # Install all frontend dependencies locally to avoid workspace hoisting issues
+          # Copy React and related packages from root to frontend to ensure TypeScript can find them
           cd frontend
-          echo "Installing frontend dependencies locally for TypeScript..."
-          # Create .npmrc to prevent workspace hoisting
-          echo "shamefully-hoist=false" > .npmrc
-          echo "legacy-peer-deps=true" >> .npmrc
-          # Install all dependencies locally
-          npm install --ignore-scripts --legacy-peer-deps --no-save 2>&1 || true
-          rm -f .npmrc
-          # Verify React is installed as a real directory, not symlink
-          if [ -L "node_modules/react" ]; then
-            echo "⚠️ React is a symlink, removing and reinstalling..."
-            rm -rf node_modules/react node_modules/react-dom node_modules/react-router-dom node_modules/@types/react node_modules/@types/react-dom
-            npm install --ignore-scripts --legacy-peer-deps --no-save --force react react-dom react-router-dom @types/react @types/react-dom 2>&1 || true
+          echo "Setting up frontend node_modules for TypeScript..."
+          # Create node_modules directory if it doesn't exist
+          mkdir -p node_modules
+          # Copy React packages from root if they exist and aren't already in frontend
+          if [ -d "../node_modules/react" ] && [ ! -d "node_modules/react" ]; then
+            echo "Copying React from root to frontend..."
+            cp -r ../node_modules/react node_modules/ 2>/dev/null || true
+            cp -r ../node_modules/react-dom node_modules/ 2>/dev/null || true
+            cp -r ../node_modules/react-router-dom node_modules/ 2>/dev/null || true
+          fi
+          # Copy React types
+          if [ -d "../node_modules/@types/react" ] && [ ! -d "node_modules/@types/react" ]; then
+            echo "Copying React types from root to frontend..."
+            mkdir -p node_modules/@types
+            cp -r ../node_modules/@types/react node_modules/@types/ 2>/dev/null || true
+            cp -r ../node_modules/@types/react-dom node_modules/@types/ 2>/dev/null || true
+          fi
+          # If copying didn't work, try installing directly
+          if [ ! -d "node_modules/react" ]; then
+            echo "Installing React directly in frontend..."
+            npm install --ignore-scripts --legacy-peer-deps --no-save --prefix . react react-dom react-router-dom @types/react @types/react-dom 2>&1 || true
           fi
           cd ..
           # Verify React and types are installed
