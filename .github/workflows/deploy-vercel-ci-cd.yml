@@ -73,7 +73,14 @@ jobs:
 
       - name: Type check frontend
         working-directory: ./frontend
-        run: npm run typecheck
+        run: |
+          # Verify React is accessible before typecheck
+          echo "Verifying React installation for TypeScript..."
+          ls -la node_modules/react/package.json 2>/dev/null && echo "✅ React package.json found" || echo "❌ React package.json NOT found"
+          ls -la node_modules/react/jsx-runtime.js 2>/dev/null && echo "✅ React jsx-runtime found" || echo "❌ React jsx-runtime NOT found"
+          ls -la node_modules/@types/react/index.d.ts 2>/dev/null && echo "✅ React types found" || echo "❌ React types NOT found"
+          # Run typecheck
+          npm run typecheck
 
       - name: Type check backend
         working-directory: ./backend
