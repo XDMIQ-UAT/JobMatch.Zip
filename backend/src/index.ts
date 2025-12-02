@@ -101,11 +101,14 @@ app.use((err: Error, req: Request, res: Response, next: any) => {
   });
 });
 
-// Start server
-httpServer.listen(PORT, () => {
-  logger.info(`🚀 Server running on port ${PORT}`);
-  logger.info(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+// Start server only if not running as Vercel serverless function
+// Vercel sets VERCEL environment variable
+if (!process.env.VERCEL) {
+  httpServer.listen(PORT, () => {
+    logger.info(`🚀 Server running on port ${PORT}`);
+    logger.info(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
 
 export { app, io };
 

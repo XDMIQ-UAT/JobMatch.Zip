@@ -21,9 +21,9 @@ Code Quality Checks ✅
   - Build frontend & backend
   - Verify build artifacts
     ↓
-Deploy Frontend to Vercel ✅
-    ↓
-Deploy Backend to Vercel ✅
+Deploy to Vercel ✅
+  - Frontend static files
+  - Backend API serverless functions
     ↓
 Deployment Complete! 🎉
 ```
@@ -45,15 +45,11 @@ Add these secrets:
   - Find it in: Vercel Dashboard → Settings → General
   - Or run: `vercel whoami` and check your account settings
 
-- **`VERCEL_FRONTEND_PROJECT_ID`**: Your Frontend Vercel Project ID
-  - Find it in: Vercel Dashboard → Frontend Project → Settings → General
-  - Or run: `cd frontend && vercel link` and check `.vercel/project.json`
-
-- **`VERCEL_BACKEND_PROJECT_ID`**: Your Backend Vercel Project ID
-  - Find it in: Vercel Dashboard → Backend Project → Settings → General
-  - Or run: `cd backend && vercel link` and check `.vercel/project.json`
+- **`VERCEL_PROJECT_ID`**: Your Vercel Project ID (single project for both frontend and backend)
+  - Find it in: Vercel Dashboard → Your Project → Settings → General
+  - Or run: `vercel link` and check `.vercel/project.json`
   
-**Note**: Frontend and backend should be separate Vercel projects for better isolation and independent scaling.
+**Note**: Frontend and backend are deployed together as a single Vercel project. The root `vercel.json` configures API routes to use serverless functions and static files from the frontend build.
 
 ### 2. Enable Branch Protection
 
@@ -127,19 +123,14 @@ You can also trigger deployments manually:
 - ✅ Build backend (TypeScript)
 - ✅ Verify build artifacts exist
 
-### 2. Deploy Frontend (`deploy-frontend`)
+### 2. Deploy (`deploy`)
 
 - Only runs on `main` branch pushes
 - Only runs after `checks` job passes
-- Deploys to Vercel production
-- Uses `frontend/vercel.json` configuration
-
-### 3. Deploy Backend (`deploy-backend`)
-
-- Only runs on `main` branch pushes
-- Only runs after `checks` job passes
-- Deploys to Vercel production
-- Uses `backend/vercel.json` configuration
+- Deploys both frontend and backend to Vercel production as a single app
+- Uses root `vercel.json` configuration
+- Frontend static files served from `frontend/dist`
+- Backend API routes handled by serverless function at `api/index.js`
 
 ## Troubleshooting
 
@@ -177,9 +168,9 @@ cd backend && npm run build
 - Check token has correct permissions
 
 **Project Configuration:**
-- Verify `VERCEL_ORG_ID`, `VERCEL_FRONTEND_PROJECT_ID`, and `VERCEL_BACKEND_PROJECT_ID` are correct
-- Check both projects exist in Vercel dashboard
-- Ensure frontend and backend are separate projects (recommended)
+- Verify `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` are correct
+- Check project exists in Vercel dashboard
+- Ensure root `vercel.json` is configured correctly
 
 ### Workflow Not Running
 
