@@ -11,6 +11,14 @@
   ],
   "routes": [
     {
+      "src": "/api/test",
+      "dest": "/api/test.js"
+    },
+    {
+      "src": "/api/voice/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/index.js"
     },
