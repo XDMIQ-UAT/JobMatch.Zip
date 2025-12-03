@@ -101,7 +101,34 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: ./frontend
-        run: npm install
+        run: |
+          echo "Installing frontend dependencies..."
+          npm install --legacy-peer-deps
+          echo "Verifying installation..."
+          if [ -d "node_modules/react" ]; then
+            echo "✅ React found in frontend/node_modules"
+          else
+            echo "❌ React NOT found in frontend/node_modules"
+            echo "Checking root node_modules..."
+            if [ -d "../node_modules/react" ]; then
+              echo "⚠️ React found in root, but not in frontend/"
+              echo "Creating symlink or copying..."
+              mkdir -p node_modules
+              cp -r ../node_modules/react node_modules/ 2>/dev/null || true
+              cp -r ../node_modules/react-dom node_modules/ 2>/dev/null || true
+              cp -r ../node_modules/react-router-dom node_modules/ 2>/dev/null || true
+            fi
+          fi
+          if [ -d "node_modules/@types/react" ]; then
+            echo "✅ React types found in frontend/node_modules/@types"
+          else
+            echo "⚠️ React types NOT found, checking root..."
+            if [ -d "../node_modules/@types/react" ]; then
+              mkdir -p node_modules/@types
+              cp -r ../node_modules/@types/react node_modules/@types/ 2>/dev/null || true
+              cp -r ../node_modules/@types/react-dom node_modules/@types/ 2>/dev/null || true
+            fi
+          fi
 
       - name: Type check frontend
         working-directory: ./frontend
@@ -111,6 +138,8 @@ jobs:
           ls -la node_modules/react/package.json 2>/dev/null && echo "✅ React package.json found" || echo "❌ React package.json NOT found"
           ls -la node_modules/react/jsx-runtime.js 2>/dev/null && echo "✅ React jsx-runtime found" || echo "❌ React jsx-runtime NOT found"
           ls -la node_modules/@types/react/index.d.ts 2>/dev/null && echo "✅ React types found" || echo "❌ React types NOT found"
+          ls -la node_modules/react-router-dom/package.json 2>/dev/null && echo "✅ react-router-dom found" || echo "❌ react-router-dom NOT found"
+          ls -la node_modules/@types/node/package.json 2>/dev/null && echo "✅ @types/node found" || echo "❌ @types/node NOT found"
           # Run typecheck
           npm run typecheck
 
