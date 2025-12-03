@@ -297,7 +297,8 @@ jobs:
           
           # Deploy using vercel deploy with project context
           # Use --force to ensure all files are included
-          npx vercel deploy --token ${VERCEL_TOKEN} --yes $prodRun --scope=${VERCEL_ORG_ID} --force 2>&1 | tee vercel-deploy.log
+          # Explicitly specify vercel.json to override project settings
+          npx vercel deploy --token ${VERCEL_TOKEN} --yes $prodRun --scope=${VERCEL_ORG_ID} --force --local-config vercel.json 2>&1 | tee vercel-deploy.log
           
           # Check deployment output for function detection
           echo ""
