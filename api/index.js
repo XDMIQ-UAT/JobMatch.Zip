@@ -1,15 +1,27 @@
 // Vercel serverless function handler
 // This wraps the Express app for Vercel's serverless function runtime
 
+// Log module resolution paths for debugging
+console.log('🔍 Module resolution debug:');
+console.log('  __dirname:', __dirname);
+console.log('  process.cwd():', process.cwd());
+console.log('  NODE_PATH:', process.env.NODE_PATH || 'not set');
+console.log('  Module paths:', require.resolve.paths('express') || 'cannot resolve');
+
 let app;
 try {
   // Import the Express app from the built backend
   // Try api/backend-dist first (copied during deployment), then ../backend/dist
   let backendApp;
   try {
+    console.log('📦 Attempting to require ./backend-dist/index.js');
     backendApp = require('./backend-dist/index.js');
+    console.log('✅ Successfully loaded from ./backend-dist/index.js');
   } catch (e) {
+    console.log('⚠️ Failed to load from ./backend-dist/index.js:', e.message);
+    console.log('📦 Attempting to require ../backend/dist/index.js');
     backendApp = require('../backend/dist/index.js');
+    console.log('✅ Successfully loaded from ../backend/dist/index.js');
   }
   
   // Get the Express app (it's exported as .app in CommonJS)
