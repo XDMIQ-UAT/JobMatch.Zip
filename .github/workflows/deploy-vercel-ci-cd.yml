@@ -321,7 +321,7 @@ jobs:
             echo "✅ node_modules copied to backend/"
           fi
 
-      - name: Verify API function exists
+      - name: Verify API function and backend files exist
         run: |
           echo "Checking for API function..."
           if [ ! -f "api/index.js" ]; then
@@ -333,7 +333,38 @@ jobs:
           fi
           echo "✅ api/index.js found"
           echo "File size: $(stat -f%z api/index.js 2>/dev/null || stat -c%s api/index.js 2>/dev/null || echo 'unknown') bytes"
-          echo "First few lines:"
+          
+          echo ""
+          echo "Checking for backend files..."
+          echo "Files in api/ directory:"
+          ls -la api/ 2>/dev/null || echo "api/ directory does not exist"
+          
+          echo ""
+          echo "Checking for api/backend-index.js:"
+          if [ -f "api/backend-index.js" ]; then
+            echo "✅ api/backend-index.js found"
+            echo "File size: $(stat -f%z api/backend-index.js 2>/dev/null || stat -c%s api/backend-index.js 2>/dev/null || echo 'unknown') bytes"
+          else
+            echo "❌ api/backend-index.js NOT found!"
+          fi
+          
+          echo ""
+          echo "Checking for api/backend-dist/:"
+          if [ -d "api/backend-dist" ]; then
+            echo "✅ api/backend-dist/ directory exists"
+            echo "Files in api/backend-dist/:"
+            ls -la api/backend-dist/ | head -10
+            if [ -f "api/backend-dist/index.js" ]; then
+              echo "✅ api/backend-dist/index.js found"
+            else
+              echo "❌ api/backend-dist/index.js NOT found!"
+            fi
+          else
+            echo "❌ api/backend-dist/ directory NOT found!"
+          fi
+          
+          echo ""
+          echo "First few lines of api/index.js:"
           head -5 api/index.js
 
       - name: Deploy to Vercel
