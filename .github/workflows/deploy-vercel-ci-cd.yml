@@ -186,6 +186,18 @@ jobs:
           }
           echo "Contents of api/ folder:"
           ls -la api/ || echo "api/ folder not found"
+          
+      - name: Install API function dependencies
+        run: |
+          echo "Installing dependencies for api/package.json..."
+          if [ -f "api/package.json" ]; then
+            cd api && npm install --production || npm install
+            echo "✅ API dependencies installed"
+            echo "Dependencies installed:"
+            ls -la node_modules/ | head -10 || echo "node_modules not found"
+          else
+            echo "⚠️ api/package.json not found"
+          fi
 
       - name: Verify API function exists
         run: |
