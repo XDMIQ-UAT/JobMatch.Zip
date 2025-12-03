@@ -29,7 +29,8 @@ try {
   app = (req, res) => {
     if (req.path && req.path.startsWith('/api/voice')) {
       const errorTwiml = '<?xml version="1.0" encoding="UTF-8"?>\n<Response>\n  <Say language="en-US" voice="Polly.Joanna-Neural">We apologize, but we are experiencing technical difficulties. Please try again later.</Say>\n</Response>';
-      res.set('Content-Type', 'application/xml; charset=utf-8');
+      // Use setHeader for Vercel compatibility (not res.set)
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
       res.status(200).send(errorTwiml);
     } else {
       res.status(500).json({ error: 'Internal server error', message: 'Failed to load application' });
@@ -67,7 +68,8 @@ module.exports = (req, res) => {
     const path = req.path || req.url || '';
     if (path.startsWith('/api/voice') || path.includes('/voice/incoming')) {
       const errorTwiml = '<?xml version="1.0" encoding="UTF-8"?>\n<Response>\n  <Say language="en-US" voice="Polly.Joanna-Neural">We apologize, but we are experiencing technical difficulties. Please try again later.</Say>\n</Response>';
-      res.set('Content-Type', 'application/xml; charset=utf-8');
+      // Use setHeader for Vercel compatibility (not res.set)
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
       res.status(200).send(errorTwiml);
     } else {
       res.status(500).json({ error: 'Internal server error', details: error.message });
