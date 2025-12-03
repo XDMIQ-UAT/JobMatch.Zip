@@ -49,12 +49,12 @@ let app;
 try {
   // Import the Express app from the built backend
   // Try multiple paths in order of preference
-  let backendApp;
-  const paths = [
-    './backend-index.js',           // Direct copy in api/ (most reliable)
-    './backend-dist/index.js',      // Copied directory
-    '../backend/dist/index.js'      // Original location (fallback)
-  ];
+        let backendApp;
+        const paths = [
+          './backend-dist/index.js',      // Copied directory (most reliable - has full structure)
+          './backend-index.js',           // Direct copy in api/ (fallback)
+          '../backend/dist/index.js'      // Original location (fallback)
+        ];
   
   let loaded = false;
   for (const path of paths) {
