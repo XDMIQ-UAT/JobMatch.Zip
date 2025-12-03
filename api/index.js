@@ -8,6 +8,17 @@ console.log('  process.cwd():', process.cwd());
 console.log('  NODE_PATH:', process.env.NODE_PATH || 'not set');
 console.log('  Module paths:', require.resolve.paths('express') || 'cannot resolve');
 
+// Pre-load express to ensure it's available for backend/dist/index.js
+// This helps Node.js resolve express when backend/dist/index.js requires it
+try {
+  console.log('🔍 Pre-loading express to ensure it's available...');
+  const expressPath = require.resolve('express');
+  console.log('✅ Express found at:', expressPath);
+} catch (e) {
+  console.log('⚠️ Could not pre-load express:', e.message);
+  console.log('This might cause issues when backend/dist/index.js requires it');
+}
+
 let app;
 try {
   // Import the Express app from the built backend
@@ -29,6 +40,11 @@ try {
       break;
     } catch (e) {
       console.log(`⚠️ Failed to load from ${path}:`, e.message);
+      // If it's a module resolution error, log more details
+      if (e.code === 'MODULE_NOT_FOUND' && e.message.includes('express')) {
+        console.log('  → Express module resolution issue');
+        console.log('  → Module paths:', require.resolve.paths('express') || 'cannot resolve');
+      }
     }
   }
   
