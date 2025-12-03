@@ -241,11 +241,28 @@ jobs:
             echo "❌ backend/dist/index.js not found!"
           fi
           
-          # Also copy node_modules to api/backend-dist/ if they exist in backend/dist/
+          # Copy node_modules to api/backend-dist/node_modules/ so backend/dist/index.js can find dependencies
+          # This is critical because backend/dist/index.js requires('express') etc.
+          if [ -d "node_modules" ] && [ -d "api/backend-dist" ]; then
+            echo "Copying node_modules to api/backend-dist/node_modules/ for backend/dist/index.js..."
+            mkdir -p api/backend-dist/node_modules
+            cp -r node_modules/* api/backend-dist/node_modules/ || {
+              echo "⚠️ Failed to copy node_modules to api/backend-dist/, but continuing..."
+            }
+            echo "✅ node_modules copied to api/backend-dist/node_modules/"
+            echo "Verifying express is in api/backend-dist/node_modules:"
+            ls -la api/backend-dist/node_modules/express 2>/dev/null || echo "express not found in api/backend-dist/node_modules"
+          else
+            echo "⚠️ Cannot copy node_modules - missing directories"
+            echo "node_modules exists: $([ -d "node_modules" ] && echo 'yes' || echo 'no')"
+            echo "api/backend-dist exists: $([ -d "api/backend-dist" ] && echo 'yes' || echo 'no')"
+          fi
+          
+          # Also copy from backend/dist/node_modules if it exists (fallback)
           if [ -d "backend/dist/node_modules" ] && [ -d "api/backend-dist" ]; then
-            echo "Copying node_modules to api/backend-dist/ for runtime..."
-            cp -r backend/dist/node_modules api/backend-dist/ || {
-              echo "⚠️ Failed to copy node_modules, but continuing..."
+            echo "Copying backend/dist/node_modules to api/backend-dist/node_modules/ (merge)..."
+            cp -r backend/dist/node_modules/* api/backend-dist/node_modules/ 2>/dev/null || {
+              echo "⚠️ Failed to merge backend/dist/node_modules, but continuing..."
             }
           fi
           
