@@ -204,7 +204,7 @@ jobs:
             echo "⚠️ install-vercel-deps.sh not found"
           fi
           
-      - name: Install API function dependencies at root and copy to api/backend-dist/
+      - name: Install API function dependencies at root and copy to all locations
         run: |
           echo "Installing dependencies for Express app at root level..."
           echo "This ensures backend/dist/index.js can find express, cors, etc."
@@ -215,19 +215,33 @@ jobs:
           echo "Verifying express is installed:"
           ls -la node_modules/express 2>/dev/null || echo "express not found in node_modules"
           
-          # Copy node_modules to api/backend-dist/ so backend-dist/index.js can find them
+          # Copy node_modules to backend/dist/ (for require('../backend/dist/index.js') fallback)
+          if [ -d "node_modules" ] && [ -d "backend/dist" ]; then
+            echo "Copying node_modules to backend/dist/ for fallback path..."
+            cp -r node_modules backend/dist/ || {
+              echo "⚠️ Failed to copy node_modules to backend/dist/, but continuing..."
+            }
+            echo "✅ node_modules copied to backend/dist/"
+          fi
+          
+          # Copy node_modules to api/backend-dist/ (for require('./backend-dist/index.js') primary path)
           if [ -d "node_modules" ] && [ -d "api/backend-dist" ]; then
-            echo "Copying node_modules to api/backend-dist/ for runtime..."
+            echo "Copying node_modules to api/backend-dist/ for primary path..."
             cp -r node_modules api/backend-dist/ || {
               echo "⚠️ Failed to copy node_modules to api/backend-dist/, but continuing..."
             }
             echo "✅ node_modules copied to api/backend-dist/"
             echo "Verifying express in api/backend-dist/node_modules:"
             ls -la api/backend-dist/node_modules/express 2>/dev/null || echo "express not found in api/backend-dist/node_modules"
-          else
-            echo "⚠️ Cannot copy node_modules - missing directories"
-            echo "node_modules exists: $([ -d "node_modules" ] && echo 'yes' || echo 'no')"
-            echo "api/backend-dist exists: $([ -d "api/backend-dist" ] && echo 'yes' || echo 'no')"
+          fi
+          
+          # Also copy to backend/node_modules/ (parent directory fallback)
+          if [ -d "node_modules" ] && [ -d "backend" ]; then
+            echo "Copying node_modules to backend/ for parent directory fallback..."
+            cp -r node_modules backend/ || {
+              echo "⚠️ Failed to copy node_modules to backend/, but continuing..."
+            }
+            echo "✅ node_modules copied to backend/"
           fi
 
       - name: Verify API function exists
