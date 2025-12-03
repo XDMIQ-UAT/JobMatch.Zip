@@ -25,6 +25,13 @@ try {
   console.error('❌ Error loading Express app:', error);
   console.error('Error stack:', error.stack);
   console.error('Error message:', error.message);
+  console.error('Error code:', error.code);
+  console.error('Error name:', error.name);
+  // Log more details about the error
+  if (error.code === 'MODULE_NOT_FOUND') {
+    console.error('MODULE_NOT_FOUND - Missing module:', error.message);
+    console.error('Tried paths:', error.path || 'unknown');
+  }
   // Fallback handler that returns error TwiML
   app = (req, res) => {
     if (req.path && req.path.startsWith('/api/voice')) {
