@@ -241,29 +241,35 @@ jobs:
             echo "❌ backend/dist/index.js not found!"
           fi
           
-          # Copy node_modules to api/backend-dist/node_modules/ so backend/dist/index.js can find dependencies
-          # This is critical because backend/dist/index.js requires('express') etc.
-          if [ -d "node_modules" ] && [ -d "api/backend-dist" ]; then
-            echo "Copying node_modules to api/backend-dist/node_modules/ for backend/dist/index.js..."
-            mkdir -p api/backend-dist/node_modules
-            cp -r node_modules/* api/backend-dist/node_modules/ || {
-              echo "⚠️ Failed to copy node_modules to api/backend-dist/, but continuing..."
+          # Create symlink from api/backend-dist/node_modules to api/node_modules
+          # This ensures backend/dist/index.js can find express via NODE_PATH
+          # Vercel installs api/package.json dependencies to api/node_modules/
+          if [ -d "api/node_modules" ] && [ -d "api/backend-dist" ]; then
+            echo "Creating symlink from api/backend-dist/node_modules to api/node_modules..."
+            ln -sf ../node_modules api/backend-dist/node_modules || {
+              echo "⚠️ Failed to create symlink, trying copy instead..."
+              # Fallback: copy node_modules if symlink fails
+              mkdir -p api/backend-dist/node_modules
+              cp -r api/node_modules/* api/backend-dist/node_modules/ 2>/dev/null || {
+                echo "⚠️ Copy also failed, but continuing..."
+              }
             }
-            echo "✅ node_modules copied to api/backend-dist/node_modules/"
-            echo "Verifying express is in api/backend-dist/node_modules:"
-            ls -la api/backend-dist/node_modules/express 2>/dev/null || echo "express not found in api/backend-dist/node_modules"
+            echo "✅ Symlink created (or copy completed)"
+            echo "Verifying express is accessible:"
+            ls -la api/backend-dist/node_modules/express 2>/dev/null || echo "express not found"
           else
-            echo "⚠️ Cannot copy node_modules - missing directories"
-            echo "node_modules exists: $([ -d "node_modules" ] && echo 'yes' || echo 'no')"
+            echo "⚠️ Cannot create symlink - missing directories"
+            echo "api/node_modules exists: $([ -d "api/node_modules" ] && echo 'yes' || echo 'no')"
             echo "api/backend-dist exists: $([ -d "api/backend-dist" ] && echo 'yes' || echo 'no')"
-          fi
-          
-          # Also copy from backend/dist/node_modules if it exists (fallback)
-          if [ -d "backend/dist/node_modules" ] && [ -d "api/backend-dist" ]; then
-            echo "Copying backend/dist/node_modules to api/backend-dist/node_modules/ (merge)..."
-            cp -r backend/dist/node_modules/* api/backend-dist/node_modules/ 2>/dev/null || {
-              echo "⚠️ Failed to merge backend/dist/node_modules, but continuing..."
-            }
+            
+            # Fallback: copy from root node_modules if api/node_modules doesn't exist yet
+            if [ -d "node_modules" ] && [ -d "api/backend-dist" ]; then
+              echo "Copying root node_modules to api/backend-dist/node_modules/ as fallback..."
+              mkdir -p api/backend-dist/node_modules
+              cp -r node_modules/* api/backend-dist/node_modules/ || {
+                echo "⚠️ Failed to copy node_modules, but continuing..."
+              }
+            fi
           fi
           
       - name: Make install script executable
